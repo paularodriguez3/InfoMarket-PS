@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const main = document.querySelector('main');
     const footer = document.querySelector('footer');
 
+
     menuIcon.addEventListener('click', function () {
         mobileMenu.classList.toggle('show-menu');
         main.classList.toggle('blur-item');
