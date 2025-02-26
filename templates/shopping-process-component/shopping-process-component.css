@@ -1,14 +1,28 @@
+header, footer {
+    width: 100%;
+}
+
 body {
     font-family: 'SF Pro Display', sans-serif;
+    background-color: #f8f8f8;
+    margin: 0;
     display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f8f8f8;
-    margin: 0;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .progress-container {
+    margin-top: 40px;
     display: flex;
     align-items: center;
     position: relative;
@@ -24,6 +38,7 @@ body {
     flex: 1;
 }
 
+/* Círculo de los pasos */
 .circle {
     width: 40px;
     height: 40px;
@@ -35,6 +50,7 @@ body {
     font-size: 18px;
     font-weight: bold;
     z-index: 2;
+    margin-bottom: 15px;
 }
 
 .step.active .circle {
@@ -48,12 +64,22 @@ p {
     text-align: center;
 }
 
-.line {
-    width: 50px;
+.step::after {
+    content: "";
+    position: absolute;
+    top: 20px;
+    left: calc(50% + 20px);
+    width: calc(100% - 40px);
     height: 2px;
-    background-color: transparent;
     border-top: 2px dashed #aaa;
-    position: relative;
-    top: -20px;
-    flex: 1;
+    z-index: 1;
+}
+
+.step:last-child::after {
+    display: none;
+}
+
+
+.step:first-child::after {
+    left: calc(50% + 20px);
 }
