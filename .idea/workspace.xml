@@ -4,10 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b991b1f5-e673-47f0-b15d-aed8705f6481" name="Changes" comment="Search bar finished">
-      <change afterPath="$PROJECT_DIR$/xlu-include-file.js" afterDir="false" />
+    <list default="true" id="b991b1f5-e673-47f0-b15d-aed8705f6481" name="Changes" comment="Footer imported from template">
+      <change beforePath="$PROJECT_DIR$/.idea/InfoMarketPWM.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/InfoMarketPWM.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/home/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/home/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/header/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/header/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/shopping-process-component/shopping-process-component.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/shopping-process-component/shopping-process-component.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +39,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/paularodriguez3/InfoMarket-PWM.git&quot;,
-    &quot;accountId&quot;: &quot;21bc2483-ed97-45fb-9308-137a12079738&quot;
+    &quot;accountId&quot;: &quot;e31af191-30db-42f0-8a70-d2d8219ff620&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -51,13 +55,15 @@
   &quot;keyToString&quot;: {
     &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
     &quot;JavaScript Debug.footer.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.header-2.html.executor&quot;: &quot;Run&quot;,
     &quot;JavaScript Debug.header-footer.html.executor&quot;: &quot;Run&quot;,
     &quot;JavaScript Debug.header.html.executor&quot;: &quot;Run&quot;,
     &quot;JavaScript Debug.index.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.shopping-process-component.html.executor&quot;: &quot;Run&quot;,
     &quot;JavaScript Debug.top-header.html.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/paula/Desktop/PAULA/PWM/InfoMarket-PWM&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/paula/Desktop/ULPGC/PWM/InfoMarket-PWM&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -84,7 +90,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-WS-242.23339.15" />
+        <option value="bundled-js-predefined-d6986cc7102b-410509235cf1-JavaScript-WS-242.20224.426" />
       </set>
     </attachedChunks>
   </component>
@@ -113,7 +119,10 @@
       <workItem from="1739910890683" duration="8000" />
       <workItem from="1739910900285" duration="892000" />
       <workItem from="1740155688414" duration="8000" />
-      <workItem from="1740413149871" duration="1670000" />
+      <workItem from="1740413149871" duration="2027000" />
+      <workItem from="1740495643081" duration="2878000" />
+      <workItem from="1740525178705" duration="708000" />
+      <workItem from="1740562862677" duration="7621000" />
     </task>
     <task id="LOCAL-00001" summary="Header first version done.">
       <option name="closed" value="true" />
@@ -195,7 +204,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739911474733</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Footer imported from template">
+      <option name="closed" value="true" />
+      <created>1740415096284</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1740415096284</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -212,6 +229,7 @@
     <MESSAGE value="Footer logo fixed" />
     <MESSAGE value="Search bar with more details" />
     <MESSAGE value="Search bar finished" />
-    <option name="LAST_COMMIT_MESSAGE" value="Search bar finished" />
+    <MESSAGE value="Footer imported from template" />
+    <option name="LAST_COMMIT_MESSAGE" value="Footer imported from template" />
   </component>
 </project>
