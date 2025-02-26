@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b991b1f5-e673-47f0-b15d-aed8705f6481" name="Changes" comment="Header menu fixed on home page.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/shopping-process-component/shopping-process-component.css" beforeDir="false" afterPath="$PROJECT_DIR$/templates/shopping-process-component/shopping-process-component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/shopping-process-component/shopping-process-component.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/shopping-process-component/shopping-process-component.html" afterDir="false" />
+    <list default="true" id="b991b1f5-e673-47f0-b15d-aed8705f6481" name="Changes" comment="Footer text position fixed.">
+      <change afterPath="$PROJECT_DIR$/templates/billing-adress/billing-adress.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/billing-adress/billing-adress.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +50,7 @@
   "keyToString": {
     "DefaultHtmlFileTemplate": "HTML File",
     "JavaScript Debug.Sing in.html.executor": "Run",
+    "JavaScript Debug.billing-adress.html.executor": "Run",
     "JavaScript Debug.componente.html.executor": "Run",
     "JavaScript Debug.footer.html.executor": "Run",
     "JavaScript Debug.header-2.html.executor": "Run",
@@ -124,6 +123,8 @@
       <workItem from="1740495643081" duration="2878000" />
       <workItem from="1740525178705" duration="708000" />
       <workItem from="1740562862677" duration="14043000" />
+      <workItem from="1740585567932" duration="4000" />
+      <workItem from="1740585573518" duration="715000" />
     </task>
     <task id="LOCAL-00001" summary="Header first version done.">
       <option name="closed" value="true" />
@@ -221,7 +222,15 @@
       <option name="project" value="LOCAL" />
       <updated>1740574947036</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Footer text position fixed.">
+      <option name="closed" value="true" />
+      <created>1740586000356</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1740586000356</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -240,6 +249,7 @@
     <MESSAGE value="Search bar finished" />
     <MESSAGE value="Footer imported from template" />
     <MESSAGE value="Header menu fixed on home page." />
-    <option name="LAST_COMMIT_MESSAGE" value="Header menu fixed on home page." />
+    <MESSAGE value="Footer text position fixed." />
+    <option name="LAST_COMMIT_MESSAGE" value="Footer text position fixed." />
   </component>
 </project>
