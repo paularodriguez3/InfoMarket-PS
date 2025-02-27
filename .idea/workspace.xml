@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b991b1f5-e673-47f0-b15d-aed8705f6481" name="Changes" comment="Footer text position fixed.">
+    <list default="true" id="b991b1f5-e673-47f0-b15d-aed8705f6481" name="Changes" comment="Billing address almost finish">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/billing-adress/billing-adress.css" beforeDir="false" afterPath="$PROJECT_DIR$/templates/billing-adress/billing-adress.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/billing-adress/billing-adress.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/billing-adress/billing-adress.html" afterDir="false" />
@@ -35,7 +35,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/paularodriguez3/InfoMarket-PWM.git&quot;,
-    &quot;accountId&quot;: &quot;e31af191-30db-42f0-8a70-d2d8219ff620&quot;
+    &quot;accountId&quot;: &quot;21bc2483-ed97-45fb-9308-137a12079738&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -63,11 +63,12 @@
     "JavaScript Debug.index.html.executor": "Run",
     "JavaScript Debug.product-component.html.executor": "Run",
     "JavaScript Debug.product-list.html.executor": "Run",
+    "JavaScript Debug.shopping-info-component.html.executor": "Run",
     "JavaScript Debug.shopping-process-component.html.executor": "Run",
     "JavaScript Debug.top-header.html.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/paula/Desktop/ULPGC/PDIGS/Ballingo-Frontend",
+    "last_opened_file_path": "C:/Users/paula/Desktop/PAULA/PWM/InfoMarket-PWM",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -94,7 +95,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-410509235cf1-JavaScript-WS-242.20224.426" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-WS-242.23339.15" />
       </set>
     </attachedChunks>
   </component>
@@ -134,6 +135,8 @@
       <workItem from="1740591972479" duration="87000" />
       <workItem from="1740598148441" duration="158000" />
       <workItem from="1740647898980" duration="4700000" />
+      <workItem from="1740669949382" duration="14000" />
+      <workItem from="1740669964913" duration="1542000" />
     </task>
     <task id="LOCAL-00001" summary="Header first version done.">
       <option name="closed" value="true" />
@@ -239,7 +242,15 @@
       <option name="project" value="LOCAL" />
       <updated>1740586000356</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Billing address almost finish">
+      <option name="closed" value="true" />
+      <created>1740670992521</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1740670992521</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -259,6 +270,7 @@
     <MESSAGE value="Footer imported from template" />
     <MESSAGE value="Header menu fixed on home page." />
     <MESSAGE value="Footer text position fixed." />
-    <option name="LAST_COMMIT_MESSAGE" value="Footer text position fixed." />
+    <MESSAGE value="Billing address almost finish" />
+    <option name="LAST_COMMIT_MESSAGE" value="Billing address almost finish" />
   </component>
 </project>

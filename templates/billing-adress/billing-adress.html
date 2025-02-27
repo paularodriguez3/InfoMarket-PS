@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <link rel="icon" href="../../assets/icons/header/infomarket_logo_mini.png" type="image/png">
   <link rel="stylesheet" href="../../templates/header/header.css">
-  <link rel="stylesheet" href="../shopping-process-component/shopping-process-component.css">
+  <link rel="stylesheet" href="../../templates/shopping-process-component/shopping-process-component.css">
   <link rel="stylesheet" href="billing-adress.css">
   <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.5.1/uicons-regular-rounded/css/uicons-regular-rounded.css'>
   <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.5.1/uicons-brands/css/uicons-brands.css'>
@@ -39,32 +39,32 @@
   </section>
 </header>
 
-<main>
-  <div class="progress-container">
-    <div class="step active">
-      <div class="circle">1</div>
-      <p>Facturación</p>
-    </div>
-    <div class="line"></div>
-    <div class="step">
-      <div class="circle">2</div>
-      <p>Método de envío</p>
-    </div>
-    <div class="line"></div>
-    <div class="step">
-      <div class="circle">3</div>
-      <p>Pago</p>
-    </div>
-    <div class="line"></div>
-    <div class="step">
-      <div class="circle">4</div>
-      <p>Resumen</p>
-    </div>
+<div class="progress-container">
+  <div class="step active">
+    <div class="circle">1</div>
+    <p>Facturación</p>
   </div>
+  <div class="line"></div>
+  <div class="step">
+    <div class="circle">2</div>
+    <p>Método de envío</p>
+  </div>
+  <div class="line"></div>
+  <div class="step">
+    <div class="circle">3</div>
+    <p>Pago</p>
+  </div>
+  <div class="line"></div>
+  <div class="step">
+    <div class="circle">4</div>
+    <p>Resumen</p>
+  </div>
+</div>
 
+<main>
   <div id="billing-shopping-wrapper">
     <section id="billing-address">
-      <h2>Dirección de Facturación</h2>
+      <h2>DIRECCIÓN DE FACTURACIÓN</h2>
       <form>
         <label for="country">País</label>
         <input type="text" id="country" name="country" required>
@@ -78,28 +78,16 @@
       </form>
     </section>
 
-    <article id="shopping-info-component">
-      <ul id="shopping-info-wrapper">
-        <li xlu-include-file="product-info-component.html"></li>
-        <li xlu-include-file="product-info-component.html"></li>
-        <li xlu-include-file="product-info-component.html"></li>
-      </ul>
-      <hr>
-      <div id="shopping-info-total">
-        <div id="shopping-info-total-title">Total:</div>
-        <div id="shopping-info-total-price">12,290.97€</div>
-      </div>
-    </article>
+    <section id="shopping-info-component">
+      <article xlu-include-file="../../templates/Shopping-info-component/Shopping-info-component.html"></article>
+    </section>
   </div>
 </main>
 
 <footer id="footer" xlu-include-file="../footer/footer.html"></footer>
 
-
 <script>
-
   xLuIncludeFile();
-
 </script>
 
 </body>
