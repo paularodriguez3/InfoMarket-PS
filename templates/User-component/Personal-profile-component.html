@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile component</title>
+  <link rel="stylesheet" href="profile-component.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body id="component">
+<div class="wrapper-profile">
+  <form class="login-form">
+    <div class="profile-header">
+      <div class="profile-user-foto">
+        <i class='bx bxs-user-circle user-icon'></i>
+      </div>
+      <div class="title">
+        <h1>Perfil de usuario</h1>
+      </div>
+    </div>
+    <div class="fields-container">
+      <div class="column">
+        <div class="first-camp">
+          <input type="text" placeholder="Nombre" required>
+        </div>
+        <div class="first-camp">
+          <input type="text" placeholder="Primer apellido" required>
+        </div>
+        <div class="first-camp">
+          <input type="text" placeholder="Segundo apellido" required>
+        </div>
+      </div>
+      <div class="column">
+        <div class="second-camp">
+          <input type="text" placeholder="Nombre de usuario" required>
+        </div>
+        <div class="second-camp">
+          <input type="email" placeholder="Email" required>
+        </div>
+        <div class="second-camp">
+          <input type="text" placeholder="Número de telefono" required>
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="send">Botón</button>
+  </form>
+</div>
+</body>
+</html>
