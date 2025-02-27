@@ -11,6 +11,9 @@ body {
     padding-top: 100px
 }
 
+main {
+    background-color: #FAFAFC;
+}
 header {
     position: fixed;
     top: 0;
@@ -35,7 +38,7 @@ header {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    min-width: 300px;
+    min-width: 500px;
 }
 
 #billing-address form {
@@ -69,8 +72,18 @@ header {
     padding-bottom: 70px;
 }
 
+#billing-address h2 {
+    margin-bottom: 20px;
+}
+
+#billing-address form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .progress-container {
-    margin-top: 100px;
+    margin-top: 120px;
 }
 
 footer {
