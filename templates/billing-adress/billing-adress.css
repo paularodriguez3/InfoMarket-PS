@@ -3,319 +3,21 @@
     padding: 0;
 }
 
-header {
-    top: 0;
-    background-color: #FAFAFC;
-}
-
-body {
-    background-color: #FAFAFC;
-}
-
-#logo-searchbar {
-    display: flex;
-    align-items: center;
-}
-
-#user-cart {
-    display: flex;
-    align-items: center;
-
-}
-
-#user-cart a {
-    padding-left: 10px;
-    text-decoration: none;
-}
-
-#user-cart i {
-    color: #323232;
-    font-size: 28px;
-}
-
-#user-cart i:hover {
-    color: #000000;
-}
-
-#nav-top {
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
-    padding-inline: 15%;
-    border-bottom: 1px solid #EFEFEF;
-    background-color: #FAFAFC;
-}
-
-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    width: 100%;
-    padding: 2% 0;
-    flex-grow: 1;  /* Hace que el contenido principal crezca y deje espacio al footer */
-}
-
-#main-title {
-    font-size: 72px;
-}
-
-#main-title-wrapper {
-    font-family: 'SF Pro Display', sans-serif;
-    padding-inline: 6%;
-    padding-bottom: 4%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    color: #1D1D1F;
-}
-
-#nav-list {
-    text-decoration: none;
-    list-style-type: none;
-    font-family: 'SF Pro Display', sans-serif;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-end;
-}
-#nav-list li {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: 'SF Pro Display', sans-serif;
-    font-size: 15px;
-    color: #3D3D3D;
-    border: none;
-    padding: 7px;
-    margin-inline: 5px;
-}
-#nav-list a {
-    cursor: pointer;
-}
-#nav-list li:hover {
-    color: #000000;
-}
-#nav-list i {
-    font-size: 33px;
-}
-
-#header-logo {
-    padding-top: 8px;
-    padding-bottom: 5px;
-    padding-inline: 5px;
-}
-
-#product-search {
-    font-family: 'SF Pro Display', sans-serif;
-    font-size: 17px;
-    margin-left: 5px;
-    padding-inline: 10px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    border-radius: 5px;
-    width: 50%;
-}
-
-#header-title {
-    font-family: 'SF Pro Display', sans-serif;
-    text-decoration: none;
-    font-size: 32px;
-}
-
-#nav-bottom {
-    background-color: #F5F5F7;
-    padding-inline: 20%;
-}
-
 body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     background-color: #FAFAFC;
-}
-.menu-item h1 {
-    font-family: 'SF Pro Display', sans-serif;
-    font-size: 16px;
-    padding-bottom: 6px;
-    color: #1E1E1E;
-}
-#menu-wrapper {
-    display: flex;
-    width: 90%;
-    justify-content: space-evenly;
-    padding-top: 1.5%;
-    padding-bottom: 4%;
-    padding-inline: 5%;
-    background-color: #F5F5F7;
+    padding-top: 100px
 }
 
-.hidden-menu {
-    visibility: hidden;
-    position: absolute;
-    z-index: 1;
-    opacity: 0;
-    transform: translateY(-25%);
-}
-
-.show-menu {
-    visibility: visible;
-    opacity: 1;
-    transform: translateY(0);
-    transition: all 0.25s;
-}
-
-.blur-item {
-    filter: blur(8px);
-}
-
-#menu-wrapper a {
-    cursor: pointer;
-}
-
-#menu-wrapper a:hover {
-    color: #000000;
-    text-decoration: underline;
-}
-
-.menu-list li {
-    font-family: 'SF Pro Display', sans-serif;
-    padding-bottom: 4px;
-    text-decoration: none;
-    list-style-type: none;
-    color: #3D3D3D;
-    font-size: 16px;
-}
-
-#overlay h1 {
-    font-family: 'SF Pro Display', sans-serif;
-    font-size: 48px;
-    color: #F5F5F7;
-    min-width: 100%;
-}
-
-.list{
-    position: relative;
-    left: 0;
+header {
+    position: fixed;
     top: 0;
-    display: flex;
-    transition: 1s;
-}
-
-.search {
-    position: relative;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    margin-right: -10px;
-}
-
-.search .input {
+    left: 0;
+    width: 100%;
     background-color: #FAFAFC;
-    border: 0;
-    font-size: 16px;
-    padding: 2px 20px 2px 10px;
-    height: 50px;
-    width: 0;
-    transition: width 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
-    border-radius: 25px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    opacity: 0;
-    visibility: hidden;
-}
-
-.progress-container {
-    width: 60%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.step {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    flex: 1;
-}
-
-/* Círculo de los pasos */
-.circle {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: #E9E9EA;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 18px;
-    font-weight: bold;
-    z-index: 2;
-    margin-bottom: 15px;
-}
-
-.step.active .circle {
-    background-color: #746F6F;
-    color: white;
-}
-
-p {
-    margin-top: 5px;
-    font-size: 14px;
-    text-align: center;
-}
-
-.step::after {
-    content: "";
-    position: absolute;
-    top: 20px;
-    left: calc(50% + 20px);
-    width: calc(100% - 40px);
-    height: 2px;
-    border-top: 2px dashed #aaa;
-    z-index: 1;
-}
-
-.step:last-child::after {
-    display: none;
-}
-
-
-.step:first-child::after {
-    left: calc(50% + 20px);
-}
-
-#shopping-info-component {
-    flex: 1;
-    background-color: #D9D9D9;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    min-width: 300px;
-}
-
-
-#shopping-info-wrapper {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 20px;
-}
-
-hr {
-    border: none;
-    height: 1px;
-    background-color: #1D1D1F;
-    width: 95%;
-}
-
-#shopping-info-total {
-    font-family: 'SF Pro Display', sans-serif;
-    font-size: 1.5rem;
-    font-weight: 700;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 20px;
+    z-index: 1000;
 }
 
 #billing-shopping-wrapper {
@@ -324,22 +26,22 @@ hr {
     align-items: flex-start;
     width: 90%;
     gap: 5%;
-    margin-top: 3%;
+    margin-top: 10px;
 }
-#billing-address, #shopping-info-component {
+
+#billing-address {
     flex: 1;
     background-color: white;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     min-width: 300px;
-    height: 100%;
 }
 
 #billing-address form {
     display: flex;
-    flex-direction: column;  /* Los campos se apilan verticalmente */
-    gap: 10px;  /* Espacio entre los campos */
+    flex-direction: column;
+    gap: 10px;
 }
 
 #billing-address input {
@@ -361,6 +63,14 @@ hr {
 
 #billing-address button:hover {
     background-color: #5A4F4F;
+}
+
+#billing-shopping-wrapper {
+    padding-bottom: 70px;
+}
+
+.progress-container {
+    margin-top: 100px;
 }
 
 footer {
