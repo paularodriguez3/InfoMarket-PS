@@ -1,0 +1,10 @@
+#shopping-cart-component {
+    border-radius: 15px;
+    width: 600px;
+    background-color: #D9D9D9;
+}
+
+#shopping-cart-wrapper {
+    list-style: none;
+    padding: 0;
+}
