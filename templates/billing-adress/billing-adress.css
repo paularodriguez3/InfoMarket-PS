@@ -83,7 +83,11 @@ header {
 }
 
 .progress-container {
-    margin-top: 120px;
+    margin-top: 300px;
+}
+
+#shopping-info-component article{
+    overflow: hidden;
 }
 
 footer {
