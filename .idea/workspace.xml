@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b991b1f5-e673-47f0-b15d-aed8705f6481" name="Changes" comment="Billing address almost finished">
+    <list default="true" id="b991b1f5-e673-47f0-b15d-aed8705f6481" name="Changes" comment="About us finished">
+      <change afterPath="$PROJECT_DIR$/templates/client-support/support.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/client-support/support.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -30,12 +32,12 @@
     &quot;assignee&quot;: &quot;paularodriguez3&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/paularodriguez3/InfoMarket-PWM.git&quot;,
-    &quot;accountId&quot;: &quot;21bc2483-ed97-45fb-9308-137a12079738&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/paularodriguez3/InfoMarket-PWM.git",
+    "accountId": "78341673-95c6-4f4b-b0d9-17ce4f2ca611"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -65,12 +67,13 @@
     "JavaScript Debug.product-list.html.executor": "Run",
     "JavaScript Debug.shopping-info-component.html.executor": "Run",
     "JavaScript Debug.shopping-process-component.html.executor": "Run",
+    "JavaScript Debug.support.html.executor": "Run",
     "JavaScript Debug.top-header.html.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/fortn/WebstormProjects/InfoMarket-PWM/templates/about-us",
+    "last_opened_file_path": "C:/Users/fortn/WebstormProjects/InfoMarket-PWM/templates/client-support",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -84,11 +87,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\fortn\WebstormProjects\InfoMarket-PWM\templates\client-support" />
       <recent name="C:\Users\fortn\WebstormProjects\InfoMarket-PWM\templates\about-us" />
       <recent name="C:\Users\paula\Desktop\PAULA\PWM\InfoMarket-PWM" />
       <recent name="C:\Users\paula\Desktop\ULPGC\PWM\InfoMarket-PWM\assets\icons\header" />
       <recent name="C:\Users\paula\WebstormProjects\InfoMarketPWM\assets\videos\home" />
-      <recent name="C:\Users\paula\WebstormProjects\InfoMarketPWM\assets\icons\header" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\paula\WebstormProjects\InfoMarketPWM\assets\images" />
@@ -140,7 +143,7 @@
       <workItem from="1740669949382" duration="14000" />
       <workItem from="1740669964913" duration="1774000" />
       <workItem from="1740674197767" duration="2538000" />
-      <workItem from="1740738399730" duration="494000" />
+      <workItem from="1740738399730" duration="1102000" />
     </task>
     <task id="LOCAL-00001" summary="Header first version done.">
       <option name="closed" value="true" />
@@ -262,7 +265,15 @@
       <option name="project" value="LOCAL" />
       <updated>1740671747541</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="About us finished">
+      <option name="closed" value="true" />
+      <created>1740739029531</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1740739029531</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -284,6 +295,8 @@
     <MESSAGE value="Footer text position fixed." />
     <MESSAGE value="Billing address almost finish" />
     <MESSAGE value="Billing address almost finished" />
-    <option name="LAST_COMMIT_MESSAGE" value="Billing address almost finished" />
+    <MESSAGE value="About us-finished" />
+    <MESSAGE value="About us finished" />
+    <option name="LAST_COMMIT_MESSAGE" value="About us finished" />
   </component>
 </project>
