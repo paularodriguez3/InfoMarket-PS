@@ -12,6 +12,10 @@ body {
 }
 
 main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #FAFAFC;
 }
 
@@ -25,7 +29,7 @@ header {
 }
 
 .progress-container {
-    margin-top: 90px;
+    margin-top: 140px;
 }
 
 #shopping-info-component article{
@@ -89,6 +93,15 @@ header {
 
 #payment-method h2 {
     margin-bottom: 15px;
+}
+
+#billing-shopping-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    gap: 5%;
+    margin-top: 10px;
 }
 
 footer {
