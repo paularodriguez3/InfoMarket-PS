@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b991b1f5-e673-47f0-b15d-aed8705f6481" name="Changes" comment="About us finished">
-      <change afterPath="$PROJECT_DIR$/templates/shipping-method/shipping-method.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/shipping-method/shipping-method.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/payment-method/payment-method.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/payment-method/payment-method.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -35,7 +35,7 @@
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
     "url": "https://github.com/paularodriguez3/InfoMarket-PWM.git",
-    "accountId": "e31af191-30db-42f0-8a70-d2d8219ff620"
+    "accountId": "21bc2483-ed97-45fb-9308-137a12079738"
   }
 }]]></component>
   <component name="ProjectColorInfo">{
@@ -62,6 +62,7 @@
     "JavaScript Debug.header-footer.html.executor": "Run",
     "JavaScript Debug.header.html.executor": "Run",
     "JavaScript Debug.index.html.executor": "Run",
+    "JavaScript Debug.payment-method.html.executor": "Run",
     "JavaScript Debug.product-component.html.executor": "Run",
     "JavaScript Debug.product-info-component.html.executor": "Run",
     "JavaScript Debug.product-list.html.executor": "Run",
@@ -101,7 +102,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-410509235cf1-JavaScript-WS-242.20224.426" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-WS-242.23339.15" />
       </set>
     </attachedChunks>
   </component>
@@ -147,6 +148,7 @@
       <workItem from="1740738399730" duration="1102000" />
       <workItem from="1740742950808" duration="9000" />
       <workItem from="1740742960668" duration="669000" />
+      <workItem from="1740762813142" duration="893000" />
     </task>
     <task id="LOCAL-00001" summary="Header first version done.">
       <option name="closed" value="true" />

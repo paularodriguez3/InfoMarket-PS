@@ -1,0 +1,97 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #FAFAFC;
+    padding-top: 100px;
+}
+
+main {
+    background-color: #FAFAFC;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #FAFAFC;
+    z-index: 1000;
+}
+
+.progress-container {
+    margin-top: 90px;
+}
+
+#shopping-info-component article{
+    overflow: hidden;
+}
+
+#payment-method-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+    gap: 20px;
+}
+
+#payment-method {
+    flex: 1;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    min-width: 400px;
+    margin-bottom: 80px;
+}
+
+.payment-option {
+    display: flex;
+    align-items: center;
+    background: #d9d9d9;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.payment-option input {
+    margin-right: 10px;
+}
+
+.payment-option label {
+    flex-grow: 1;
+    cursor: pointer;
+}
+
+.pay-button {
+    width: 100%;
+    background: #625d5d;
+    color: white;
+    padding: 12px;
+    text-align: center;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+}
+
+.pay-button:hover {
+    background-color: #5A4F4F;
+}
+
+#payment-method h2 {
+    margin-bottom: 15px;
+}
+
+footer {
+    margin-top: auto;
+    width: 100%;
+}
