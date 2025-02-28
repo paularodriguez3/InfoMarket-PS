@@ -1,0 +1,96 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #FAFAFC;
+    padding-top: 100px;
+}
+
+main {
+    background-color: #FAFAFC;
+}
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #FAFAFC;
+    z-index: 1000;
+}
+
+#billing-shopping-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 90%;
+    gap: 5%;
+    margin-top: 10px;
+}
+
+#billing-address {
+    flex: 1;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    min-width: 500px;
+}
+
+#billing-address form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#billing-address input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#billing-address button {
+    padding: 12px;
+    background-color: #746F6F;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#billing-address button:hover {
+    background-color: #5A4F4F;
+}
+
+#billing-shopping-wrapper {
+    padding-bottom: 70px;
+}
+
+#billing-address h2 {
+    margin-bottom: 20px;
+}
+
+#billing-address form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.progress-container {
+    margin-top: 165px;
+}
+
+#shopping-info-component article{
+    overflow: hidden;
+}
+
+footer {
+    margin-top: auto;
+    width: 100%;
+}
