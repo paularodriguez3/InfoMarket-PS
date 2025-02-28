@@ -1,0 +1,68 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #FAFAFC;
+    padding-top: 100px
+}
+
+main {
+    background-color: #FAFAFC;
+}
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #FAFAFC;
+    z-index: 1000;
+}
+
+#wrapper-component {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 90%;
+    gap: 5%;
+    margin-top: 10px;
+}
+
+
+
+#order-review form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+
+
+#wrapper-component {
+    padding-bottom: 70px;
+}
+
+
+#order-review form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.progress-container {
+    margin-top: 300px;
+}
+
+#shopping-info-component article{
+    overflow: hidden;
+}
+
+footer {
+    margin-top: auto;
+    width: 100%;
+}
