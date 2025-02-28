@@ -101,12 +101,21 @@
 </header>
 
 <main>
-    <div xlu-include-file="../shopping-cart-component/shopping-cart-component.html"></div>
-    <div>
-        <br>
-    </div>
-    <div xlu-include-file="../shopping-info-component/shopping-info-component.html"></div>
-    <br>
+    <article id="shopping-info">
+        <section id="shopping-cart">
+            <div xlu-include-file="../shopping-cart-component/shopping-cart-component.html"></div>
+            <ul id="qty-buttons">
+                <li><button class="qty-button"><i class='bx bxs-minus-circle'></i></button><button class="qty-button"><i class='bx bxs-plus-circle' ></i></button></li>
+                <li><button class="qty-button"><i class='bx bxs-minus-circle'></i></button><button class="qty-button"><i class='bx bxs-plus-circle' ></i></button></li>
+                <li><button class="qty-button"><i class='bx bxs-minus-circle'></i></button><button class="qty-button"><i class='bx bxs-plus-circle' ></i></button></li>
+            </ul>
+        </section>
+        <section id="buy-panel">
+            <div id="total-price">12,290.97€</div>
+            <button id="buy-button">Procesar pedido</button>
+            <button id="continue-shopping-button">Seguir comprando</button>
+        </section>
+    </article>
 </main>
 
 <footer id="main_footer" xlu-include-file="../footer/footer.html"></footer>
