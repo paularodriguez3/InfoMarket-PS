@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b991b1f5-e673-47f0-b15d-aed8705f6481" name="Changes" comment="About us finished">
-      <change afterPath="$PROJECT_DIR$/templates/payment-method/payment-method.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/payment-method/payment-method.html" afterDir="false" />
+    <list default="true" id="b991b1f5-e673-47f0-b15d-aed8705f6481" name="Changes" comment="Shipping method added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/billing-adress/billing-adress.css" beforeDir="false" afterPath="$PROJECT_DIR$/templates/billing-adress/billing-adress.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/payment-method/payment-method.css" beforeDir="false" afterPath="$PROJECT_DIR$/templates/payment-method/payment-method.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/shipping-method/shipping-method.css" beforeDir="false" afterPath="$PROJECT_DIR$/templates/shipping-method/shipping-method.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,7 +149,7 @@
       <workItem from="1740738399730" duration="1102000" />
       <workItem from="1740742950808" duration="9000" />
       <workItem from="1740742960668" duration="669000" />
-      <workItem from="1740762813142" duration="893000" />
+      <workItem from="1740762813142" duration="3524000" />
     </task>
     <task id="LOCAL-00001" summary="Header first version done.">
       <option name="closed" value="true" />
@@ -278,7 +279,15 @@
       <option name="project" value="LOCAL" />
       <updated>1740739029531</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Shipping method added">
+      <option name="closed" value="true" />
+      <created>1740764031264</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1740764031264</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -302,6 +311,7 @@
     <MESSAGE value="Billing address almost finished" />
     <MESSAGE value="About us-finished" />
     <MESSAGE value="About us finished" />
-    <option name="LAST_COMMIT_MESSAGE" value="About us finished" />
+    <MESSAGE value="Shipping method added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Shipping method added" />
   </component>
 </project>
