@@ -109,23 +109,38 @@
             <ul id="accordion-dropdown">
                 <li>
                     <label for="first"> Color: <span>&#x3e;</span></label>
-                    <input type="radio" name="desplegable-acordeon" id="first">
+                    <input type="radio" name="desplegable-acordeon" id="first" checked>
                     <div class="content">
-                        <p>miau</p>
+                        <input type="radio" id="black" name="color" value="black" required>
+                        <label for="black">Negro</label>
+
+                        <input type="radio" id="white" name="color" value="white">
+                        <label for="white">Blanco</label>
+
+                        <input type="radio" id="gray" name="color" value="gray">
+                        <label for="gray">Gris</label>
                     </div>
                 </li>
                 <li>
                     <label for="second"> Sistema operativo: <span>&#x3e;</span></label>
                     <input type="radio" name="desplegable-acordeon" id="second">
                     <div class="content">
-                        <p>miau</p>
+                        <input type="radio" id="no-OS" name="OS" value="no-OS" required>
+                        <label for="no-OS">Sin sistema operativo</label>
+
+                        <input type="radio" id="windows-OS" name="OS" value="windows-OS">
+                        <label for="windows-OS">Windows 11</label>
                     </div>
                 </li>
                 <li>
                     <label for="third"> Seguro: <span>&#x3e;</span></label>
                     <input type="radio" name="desplegable-acordeon" id="third">
                     <div class="content">
-                        <p>miau</p>
+                        <input type="radio" id="no-insurance" name="insurance" value="no-insurance" required>
+                        <label for="no-insurance">Sin seguro</label>
+
+                        <input type="radio" id="insurance" name="insurance" value="insurance">
+                        <label for="insurance">Seguro de 2 años</label>
                     </div>
                 </li>
             </ul>
@@ -133,15 +148,15 @@
             <div id="quantity-container">
                 <div class="quantity-selector">
                     <p id="product-quantity">Cantidad: </p>
-                    <button class="qty-btn minus">-</button>
-                    <span class="qty-value">1</span>
-                    <button class="qty-btn plus">+</button>
+                    <button class="qty-button"><i class='bx bxs-minus-circle' ></i></button>
+                    <p id="qty-value">1</p>
+                    <button class="qty-button"><i class='bx bxs-plus-circle' ></i></button>
                 </div>
             </div>
             <p id="final-price"> Precio total: <span id="price">4096.99€</span></p>
             <hr>
             <div id="add-to-cart">
-                <button id="add-to-cart-button">Añadir al carrito</button>
+                <button type=submit id="add-to-cart-button">Añadir al carrito</button>
             </div>
         </section>
         <div id="product-image">
