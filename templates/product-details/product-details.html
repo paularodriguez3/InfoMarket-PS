@@ -103,17 +103,48 @@
 <main>
     <article id="product-details">
         <section id="product-details-info">
-            <h1 id="product-details-name">Ordenador Sobremesa PcCom Ready</h1>
-            <p id="product-details-desc">Intel Core i5-12400F / 32GB / 1TB SSD / RTX4060 </p>
-            <p id="product-details-features">Selección de características: </p>
-            <p id="stock">Stock: <span>Últimas unidades</span></p>
-            <p id="quantity">Cantidad: </p>
-            <p id="product-details-price"> 4096.99€ </p>
-            <div id="product-details-buttons">
-                <button id="product-details-add-to-cart">Añadir al carrito</button>
+            <h1 id="product-name">Ordenador Sobremesa PcCom Ready</h1>
+            <p id="product-desc">Intel Core i5-12400F / 32GB / 1TB SSD / RTX4060 </p>
+            <p id="product-features">Selección de características: </p>
+            <ul id="accordion-dropdown">
+                <li>
+                    <label for="first"> Color: <span>&#x3e;</span></label>
+                    <input type="radio" name="desplegable-acordeon" id="first">
+                    <div class="content">
+                        <p>miau</p>
+                    </div>
+                </li>
+                <li>
+                    <label for="second"> Sistema operativo: <span>&#x3e;</span></label>
+                    <input type="radio" name="desplegable-acordeon" id="second">
+                    <div class="content">
+                        <p>miau</p>
+                    </div>
+                </li>
+                <li>
+                    <label for="third"> Seguro: <span>&#x3e;</span></label>
+                    <input type="radio" name="desplegable-acordeon" id="third">
+                    <div class="content">
+                        <p>miau</p>
+                    </div>
+                </li>
+            </ul>
+            <p id="product-stock">Stock: <span>¡Últimas unidades!</span></p>
+            <div id="quantity-container">
+                <div class="quantity-selector">
+                    <p id="product-quantity">Cantidad: </p>
+                    <button class="qty-btn minus">-</button>
+                    <span class="qty-value">1</span>
+                    <button class="qty-btn plus">+</button>
+                </div>
+            </div>
+            <p id="final-price"> Precio total: <span id="price">4096.99€</span></p>
+            <hr>
+            <div id="add-to-cart">
+                <button id="add-to-cart-button">Añadir al carrito</button>
             </div>
         </section>
-        <div id="product-details-image">
+        <div id="product-image">
             <img src="../../assets/icons/product/torre-pc-gaming.jpg" alt="Producto">
             <div id="button-arrows">
                 <button id="prev-image"><i class='bx bx-chevron-left'></i></button>
