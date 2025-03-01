@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="../../assets/icons/header/infomarket_logo_mini.png" type="image/png">
+    <link rel="stylesheet" href="../../templates/header/header.css">
+    <link rel="stylesheet" href="../../templates/shopping-process-component/shopping-process-component.css">
+    <link rel="stylesheet" href="order-review.css">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.5.1/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.5.1/uicons-brands/css/uicons-brands.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../../templates/header/header.js"></script>
+    <script src="../../xlu-include-file.js"></script>
+    <title>Infomarket</title>
+</head>
+
+<body>
+
+<header>
+    <section id="header-navigation">
+        <article id="nav-top">
+            <div id="logo-searchbar">
+                <a id="header-logo" href="../../templates/header/header.html"><img src="../../assets/icons/header/infomarket_logo.png" width="92px" height="92px" alt=""></a>
+            </div>
+            <div id="user-cart">
+                <div class="search">
+                    <input type="text" class="input" placeholder="¿Qué estás buscando?">
+                    <button class="btn">
+                        <i class="fi fi-rr-search"></i>
+                    </button>
+                </div>
+                <div>
+                    <a id="user" href="../../templates/header/header.html"><i class="fi fi-rr-user"></i></a>
+                    <a id="cart" href="../../templates/header/header.html"><i class="fi fi-rr-briefcase-blank"></i></a>
+                </div>
+            </div>
+        </article>
+    </section>
+</header>
+
+<div class="progress-container">
+    <div class="step active">
+        <div class="circle">1</div>
+        <p>Facturación</p>
+    </div>
+    <div class="line"></div>
+    <div class="step">
+        <div class="circle">2</div>
+        <p>Método de envío</p>
+    </div>
+    <div class="line"></div>
+    <div class="step">
+        <div class="circle">3</div>
+        <p>Pago</p>
+    </div>
+    <div class="line"></div>
+    <div class="step">
+        <div class="circle">4</div>
+        <p>Resumen</p>
+    </div>
+</div>
+
+<main>
+    <div id="wrapper-component">
+        <section id="order-review">
+            <article xlu-include-file="../../templates/order-review-component/order-review-component.html"></article>
+        </section>
+
+        <article xlu-include-file="../../templates/shopping-info-component/shopping-info-component.html"></article>
+
+    </div>
+</main>
+
+<footer id="footer" xlu-include-file="../footer/footer.html"></footer>
+
+<script>
+    xLuIncludeFile();
+</script>
+
+</body>
+</html>

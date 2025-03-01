@@ -24,13 +24,13 @@ header {
 }
 
 #billing-shopping-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    width: 90%;
-    gap: 5%;
-    margin-top: 10px;
-}
+     display: flex;
+     justify-content: center; /* Centra horizontalmente */
+     align-items: center; /* Centra verticalmente */
+     width: 90%;
+     gap: 5%;
+     margin-top: 0; /* Eliminar margen extra */
+ }
 
 #billing-address {
     flex: 1;
