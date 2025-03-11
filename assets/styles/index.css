@@ -13,10 +13,6 @@ body {
     background-color: #FAFAFC;
 }
 
-main {
-    padding-bottom: 8%;
-}
-
 #logo-searchbar {
     display: flex;
     align-items: center;
@@ -28,7 +24,7 @@ main {
 }
 
 #user-cart i {
-    color: #323232;
+    color: #3D3D3D;
     font-size: 28px;
 }
 
@@ -48,9 +44,10 @@ main {
 main {
     align-items: center;
     justify-content: center;
+    background-color: #FAFAFC;
 }
 
-#ps5-controller {
+#main-video {
     max-width: 88%;
     overflow-x: hidden;
     z-index: -1;
@@ -64,7 +61,7 @@ main {
 }
 
 #main-title-wrapper, #offers-wrapper {
-    font-family: "San Francisco", sans-serif;
+    font-family: 'SF Pro Display', sans-serif;
     padding-inline: 6%;
     padding-top: 4%;
     padding-bottom: 4%;
@@ -81,7 +78,7 @@ main {
 #nav-list {
     text-decoration: none;
     list-style-type: none;
-    font-family: "San Francisco", sans-serif;
+    font-family: 'SF Pro Display', sans-serif;
     padding-top: 10px;
     padding-bottom: 10px;
     display: flex;
@@ -93,9 +90,9 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: "San Francisco", sans-serif;
+    font-family: 'SF Pro Display', sans-serif;
     font-size: 15px;
-    color: #323232;
+    color: #3D3D3D;
     border: none;
     padding: 7px;
     margin-inline: 5px;
@@ -120,7 +117,7 @@ main {
 }
 
 #product-search {
-    font-family: "San Francisco", sans-serif;
+    font-family: 'SF Pro Display', sans-serif;
     font-size: 17px;
     margin-left: 5px;
     padding-inline: 10px;
@@ -131,7 +128,7 @@ main {
 }
 
 #header-title {
-    font-family: "San Francisco", sans-serif;
+    font-family: 'SF Pro Display', sans-serif;
     text-decoration: none;
     font-size: 32px;
 }
@@ -146,7 +143,7 @@ footer {
 }
 
 #footer-wrapper {
-    font-family: "San Francisco", sans-serif;
+    font-family: 'SF Pro Display', sans-serif;
     display: flex;
     justify-content: space-evenly;
     background-color: #F5F5F7;
@@ -156,7 +153,7 @@ footer {
 }
 
 #footer-wrapper h1 {
-    font-family: "San Francisco", sans-serif;
+    font-family: 'SF Pro Display', sans-serif;
     font-size: 16px;
     padding-bottom: 6px;
     color: #1E1E1E;
@@ -218,7 +215,7 @@ footer {
 }
 
 #copyright-wrapper p {
-    font-family: "San Francisco", sans-serif;
+    font-family: 'SF Pro Display', sans-serif;
     font-size: 16px;
     color: #6C6C6C;
     padding-bottom: 5px;
@@ -228,7 +225,7 @@ footer {
     display: flex;
     text-decoration: none;
     list-style-type: none;
-    font-family: "San Francisco", sans-serif;
+    font-family: 'SF Pro Display', sans-serif;
     font-size: 16px;
     color: #444445;
 }
@@ -263,6 +260,7 @@ footer {
     overflow: hidden;
     display: flex;
     align-items: flex-end;
+    margin-bottom: 6%;
 }
 
 .video-buttons {
@@ -289,7 +287,7 @@ body {
 }
 
 #overlay h1 {
-    font-family: "San Francisco", sans-serif;
+    font-family: 'SF Pro Display', sans-serif;
     font-size: 48px;
     color: #F5F5F7;
     min-width: 100%;
@@ -301,7 +299,8 @@ body {
     font-size: 18px;
     border-radius: 50%;
     background-color: #CECECF;
-    color: #fff;
+    color: #FAFAFC;
+    opacity: 0.5;
     border: none;
     font-family: monospace;
     font-weight: bold;
@@ -310,7 +309,8 @@ body {
 
 .video-dots {
     position: absolute;
-    color: #fff;
+    color: #FAFAFC;
+    opacity: 0.75;
     width: 80%;
     margin-bottom: 4%;
     margin-inline: 10%;
@@ -322,11 +322,78 @@ body {
     list-style: none;
     width: 10px;
     height: 10px;
-    background-color: #fff;
+    background-color: #FAFAFC;
     margin: 10px;
     border-radius: 20px;
     transition: 0.5s;
 }
 .video-dots li.active{
     width: 30px;
+}
+
+@keyframes slide {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+.logos {
+    overflow: hidden;
+    padding: 60px 0;
+    background-color: #FDFDFF;
+    white-space: nowrap;
+    position: relative;
+}
+
+.logos:before,
+.logos:after {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    content: "";
+    z-index: 2;
+}
+
+.logos:before {
+    left: 0;
+    background: linear-gradient(to left, rgba(255, 255, 255, 0), white);
+}
+
+.logos:after {
+    right: 0;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), white);
+}
+
+.logo-slider {
+    display: inline-block;
+    animation: 20s slide infinite linear;
+}
+
+.logo-slider img {
+    height: 50px;
+    margin: 0 40px;
+}
+
+.hidden {
+    opacity: 0;
+    filter: blur(2px);
+    transform: translateY(75px);
+}
+
+.show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+}
+
+#main-title.hidden, #offer-title.hidden {
+    transition: all 1.25s;
+}
+
+#main-description.hidden, #offer-description.hidden {
+    transition: all 1.55s;
 }

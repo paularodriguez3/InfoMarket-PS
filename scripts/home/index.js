@@ -7,6 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    const hiddenElements = document.querySelectorAll('.hidden');
+    hiddenElements.forEach((el) => observer.observe(el));
+
     let slider = document.querySelector('#video-wrapper .list');
     let items = document.querySelectorAll('#video-wrapper .list .offer-videos');
     let text = document.querySelectorAll('#overlay h1');
@@ -48,4 +51,17 @@ document.addEventListener('DOMContentLoaded', () => {
     window.onresize = function(event) {
         reloadSlider();
     };
-})
+
+    const copy = document.querySelector(".logos-slide").cloneNode(true);
+    document.querySelector(".logos").appendChild(copy);
+});
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+        } else {
+            entry.target.classList.remove('show');
+        }
+    });
+});
