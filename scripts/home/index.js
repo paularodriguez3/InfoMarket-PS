@@ -1,16 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const menuIcon = document.querySelector('.fi-rr-menu-burger');
-    const mobileMenu = document.querySelector('#menu-wrapper');
-    const main = document.querySelector('main');
-    const footer = document.querySelector('footer');
     const videos = document.querySelectorAll('.offer-videos');
-
-
-    menuIcon.addEventListener('click', function () {
-        mobileMenu.classList.toggle('show-menu');
-        main.classList.toggle('blur-item');
-        footer.classList.toggle('blur-item');
-    });
 
     videos.forEach(video => {
         video.addEventListener('mouseenter', () => {
@@ -20,6 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let slider = document.querySelector('#video-wrapper .list');
     let items = document.querySelectorAll('#video-wrapper .list .offer-videos');
+    let text = document.querySelectorAll('#overlay h1');
+    let overlay = document.querySelector('#overlay');
     let next = document.getElementById('next');
     let prev = document.getElementById('prev');
     let dots = document.querySelectorAll('#video-wrapper .video-dots li');
@@ -36,8 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     let refreshInterval = setInterval(()=> {next.click()}, 3000);
     function reloadSlider(){
-        const offsetStandard = items[0].offsetLeft;
-        slider.style.left = -items[active].offsetLeft + offsetStandard + 'px';
+        const offsetVideoStandard = items[0].offsetLeft;
+        const  offsetTextStandard = text[0].offsetLeft;
+        slider.style.left = -items[active].offsetLeft + offsetVideoStandard + 'px';
+        overlay.style.left = -text[active].offsetLeft + offsetTextStandard + 'px';
         let last_active_dot = document.querySelector('#video-wrapper .video-dots li.active');
         last_active_dot.classList.remove('active');
         dots[active].classList.add('active');
@@ -55,4 +48,4 @@ document.addEventListener('DOMContentLoaded', () => {
     window.onresize = function(event) {
         reloadSlider();
     };
-});
+})
