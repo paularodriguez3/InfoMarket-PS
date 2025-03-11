@@ -6,12 +6,16 @@
 header {
     top: 0;
     background-color: #FAFAFC;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.2);
 }
 
 body {
     background-color: #FAFAFC;
 }
 
+main {
+    padding-bottom: 5%;
+}
 #logo-searchbar {
     display: flex;
     align-items: center;
@@ -41,10 +45,8 @@ body {
 }
 
 main {
-    margin-top: 4%;
     align-items: center;
     justify-content: center;
-    background-color: #FAFAFC;
 }
 
 #ps5-controller {
@@ -54,52 +56,58 @@ main {
     border-radius: 44px;
     margin-inline: 6%;
     background-color: #EFEFEF;
-    margin-bottom: 50px;
 }
-#main-title {
+
+#main-title, #offer-title {
     font-size: 72px;
 }
 
-#main-title-wrapper {
-    font-family: 'SF Pro Display', sans-serif;
+#main-title-wrapper, #offers-wrapper {
+    font-family: "San Francisco", sans-serif;
     padding-inline: 6%;
+    padding-top: 4%;
     padding-bottom: 4%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     color: #1D1D1F;
 }
-#main-description {
+
+#main-description, #offer-description {
     font-size: 28px;
 }
 
 #nav-list {
-     text-decoration: none;
-     list-style-type: none;
-     font-family: 'SF Pro Display', sans-serif;
-     padding-top: 10px;
-     padding-bottom: 10px;
-     display: flex;
-     justify-content: space-around;
-     align-items: flex-end;
- }
+    text-decoration: none;
+    list-style-type: none;
+    font-family: "San Francisco", sans-serif;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+}
+
 #nav-list li {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: 'SF Pro Display', sans-serif;
+    font-family: "San Francisco", sans-serif;
     font-size: 15px;
-    color: #3D3D3D;
+    color: #323232;
     border: none;
     padding: 7px;
     margin-inline: 5px;
 }
+
 #nav-list a {
     cursor: pointer;
 }
+
 #nav-list li:hover {
     color: #000000;
 }
+
 #nav-list i {
     font-size: 33px;
 }
@@ -111,7 +119,7 @@ main {
 }
 
 #product-search {
-    font-family: 'SF Pro Display', sans-serif;
+    font-family: "San Francisco", sans-serif;
     font-size: 17px;
     margin-left: 5px;
     padding-inline: 10px;
@@ -122,7 +130,7 @@ main {
 }
 
 #header-title {
-    font-family: 'SF Pro Display', sans-serif;
+    font-family: "San Francisco", sans-serif;
     text-decoration: none;
     font-size: 32px;
 }
@@ -135,8 +143,9 @@ main {
 footer {
     bottom: 0;
 }
+
 #footer-wrapper {
-    font-family: 'SF Pro Display', sans-serif;
+    font-family: "San Francisco", sans-serif;
     display: flex;
     justify-content: space-evenly;
     background-color: #F5F5F7;
@@ -146,7 +155,7 @@ footer {
 }
 
 #footer-wrapper h1 {
-    font-family: 'SF Pro Display', sans-serif;
+    font-family: "San Francisco", sans-serif;
     font-size: 16px;
     padding-bottom: 6px;
     color: #1E1E1E;
@@ -156,25 +165,31 @@ footer {
     padding-bottom: 4px;
     text-decoration: none;
     list-style-type: none;
-    color: #3D3D3D;
+    color: #444445;
     font-size: 16px;
 }
+
 #footer-wrapper i {
-    color: #3D3D3D;
-    font-size: 20px;
+    color: #444445;
+    font-size: 22px;
 }
+
 #footer-wrapper i:hover {
-    color: #000000;
+    color: #1D1D1F;
 }
+
 #footer-wrapper a {
     cursor: pointer;
 }
+
 #about-us-list a:hover, #support-list a:hover {
     text-decoration: underline;
 }
+
 #footer-wrapper a:hover {
-    color: #000000;
+    color: #1D1D1F;
 }
+
 #footer-wrapper hr {
     height: 130px;
     border: 1px solid #CECECF;
@@ -199,11 +214,10 @@ footer {
 
 #copyright-wrapper a:hover {
     text-decoration: underline;
-    color: #000000;
 }
 
 #copyright-wrapper p {
-    font-family: 'SF Pro Display', sans-serif;
+    font-family: "San Francisco", sans-serif;
     font-size: 16px;
     color: #6C6C6C;
     padding-bottom: 5px;
@@ -213,9 +227,9 @@ footer {
     display: flex;
     text-decoration: none;
     list-style-type: none;
-    font-family: 'SF Pro Display', sans-serif;
+    font-family: "San Francisco", sans-serif;
     font-size: 16px;
-    color: #3D3D3D;
+    color: #444445;
 }
 
 #policies-list li {
@@ -226,65 +240,85 @@ footer {
     padding-right: 10px;
 }
 
-body {
-    overflow-x: hidden;
-}
-.menu-item h1 {
-    font-family: 'SF Pro Display', sans-serif;
-    font-size: 16px;
-    padding-bottom: 6px;
-    color: #1E1E1E;
-}
-#menu-wrapper {
-    display: flex;
-    width: 90%;
-    justify-content: space-evenly;
-    padding-top: 1.5%;
-    padding-bottom: 4%;
-    padding-inline: 5%;
-    background-color: #F5F5F7;
-}
-.hidden-menu {
-    visibility: hidden;
-    position: absolute;
-    z-index: 1;
-    opacity: 0;
-    transform: translateY(-25%);
-}
-.show-menu {
-    visibility: visible;
-    opacity: 1;
-    transform: translateY(0);
-    transition: all 0.25s;
-}
-.blur-item {
-    filter: blur(8px);
-}
-#menu-wrapper a {
-    cursor: pointer;
-}
-#menu-wrapper a:hover {
-    color: #000000;
-    text-decoration: underline;
-}
-.menu-list li {
-    font-family: 'SF Pro Display', sans-serif;
-    padding-bottom: 4px;
-    text-decoration: none;
-    list-style-type: none;
-    color: #3D3D3D;
-    font-size: 16px;
-}
-#overlay h1 {
-    font-family: 'SF Pro Display', sans-serif;
-    font-size: 48px;
-    color: #F5F5F7;
-    min-width: 100%;
-}
 .list{
     position: relative;
     left: 0;
     top: 0;
     display: flex;
     transition: 1s;
+}
+
+.offer-videos {
+    min-width: 80%;
+    max-width: 80%;
+    border-radius: 44px;
+    margin-inline: 10%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+
+#video-wrapper {
+    background-color: #F5F5F7;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+}
+
+.video-buttons {
+    position: absolute;
+    width: 88%;
+    margin-inline: 6%;
+    display: flex;
+    justify-content: space-between;
+    align-self: center;
+}
+
+.overlay {
+    position: absolute;
+    align-self: flex-start;
+    margin-left: 12%;
+    margin-top: 5%;
+    display: flex;
+}
+
+.overlay h1 {
+    font-family: "San Francisco", sans-serif;
+    font-size: 48px;
+    color: #EFEFEF;
+}
+
+.video-buttons button {
+    width: 55px;
+    height: 55px;
+    font-size: 18px;
+    border-radius: 50%;
+    background-color: #CECECF;
+    color: #fff;
+    border: none;
+    font-family: monospace;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.video-dots {
+    position: absolute;
+    color: #fff;
+    width: 80%;
+    margin-bottom: 4%;
+    margin-inline: 10%;
+    display: flex;
+    justify-content: center;
+}
+
+.video-dots li {
+    list-style: none;
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    margin: 10px;
+    border-radius: 20px;
+    transition: 0.5s;
+}
+.video-dots li.active{
+    width: 30px;
 }
