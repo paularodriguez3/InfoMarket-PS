@@ -14,8 +14,9 @@ body {
 }
 
 main {
-    padding-bottom: 5%;
+    padding-bottom: 8%;
 }
+
 #logo-searchbar {
     display: flex;
     align-items: center;
@@ -273,18 +274,25 @@ footer {
     align-self: center;
 }
 
-.overlay {
+#overlay {
     position: absolute;
     align-self: flex-start;
     margin-left: 12%;
     margin-top: 5%;
     display: flex;
+    transition: 1.15s;
+    left: 0;
 }
 
-.overlay h1 {
+body {
+    overflow-x: hidden;
+}
+
+#overlay h1 {
     font-family: "San Francisco", sans-serif;
     font-size: 48px;
-    color: #EFEFEF;
+    color: #F5F5F7;
+    min-width: 100%;
 }
 
 .video-buttons button {
