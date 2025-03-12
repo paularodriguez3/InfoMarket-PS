@@ -5,17 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b991b1f5-e673-47f0-b15d-aed8705f6481" name="Changes" comment="Carrousel in progress">
-      <change afterPath="$PROJECT_DIR$/assets/images/logos/amd.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/logos/apple.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/logos/asus.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/logos/hp.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/logos/lenovo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/logos/msi.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/logos/playstation.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/logos/samsung.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/logos/xbox.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/firebase/firebase.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/home/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/home/index.js" afterDir="false" />
     </list>
@@ -27,9 +20,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="HTML File" />
         <option value="CSS File" />
+        <option value="package.json" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -42,12 +36,12 @@
     &quot;assignee&quot;: &quot;paularodriguez3&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/paularodriguez3/InfoMarket-PS.git",
-    "accountId": "21bc2483-ed97-45fb-9308-137a12079738"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/paularodriguez3/InfoMarket-PS.git&quot;,
+    &quot;accountId&quot;: &quot;5b040b6c-5d19-4cdb-a049-a68e68a7c93d&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -81,10 +75,13 @@
     "JavaScript Debug.shopping-process-component.html.executor": "Run",
     "JavaScript Debug.support.html.executor": "Run",
     "JavaScript Debug.top-header.html.executor": "Run",
+    "Node.js.config.js.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
+    "javascript.nodejs.core.library.configured.version": "22.14.0",
+    "javascript.nodejs.core.library.typings.version": "22.13.10",
     "last_opened_file_path": "C:/Users/paula/Desktop/PAULA/PS/InfoMarket-PS/assets/images/logos",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
@@ -94,6 +91,7 @@
     "nodejs_interpreter_path": "node",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2024.3.2.1\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -106,13 +104,15 @@
       <recent name="C:\Users\fortn\WebstormProjects\InfoMarket-PWM\templates\about-us" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\kevin\WebstormProjects\InfoMarket-PS" />
+      <recent name="C:\Users\kevin\WebstormProjects\InfoMarket-PS\scripts\firebase" />
       <recent name="C:\Users\paula\WebstormProjects\InfoMarketPWM\assets\images" />
     </key>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-WS-242.23339.15" />
+        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-WS-243.23654.157" />
       </set>
     </attachedChunks>
   </component>
@@ -160,6 +160,8 @@
       <workItem from="1740742960668" duration="669000" />
       <workItem from="1740762813142" duration="3524000" />
       <workItem from="1741707680924" duration="3049000" />
+      <workItem from="1741783849829" duration="223000" />
+      <workItem from="1741791417573" duration="771000" />
     </task>
     <task id="LOCAL-00001" summary="Header first version done.">
       <option name="closed" value="true" />
