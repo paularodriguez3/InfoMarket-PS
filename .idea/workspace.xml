@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b991b1f5-e673-47f0-b15d-aed8705f6481" name="Changes" comment="Carrousel in progress" />
+    <list default="true" id="b991b1f5-e673-47f0-b15d-aed8705f6481" name="Changes" comment="Carrousel in progress">
+      <change afterPath="$PROJECT_DIR$/assets/images/about-us/about-us-hero.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/about-us/about-us-history.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/about-us/icon-hardware.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/about-us/icon-software.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/about-us/icon-support.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/InfoMarketPWM.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/InfoMarketPWM.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/about-us/about-us.css" beforeDir="false" afterPath="$PROJECT_DIR$/templates/about-us/about-us.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/about-us/about-us.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/about-us/about-us.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,12 +39,12 @@
     &quot;assignee&quot;: &quot;paularodriguez3&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/paularodriguez3/InfoMarket-PS.git&quot;,
-    &quot;accountId&quot;: &quot;5b040b6c-5d19-4cdb-a049-a68e68a7c93d&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/paularodriguez3/InfoMarket-PS.git",
+    "accountId": "e31af191-30db-42f0-8a70-d2d8219ff620"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -73,9 +83,9 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
-    "javascript.nodejs.core.library.configured.version": "22.14.0",
+    "javascript.nodejs.core.library.configured.version": "22.13.1",
     "javascript.nodejs.core.library.typings.version": "22.13.10",
-    "last_opened_file_path": "C:/Users/paula/Desktop/PAULA/PS/InfoMarket-PS",
+    "last_opened_file_path": "C:/Users/paula/Desktop/ULPGC/PS/InfoMarket-PS/assets/images/about-us",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -90,11 +100,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\paula\Desktop\ULPGC\PS\InfoMarket-PS\assets\images\about-us" />
       <recent name="C:\Users\paula\Desktop\PAULA\PS\InfoMarket-PS\assets\images\logos" />
       <recent name="C:\Users\paula\Desktop\PAULA\PS\InfoMarket-PS\assets\icons\images\logos" />
       <recent name="C:\Users\paula\Desktop\PAULA\PS\InfoMarket-PS\assets\videos\home" />
       <recent name="C:\Users\fortn\WebstormProjects\InfoMarket-PWM\templates\client-support" />
-      <recent name="C:\Users\fortn\WebstormProjects\InfoMarket-PWM\templates\about-us" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\kevin\WebstormProjects\InfoMarket-PS" />
@@ -105,7 +115,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-WS-242.23339.15" />
+        <option value="bundled-js-predefined-d6986cc7102b-410509235cf1-JavaScript-WS-242.20224.426" />
       </set>
     </attachedChunks>
   </component>
@@ -157,6 +167,7 @@
       <workItem from="1741791417573" duration="1021000" />
       <workItem from="1741798411999" duration="2628000" />
       <workItem from="1741970447493" duration="7000" />
+      <workItem from="1742040916558" duration="1693000" />
     </task>
     <task id="LOCAL-00001" summary="Header first version done.">
       <option name="closed" value="true" />

@@ -1,31 +1,125 @@
-
 .container {
     text-align: center;
-    padding: 50px;
+    padding: 20px;
     font-family: 'Arial', sans-serif;
-}
-
-h1 {
-    font-size: 28px;
-    font-weight: bold;
     color: #333;
 }
 
-.info-box {
-    width: 500px;
-    height: 300px;
-    background-color: #ccc;
-    margin: 20px auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-    font-weight: bold;
-    border-radius: 12px;
+/* Hero Section */
+.hero-section {
+    padding: 80px 20px;
+    background-color: #f9f9f9;
 }
 
-.info-box span {
-    transform: rotate(-20deg);
-    display: inline-block;
-    text-transform: uppercase;
+.hero-section h1 {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.hero-section p {
+    font-size: 22px;
+    margin-bottom: 40px;
+    color: #666;
+}
+
+.hero-section img {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Features Section */
+.features-section {
+    display: flex;
+    justify-content: space-around;
+    padding: 60px 20px;
+    background-color: #fff;
+}
+
+.feature-item {
+    width: 30%;
+    padding: 20px;
+    border-radius: 12px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.feature-item img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+}
+
+.feature-item h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.feature-item p {
+    font-size: 18px;
+    color: #666;
+}
+
+/* About Section */
+.about-section {
+    padding: 80px 20px;
+    background-color: #f9f9f9;
+}
+
+.about-section h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.about-section p {
+    font-size: 20px;
+    margin-bottom: 40px;
+    color: #666;
+}
+
+.about-section img {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Values Section */
+.values-section {
+    padding: 80px 20px;
+    background-color: #fff;
+}
+
+.values-section h2 {
+    font-size: 36px;
+    margin-bottom: 40px;
+}
+
+.values-grid {
+    display: flex;
+    justify-content: space-around;
+}
+
+.value-item {
+    width: 30%;
+    padding: 20px;
+    border-radius: 12px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.value-item h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.value-item p {
+    font-size: 18px;
+    color: #666;
 }
