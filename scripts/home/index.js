@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
         reloadSlider();
     };
 
-    const copy = document.querySelector(".logos-slide").cloneNode(true);
+    const copy = document.querySelector(".logo-slider").cloneNode(true);
     document.querySelector(".logos").appendChild(copy);
 });
 
