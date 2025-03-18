@@ -7,6 +7,7 @@
     <list default="true" id="a10c894f-1d5c-4d77-9838-b1271978a249" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/shopping-cart/shopping-cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/shopping-cart/shopping-cart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/shopping-cart/shopping-cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/shopping-cart/shopping-cart.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,7 +17,11 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "git-widget-placeholder": "master",
+    "JavaScript Debug.product-info-component.html.executor": "Run",
+    "JavaScript Debug.shopping-cart-component.html.executor": "Run",
+    "JavaScript Debug.shopping-cart.html.executor": "Run",
+    "Node.js.shopping-cart.js.executor": "Run",
+    "git-widget-placeholder": "development",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
