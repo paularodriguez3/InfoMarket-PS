@@ -12,9 +12,10 @@ const database = getFirestore(app);
 const auth = getAuth(app);
 
 // Esta función lee los datos de la colección especificada y los devuelve en un objeto id : datos
-export const readCollection = async (col) => {
+export const readCollection = async (cole) => {
+    let col = cole.split("/");
     await inicioDeSesion(auth);
-    const colRef = query(collection(database, col));
+    const colRef = query(collection(database, ...col));
     const colSnap = await getDocs(colRef);
     if (!colSnap.empty) {
         let data = {};
@@ -26,9 +27,10 @@ export const readCollection = async (col) => {
 };
 
 // Esta función lee los datos del documento solicitado de la colección especificada y lo devuelve.
-export const readDoc = async (col, document) => {
+export const readDoc = async (cole, document) => {
+    let col = cole.split("/");
     await inicioDeSesion(auth);
-    const docRef = doc(database, col, document);
+    const docRef = doc(database, ...col, document);
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
@@ -40,30 +42,34 @@ export const readDoc = async (col, document) => {
 
 // Esta función recibe datos en formato object y crea un documento en la colección especificada,
 // con los datos especificados. Además, devuelve la referencia a ese documento.
-export const createDocOnCollection = async (col, data) => {
+export const createDocOnCollection = async (cole, data) => {
+    let col = cole.split("/");
     await inicioDeSesion(auth);
-    const docRef = await addDoc(collection(database, col), data);
+    const docRef = await addDoc(collection(database, ...col), data);
     return docRef.id;
 }
 
 // Esta función actualiza un documento, añadiendo campos o modificando aquellos ya existentes
-export const updateDocOnCollection = async (col, id, data) => {
+export const updateDocOnCollection = async (cole, id, data) => {
+    let col = cole.split("/");
     await inicioDeSesion(auth);
-    const docRef = doc(database, col, id);
+    const docRef = doc(database, ...col, id);
     await updateDoc(docRef, data);
 }
 
 // Esta función elimina un documento de la colección especificada.
-export const deleteDocOnCollection = async (col, document) => {
+export const deleteDocOnCollection = async (cole, document) => {
+    let col = cole.split("/");
     await inicioDeSesion(auth);
-    await deleteDoc(doc(database, col, document));
+    await deleteDoc(doc(database, ...col, document));
 }
 
 // Esta función filtra por el campo solicitado y devuelve un objeto ID : datos con los objetos cuyo campo sea igual al
 // tercer parámetro.
-export const filterEqualsByFieldOnCollection = async (col, field, equals) => {
+export const filterEqualsByFieldOnCollection = async (cole, field, equals) => {
+    let col = cole.split("/");
     await inicioDeSesion(auth);
-    const q = query(collection(database, col), where(field, "==", equals));
+    const q = query(collection(database, ...col), where(field, "==", equals));
     const querySnapshot = await getDocs(q);
     const data = {}
     querySnapshot.forEach((doc) => {
@@ -74,9 +80,10 @@ export const filterEqualsByFieldOnCollection = async (col, field, equals) => {
 
 // Esta función filtra la colección pasada por parámetro según si el field cumple el filtro pasado por parámetro,
 // junto con el value a comprobar.
-export const filterByFieldOnCollection = async (col, field, filter, value) => {
+export const filterByFieldOnCollection = async (cole, field, filter, value) => {
+    let col = cole.split("/");
     await inicioDeSesion(auth);
-    const q = query(collection(database, col), where(field, filter, value));
+    const q = query(collection(database, ...col), where(field, filter, value));
     const querySnapshot = await getDocs(q);
     const data = {}
     querySnapshot.forEach((doc) => {

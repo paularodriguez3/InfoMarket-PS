@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="../assets/icons/header/infomarket_logo_mini.png" type="image/png">
+  <link rel="stylesheet" href="../templates/shopping-process-component/shopping-process-component.css">
+  <link rel="stylesheet" href="../assets/styles/shipping-method.css">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Infomarket</title>
+</head>
+
+<body>
+
+<header id="header-2"></header>
+
+<div class="progress-container">
+  <div class="step active">
+    <div class="circle">1</div>
+    <p>Facturación</p>
+  </div>
+  <div class="line"></div>
+  <div class="step">
+    <div class="circle">2</div>
+    <p>Método de envío</p>
+  </div>
+  <div class="line"></div>
+  <div class="step">
+    <div class="circle">3</div>
+    <p>Pago</p>
+  </div>
+  <div class="line"></div>
+  <div class="step">
+    <div class="circle">4</div>
+    <p>Resumen</p>
+  </div>
+</div>
+
+<main>
+  <div id="billing-shopping-wrapper">
+    <section id="billing-address">
+      <h2>MÉTODO DE ENVÍO</h2>
+      <form>
+        <label for="address">Dirección</label>
+        <input type="text" id="address" name="address" required>
+        <label for="shop">Tienda física</label>
+        <input type="shop" id="shop" name="shop" required>
+      </form>
+    </section>
+
+    <article id="shopping"></article>
+
+  </div>
+</main>
+
+<footer id="footer"></footer>
+<script src="../scripts/common.js"></script>
+
+</body>
+</html>
