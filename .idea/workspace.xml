@@ -7,6 +7,7 @@
     <list default="true" id="b991b1f5-e673-47f0-b15d-aed8705f6481" name="Changes" comment="Carrousel in progress">
       <change afterPath="$PROJECT_DIR$/scripts/shopping-cart/shopping-cart.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/firebase/firebase.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/firebase/firebase.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,10 +33,11 @@
     &quot;assignee&quot;: &quot;paularodriguez3&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/paularodriguez3/InfoMarket-PS",
-    "accountId": "475765cf-443a-4a36-a28b-c92977d4fd5f"
+
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/paularodriguez3/InfoMarket-PS.git&quot;,
+    &quot;accountId&quot;: &quot;5b040b6c-5d19-4cdb-a049-a68e68a7c93d&quot;
   }
 }]]></component>
   <component name="ProjectColorInfo">{
@@ -47,51 +49,49 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "JavaScript Debug.Product-info-component.html.executor": "Run",
-    "JavaScript Debug.Shopping-info-component.html.executor": "Run",
-    "JavaScript Debug.Sing in.html.executor": "Run",
-    "JavaScript Debug.Sing-in.html.executor": "Run",
-    "JavaScript Debug.about-us.html.executor": "Run",
-    "JavaScript Debug.billing-adress.html.executor": "Run",
-    "JavaScript Debug.componente.html.executor": "Run",
-    "JavaScript Debug.footer.html.executor": "Run",
-    "JavaScript Debug.header-2.html.executor": "Run",
-    "JavaScript Debug.header-footer.html.executor": "Run",
-    "JavaScript Debug.header.html.executor": "Run",
-    "JavaScript Debug.index.html.executor": "Run",
-    "JavaScript Debug.payment-method.html.executor": "Run",
-    "JavaScript Debug.product-component.html.executor": "Run",
-    "JavaScript Debug.product-details.html.executor": "Run",
-    "JavaScript Debug.product-info-component.html.executor": "Run",
-    "JavaScript Debug.product-list.html.executor": "Run",
-    "JavaScript Debug.shipping-method.html.executor": "Run",
-    "JavaScript Debug.shopping-cart-component.html.executor": "Run",
-    "JavaScript Debug.shopping-cart.html.executor": "Run",
-    "JavaScript Debug.shopping-info-component.html.executor": "Run",
-    "JavaScript Debug.shopping-process-component.html.executor": "Run",
-    "JavaScript Debug.support.html.executor": "Run",
-    "JavaScript Debug.top-header.html.executor": "Run",
-    "Node.js.config.js.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "javascript.nodejs.core.library.configured.version": "20.12.2",
-    "javascript.nodejs.core.library.typings.version": "20.12.14",
-    "last_opened_file_path": "C:/Users/paula/Desktop/ULPGC/PS/InfoMarket-PS/assets/images/about-us",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_interpreter_path": "node",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2024.3.2.1\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;JavaScript Debug.Product-info-component.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.Shopping-info-component.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.Sing in.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.Sing-in.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.about-us.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.billing-adress.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.componente.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.footer.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.header-2.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.header-footer.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.header.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.index.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.payment-method.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.product-component.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.product-info-component.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.product-list.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.shipping-method.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.shopping-info-component.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.shopping-process-component.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.support.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.top-header.html.executor&quot;: &quot;Run&quot;,
+    &quot;Node.js.config.js.executor&quot;: &quot;Run&quot;,
+    &quot;Node.js.index.js.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;22.14.0&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;22.13.10&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/paula/Desktop/ULPGC/PS/InfoMarket-PS/assets/images/about-us&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2024.3.2.1\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }]]></component>
   <component name="RecentsManager">
@@ -111,7 +111,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-WS-241.17890.13" />
+        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-WS-243.23654.157" />
       </set>
     </attachedChunks>
   </component>
@@ -164,7 +164,9 @@
       <workItem from="1741798411999" duration="2628000" />
       <workItem from="1741970447493" duration="7000" />
       <workItem from="1742040916558" duration="1693000" />
-      <workItem from="1742310122465" duration="878000" />
+      <workItem from="1742254947073" duration="36000" />
+      <workItem from="1742301349919" duration="183000" />
+      <workItem from="1742309832662" duration="811000" />
     </task>
     <task id="LOCAL-00001" summary="Header first version done.">
       <option name="closed" value="true" />
