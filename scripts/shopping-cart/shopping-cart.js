@@ -4,7 +4,7 @@ const shoppingCart = [];
 
 // PRUEBA CON LA BASE DE DATOS
 document.addEventListener("DOMContentLoaded", () => {
-    readCollection("productos").then(products =>  {
+    readCollection("productos/Informática/Ordenadores").then(products =>  {
         for (const product of Object.keys(products)) {
             addToCart(products[product]);
         }
