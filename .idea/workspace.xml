@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b991b1f5-e673-47f0-b15d-aed8705f6481" name="Changes" comment="Carrousel in progress">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/firebase/firebase.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/firebase/firebase.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/home/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/home/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +35,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/paularodriguez3/InfoMarket-PS.git&quot;,
-    &quot;accountId&quot;: &quot;e31af191-30db-42f0-8a70-d2d8219ff620&quot;
+    &quot;accountId&quot;: &quot;5b040b6c-5d19-4cdb-a049-a68e68a7c93d&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -74,11 +72,12 @@
     &quot;JavaScript Debug.support.html.executor&quot;: &quot;Run&quot;,
     &quot;JavaScript Debug.top-header.html.executor&quot;: &quot;Run&quot;,
     &quot;Node.js.config.js.executor&quot;: &quot;Run&quot;,
+    &quot;Node.js.index.js.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;22.13.1&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;22.14.0&quot;,
     &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;22.13.10&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/paula/Desktop/ULPGC/PS/InfoMarket-PS/assets/images/about-us&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
@@ -110,7 +109,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-410509235cf1-JavaScript-WS-242.20224.426" />
+        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-WS-243.23654.157" />
       </set>
     </attachedChunks>
   </component>
@@ -163,6 +162,9 @@
       <workItem from="1741798411999" duration="2628000" />
       <workItem from="1741970447493" duration="7000" />
       <workItem from="1742040916558" duration="1693000" />
+      <workItem from="1742254947073" duration="36000" />
+      <workItem from="1742301349919" duration="183000" />
+      <workItem from="1742309832662" duration="811000" />
     </task>
     <task id="LOCAL-00001" summary="Header first version done.">
       <option name="closed" value="true" />
