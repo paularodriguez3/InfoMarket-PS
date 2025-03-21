@@ -106,3 +106,17 @@ body {
     flex-direction: column;
     min-height: 100vh;
 }
+
+.footer-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+#about-us-list li {
+    list-style: none;
+}
+
+#about-us-list li a {
+    font-size: inherit;
+    font-family: inherit;
+}
