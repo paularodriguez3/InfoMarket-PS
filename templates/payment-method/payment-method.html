@@ -13,6 +13,7 @@
   <script src="../../templates/header/header.js"></script>
   <script src="../../xlu-include-file.js"></script>
   <title>Infomarket</title>
+  <script src="https://js.stripe.com/v3/"></script>
 </head>
 
 <body>
@@ -78,7 +79,7 @@
       <input type="radio" id="paypal" name="payment">
       <label for="paypal">PayPal</label>
     </div>
-    <button class="pay-button">Pagar y finalizar</button>
+    <button class="pay-button" id="checkout-button">Pagar y finalizar</button>
     </section>
 
     <article xlu-include-file="../../templates/shopping-info-component/shopping-info-component.html"></article>
@@ -91,5 +92,6 @@
   xLuIncludeFile();
 </script>
 
+<script src="../../scripts/payment/payment.js"></script>
 </body>
 </html>
