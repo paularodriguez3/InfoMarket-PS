@@ -1,9 +1,4 @@
-import { paymentApiKeyCreditCard } from '../../config.js';
-
 const express = require("express");
-const cors = require("cors");
-const {paymentApiKeyCreditCard} = require("../../config");  // <-- Agregar esto
-const stripe = require("stripe")(paymentApiKeyCreditCard); // Tu clave secreta de Stripe
 const app = express();
 
 app.use(cors({
@@ -19,7 +14,6 @@ app.post("/crear-sesion-pago", async (req, res) => {
             line_items: [
                 {
                     price_data: {
-                        currency: "usd",
                         product_data: { name: "Producto de prueba" },
                         unit_amount: 5000, // 50.00 USD
                     },
@@ -31,10 +25,8 @@ app.post("/crear-sesion-pago", async (req, res) => {
             cancel_url: "http://localhost:3000",
         });
 
-        // Asegúrate de que el id de la sesión se envíe correctamente
         res.json({ id: session.id });
     } catch (error) {
-        console.error(error); // Para ver detalles del error en la consola del servidor
         res.status(500).json({ error: error.message });
     }
 });
