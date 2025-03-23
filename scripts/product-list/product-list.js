@@ -17,15 +17,15 @@ export async function obtenerProductos(categoria) {
 
     console.log(categoria);
 
-    const productos = await getCategory(categoria);
+    //const productos = await getCategory(categoria);
 
     console.log(productos);
-
+/*
     for (const [id, productoData] of Object.entries(productos)) {
 
         const productoElemento = document.importNode(template, true);
 
-        const imagen = await getImageUrl(productoData.Imagen);
+        //const imagen = await getImageUrl(productoData.Imagen);
 
         productoElemento.querySelector("#image").src = imagen;
         productoElemento.querySelector("#product-name").textContent = productoData.Nombre;
@@ -33,14 +33,37 @@ export async function obtenerProductos(categoria) {
         productoElemento.querySelector("#price").textContent = productoData.Precio;
 
         productosGrid.appendChild(productoElemento);
-    }
+    }*/
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
     const parametros = new URLSearchParams(window.location.search);
     const categoria = parametros.get("categoria");
     let path = categoria.split("/");
-    let doc = await readDoc(path[0], path[1]);
-    document.getElementById("main-title").textContent = doc.Nombre;
+    //let doc = await readDoc(path[0], path[1]);
+    //document.getElementById("main-title").textContent = doc.Nombre;
     await obtenerProductos(categoria);
+});
+
+function waitForElement(selector, callback) {
+    const element = document.querySelector(selector);
+    if (element) {
+        callback();
+    } else {
+        setTimeout(() => waitForElement(selector, callback), 100);
+    }
+}
+
+waitForElement("#filter-menu-wrapper", () => {
+    const filterButton = document.querySelector('#filter-button');
+    const filterMenu = document.querySelector('#filter-menu-wrapper');
+    const applyButton = document.querySelector('#apply-button');
+
+    filterButton.addEventListener('click', function () {
+        filterMenu.classList.toggle("show-filter-menu");
+    });
+
+    applyButton.addEventListener('click', function () {
+        filterMenu.classList.toggle("show-filter-menu");
+    });
 });
