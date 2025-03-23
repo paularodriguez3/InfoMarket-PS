@@ -1,4 +1,4 @@
-import {createDocOnCollection, readCollection, readDoc, filterEqualsByFieldOnCollection, deleteDocOnCollection, updateDocOnCollection, getImageUrl } from "../../scripts/firebase/firebase.js";
+import {createDocOnCollection, readCollection, readDoc, filterEqualsByFieldOnCollection, deleteDocOnCollection, updateDocOnCollection, getImageUrl, getCategory } from "../../scripts/firebase/firebase.js";
 
 async function cargarComponenteProducto() {
     const response = await fetch("../templates/product-component/product-component.html");
@@ -15,9 +15,11 @@ export async function obtenerProductos(categoria) {
     const productosGrid = document.getElementById("product-grid");
     const template = document.getElementById("product-template").content;
 
-    const productos = await readCollection(categoria);
+    console.log(categoria);
 
-    console.log("productos");
+    const productos = await getCategory(categoria);
+
+    console.log(productos);
 
     for (const [id, productoData] of Object.entries(productos)) {
 
@@ -35,5 +37,10 @@ export async function obtenerProductos(categoria) {
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
-    await obtenerProductos("productos/Informática/Ordenadores");
+    const parametros = new URLSearchParams(window.location.search);
+    const categoria = parametros.get("categoria");
+    let path = categoria.split("/");
+    let doc = await readDoc(path[0], path[1]);
+    document.getElementById("main-title").textContent = doc.Nombre;
+    await obtenerProductos(categoria);
 });

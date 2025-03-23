@@ -89,6 +89,7 @@ main {
 }
 #nav-list a {
     cursor: pointer;
+    text-decoration: none;
 }
 #nav-list li:hover {
     color: #000000;
