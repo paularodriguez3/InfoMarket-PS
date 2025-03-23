@@ -5,85 +5,77 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a10c894f-1d5c-4d77-9838-b1271978a249" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/styles/profile-component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/styles/sign-in.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/styles/support.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screens/Personal-profile.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screens/Sing-in.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screens/Sing-up.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screens/about-us.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screens/billing-adress.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screens/forgotten-password.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screens/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screens/order-review.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screens/payment-method.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screens/product-details.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screens/product-list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screens/shipping-method.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screens/shopping-cart.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screens/support.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/common.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/header-2/header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/firebase/firebase.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/firebase/firebase.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/home/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/home/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/shopping-cart/shopping-cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/shopping-cart/shopping-cart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/about-us/about-us.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/about-us.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/about-us/about-us.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/billing-adress/billing-adress.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/billing-adress.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/billing-adress/billing-adress.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/client-support/support.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/client-support/support.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/forgotten-password/forgotten-password.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/forgotten-password.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/forgotten-password/forgotten-password.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/header-2/header-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/header-2/header-2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/header/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/header/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/header/header.js" beforeDir="false" afterPath="$PROJECT_DIR$/templates/header/header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/login-component/componente-crear-cuenta.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/login-component/componente-crear-cuenta.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/login-component/componente-inicio-sesion.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/login-component/componente-inicio-sesion.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/login-component/sign-in.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/login-component/sign-up.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/order-review-component/Tiendas-en-las-que-operamos.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/Tiendas-en-las-que-operamos.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/order-review-component/order-review-component.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/order-review-component/order-review-component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/order-review-component/order-review.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/order-review.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/order-review-component/order-review.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/payment-method/payment-method.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/payment-method.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/payment-method/payment-method.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/product-details/product-details.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/product-details.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/product-details/product-details.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/product-list/product-list.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/product-list.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/product-list/product-list.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/shipping-method/shipping-method.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/shipping-method.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/shipping-method/shipping-method.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/shopping-cart/shopping-cart.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/shopping-cart.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/shopping-cart/shopping-cart.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/shopping-process-component/shopping-process.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/shopping-process-component/shopping-process.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user-component/personal-profile-component.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/User-component/Personal-profile-component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user-component/personal-profile.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user-component/profile-component.css" beforeDir="false" afterPath="$PROJECT_DIR$/templates/User-component/profile-component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user-component/profile-component.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/User-component/profile-component.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;kevinjfa&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/paularodriguez3/InfoMarket-PS.git&quot;,
+    &quot;accountId&quot;: &quot;5b040b6c-5d19-4cdb-a049-a68e68a7c93d&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2udE4kyCrwOqKdApEFhYWcG6WTm" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "JavaScript Debug.product-info-component.html.executor": "Run",
-    "JavaScript Debug.shopping-cart-component.html.executor": "Run",
-    "JavaScript Debug.shopping-cart.html.executor": "Run",
-    "Node.js.shopping-cart.js.executor": "Run",
-    "git-widget-placeholder": "Merging development",
+    "JavaScript Debug.index.html.executor": "Run",
+    "Node.js.firebase.js.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "feature-database",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)"
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-WS-243.23654.157" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a10c894f-1d5c-4d77-9838-b1271978a249" name="Changes" comment="" />
+      <created>1742569862110</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1742569862110</updated>
+      <workItem from="1742569863292" duration="5372000" />
+      <workItem from="1742740344490" duration="1915000" />
+    </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
 </project>
