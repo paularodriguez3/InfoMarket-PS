@@ -6,7 +6,6 @@ import { getStorage, ref, getDownloadURL } from "https://www.gstatic.com/firebas
 import { firebaseConfig, inicioSesion, inicioDeSesion } from "../../config.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const database = getFirestore(app);
@@ -109,13 +108,16 @@ export async function getCategory(document) {
     let path = document.split("/");
 
     let doc = await readDoc(path[0], path[1]);
-    let res = {}
-    doc.subcolecciones.forEach((subcoleccion) => {
-        readCollection(document+"/"+subcoleccion).then(subcol => {
-            for (let prod in subcol) {
-                res[prod] = subcol[prod];
-            }
-        });
+    let res = {};
+
+    let promises = doc.subcolecciones.map(async (subcoleccion) => {
+        let subcol = await readCollection(document + "/" + subcoleccion);
+        for (let prod in subcol) {
+            res[prod] = subcol[prod];
+        }
     });
+
+    await Promise.all(promises);
+
     return res;
 }
