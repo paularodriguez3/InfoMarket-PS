@@ -1,3 +1,4 @@
+
 import { readCollection } from "../firebase/firebase.js";
 
 
@@ -18,23 +19,28 @@ document.addEventListener("DOMContentLoaded", async () => {
 async function showShoppingCart() { // TODO: Finish showShoppingCart()
     // Obtener el template de product-info-component
     await loadProductInfoComponent();
-    const template = document.getElementById("product-info-template").content; // FIXME: No carga??
+    const template = document.getElementById("product-info-template").content;
 
     // Obtener el elemento shopping-cart
     const shoppingCartList = document.getElementById("shopping-cart");
+    shoppingCart.forEach(databaseElement => {
+        for (let id in databaseElement) {
+            let element = databaseElement[id];
+            // Cargar el template
+            const item = document.importNode(template, true);
+            console.log(item);
 
-    shoppingCart.forEach(element => {
-        // Cargar el template
-        const item = document.importNode(template, true);
+            // Modificar valores del template
+            console.log(element.Imagen);
+            item.querySelector("#image").src = element.Imagen;
+            item.querySelector("#product-name").textContent = element.Nombre;
+            item.querySelector("#product-desc").textContent = element.Desc;
+            item.querySelector("#product-quantity").textContent = element.Quantity;
+            item.querySelector("#product-price").textContent = element.Price;
 
-        // Modificar valores del template
-        item.querySelector("#product-name").textContent = element.Nombre;
-        item.querySelector("#product-desc").textContent = element.Desc;
-        item.querySelector("#product-quantity").textContent = element.Quantity;
-        item.querySelector("#product-price").textContent = element.Price;
-
-        // Añadir componente
-        shoppingCartList.appendChild(item);
+            // Añadir componente
+            shoppingCartList.appendChild(item);
+        }
     });
 }
 
@@ -43,9 +49,9 @@ function addToCart(item) {
 }
 
 async function loadProductInfoComponent() {
-    const shoppingCartComponent = await fetch("../../templates/shopping-info-component/product-info-component.html");
-    const text = await shoppingCartComponent.text();
-    const shoppingCartDiv = document.createElement("div");
-    shoppingCartDiv.innerText = text;
-    document.body.appendChild(shoppingCartDiv);
+    const productInfoComponent = await fetch("../../templates/shopping-info-component/product-info-component.html");
+    const text = await productInfoComponent.text();
+    const productInfoDiv = document.createElement("div");
+    productInfoDiv.innerHTML = text;
+    document.body.appendChild(productInfoDiv);
 }
