@@ -5,11 +5,17 @@ body {
     color: #1d1d1f;
 }
 
+header {
+    top: 0;
+    background-color: #FAFAFC;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.2);
+}
+
 .container {
     text-align: center;
     padding: 50px 20px;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 40px auto;
 }
 
 h1 {
