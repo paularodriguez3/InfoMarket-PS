@@ -74,3 +74,7 @@
     background-color: #D9D9D9;
     color: #1D1D1F;
 }
+
+.qty-button {
+    display: none;
+}
