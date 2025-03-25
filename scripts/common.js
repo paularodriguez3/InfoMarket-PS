@@ -31,10 +31,6 @@ async function loadCommonTemplates() {
         await loadTemplate('login-component/componente-inicio-sesion.html','sign-in');
     }
 
-    if (pagina.endsWith('Sing-up.html')) {
-        await loadTemplate('login-component/componente-crear-cuenta.html','sign-up');
-    }
-
     if (pagina.endsWith('Personal-profile.html')) {
         await loadTemplate('User-component/Personal-profile-component.html', 'profile');
     }
