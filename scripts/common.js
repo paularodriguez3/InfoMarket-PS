@@ -28,11 +28,11 @@ async function loadCommonTemplates() {
     }
 
     if (pagina.endsWith('Sing-in.html')) {
-        await loadTemplate('login-component/componente-inicio-sesion.html','sign-in');
+        await loadTemplate('login-component/componente-inicio-sesion.html','sign-in', '../templates/login-component/sign-in.js');
     }
 
     if (pagina.endsWith('Sing-up.html')) {
-        await loadTemplate('login-component/componente-crear-cuenta.html','sign-up');
+        await loadTemplate('login-component/componente-crear-cuenta.html','sign-up', '../templates/login-component/sign-up.js');
     }
 
     if (pagina.endsWith('Personal-profile.html')) {

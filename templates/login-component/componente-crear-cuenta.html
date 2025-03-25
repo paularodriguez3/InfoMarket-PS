@@ -1,33 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Component</title>
-  <link rel="stylesheet" href="component.css">
-  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <title>Crear cuenta</title>
+  <link rel="stylesheet" href="../../templates/login-component/component.css">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 </head>
 <body id="component">
 <div class="wrapper-component">
-  <form class="login-form">
+  <form class="login-form" id="signup-form">
     <h1>Crear cuenta de usuario</h1>
+
     <div class="input-login">
-      <input type="text" placeholder="Usuario" required>
-      <i class='bx bx-user'></i>
+      <input type="text" id="user-register" placeholder="Usuario" required>
+      <i class="bx bx-user"></i>
     </div>
+    <div id="username-requirements" class="requirements" style="display: none;">
+      <p id="first-letter" class="requirement">Debe comenzar con una letra <span>✔</span></p>
+      <p id="alphanumeric" class="requirement">Solo se permiten letras y números <span>✔</span></p>
+      <p id="length" class="requirement">Debe tener al menos 5 caracteres <span>✔</span></p>
+    </div>
+
     <div class="input-login">
-      <input type="email" placeholder="Email" required>
-      <i class='bx bxs-envelope'></i>
+      <input type="email" id="email-register" placeholder="Email" required>
+      <i class="bx bxs-envelope"></i>
     </div>
+
     <div class="input-login">
-      <input type="password" placeholder="Contraseña" required>
-      <i class='bx bx-low-vision'></i>
+      <input type="password" id="password-register" placeholder="Contraseña" required>
+      <i class="bx bx-low-vision"></i>
     </div>
-    <button type="submit" class="send">Crear cuenta</button>
+
+    <div id="password-requirements" class="requirements" style="display: none;">
+      <p id="password-length" class="requirement">Debe tener al menos 8 caracteres <span>✔</span></p>
+      <p id="password-uppercase" class="requirement">Debe tener una mayúscula <span>✔</span></p>
+      <p id="password-number" class="requirement">Debe tener un número <span>✔</span></p>
+      <p id="password-lowercase" class="requirement">Debe tener una minúscula <span>✔</span></p>
+      <p id="password-special" class="requirement">Debe tener un carácter especial <span>✔</span></p>
+    </div>
+
+    <button type="submit" class="send" id="signup">Crear cuenta</button>
+
     <div class="signup-link">
-      <p>¿Ya tienes una cuenta? <a href="Sing-in.html">Iniciar sesión</a> </p>
+      <p>¿Ya tienes una cuenta? <a href="../../screens/Sing-in.html">Iniciar sesión</a></p>
     </div>
   </form>
 </div>
+
+<script type="module" src="../../templates/login-component/sign-up.js"></script>
 </body>
 </html>

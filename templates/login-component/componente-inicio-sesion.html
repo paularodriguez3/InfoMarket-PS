@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Component</title>
-  <link rel="stylesheet" href="component.css">
+  <link rel="stylesheet" href="../../templates/login-component/component.css">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body id="component">
@@ -12,11 +12,11 @@
   <form class="login-form">
     <h1>Inicio de sesión</h1>
     <div class="input-login">
-      <input type="text" placeholder="Usuario" required>
+      <input type="email" id="email" placeholder="Email" required>
       <i class='bx bx-user'></i>
     </div>
     <div class="input-login">
-      <input type="password" placeholder="Contraseña" required>
+      <input type="password" id="password" placeholder="Contraseña" required>
       <i class='bx bx-low-vision'></i>
     </div>
     <div class="remember_user">
@@ -30,5 +30,7 @@
     </div>
   </form>
 </div>
+
+<script type="module" src="../../templates/login-component/sign-in.js"></script>
 </body>
 </html>
