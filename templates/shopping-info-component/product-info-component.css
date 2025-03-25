@@ -76,5 +76,17 @@
 }
 
 .qty-button {
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 25px;
+}
+
+.qty-button:hover {
+    color: #3D3D3D;
+}
+
+.hidden-button {
     display: none;
 }
