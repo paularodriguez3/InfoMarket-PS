@@ -2,10 +2,10 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
 import { getFirestore, doc, getDoc, collection, query, getDocs, addDoc, deleteDoc, updateDoc, where } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js"
 import { getAuth } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
+import { getStorage, ref, getDownloadURL } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-storage.js";
 import { firebaseConfig, inicioSesion, inicioDeSesion } from "../../config.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const database = getFirestore(app);
@@ -90,4 +90,34 @@ export const filterByFieldOnCollection = async (cole, field, filter, value) => {
         data[doc.id] = doc.data();
     });
     return data;
+}
+
+export const getImageUrl = async (imgName) => {
+    try {
+        const storage = getStorage();
+        const url = await getDownloadURL(ref(storage, imgName));
+        return url;
+    } catch (error) {
+        console.log("ERROR", error);
+        throw error;
+    }
+}
+
+// Esta función devuelve un objeto con todos los objetos de una categoría
+export async function getCategory(document) {
+    let path = document.split("/");
+
+    let doc = await readDoc(path[0], path[1]);
+    let res = {};
+
+    let promises = doc.subcolecciones.map(async (subcoleccion) => {
+        let subcol = await readCollection(document + "/" + subcoleccion);
+        for (let prod in subcol) {
+            res[prod] = subcol[prod];
+        }
+    });
+
+    await Promise.all(promises);
+
+    return res;
 }
