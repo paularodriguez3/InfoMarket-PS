@@ -17,31 +17,31 @@ export async function obtenerProductos(categoria) {
 
     console.log(categoria);
 
-    //const productos = await getCategory(categoria);
+    const productos = await getCategory(categoria);
 
     console.log(productos);
-/*
+
     for (const [id, productoData] of Object.entries(productos)) {
 
         const productoElemento = document.importNode(template, true);
 
-        //const imagen = await getImageUrl(productoData.Imagen);
+        const imagen = await getImageUrl(productoData.Imagen);
 
         productoElemento.querySelector("#image").src = imagen;
         productoElemento.querySelector("#product-name").textContent = productoData.Nombre;
-        //productoElemento.querySelector("#product-desc").textContent = productoData.Desc;
+        productoElemento.querySelector("#product-desc").textContent = productoData.Descripcion;
         productoElemento.querySelector("#price").textContent = productoData.Precio;
 
         productosGrid.appendChild(productoElemento);
-    }*/
+    }
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
     const parametros = new URLSearchParams(window.location.search);
     const categoria = parametros.get("categoria");
     let path = categoria.split("/");
-    //let doc = await readDoc(path[0], path[1]);
-    //document.getElementById("main-title").textContent = doc.Nombre;
+    let doc = await readDoc(path[0], path[1]);
+    document.getElementById("main-title").textContent = doc.Nombre;
     await obtenerProductos(categoria);
 });
 
