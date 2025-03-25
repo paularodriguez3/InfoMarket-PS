@@ -7,6 +7,8 @@ header {
     top: 0;
     background-color: #FAFAFC;
     box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.2);
+    position: sticky;
+    z-index: 1000;
 }
 
 body {
@@ -45,6 +47,7 @@ main {
     align-items: center;
     justify-content: center;
     background-color: #FAFAFC;
+    flex: 1;
 }
 
 #main-video {
@@ -140,6 +143,7 @@ main {
 
 footer {
     bottom: 0;
+    width: 100%;
 }
 
 #footer-wrapper {
@@ -280,9 +284,14 @@ footer {
     display: flex;
     transition: 1.15s;
     left: 0;
+    z-index: 10;
+    pointer-events: none;
 }
 
 body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     overflow-x: hidden;
 }
 
@@ -396,4 +405,151 @@ body {
 
 #main-description.hidden, #offer-description.hidden {
     transition: all 1.55s;
+}
+
+/* Tablet responsive */
+@media (max-width: 1024px) {
+    #main-title, #offer-title {
+        font-size: 56px;
+    }
+
+    #main-description, #offer-description {
+        font-size: 24px;
+    }
+
+    #nav-top {
+        padding-inline: 5%;
+    }
+
+    #nav-bottom {
+        padding-inline: 5%;
+    }
+
+    #main-video {
+        max-width: 92%;
+        margin-inline: 4%;
+    }
+
+    .offer-videos {
+        min-width: 90%;
+        max-width: 90%;
+        margin-inline: 5%;
+    }
+
+    #overlay h1 {
+        font-size: 36px;
+    }
+
+    .video-buttons {
+        width: 92%;
+        margin-inline: 4%;
+    }
+
+    .video-buttons button {
+        width: 45px;
+        height: 45px;
+    }
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    #main-title, #offer-title {
+        font-size: 36px;
+    }
+
+    #main-description, #offer-description {
+        font-size: 18px;
+    }
+
+    #main-title-wrapper, #offers-wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    #nav-list {
+        overflow-x: auto;
+        justify-content: flex-start;
+        padding-bottom: 15px;
+    }
+
+    #nav-list li {
+        min-width: fit-content;
+        margin-inline: 10px;
+    }
+
+    #logo-searchbar {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    #product-search {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    #main-video {
+        max-width: 96%;
+        margin-inline: 2%;
+        border-radius: 24px;
+    }
+
+    .offer-videos {
+        min-width: 96%;
+        max-width: 96%;
+        margin-inline: 2%;
+        border-radius: 24px;
+    }
+
+    #overlay h1 {
+        font-size: 24px;
+        margin-top: 8%;
+        margin-left: 4%;
+    }
+
+    .video-buttons {
+        width: 96%;
+        margin-inline: 2%;
+    }
+
+    .video-buttons button {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+
+    .video-dots {
+        margin-bottom: 6%;
+    }
+
+    .logo-slider img {
+        height: 35px;
+        margin: 0 20px;
+    }
+
+    #footer-wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 5%;
+    }
+
+    #footer-wrapper hr {
+        width: 100%;
+        height: 1px;
+        margin: 20px 0;
+    }
+
+    #policies-list {
+        flex-wrap: wrap;
+    }
+
+    #copyright-wrapper {
+        padding-inline: 5%;
+    }
+
+    .hidden {
+        transform: translateY(30px);
+    }
 }
