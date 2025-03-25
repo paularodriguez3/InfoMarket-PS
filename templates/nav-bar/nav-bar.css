@@ -139,7 +139,7 @@ body {
 }
 #menu-wrapper {
     display: flex;
-    width: 90%;
+    width: 100%;
     justify-content: space-evenly;
     padding-top: 1.5%;
     padding-bottom: 4%;
