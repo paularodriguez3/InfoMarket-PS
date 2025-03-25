@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../templates/shopping-info-component/product-info-component.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Title</title>
 </head>
 <body>
@@ -15,9 +16,13 @@
                 <div id="product-name">Ordenador Sobremesa PcCom Ready</div>
                 <div id="product-desc">Intel Core i5-12400F / 32GB / 1TB SSD / RTX4060</div>
             </div>
-            <div id="button-plus" class="qty-button"></div>
+            <div id="button-plus" class="qty-button">
+                <button class="qty-button"><i class='bx bxs-minus-circle'></i></button>
+            </div>
             <div id="product-quantity">Qty: 1</div>
-            <div id="button-minus" class="qty-button"></div>
+            <div id="button-minus" class="qty-button">
+                <button class="qty-button"><i class='bx bxs-plus-circle' ></i></button>
+            </div>
             <div id="product-price">
                 4096.99€
             </div>
