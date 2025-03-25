@@ -91,3 +91,38 @@ export const filterByFieldOnCollection = async (cole, field, filter, value) => {
     });
     return data;
 }
+
+ // Función para el registro
+export async function createUser(email, password) {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        await sendEmailVerification(userCredential.user);
+        return userCredential.user;
+    }
+
+export async function signIn(email, password) {
+    try {
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        return userCredential.user;
+    } catch (error) {
+        throw error;
+    }
+}
+
+export async function signOut() {
+    auth.signOut();
+}
+
+// Esta función actualiza el perfil del usuario
+export const updateUserProfile = async (displayName, photoURL) => {
+    const auth = getAuth();
+    const user = auth.currentUser;
+
+    if (user) {
+        await updateProfile(user, {
+            displayName: displayName,
+            photoURL: photoURL
+        });
+    } else {
+        console.log("No hay usuario autenticado.");
+    }
+};

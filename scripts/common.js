@@ -8,6 +8,7 @@ async function loadTemplate(template, targetElementId, scriptPath = null) {
             const scriptElement = document.createElement("script");
             scriptElement.src = scriptPath;
             scriptElement.defer = true;
+            scriptElement.type = "module";
             document.body.appendChild(scriptElement);
         }
     } catch (error) {
@@ -36,7 +37,7 @@ async function loadCommonTemplates() {
     }
 
     if (pagina.endsWith('Personal-profile.html')) {
-        await loadTemplate('User-component/Personal-profile-component.html', 'profile');
+        await loadTemplate('User-component/Personal-profile-component.html', 'profile', '../templates/User-component/personal-profile.js');
     }
 
     if (pagina.endsWith('order-review.html')) {

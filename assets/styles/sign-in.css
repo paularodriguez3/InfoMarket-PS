@@ -4,20 +4,19 @@
     font-family: 'Roboto Thin', sans-serif;
 }
 
-#component{
+#component {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 70vh;
-    background: #fff; /*linear-gradient(150deg, #fff, #808b96)*/
+    background: #fff;
 }
 
-.wrapper-component{
+.wrapper-component {
     width: 520px;
     background: #D9D9D9;
     border: 2px solid rgba(255,255,255,.2);
-    /*backdrop-filter: blur(20px);*/
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
     color: #000000;
     border-radius: 25px;
@@ -25,12 +24,12 @@
     margin: 50px auto;
 }
 
-.wrapper-component h1{
+.wrapper-component h1 {
     text-align: center;
     font-size: 26px;
 }
 
-.wrapper-component .input-login{
+.wrapper-component .input-login {
     position: relative;
     width: 100%;
     height: 40px;
@@ -38,11 +37,11 @@
     box-sizing: border-box;
 }
 
-.input-login input{
+.input-login input {
     width: 100%;
-    height: 100% ;
+    height: 100%;
     background: transparent;
-    border:none;
+    border: none;
     outline: none;
     border: 3px solid rgba(255,2555,255,0.2);
     border-radius: 25px;
@@ -51,11 +50,12 @@
     color: #000000;
     box-sizing: border-box;
 }
-.input-login input::placeholder{
+
+.input-login input::placeholder {
     color: #000000;
-    box-sizing: border-box;
 }
-.input-login i{
+
+.input-login i {
     position: absolute;
     right: 15px;
     top: 50%;
@@ -63,26 +63,26 @@
     box-sizing: border-box;
 }
 
-.wrapper-component .remember_user{
+.wrapper-component .remember_user {
     display: flex;
     justify-content: space-between;
     font-size: 16px;
 }
 
-.remember_user label input{
+.remember_user label input {
     margin-right: 3px;
 }
 
-.remember_user a{
+.remember_user a {
     color: black;
     text-decoration: none;
 }
 
-.remember_user a:hover{
+.remember_user a:hover {
     text-decoration: underline;
 }
 
-.wrapper-component .send{
+.wrapper-component .send {
     border-radius: 25px;
     margin-top: 10px;
     width: 100%;
@@ -95,16 +95,46 @@
     font-weight: 600;
 }
 
-.wrapper-component .signup-link{
+.wrapper-component .signup-link {
     font-size: 16px;
     text-align: center;
     margin: 20px 0 15px;
 }
+
 .signup-link p a {
     color: #000000;
     text-decoration: none;
     font-weight: 600;
 }
+
 .signup-link p a:hover {
     text-decoration: underline;
+}
+
+#username-requirements, #password-requirements {
+    font-size: 14px;
+    margin-top: 10px;
+    background-color: #f7f7f7;
+    padding: 10px;
+    border-radius: 5px;
+    display: none;
+}
+
+.requirement {
+    margin: 5px 0;
+    color: red;
+}
+
+.requirement span {
+    display: none;
+    color: green;
+}
+
+.requirement.valid {
+    color: green;
+}
+
+.requirement.valid span {
+    display: inline;
+    color: green;
 }
