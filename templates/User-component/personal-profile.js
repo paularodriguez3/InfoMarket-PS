@@ -12,14 +12,6 @@ function waitForElement(selector, callback) {
 }
 
 waitForElement("#profile", async () => {
-    /*onAuth(async (user) => {
-        if (user) {
-            console.log("Usuario autenticado:", user);
-            loadUserData(user.uid);
-        } else {
-            console.error("No hay usuario autenticado.");
-        }
-    });*/
     if (sessionStorage.getItem("currentUser") !== null) {
         let uid = JSON.parse(sessionStorage.getItem("currentUser")).uid;
         await loadUserData(uid);
