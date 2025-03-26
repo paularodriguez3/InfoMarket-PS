@@ -1,4 +1,7 @@
-document.addEventListener("DOMContentLoaded", function () {
+import { readCollection } from "./firebase/firebase.js"
+
+
+document.addEventListener("DOMContentLoaded", async function () {
     const addressInput = document.getElementById("address");
     const shopInput = document.getElementById("shop");
     const form = document.querySelector("form");
@@ -31,4 +34,11 @@ document.addEventListener("DOMContentLoaded", function () {
             alert('Infomarket dice: "Por favor, completa al menos un campo: Dirección o Tienda física."');
         }
     });
+    let direcciones = await readCollection("direccionesTiendas");
+    for (let tienda in direcciones) {
+        let option = document.createElement("option");
+        option.value = direcciones[tienda].direccion;
+        option.innerText = direcciones[tienda].direccion;
+        document.getElementById("shop").appendChild(option);
+    }
 });
