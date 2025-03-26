@@ -4,7 +4,7 @@ import {getImageUrl, readCollection} from "../firebase/firebase.js";
 const shoppingCart = [];
 
 // PRUEBA CON LA BASE DE DATOS
-document.addEventListener("DOMContentLoaded", async () => {
+/*document.addEventListener("DOMContentLoaded", async () => {
     const test_data = await readCollection("productos/Informática/Ordenadores");
     for (let product in test_data) {
         addToCart({[product]:test_data[product]});
@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     console.log(shoppingCart);
 
     await showShoppingCart();
-});
+});*/
 // =============================
 
 async function showShoppingCart() { // TODO: Finish showShoppingCart()
@@ -22,34 +22,32 @@ async function showShoppingCart() { // TODO: Finish showShoppingCart()
 
     // Obtener el elemento shopping-cart
     const shoppingCartList = document.getElementById("shopping-cart-list");
-    for (const databaseElement of shoppingCart) {
-        for (let id in databaseElement) {
-            let element = databaseElement[id];
-            // Cargar el template
-            const item = document.importNode(template, true);
+    for (const item of shoppingCart) {
+        // Cargar el template
+        const itemComponent = document.importNode(template, true);
 
-            // Modificar valores del template
-            item.querySelector("#image").src = await getImageUrl(element.Imagen);
-            item.querySelector("#product-name").textContent = element.Nombre;
-            item.querySelector("#product-desc").textContent = element.Desc;
-            item.querySelector("#product-quantity").textContent = element.Quantity;
-            item.querySelector("#product-price").textContent = element.Price;
+        // Modificar valores del template
+        itemComponent.querySelector("#image").src = await getImageUrl(item.Imagen);
+        itemComponent.querySelector("#product-name").textContent = item.data.Nombre;
+        itemComponent.querySelector("#product-desc").textContent = item.data.Descripcion;
+        // item.querySelector("#product-quantity").textContent = element.data.Quantity;
+        itemComponent.querySelector("#product-price").textContent = item.data.Precio;
 
-            // Añadir botones
-            const plus = item.getElementById("button-plus");
-            const minus = item.getElementById("button-minus");
-            console.log(plus.classList);
-            plus.classList.remove("hidden-button");
-            minus.classList.remove("hidden-button");
-            console.log(plus.classList);
-            // Añadir componente
-            shoppingCartList.appendChild(item);
-        }
+        // Añadir botones
+        const plus = itemComponent.getElementById("button-plus");
+        const minus = itemComponent.getElementById("button-minus");
+        console.log(plus.classList);
+        plus.classList.remove("hidden-button");
+        minus.classList.remove("hidden-button");
+        console.log(plus.classList);
+        // Añadir componente
+        shoppingCartList.appendChild(itemComponent);
     }
 }
 
-function addToCart(item) {
+export function addToCart(item) {
     shoppingCart.push(item);
+    console.log(shoppingCart);
 }
 
 async function loadProductInfoComponent() {

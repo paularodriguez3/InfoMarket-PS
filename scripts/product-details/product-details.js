@@ -1,4 +1,5 @@
 import { getImageUrl } from "../firebase/firebase.js";
+import { addToCart } from "../shopping-cart/shopping-cart.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
     const producto = JSON.parse(localStorage.getItem("productoSeleccionado"));
@@ -17,5 +18,11 @@ document.addEventListener("DOMContentLoaded", async () => {
         const caracteristica = document.createElement("p");
         caracteristica.textContent = `${clave}: ${valor}`;
         caracteristicas.appendChild(caracteristica);
+    });
+
+    const addToCartButton = document.getElementById("add-to-cart");
+    addToCartButton.addEventListener("click", () => {
+        localStorage.setItem("productoSeleccionado", JSON.stringify({ id, data: productoData }));
+        addToCart();
     });
 });
