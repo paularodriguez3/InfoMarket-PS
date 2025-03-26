@@ -5,7 +5,7 @@
   <link rel="icon" href="../assets/icons/header/infomarket_logo_mini.png" type="image/png">
   <link rel="stylesheet" href="../templates/shopping-process-component/shopping-process-component.css">
   <link rel="stylesheet" href="../assets/styles/shipping-method.css">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Método envío - Infomarket</title>
 </head>
 
@@ -41,9 +41,15 @@
       <h2>MÉTODO DE ENVÍO</h2>
       <form>
         <label for="address">Dirección</label>
-        <input type="text" id="address" name="address" required>
+        <input type="text" id="address" name="address">
         <label for="shop">Tienda física</label>
-        <input type="shop" id="shop" name="shop" required>
+        <select id="shop" name="shop">
+          <option value="">Selecciona una tienda</option>
+          <option value="tienda1">Centro Comercial 7 Palmas - Av Pintor Felo Monzón, 44, 35019 Las Palmas de Gran Canaria, Las Palmas</option>
+          <option value="tienda2">Corte Inglés Mesa y López - Av. José Mesa y López, 13, 35007 Las Palmas de Gran Canaria, Las Palmas</option>
+          <option value="tienda3">Centro comercial Las Arenas - Ctra. del Rincón, s/n, 35010 Las Palmas de Gran Canaria, Las Palmas</option>
+        </select>
+        <button type="submit" id="button">Siguiente</button>
       </form>
     </section>
 
@@ -54,6 +60,6 @@
 
 <footer id="footer"></footer>
 <script src="../scripts/common.js"></script>
-
+<script src="../scripts/shipping-method.js"></script>
 </body>
 </html>

@@ -14,6 +14,7 @@ body {
 main {
     background-color: #FAFAFC;
 }
+
 header {
     position: fixed;
     top: 0;
@@ -24,13 +25,13 @@ header {
 }
 
 #billing-shopping-wrapper {
-     display: flex;
-     justify-content: center; /* Centra horizontalmente */
-     align-items: center; /* Centra verticalmente */
-     width: 90%;
-     gap: 5%;
-     margin-top: 0; /* Eliminar margen extra */
- }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    gap: 5%;
+    margin-top: 0;
+}
 
 #billing-address {
     flex: 1;
@@ -54,6 +55,20 @@ header {
     font-size: 16px;
 }
 
+#billing-address select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: white;
+    cursor: pointer;
+}
+
+#billing-address select:disabled {
+    background-color: #f0f0f0;
+    cursor: not-allowed;
+}
+
 #billing-address button {
     padding: 12px;
     background-color: #746F6F;
@@ -62,6 +77,7 @@ header {
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
+    margin-top: 10px;
 }
 
 #billing-address button:hover {
@@ -86,7 +102,7 @@ header {
     margin-top: 165px;
 }
 
-#shopping-info-component article{
+#shopping-info-component article {
     overflow: hidden;
 }
 
