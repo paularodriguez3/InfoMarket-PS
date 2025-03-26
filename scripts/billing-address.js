@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     if (sessionStorage.getItem("currentUser") !== null) {
-        document.querySelector(".hideauth").style.display = "none";
+        document.querySelectorAll(".hideauth").forEach(e => e.style.display = "none");
+    } else {
+        document.querySelector(".progress-container").style.marginTop = "30rem";
     }
 });

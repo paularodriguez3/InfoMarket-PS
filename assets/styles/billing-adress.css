@@ -23,6 +23,12 @@ header {
     z-index: 1000;
 }
 
+header {
+    top: 0;
+    background-color: #FAFAFC;
+    box-shadow: 0 0 3px 0 rgba(0,0,0,0.2);
+}
+
 #billing-shopping-wrapper {
     display: flex;
     justify-content: center;
