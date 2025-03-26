@@ -32,6 +32,14 @@ export async function obtenerProductos(categoria) {
         productoElemento.querySelector("#product-desc").textContent = productoData.Descripcion;
         productoElemento.querySelector("#price").textContent = productoData.Precio;
 
+        const seeButton = productoElemento.querySelector("#see");
+
+        seeButton.addEventListener("click", () => {
+            localStorage.setItem("productoSeleccionado", JSON.stringify({ id, data: productoData }));
+            window.location.href = "../screens/product-details.html";
+            //console.log([id, productoData]);
+        });
+
         productosGrid.appendChild(productoElemento);
     }
 }
