@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Profile component</title>
-  <link rel="stylesheet" href="profile-component.css">
+  <link rel="stylesheet" href="../../templates/User-component/profile-component.css">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body id="component">
@@ -21,29 +21,32 @@
     <div class="fields-container">
       <div class="column">
         <div class="first-camp">
-          <input type="text" placeholder="Nombre" required>
+          <input type="text" placeholder="Nombre">
         </div>
         <div class="first-camp">
-          <input type="text" placeholder="Primer apellido" required>
+          <input type="text" placeholder="Primer apellido">
         </div>
         <div class="first-camp">
-          <input type="text" placeholder="Segundo apellido" required>
+          <input type="text" placeholder="Segundo apellido">
         </div>
       </div>
       <div class="column">
         <div class="second-camp">
-          <input type="text" placeholder="Nombre de usuario" required>
+          <input type="text" placeholder="Nombre de usuario">
         </div>
         <div class="second-camp">
-          <input type="email" placeholder="Email" required>
+          <input type="email" placeholder="Email">
         </div>
         <div class="second-camp">
-          <input type="text" placeholder="Número de telefono" required>
+          <input type="text" placeholder="Número de telefono">
         </div>
       </div>
     </div>
     <button type="submit" class="send">Modificar</button>
+    <button type="submit" class="send">Cerrar sesión</button>
   </form>
 </div>
+
+<script type="module" src="../../templates/User-component/personal-profile.js"></script>
 </body>
 </html>

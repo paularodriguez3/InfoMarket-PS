@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
 import { getFirestore, doc, getDoc, collection, query, getDocs, addDoc, deleteDoc, updateDoc, where } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js"
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendEmailVerification } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendEmailVerification, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
 import { firebaseConfig, inicioSesion, inicioDeSesion } from "../../config.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -156,3 +156,28 @@ export const updateUserProfile = async (displayName, photoURL) => {
         console.log("No hay usuario autenticado.");
     }
 };
+
+export function onAuth(callback) {
+    return onAuthStateChanged(auth, callback);
+}
+
+export async function logoutUser() {
+    try {
+        await signOut(auth);
+        console.log("Usuario ha cerrado sesión.");
+    } catch (error) {
+        console.error("Error al cerrar sesión:", error);
+    }
+}
+
+export async function getUserData(uid) {
+    const userRef = doc(database, "users", uid);
+    const docSnap = await getDoc(userRef);
+    return docSnap.exists() ? docSnap.data() : null;
+}
+
+export async function updateUserData(uid, updatedData) {
+    const userRef = doc(database, "users", uid);
+    await updateDoc(userRef, updatedData);
+    console.log("Perfil actualizado correctamente.");
+}
