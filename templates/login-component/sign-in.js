@@ -29,7 +29,7 @@ function setupLoginForm(loginForm) {
 
         try {
             let userCredential = await signIn(email, password);
-            const user = userCredential.user;
+            sessionStorage.setItem("currentUser", JSON.stringify(userCredential));
             alert("Inicio de sesión exitoso");
             window.location.href = "Personal-profile.html"; // Redirección tras login
         } catch (error) {
