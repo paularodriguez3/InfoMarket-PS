@@ -139,7 +139,7 @@ export async function signIn(email, password) {
 }
 
 export async function signOut() {
-    auth.signOut();
+    await sessionStorage.removeItem("currentUser");
 }
 
 // Esta función actualiza el perfil del usuario
