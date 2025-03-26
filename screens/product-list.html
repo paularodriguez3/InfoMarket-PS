@@ -6,36 +6,38 @@
     <link rel="stylesheet" href="../assets/styles/product-list.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infomarket</title>
+    <title>Productos - Infomarket</title>
 </head>
 <body>
 
-<header id="header-2"></header>
-<nav id="header"></nav>
+<header id="header"></header>
+<nav id="nav-bar"></nav>
 
 <main>
     <section id="main-title-wrapper">
-        <h1 id="main-title">Informática</h1>
+        <h1 id="main-title"></h1>
         <button id="filter-button"><i class='bx bx-filter-alt'></i> Ordenar y filtrar</button>
     </section>
+    <section id="filter-menu-wrapper" class="hidden-filter-menu">
+        <ul id ="filter-menu">
+            <li>Ordenar por</li>
+            <li>Precio</li>
+            <li>Marca</li>
+            <li>Color</li>
+        </ul>
+        <button id="apply-button"><i class='bx bx-filter-alt'></i> Aplicar</button>
+    </section>
+
     <div>
-        <div class="product-list">
-            <div xlu-include-file="../product-component/product-component.html"></div>
-            <div xlu-include-file="../product-component/product-component.html"></div>
-            <div xlu-include-file="../product-component/product-component.html"></div>
-            <div xlu-include-file="../product-component/product-component.html"></div>
-        </div>
-        <div class="product-list">
-            <div xlu-include-file="../product-component/product-component.html"></div>
-            <div xlu-include-file="../product-component/product-component.html"></div>
-            <div xlu-include-file="../product-component/product-component.html"></div>
-            <div xlu-include-file="../product-component/product-component.html"></div>
+        <div id="product-grid">
+
         </div>
     </div>
 </main>
 
 <footer id="footer"></footer>
 <script src="../scripts/common.js"></script>
+<script type = "module" src="../scripts/product-list/product-list.js"></script>
 
 </body>
 </html>

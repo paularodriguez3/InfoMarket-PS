@@ -6,6 +6,7 @@ import { getStorage, ref, getDownloadURL } from "https://www.gstatic.com/firebas
 import { firebaseConfig, inicioSesion, inicioDeSesion } from "../../config.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const database = getFirestore(app);
@@ -106,9 +107,8 @@ export const getImageUrl = async (imgName) => {
 // Esta función devuelve un objeto con todos los objetos de una categoría
 export async function getCategory(document) {
     let path = document.split("/");
-
     let doc = await readDoc(path[0], path[1]);
-    let res = {};
+    let res = {}
 
     let promises = doc.subcolecciones.map(async (subcoleccion) => {
         let subcol = await readCollection(document + "/" + subcoleccion);
