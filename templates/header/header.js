@@ -30,4 +30,12 @@ waitForElement("#header-navigation", () => {
             search.classList.remove('active');
         }
     });
+
+    document.getElementById("user").addEventListener('click', (event) => {
+        if (sessionStorage.getItem("currentUser") === null) {
+            window.location.href = "./Sing-in.html";
+        } else {
+            window.location.href = "../screens/Personal-profile.html";
+        }
+    });
 });
