@@ -1,7 +1,11 @@
 import {getImageUrl, readCollection} from "../firebase/firebase.js";
 
 
-const shoppingCart = [];
+const shoppingCart = JSON.parse(localStorage.getItem("carrito")) || [];
+
+document.addEventListener("DOMContentLoaded", async () => {
+    await showShoppingCart();
+});
 
 // PRUEBA CON LA BASE DE DATOS
 /*document.addEventListener("DOMContentLoaded", async () => {
@@ -22,16 +26,17 @@ async function showShoppingCart() { // TODO: Finish showShoppingCart()
 
     // Obtener el elemento shopping-cart
     const shoppingCartList = document.getElementById("shopping-cart-list");
+
     for (const item of shoppingCart) {
         // Cargar el template
         const itemComponent = document.importNode(template, true);
 
         // Modificar valores del template
-        itemComponent.querySelector("#image").src = await getImageUrl(item.Imagen);
-        itemComponent.querySelector("#product-name").textContent = item.data.Nombre;
-        itemComponent.querySelector("#product-desc").textContent = item.data.Descripcion;
-        // item.querySelector("#product-quantity").textContent = element.data.Quantity;
-        itemComponent.querySelector("#product-price").textContent = item.data.Precio;
+        itemComponent.querySelector("#image").src = await getImageUrl(item.data.Imagen);
+        itemComponent.querySelector("#product-name-component").textContent = item.data.Nombre;
+        itemComponent.querySelector("#product-desc-component").textContent = item.data.Descripcion;
+        // item.querySelector("#product-quantity-component").textContent = element.data.Quantity;
+        itemComponent.querySelector("#product-price-component").textContent = item.data.Precio;
 
         // Añadir botones
         const plus = itemComponent.getElementById("button-plus");

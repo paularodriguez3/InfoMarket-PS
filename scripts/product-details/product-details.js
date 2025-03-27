@@ -22,7 +22,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const addToCartButton = document.getElementById("add-to-cart");
     addToCartButton.addEventListener("click", () => {
-        localStorage.setItem("productoSeleccionado", JSON.stringify({ id, data: productoData }));
-        addToCart();
+        console.log(producto);
+        const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+        carrito.push(producto);
+
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+
     });
 });
