@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a10c894f-1d5c-4d77-9838-b1271978a249" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/scripts/sign-up.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/Sing-up.html" beforeDir="false" afterPath="$PROJECT_DIR$/screens/Sing-up.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/firebase/firebase.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/firebase/firebase.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/home/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/home/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
