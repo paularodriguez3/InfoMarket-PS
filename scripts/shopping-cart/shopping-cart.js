@@ -1,7 +1,6 @@
 import {getImageUrl, readCollection} from "../firebase/firebase.js";
 
 
-const shoppingCart = JSON.parse(localStorage.getItem("carrito")) || [];
 
 document.addEventListener("DOMContentLoaded", async () => {
     await showShoppingCart();
@@ -27,6 +26,8 @@ async function showShoppingCart() { // TODO: Finish showShoppingCart()
     // Obtener el elemento shopping-cart
     const shoppingCartList = document.getElementById("shopping-cart-list");
 
+    const shoppingCart = JSON.parse(localStorage.getItem("carrito")) || [];
+    let totalPrice = 0;
     for (const item of shoppingCart) {
         // Cargar el template
         const itemComponent = document.importNode(template, true);
@@ -36,7 +37,9 @@ async function showShoppingCart() { // TODO: Finish showShoppingCart()
         itemComponent.querySelector("#product-name-component").textContent = item.data.Nombre;
         itemComponent.querySelector("#product-desc-component").textContent = item.data.Descripcion;
         itemComponent.querySelector("#product-quantity-component").textContent = "Qty: " + item.Cantidad;
-        itemComponent.querySelector("#product-price-component").textContent = item.data.Precio;
+        let price= parseFloat(item.data.Precio) * parseFloat(item.Cantidad);
+        itemComponent.querySelector("#product-price-component").textContent = price + "€";
+        totalPrice += price;
 
         // Añadir botones
         const plus = itemComponent.getElementById("button-plus");
@@ -48,11 +51,12 @@ async function showShoppingCart() { // TODO: Finish showShoppingCart()
         // Añadir componente
         shoppingCartList.appendChild(itemComponent);
     }
+    document.getElementById("total-price").innerText = totalPrice + "€";
     console.log(shoppingCart);
 }
 
 export function addToCart(item, quantity) {
-    console.log(item);
+    const shoppingCart = JSON.parse(localStorage.getItem("carrito")) || [];
     const cartItem = shoppingCart.find(e => e.id === item.id); // FIXME: Evitar guardar el mismo item varias veces
     if (!cartItem) {
         const newItem = Object.assign(Object.create(null), item, {Cantidad: 1}); // TODO: Ver como clonar el objeto sin prototype
@@ -61,7 +65,7 @@ export function addToCart(item, quantity) {
     } else {
         cartItem.Cantidad = cartItem.Cantidad + 1;
     }
-    console.log(shoppingCart);
+    localStorage.setItem("carrito", JSON.stringify(shoppingCart));
 }
 
 async function loadProductInfoComponent() {
