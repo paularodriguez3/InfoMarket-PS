@@ -51,7 +51,8 @@ async function showShoppingCart() { // TODO: Finish showShoppingCart()
     console.log(shoppingCart);
 }
 
-export function addToCart(item) {
+export function addToCart(item, quantity) {
+    console.log(item);
     const cartItem = shoppingCart.find(e => e.id === item.id); // FIXME: Evitar guardar el mismo item varias veces
     if (!cartItem) {
         const newItem = Object.assign(Object.create(null), item, {Cantidad: 1}); // TODO: Ver como clonar el objeto sin prototype

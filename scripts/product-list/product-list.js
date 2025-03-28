@@ -35,7 +35,7 @@ export async function obtenerProductos(categoria) {
         const seeButton = productoElemento.querySelector("#see");
 
         seeButton.addEventListener("click", () => {
-            localStorage.setItem("productoSeleccionado", JSON.stringify({ id, data: productoData }));
+            localStorage.setItem("productoSeleccionado", JSON.stringify({ id, data: productoData, quantity: null}));
             window.location.href = "../screens/product-details.html";
             //console.log([id, productoData]);
         });
