@@ -10,28 +10,31 @@ function waitForElement(selector, callback) {
     }
 }
 
-waitForElement("#sign-in", () => {
-    const loginForm = document.querySelector(".login-form");
+waitForElement("#sign-in-form", () => {
+    const loginForm = document.querySelector("#sign-in-form");
 
     if (loginForm) {
         setupLoginForm(loginForm);
     } else {
-        console.error("Error: No se encontró el formulario con clase 'login-form'");
+        console.error("Error: No se encontró el formulario con ID 'sign-in-form'");
     }
 });
 
+
 function setupLoginForm(loginForm) {
+    if (localStorage.getItem("currentUser") !== null) {
+        window.location.href = "../screens/index.html";
+    }
     loginForm.addEventListener("submit", async (e) => {
-        e.preventDefault(); // Prevenir el comportamiento por defecto
+        e.preventDefault();
 
         const email = document.getElementById("email").value;
         const password = document.getElementById("password").value;
 
         try {
             let userCredential = await signIn(email, password);
-            sessionStorage.setItem("currentUser", JSON.stringify(userCredential));
             alert("Inicio de sesión exitoso");
-            window.location.href = "Personal-profile.html"; // Redirección tras login
+            window.location.href = "Personal-profile.html";
         } catch (error) {
             const errorCode = error.code;
             const errorMessage = error.message;
@@ -44,5 +47,10 @@ function setupLoginForm(loginForm) {
                 alert("Error al iniciar sesión: " + errorMessage);
             }
         }
+    });
+
+    const signUpButton = document.getElementById("sign-up-btn");
+    signUpButton.addEventListener("click", () => {
+        window.location.href = "Sing-up.html";
     });
 }

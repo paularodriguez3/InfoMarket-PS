@@ -11,25 +11,33 @@ function waitForElement(selector, callback) {
     }
 }
 
-waitForElement("#profile", async () => {
-    if (sessionStorage.getItem("currentUser") !== null) {
-        let uid = JSON.parse(sessionStorage.getItem("currentUser")).uid;
-        await loadUserData(uid);
-    } else {
-        console.error("No hay usuario autenticado.");
+waitForElement("#profile", () => {
+    onAuth(async (user) => {
+        if (user) {
+            console.log("Usuario autenticado:", user);
+            loadUserData(user.uid);
+        } else {
+            console.error("No hay usuario autenticado.");
+        }
+    });
+    if (localStorage.getItem("currentUser") === null) {
+        window.location.href = "../screens/Sing-in.html";
     }
+
+
 
     async function loadUserData(uid) {
         try {
             const userData = await getUserData(uid);
             if (userData) {
                 console.log("Datos del usuario:", userData);
-                document.querySelector("input[placeholder='Nombre']").value = userData.firstName || '';
-                document.querySelector("input[placeholder='Primer apellido']").value = userData.lastName1 || '';
-                document.querySelector("input[placeholder='Segundo apellido']").value = userData.lastName2 || '';
-                document.querySelector("input[placeholder='Nombre de usuario']").value = userData.username || '';
-                document.querySelector("input[placeholder='Email']").value = userData.email || '';
-                document.querySelector("input[placeholder='Número de telefono']").value = userData.phone || '';
+
+                // Asignar los valores de los datos a los campos del formulario
+                document.querySelector("input[name='user-name']").value = userData.username || '';
+                document.querySelector("input[name='firstName']").value = userData.firstName || '';
+                document.querySelector("input[name='lastName']").value = userData.lastName || '';
+                document.querySelector("input[name='email']").value = userData.email || '';
+                document.querySelector("input[name='phone']").value = userData.phone || '';
             } else {
                 console.error("No se encontraron datos para el usuario en Firestore.");
             }
@@ -38,24 +46,22 @@ waitForElement("#profile", async () => {
         }
     }
 
-    const form = document.querySelector('.login-form');
+    const form = document.querySelector('.profile-form');
     if (form) {
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
 
             const updatedData = {
-                firstName: document.querySelector("input[placeholder='Nombre']").value,
-                lastName1: document.querySelector("input[placeholder='Primer apellido']").value,
-                lastName2: document.querySelector("input[placeholder='Segundo apellido']").value,
-                username: document.querySelector("input[placeholder='Nombre de usuario']").value,
-                email: document.querySelector("input[placeholder='Email']").value,
-                phone: document.querySelector("input[placeholder='Número de telefono']").value
+                username: document.querySelector("input[name='user-name']").value,
+                firstName: document.querySelector("input[name='firstName']").value,
+                lastName: document.querySelector("input[name='lastName']").value,
+                email: document.querySelector("input[name='email']").value,
+                phone: document.querySelector("input[name='phone']").value
             };
-
             onAuth(async (user) => {
                 if (user) {
                     try {
-                        await updateUserData(user.uid, updatedData);
+                        await updateUserData(user.uid, updatedData); // Actualizar los datos en Firebase
                         alert("Datos de perfil actualizados con éxito.");
                     } catch (error) {
                         console.error("Error al actualizar el perfil:", error);
@@ -67,15 +73,15 @@ waitForElement("#profile", async () => {
         });
     }
 
-    waitForElement(".send:last-child", () => {
-        const logoutButton = document.querySelector(".send:last-child");
+    waitForElement(".logout-button", () => {
+        const logoutButton = document.querySelector(".logout-button");
 
         logoutButton.addEventListener("click", async (event) => {
             event.preventDefault();
             try {
-                await logoutUser();
-                document.querySelectorAll('.login-form input').forEach(field => field.value = '');
-                window.location.href = "../index.html";
+                await logoutUser(); // Cerrar sesión
+                document.querySelectorAll('.profile-form input').forEach(field => field.value = ''); // Limpiar los campos
+                window.location.href = "../screens/index.html";
             } catch (error) {
                 console.error("Error al cerrar sesión:", error);
             }

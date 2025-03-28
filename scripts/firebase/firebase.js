@@ -1,7 +1,8 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
-import { getFirestore, doc, getDoc, collection, query, getDocs, addDoc, deleteDoc, updateDoc, where } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js"
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendEmailVerification, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
+import { getFirestore, doc, getDoc, collection, query, getDocs, addDoc, deleteDoc, updateDoc, where, setDoc  } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js"
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, sendEmailVerification, onAuthStateChanged  } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
+import { getStorage, ref, getDownloadURL } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-storage.js";
 import { firebaseConfig, inicioSesion, inicioDeSesion } from "../../config.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -11,10 +12,11 @@ const app = initializeApp(firebaseConfig);
 const database = getFirestore(app);
 const auth = getAuth(app);
 
+export { auth, database };
+
 // Esta función lee los datos de la colección especificada y los devuelve en un objeto id : datos
 export const readCollection = async (cole) => {
     let col = cole.split("/");
-    await inicioDeSesion(auth);
     const colRef = query(collection(database, ...col));
     const colSnap = await getDocs(colRef);
     if (!colSnap.empty) {
@@ -29,7 +31,6 @@ export const readCollection = async (cole) => {
 // Esta función lee los datos del documento solicitado de la colección especificada y lo devuelve.
 export const readDoc = async (cole, document) => {
     let col = cole.split("/");
-    await inicioDeSesion(auth);
     const docRef = doc(database, ...col, document);
     const docSnap = await getDoc(docRef);
 
@@ -44,7 +45,6 @@ export const readDoc = async (cole, document) => {
 // con los datos especificados. Además, devuelve la referencia a ese documento.
 export const createDocOnCollection = async (cole, data) => {
     let col = cole.split("/");
-    await inicioDeSesion(auth);
     const docRef = await addDoc(collection(database, ...col), data);
     return docRef.id;
 }
@@ -52,7 +52,6 @@ export const createDocOnCollection = async (cole, data) => {
 // Esta función actualiza un documento, añadiendo campos o modificando aquellos ya existentes
 export const updateDocOnCollection = async (cole, id, data) => {
     let col = cole.split("/");
-    await inicioDeSesion(auth);
     const docRef = doc(database, ...col, id);
     await updateDoc(docRef, data);
 }
@@ -60,7 +59,6 @@ export const updateDocOnCollection = async (cole, id, data) => {
 // Esta función elimina un documento de la colección especificada.
 export const deleteDocOnCollection = async (cole, document) => {
     let col = cole.split("/");
-    await inicioDeSesion(auth);
     await deleteDoc(doc(database, ...col, document));
 }
 
@@ -68,7 +66,6 @@ export const deleteDocOnCollection = async (cole, document) => {
 // tercer parámetro.
 export const filterEqualsByFieldOnCollection = async (cole, field, equals) => {
     let col = cole.split("/");
-    await inicioDeSesion(auth);
     const q = query(collection(database, ...col), where(field, "==", equals));
     const querySnapshot = await getDocs(q);
     const data = {}
@@ -82,7 +79,6 @@ export const filterEqualsByFieldOnCollection = async (cole, field, equals) => {
 // junto con el value a comprobar.
 export const filterByFieldOnCollection = async (cole, field, filter, value) => {
     let col = cole.split("/");
-    await inicioDeSesion(auth);
     const q = query(collection(database, ...col), where(field, filter, value));
     const querySnapshot = await getDocs(q);
     const data = {}
@@ -92,46 +88,35 @@ export const filterByFieldOnCollection = async (cole, field, filter, value) => {
     return data;
 }
 
-export const getImageUrl = async (imgName) => {
+export async function createUser(email, password, username) {
     try {
-        const storage = getStorage();
-        const url = await getDownloadURL(ref(storage, imgName));
-        return url;
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+        await sendEmailVerification(user);
+
+        // Verifica que Firestore esté correctamente inicializado
+        if (!database) {
+            throw new Error("Firestore no está inicializado correctamente.");
+        }
+
+        // Almacenar el username y email en Firestore
+        await setDoc(doc(database, "users", user.uid), {
+            username: username,
+            email: user.email
+        });
+
+        return user;
     } catch (error) {
-        console.log("ERROR", error);
-        throw error;
+        console.error("Error al crear usuario:", error);
+        throw error; // Lanza el error para manejarlo en el frontend
     }
 }
 
-// Esta función devuelve un objeto con todos los objetos de una categoría
-export async function getCategory(document) {
-    let path = document.split("/");
-
-    let doc = await readDoc(path[0], path[1]);
-    let res = {};
-
-    let promises = doc.subcolecciones.map(async (subcoleccion) => {
-        let subcol = await readCollection(document + "/" + subcoleccion);
-        for (let prod in subcol) {
-            res[prod] = subcol[prod];
-        }
-    });
-
-    await Promise.all(promises);
-
-    return res;
-}
-
-// Función para el registro
-export async function createUser(email, password) {
-    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-    await sendEmailVerification(userCredential.user);
-    return userCredential.user;
-}
 
 export async function signIn(email, password) {
     try {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        localStorage.setItem("currentUser", JSON.stringify(userCredential.user));
         return userCredential.user;
     } catch (error) {
         throw error;
@@ -139,7 +124,7 @@ export async function signIn(email, password) {
 }
 
 export async function signOut() {
-    await sessionStorage.removeItem("currentUser");
+    auth.signOut();
 }
 
 // Esta función actualiza el perfil del usuario
@@ -158,12 +143,14 @@ export const updateUserProfile = async (displayName, photoURL) => {
 };
 
 export function onAuth(callback) {
+    console.log(auth);
     return onAuthStateChanged(auth, callback);
 }
 
 export async function logoutUser() {
     try {
         await signOut(auth);
+        await localStorage.removeItem("currentUser");
         console.log("Usuario ha cerrado sesión.");
     } catch (error) {
         console.error("Error al cerrar sesión:", error);
@@ -180,4 +167,33 @@ export async function updateUserData(uid, updatedData) {
     const userRef = doc(database, "users", uid);
     await updateDoc(userRef, updatedData);
     console.log("Perfil actualizado correctamente.");
+}
+
+export const getImageUrl = async (imgName) => {
+    try {
+        const storage = getStorage();
+        const url = await getDownloadURL(ref(storage, imgName));
+        return url;
+    } catch (error) {
+        console.log("ERROR", error);
+        throw error;
+    }
+}
+
+// Esta función devuelve un objeto con todos los objetos de una categoría
+export async function getCategory(document) {
+    let path = document.split("/");
+    let doc = await readDoc(path[0], path[1]);
+    let res = {}
+
+    let promises = doc.subcolecciones.map(async (subcoleccion) => {
+        let subcol = await readCollection(document + "/" + subcoleccion);
+        for (let prod in subcol) {
+            res[prod] = subcol[prod];
+        }
+    });
+
+    await Promise.all(promises);
+
+    return res;
 }

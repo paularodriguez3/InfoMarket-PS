@@ -10,7 +10,7 @@ function waitForElement(selector, callback) {
     }
 }
 
-waitForElement("#sign-up", () => {
+waitForElement("#signup-form", () => {
     const signupForm = document.getElementById("signup-form");
     const usernameInput = document.getElementById("user-register");
     const passwordInput = document.getElementById("password-register");
@@ -35,57 +35,41 @@ waitForElement("#sign-up", () => {
         length: document.getElementById("length")
     };
 
-    usernameInput.addEventListener("focus", () => {
-        if (usernameInput.value !== "") {
-            usernameRequirements.style.display = "block";
+    function updateRequirement(element, isValid) {
+        if (isValid) {
+            element.classList.add("valid");
+            element.querySelector("span").style.display = "inline";
+        } else {
+            element.classList.remove("valid");
+            element.querySelector("span").style.display = "none";
         }
-    });
-
-    usernameInput.addEventListener("blur", () => {
-        if (usernameInput.value === "" || usernameRegex.test(usernameInput.value)) {
-            usernameRequirements.style.display = "none";
-        }
-    });
+    }
 
     usernameInput.addEventListener("input", () => {
         const usernameValue = usernameInput.value;
 
-        usernameRequirementsElements.firstLetter.classList.toggle('valid', /^[A-Za-z]/.test(usernameValue));
-        usernameRequirementsElements.alphanumeric.classList.toggle('valid', /^[A-Za-z0-9]+$/.test(usernameValue));
-        usernameRequirementsElements.length.classList.toggle('valid', usernameValue.length >= 5);
-
-        if (usernameValue === "" || usernameRegex.test(usernameValue)) {
+        if (usernameValue === "") {
             usernameRequirements.style.display = "none";
         } else {
-            usernameRequirements.style.display = "block";
-        }
-    });
-
-    passwordInput.addEventListener("focus", () => {
-        if (passwordInput.value !== "") {
-            passwordRequirements.style.display = "block";
-        }
-    });
-
-    passwordInput.addEventListener("blur", () => {
-        if (passwordInput.value === "" || passwordRegex.test(passwordInput.value)) {
-            passwordRequirements.style.display = "none";
+            updateRequirement(usernameRequirementsElements.firstLetter, /^[A-Za-z]/.test(usernameValue));
+            updateRequirement(usernameRequirementsElements.alphanumeric, /^[A-Za-z0-9]+$/.test(usernameValue));
+            updateRequirement(usernameRequirementsElements.length, usernameValue.length >= 5);
+            usernameRequirements.style.display = usernameRegex.test(usernameValue) ? "none" : "block";
         }
     });
 
     passwordInput.addEventListener("input", () => {
         const passwordValue = passwordInput.value;
 
-        passwordRequirementsElements.length.classList.toggle('valid', passwordValue.length >= 8);
-        passwordRequirementsElements.uppercase.classList.toggle('valid', /[A-Z]/.test(passwordValue));
-        passwordRequirementsElements.number.classList.toggle('valid', /\d/.test(passwordValue));
-        passwordRequirementsElements.lowercase.classList.toggle('valid', /[a-z]/.test(passwordValue));
-        passwordRequirementsElements.special.classList.toggle('valid', /[@$!%*?&]/.test(passwordValue));
-
-        if (passwordValue === "" || passwordRegex.test(passwordValue)) {
+        if (passwordValue === "") {
             passwordRequirements.style.display = "none";
         } else {
-            passwordRequirements.style.display = "block";
+            updateRequirement(passwordRequirementsElements.length, passwordValue.length >= 8);
+            updateRequirement(passwordRequirementsElements.uppercase, /[A-Z]/.test(passwordValue));
+            updateRequirement(passwordRequirementsElements.number, /\d/.test(passwordValue));
+            updateRequirement(passwordRequirementsElements.lowercase, /[a-z]/.test(passwordValue));
+            updateRequirement(passwordRequirementsElements.special, /[@$!%*?&]/.test(passwordValue));
+            passwordRequirements.style.display = passwordRegex.test(passwordValue) ? "none" : "block";
         }
     });
 
@@ -97,41 +81,39 @@ waitForElement("#sign-up", () => {
             const password = passwordInput.value;
             const username = usernameInput.value;
 
-            // Validación de nombre de usuario y contraseña
             if (!usernameRegex.test(username)) {
-                alert("El nombre de usuario no es válido. Debe tener al menos 5 caracteres, comenzar con una letra y contener solo letras y números.");
+                alert("El nombre de usuario no es válido.");
                 return;
             }
 
             if (!passwordRegex.test(password)) {
-                alert("La contraseña no es válida. Debe tener al menos 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial.");
+                alert("La contraseña no es válida.");
                 return;
             }
 
             try {
-                // Registro del usuario utilizando la función createUser
-                const userCredential = await createUser(email, password);
+                const userCredential = await createUser(email, password, username);
                 const user = userCredential.user;
                 alert("Usuario creado con éxito");
 
-                // Esperamos a que el usuario esté completamente autenticado
                 if (user) {
-                    // Actualizar el nombre de usuario
                     await user.updateProfile({ displayName: username });
-                    alert("Nombre de usuario actualizado");
 
-                    // Verificar si el correo no ha sido verificado aún
                     if (!user.emailVerified) {
-                        // Enviar correo de verificación
                         await user.sendEmailVerification();
                         alert("Se ha enviado un correo de verificación.");
-                    } else {
-                        alert("El correo ya ha sido verificado.");
                     }
+
+                    // Redirigir a la página deseada después del registro
+                    window.open("Sing-in.html", "_blank"); // Abre en una nueva pestaña
                 }
             } catch (error) {
                 alert(`Error: ${error.message}`);
             }
         });
     }
+
+    document.getElementById("sign-up-btn").addEventListener("click", function() {
+        window.location.href = "Sing-in.html";
+    });
 });

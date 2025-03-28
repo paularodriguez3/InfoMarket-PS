@@ -2,7 +2,13 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'SF Pro Display', sans-serif;
+}
+
+header {
+    top: 0;
+    background-color: #FAFAFC;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.2);
 }
 
 body {
@@ -13,7 +19,7 @@ body {
     flex-direction: column;
 }
 
-.login-container {
+.auth-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -23,10 +29,10 @@ body {
 
 .auth-wrapper {
     width: 100%;
-    max-width: 420px;
+    max-width: 400px;
     background: #fff;
     border-radius: 18px;
-    padding: 40px;
+    padding: 40px 30px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
@@ -67,7 +73,7 @@ body {
 
 .input-group input {
     width: 100%;
-    padding: 16px 20px 16px 45px;
+    padding: 14px 20px 14px 45px;
     font-size: 16px;
     border: 1px solid #d2d2d7;
     border-radius: 12px;
@@ -92,9 +98,10 @@ body {
 
 .form-options {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     font-size: 14px;
+    margin: 5px 0 15px;
 }
 
 .custom-checkbox {
@@ -102,6 +109,7 @@ body {
     align-items: center;
     cursor: pointer;
     color: #6e6e73;
+    line-height: 1.4;
 }
 
 .custom-checkbox input {
@@ -119,6 +127,7 @@ body {
     border-radius: 4px;
     background-color: white;
     position: relative;
+    flex-shrink: 0;
 }
 
 .custom-checkbox input:checked ~ .checkmark {
@@ -158,7 +167,7 @@ body {
     color: white;
     border: none;
     border-radius: 12px;
-    padding: 16px;
+    padding: 14px;
     font-size: 16px;
     font-weight: 500;
     cursor: pointer;
@@ -169,50 +178,16 @@ body {
     background-color: #999999;
 }
 
-.form-divider {
-    display: flex;
-    align-items: center;
-    color: #6e6e73;
+.auth-footer {
+    text-align: center;
     font-size: 14px;
-    margin: 10px 0;
-}
-
-.form-divider::before,
-.form-divider::after {
-    content: "";
-    flex: 1;
-    border-bottom: 1px solid #d2d2d7;
-}
-
-.form-divider::before {
-    margin-right: 16px;
-}
-
-.form-divider::after {
-    margin-left: 16px;
-}
-
-.secondary-button {
-    background-color: transparent;
-    color: #C2C2C2;
-    border: 1px solid #d2d2d7;
-    border-radius: 12px;
-    padding: 16px;
-    font-size: 16px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s;
-}
-
-.secondary-button:hover {
-    background-color: rgba(0, 113, 227, 0.05);
-    border-color: #C2C2C2;
+    color: #6e6e73;
+    margin-top: 20px;
 }
 
 @media (max-width: 1024px) {
     .auth-wrapper {
-        padding: 36px;
-        max-width: 380px;
+        padding: 35px 25px;
     }
 
     .auth-title {
@@ -223,26 +198,19 @@ body {
         font-size: 15px;
     }
 
-    .input-group input {
-        padding: 14px 18px 14px 42px;
-        font-size: 15px;
-    }
-
-    .primary-button,
-    .secondary-button {
-        padding: 14px;
-        font-size: 15px;
+    .auth-form {
+        gap: 18px;
     }
 }
 
 @media (max-width: 767px) {
-    .login-container {
+    .auth-container {
         padding: 16px;
         align-items: flex-start;
     }
 
     .auth-wrapper {
-        padding: 30px 24px;
+        padding: 30px 20px;
         border-radius: 14px;
         margin-top: 20px;
     }
@@ -263,7 +231,6 @@ body {
     .input-group input {
         padding: 12px 16px 12px 40px;
         font-size: 14px;
-        border-radius: 10px;
     }
 
     .input-group i {
@@ -271,18 +238,11 @@ body {
         left: 14px;
     }
 
-    .primary-button,
-    .secondary-button {
-        padding: 12px;
-        font-size: 14px;
-        border-radius: 10px;
-    }
-
     .form-options {
         font-size: 13px;
     }
 
-    .form-divider {
+    .auth-footer {
         font-size: 13px;
     }
 }

@@ -8,44 +8,48 @@
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body id="component">
-<div class="wrapper-profile">
-  <form class="login-form">
-    <div class="profile-header">
-      <div class="profile-user-foto">
-        <i class='bx bxs-user-circle user-icon'></i>
+<main>
+  <div class="profile-container">
+    <div class="profile-card">
+      <div class="profile-header">
+        <div class="avatar">
+          <i class="fas fa-user"></i>
+        </div>
+        <h1>Mi Perfil</h1>
+        <p>Administra tu información personal</p>
       </div>
-      <div class="title">
-        <h1>Perfil de usuario</h1>
-      </div>
+
+      <form class="profile-form">
+        <div class="form-group">
+          <label>Nombre de usuario</label>
+          <input type="text" name="user-name" placeholder="Ej: User">
+        </div>
+        <div class="form-group">
+          <label>Nombre</label>
+          <input type="text" name="firstName" placeholder="Ej: Paula Rosa">
+        </div>
+
+        <div class="form-group">
+          <label>Apellidos</label>
+          <input type="text" name="lastName" placeholder="Ej: Rodríguez Morales">
+        </div>
+
+        <div class="form-group">
+          <label>Correo electrónico</label>
+          <input type="email" name="email" placeholder="Ej: ejemplo@gmail.com">
+        </div>
+
+        <div class="form-group">
+          <label>Teléfono</label>
+          <input type="tel" name="phone" placeholder="Ej: 600 000 000">
+        </div>
+
+        <button type="submit" class="save-button">Guardar cambios</button>
+        <button type="button" class="logout-button">Cerrar sesión</button>
+      </form>
     </div>
-    <div class="fields-container">
-      <div class="column">
-        <div class="first-camp">
-          <input type="text" placeholder="Nombre">
-        </div>
-        <div class="first-camp">
-          <input type="text" placeholder="Primer apellido">
-        </div>
-        <div class="first-camp">
-          <input type="text" placeholder="Segundo apellido">
-        </div>
-      </div>
-      <div class="column">
-        <div class="second-camp">
-          <input type="text" placeholder="Nombre de usuario">
-        </div>
-        <div class="second-camp">
-          <input type="email" placeholder="Email">
-        </div>
-        <div class="second-camp">
-          <input type="text" placeholder="Número de telefono">
-        </div>
-      </div>
-    </div>
-    <button type="submit" class="send">Modificar</button>
-    <button type="submit" class="send">Cerrar sesión</button>
-  </form>
-</div>
+  </div>
+</main>
 
 <script type="module" src="../../templates/User-component/personal-profile.js"></script>
 </body>
