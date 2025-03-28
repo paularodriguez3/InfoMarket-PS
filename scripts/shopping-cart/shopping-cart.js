@@ -38,7 +38,7 @@ async function showShoppingCart() { // TODO: Finish showShoppingCart()
         itemComponent.querySelector("#product-desc-component").textContent = item.data.Descripcion;
         itemComponent.querySelector("#product-quantity-component").textContent = "Qty: " + item.Cantidad;
         let price= parseFloat(item.data.Precio) * parseFloat(item.Cantidad);
-        itemComponent.querySelector("#product-price-component").textContent = price + "€";
+        itemComponent.querySelector("#product-price-component").textContent = Math.round(price * 100)/100 + "€";
         totalPrice += price;
 
         // Añadir botones
@@ -63,7 +63,7 @@ async function showShoppingCart() { // TODO: Finish showShoppingCart()
         // Añadir componente
         shoppingCartList.appendChild(itemComponent);
     }
-    document.getElementById("total-price").innerText = totalPrice + "€";
+    document.getElementById("total-price").innerText = Math.round(totalPrice*100)/100 + "€";
     console.log(shoppingCart);
 }
 
