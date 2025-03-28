@@ -1,4 +1,5 @@
 import {createDocOnCollection, readCollection, readDoc, filterEqualsByFieldOnCollection, deleteDocOnCollection, updateDocOnCollection, getImageUrl, getCategory } from "../../scripts/firebase/firebase.js";
+import {addToCart} from "../shopping-cart/shopping-cart.js";
 
 async function cargarComponenteProducto() {
     const response = await fetch("../templates/product-component/product-component.html");
@@ -38,6 +39,12 @@ export async function obtenerProductos(categoria) {
             localStorage.setItem("productoSeleccionado", JSON.stringify({ id, data: productoData, quantity: null}));
             window.location.href = "../screens/product-details.html";
             //console.log([id, productoData]);
+        });
+
+        const addToCartButton = productoElemento.querySelector("#add-to-cart");
+        addToCartButton.addEventListener("click", () => {
+            const producto = { id, data: productoData, quantity: null};
+            addToCart(producto, 1);
         });
 
         productosGrid.appendChild(productoElemento);

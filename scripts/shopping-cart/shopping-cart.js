@@ -48,6 +48,7 @@ async function showShoppingCart() { // TODO: Finish showShoppingCart()
         plus.classList.remove("hidden-button");
         minus.classList.remove("hidden-button");
         console.log(plus.classList);
+
         // Añadir componente
         shoppingCartList.appendChild(itemComponent);
     }
