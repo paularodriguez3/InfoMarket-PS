@@ -43,11 +43,22 @@ async function showShoppingCart() { // TODO: Finish showShoppingCart()
 
         // Añadir botones
         const plus = itemComponent.getElementById("button-plus");
+        plus.addEventListener("click", () => {
+            addToCart(item, 1);
+            window.location.reload();
+            showShoppingCart();
+        });
+
         const minus = itemComponent.getElementById("button-minus");
-        console.log(plus.classList);
+        minus.addEventListener("click", () => {
+            // TODO: Restar a cantidad
+            removeFromCart(item, 1);
+            window.location.reload();
+            showShoppingCart();
+        });
+
         plus.classList.remove("hidden-button");
         minus.classList.remove("hidden-button");
-        console.log(plus.classList);
 
         // Añadir componente
         shoppingCartList.appendChild(itemComponent);
@@ -60,11 +71,24 @@ export function addToCart(item, quantity) {
     const shoppingCart = JSON.parse(localStorage.getItem("carrito")) || [];
     const cartItem = shoppingCart.find(e => e.id === item.id); // FIXME: Evitar guardar el mismo item varias veces
     if (!cartItem) {
-        const newItem = Object.assign(Object.create(null), item, {Cantidad: 1}); // TODO: Ver como clonar el objeto sin prototype
-                                                                                         // TODO: O añadir el atributo Cantidad al prototype
-        shoppingCart.push(newItem);
+        item.Cantidad = quantity;
+        shoppingCart.push(item);
     } else {
-        cartItem.Cantidad = cartItem.Cantidad + 1;
+        cartItem.Cantidad += quantity;
+    }
+    localStorage.setItem("carrito", JSON.stringify(shoppingCart));
+}
+
+function removeFromCart(item) {
+    const shoppingCart = JSON.parse(localStorage.getItem("carrito")) || [];
+    const cartItem = shoppingCart.find(e => e.id === item.id);
+    if (!cartItem) {
+        console.log("Objeto no encontrado.");
+        return;
+    }
+    cartItem.Cantidad--;
+    if (cartItem.Cantidad === 0) {
+        shoppingCart.splice(shoppingCart.indexOf(cartItem), 1);
     }
     localStorage.setItem("carrito", JSON.stringify(shoppingCart));
 }
