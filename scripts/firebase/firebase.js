@@ -1,8 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
 import { getFirestore, doc, getDoc, collection, query, getDocs, addDoc, deleteDoc, updateDoc, where } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js"
-import { getAuth } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
-import { getStorage, ref, getDownloadURL } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-storage.js";
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendEmailVerification } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
 import { firebaseConfig, inicioSesion, inicioDeSesion } from "../../config.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -121,3 +120,38 @@ export async function getCategory(document) {
 
     return res;
 }
+
+// Función para el registro
+export async function createUser(email, password) {
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    await sendEmailVerification(userCredential.user);
+    return userCredential.user;
+}
+
+export async function signIn(email, password) {
+    try {
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        return userCredential.user;
+    } catch (error) {
+        throw error;
+    }
+}
+
+export async function signOut() {
+    auth.signOut();
+}
+
+// Esta función actualiza el perfil del usuario
+export const updateUserProfile = async (displayName, photoURL) => {
+    const auth = getAuth();
+    const user = auth.currentUser;
+
+    if (user) {
+        await updateProfile(user, {
+            displayName: displayName,
+            photoURL: photoURL
+        });
+    } else {
+        console.log("No hay usuario autenticado.");
+    }
+};
