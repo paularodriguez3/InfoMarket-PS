@@ -35,7 +35,7 @@ async function showShoppingCart() { // TODO: Finish showShoppingCart()
         itemComponent.querySelector("#image").src = await getImageUrl(item.data.Imagen);
         itemComponent.querySelector("#product-name-component").textContent = item.data.Nombre;
         itemComponent.querySelector("#product-desc-component").textContent = item.data.Descripcion;
-        // item.querySelector("#product-quantity-component").textContent = element.data.Quantity;
+        itemComponent.querySelector("#product-quantity-component").textContent = "Qty: " + item.Cantidad;
         itemComponent.querySelector("#product-price-component").textContent = item.data.Precio;
 
         // Añadir botones
@@ -48,10 +48,18 @@ async function showShoppingCart() { // TODO: Finish showShoppingCart()
         // Añadir componente
         shoppingCartList.appendChild(itemComponent);
     }
+    console.log(shoppingCart);
 }
 
 export function addToCart(item) {
-    shoppingCart.push(item);
+    const cartItem = shoppingCart.find(e => e.id === item.id); // FIXME: Evitar guardar el mismo item varias veces
+    if (!cartItem) {
+        const newItem = Object.assign(Object.create(null), item, {Cantidad: 1}); // TODO: Ver como clonar el objeto sin prototype
+                                                                                         // TODO: O añadir el atributo Cantidad al prototype
+        shoppingCart.push(newItem);
+    } else {
+        cartItem.Cantidad = cartItem.Cantidad + 1;
+    }
     console.log(shoppingCart);
 }
 
