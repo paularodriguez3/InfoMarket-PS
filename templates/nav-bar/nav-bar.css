@@ -88,6 +88,7 @@ main {
     margin-inline: 5px;
 }
 #nav-list a {
+    text-decoration: none;
     cursor: pointer;
 }
 #nav-list li:hover {
@@ -273,6 +274,9 @@ body {
 @media (max-width: 768px) {
     #header-navigation,
     #header-menu {
+        display: compact;
+    }
+    #nav-bottom {
         display: none;
     }
 
