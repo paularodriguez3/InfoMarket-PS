@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 });*/
 // =============================
 
-async function showShoppingCart() { // TODO: Finish showShoppingCart()
+async function showShoppingCart() {
     // Obtener el template de product-info-component
     await loadProductInfoComponent();
     const template = document.getElementById("product-info-template").content;
@@ -51,7 +51,6 @@ async function showShoppingCart() { // TODO: Finish showShoppingCart()
 
         const minus = itemComponent.getElementById("button-minus");
         minus.addEventListener("click", () => {
-            // TODO: Restar a cantidad
             removeFromCart(item, 1);
             window.location.reload();
             showShoppingCart();
