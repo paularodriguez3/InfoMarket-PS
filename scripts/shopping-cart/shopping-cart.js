@@ -63,12 +63,13 @@ async function showShoppingCart() {
         shoppingCartList.appendChild(itemComponent);
     }
     document.getElementById("total-price").innerText = Math.round(totalPrice*100)/100 + "€";
-    console.log(shoppingCart);
+
+    // console.log(shoppingCart);
 }
 
 export function addToCart(item, quantity) {
     const shoppingCart = JSON.parse(localStorage.getItem("carrito")) || [];
-    const cartItem = shoppingCart.find(e => e.id === item.id); // FIXME: Evitar guardar el mismo item varias veces
+    const cartItem = shoppingCart.find(e => e.id === item.id);
     if (!cartItem) {
         item.Cantidad = quantity;
         shoppingCart.push(item);
