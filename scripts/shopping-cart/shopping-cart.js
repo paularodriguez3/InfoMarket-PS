@@ -4,6 +4,16 @@ import {getImageUrl, readCollection} from "../firebase/firebase.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
     await showShoppingCart();
+
+    const continueShopping = document.getElementById("continue-shopping-button");
+    continueShopping.addEventListener("click", () => {
+        window.location.href = "../screens/index.html";
+    });
+
+    const buy = document.getElementById("buy-button");
+    buy.addEventListener("click", () => {
+        window.location.href = "../screens/billing-adress.html";
+    });
 });
 
 // PRUEBA CON LA BASE DE DATOS

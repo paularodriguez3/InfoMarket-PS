@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
-    if (sessionStorage.getItem("currentUser") !== null) {
-        document.querySelectorAll(".hideauth").forEach(e => e.style.display = "none");
-    } else {
-        document.querySelector(".progress-container").style.marginTop = "30rem";
-    }
+    const continueButton = document.getElementById("continue-button");
+    continueButton.addEventListener("click", () => {
+        window.location.href = "../screens/shipping-method.html";
+    });
 });

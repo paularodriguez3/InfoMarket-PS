@@ -5,7 +5,7 @@
     background-color: #D9D9D9;
 }
 
-#shopping-info-wrapper {
+#products-info-component {
     list-style: none;
     padding: 0;
 }
@@ -26,4 +26,23 @@
     display: flex;
     justify-content: space-between;
     padding: 10px 20px;
+}
+
+@media(max-width: 1300px) {
+    #shopping-info-component {
+        width: 80%;
+        justify-self: center;
+    }
+}
+
+@media(max-width: 820px) {
+    #shopping-info-component {
+        width: 60%;
+    }
+}
+
+@media(max-width: 630px) {
+    #shopping-info-component {
+        width: 40%;
+    }
 }

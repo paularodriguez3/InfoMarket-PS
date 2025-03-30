@@ -1,17 +1,11 @@
-header {
-    width: 100%;
-}
-
 body {
     font-family: 'SF Pro Display', sans-serif;
     background-color: #f8f8f8;
     margin: 0;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
     justify-content: center;
     align-items: center;
-    height: 100vh;
 }
 
 main {
@@ -26,8 +20,8 @@ main {
     display: flex;
     align-items: center;
     position: relative;
-    justify-content: space-between;
-    width: 60%;
+    width: 100%;
+    justify-content: center;
 }
 
 .step {
@@ -58,10 +52,14 @@ main {
     color: white;
 }
 
-p {
+.step p {
     margin-top: 5px;
     font-size: 14px;
     text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 100px;
+    padding: 0 5px;
 }
 
 .step::after {
@@ -82,4 +80,29 @@ p {
 
 .step:first-child::after {
     left: calc(50% + 20px);
+}
+
+@media (max-width: 768px) {
+    .progress-container {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .step p {
+        font-size: 12px;
+        max-width: 80px;
+    }
+
+    .circle {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+
+    .step::after {
+        top: 15px;
+        left: calc(50% + 15px);
+        width: calc(100% - 30px);
+    }
 }

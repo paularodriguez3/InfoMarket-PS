@@ -12,26 +12,9 @@
 <body>
 
 <header id="header"></header>
-
-<div class="progress-container">
-  <div class="step active">
-    <div class="circle">1</div>
-    <p>Facturación</p>
-  </div>
-  <div class="line"></div>
-  <div class="step">
-    <div class="circle">2</div>
-    <p>Método de envío</p>
-  </div>
-  <div class="line"></div>
-  <div class="step">
-    <div class="circle">3</div>
-    <p>Pago</p>
-  </div>
-  <div class="line"></div>
-  <div class="step">
-    <div class="circle">4</div>
-    <p>Resumen</p>
+<div id="container2">
+  <div id="container1">
+    <div id = "shopping-process"></div>
   </div>
 </div>
 
@@ -40,10 +23,6 @@
     <section id="billing-address">
       <h2>DIRECCIÓN DE FACTURACIÓN</h2>
       <form>
-        <label class="hideauth" for="name">Nombre</label>
-        <input class="hideauth" type="text" id="name" name="name" required>
-        <label class="hideauth" for="email">Email</label>
-        <input class="hideauth" type="email" id="email" name="email" required>
         <label for="country">País</label>
         <input type="text" id="country" name="country" required>
         <label for="address">Dirección</label>
@@ -52,7 +31,7 @@
         <input type="text" id="zip" name="zip" required>
         <label for="province">Provincia</label>
         <input type="text" id="province" name="province" required>
-        <button type="submit">Continuar</button>
+        <button id="continue-button" type="submit">Continuar</button>
       </form>
     </section>
 
