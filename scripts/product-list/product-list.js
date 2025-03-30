@@ -15,11 +15,11 @@ export async function obtenerProductos(categoria) {
     const productosGrid = document.getElementById("product-grid");
     const template = document.getElementById("product-template").content;
 
-    //console.log(categoria);
+    console.log(categoria);
 
     const productos = await getCategory(categoria);
 
-    //console.log(productos);
+    console.log(productos);
 
     for (const [id, productoData] of Object.entries(productos)) {
 
@@ -35,8 +35,7 @@ export async function obtenerProductos(categoria) {
         const seeButton = productoElemento.querySelector("#see");
 
         seeButton.addEventListener("click", () => {
-            event.stopPropagation();
-            localStorage.setItem("productoSeleccionado", JSON.stringify({ id, data: productoData }));
+            localStorage.setItem("productoSeleccionado", JSON.stringify({ id, data: productoData, quantity: null}));
             window.location.href = "../screens/product-details.html";
             //console.log([id, productoData]);
         });

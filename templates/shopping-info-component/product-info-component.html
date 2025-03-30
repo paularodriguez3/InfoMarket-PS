@@ -2,22 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../shopping-info-component/product-info-component.css">
+    <link rel="stylesheet" href="../templates/shopping-info-component/product-info-component.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Title</title>
 </head>
 <body>
-    <section id="product-info-component">
-        <div id="product-image">
-            <img src="../../assets/icons/product/torre-pc-gaming.jpg" alt="Producto">
-        </div>
-        <div id="product-info">
-            <div id="product-name">Ordenador Sobremesa PcCom Ready</div>
-            <div id="product-desc">Intel Core i5-12400F / 32GB / 1TB SSD / RTX4060</div>
-        </div>
-        <div id="product-quantity">Qty: 1</div>
-        <div id="product-price">
-            4096.99€
-        </div>
-    </section>
+    <template id="product-info-template">
+        <section id="product-info-component">
+            <div id="product-image-component">
+                <img id="image" alt="Producto">
+            </div>
+            <div id="product-info">
+                <div id="product-name-component">Ordenador Sobremesa PcCom Ready</div>
+                <div id="product-desc-component">Intel Core i5-12400F / 32GB / 1TB SSD / RTX4060</div>
+            </div>
+            <div id="button-minus" class="qty-button hidden-button">
+                <button class="qty-button"><i class='bx bxs-minus-circle'></i></button>
+            </div>
+            <div id="product-quantity-component">Qty: 1</div>
+            <div id="button-plus" class="qty-button hidden-button">
+                <button class="qty-button" ><i class='bx bxs-plus-circle' ></i></button>
+            </div>
+            <div id="product-price-component">
+                4096.99€
+            </div>
+        </section>
+    </template>
 </body>
 </html>
