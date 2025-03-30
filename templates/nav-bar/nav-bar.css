@@ -88,6 +88,7 @@ main {
     margin-inline: 5px;
 }
 #nav-list a {
+    text-decoration: none;
     cursor: pointer;
 }
 #nav-list li:hover {
@@ -139,7 +140,7 @@ body {
 }
 #menu-wrapper {
     display: flex;
-    width: 90%;
+    width: 100%;
     justify-content: space-evenly;
     padding-top: 1.5%;
     padding-bottom: 4%;
@@ -246,4 +247,114 @@ body {
 
 .search.active .btn {
     right: 10px;
+}
+
+
+.blur-item {
+    filter: blur(8px);
+    transition: filter 0.3s ease;
+    pointer-events: none;
+}
+
+@media (max-width: 1024px) {
+    #nav-bottom {
+        padding-inline: 10%;
+    }
+    #nav-list li {
+        font-family: 'SF Pro Display', sans-serif;
+        font-size: 13px;
+        margin-inline: 3px;
+    }
+    #nav-list i {
+        font-family: 'SF Pro Display', sans-serif;
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 768px) {
+    #header-navigation,
+    #header-menu {
+        display: compact;
+    }
+    #nav-bottom {
+        display: none;
+    }
+
+    #mobile-nav-container {
+        display: block;
+    }
+
+
+    #mobile-menu-btn {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 24px;
+        color: #323232;
+        position: fixed;
+        top: 15px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1001;
+        margin: 0 auto;
+        padding: 10px;
+    }
+
+    #nav-top {
+        justify-content: center;
+    }
+
+    #mobile-menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: #F5F5F7;
+        z-index: 1000;
+        padding: 70px 20px 20px;
+    }
+
+    #mobile-menu ul {
+        list-style: none;
+        text-align: center;
+        padding: 0;
+        margin: 0 auto;
+        max-width: 300px;
+    }
+
+    #mobile-menu li {
+        padding: 15px 0;
+        border-bottom: 1px solid #EFEFEF;
+        display: flex;
+        justify-content: center;
+    }
+
+    #mobile-menu a {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        color: #3D3D3D;
+        font-family: 'SF Pro Display', sans-serif;
+        font-size: 16px;
+        text-decoration: none;
+        width: fit-content;
+    }
+
+    #mobile-menu i {
+        font-size: 22px;
+    }
+
+    .mobile-menu.hidden {
+        display: none;
+    }
+
+
+}
+
+
+@media (min-width: 769px) {
+    #mobile-nav-container {
+        display: none !important;
+    }
 }

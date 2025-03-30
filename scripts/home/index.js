@@ -1,12 +1,23 @@
 document.addEventListener('DOMContentLoaded', () => {
     const videos = document.querySelectorAll('.offer-videos');
 
-    videos.forEach(video => {
-        video.addEventListener('mouseenter', () => {
-            video.play();
+    // Solo activar autoplay con hover en desktop
+    if (window.innerWidth > 768) {
+        videos.forEach(video => {
+            video.addEventListener('mouseenter', () => {
+                video.play();
+            });
         });
-    });
+    } else {
+        // En móvil, autoplay los videos muteados
+        videos.forEach(video => {
+            video.setAttribute('autoplay', '');
+            video.setAttribute('muted', '');
+            video.setAttribute('playsinline', '');
+        });
+    }
 
+    // Resto del código existente...
     const hiddenElements = document.querySelectorAll('.hidden');
     hiddenElements.forEach((el) => observer.observe(el));
 
@@ -20,35 +31,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let lengthItems = items.length - 1;
     let active = 0;
-    next.onclick = function(){
+
+    // Ajustar intervalo según tamaño de pantalla
+    let intervalTime = window.innerWidth <= 768 ? 4000 : 3000;
+    let refreshInterval = setInterval(() => { next.click() }, intervalTime);
+
+    next.onclick = function() {
         active = active + 1 <= lengthItems ? active + 1 : 0;
         reloadSlider();
     }
-    prev.onclick = function(){
+
+    prev.onclick = function() {
         active = active - 1 >= 0 ? active - 1 : lengthItems;
         reloadSlider();
     }
-    let refreshInterval = setInterval(()=> {next.click()}, 3000);
-    function reloadSlider(){
+
+    function reloadSlider() {
         const offsetVideoStandard = items[0].offsetLeft;
-        const  offsetTextStandard = text[0].offsetLeft;
+        const offsetTextStandard = text[0].offsetLeft;
         slider.style.left = -items[active].offsetLeft + offsetVideoStandard + 'px';
         overlay.style.left = -text[active].offsetLeft + offsetTextStandard + 'px';
+
         let last_active_dot = document.querySelector('#video-wrapper .video-dots li.active');
         last_active_dot.classList.remove('active');
         dots[active].classList.add('active');
 
         clearInterval(refreshInterval);
-        refreshInterval = setInterval(()=> {next.click()}, 3000);
+        intervalTime = window.innerWidth <= 768 ? 4000 : 3000;
+        refreshInterval = setInterval(() => { next.click() }, intervalTime);
     }
 
     dots.forEach((li, key) => {
-        li.addEventListener('click', ()=>{
+        li.addEventListener('click', () => {
             active = key;
             reloadSlider();
-        })
-    })
-    window.onresize = function(event) {
+        });
+    });
+
+    window.onresize = function() {
         reloadSlider();
     };
 

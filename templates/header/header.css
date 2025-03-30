@@ -8,6 +8,7 @@
 header {
     top: 0;
     background-color: #FAFAFC;
+    position: relative;
 }
 
 body {
@@ -246,4 +247,50 @@ body {
 
 .search.active .btn {
     right: 10px;
+}
+
+@media (max-width: 767px) {
+    #nav-top {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 12px 15px;
+        background-color: #FAFAFC;
+        z-index: 1;
+        border-bottom: 1px solid #EFEFEF;
+        height: auto;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
+
+    #header-logo {
+        position: absolute;
+        left: 15px;
+        top: 15px;
+        z-index: 1;
+    }
+
+    #header-logo img {
+        height: 50px;
+        width: auto;
+        max-width: 50px;
+        object-fit: contain;
+    }
+
+    #user-cart {
+        order: 3;
+        margin-left: 20px;
+        margin-top: 35px;
+        padding-top: 25px;
+    }
+
+    body {
+        padding-top: 0;
+        position: relative;
+        z-index: 2;
+    }
+
+    #logo-searchbar {
+        padding-left: 0;
+    }
 }
