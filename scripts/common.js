@@ -8,6 +8,7 @@ async function loadTemplate(template, targetElementId, scriptPath = null) {
             const scriptElement = document.createElement("script");
             scriptElement.src = scriptPath;
             scriptElement.defer = true;
+            scriptElement.type = "module";
             document.body.appendChild(scriptElement);
         }
     } catch (error) {
@@ -28,15 +29,15 @@ async function loadCommonTemplates() {
     }
 
     if (pagina.endsWith('Sing-in.html')) {
-        await loadTemplate('login-component/componente-inicio-sesion.html','sign-in');
+        await loadTemplate('login-component/componente-inicio-sesion.html','sign-in', '../templates/login-component/sign-in.js');
     }
 
     if (pagina.endsWith('Sing-up.html')) {
-        await loadTemplate('login-component/componente-crear-cuenta.html','sign-up');
+        await loadTemplate('login-component/componente-crear-cuenta.html','sign-up', '../templates/login-component/sign-up.js');
     }
 
     if (pagina.endsWith('Personal-profile.html')) {
-        await loadTemplate('User-component/Personal-profile-component.html', 'profile');
+        await loadTemplate('User-component/Personal-profile-component.html', 'profile', '../templates/User-component/personal-profile.js');
     }
 
     if (pagina.endsWith('order-review.html')) {

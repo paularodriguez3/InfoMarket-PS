@@ -3,31 +3,59 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Component</title>
+  <title>Registro</title>
   <link rel="stylesheet" href="component.css">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
-<body id="component">
-<div class="wrapper-component">
-  <form class="login-form">
-    <h1>Crear cuenta de usuario</h1>
-    <div class="input-login">
-      <input type="text" placeholder="Usuario" required>
-      <i class='bx bx-user'></i>
+<body>
+<main class="login-container">
+  <div class="auth-wrapper">
+    <div class="logo-container">
+      <img src="../assets/icons/header/infomarket_logo_mini.png" alt="InfoMarket Logo" class="login-logo">
     </div>
-    <div class="input-login">
-      <input type="email" placeholder="Email" required>
-      <i class='bx bxs-envelope'></i>
-    </div>
-    <div class="input-login">
-      <input type="password" placeholder="Contraseña" required>
-      <i class='bx bx-low-vision'></i>
-    </div>
-    <button type="submit" class="send">Crear cuenta</button>
-    <div class="signup-link">
-      <p>¿Ya tienes una cuenta? <a href="Sing-in.html">Iniciar sesión</a> </p>
-    </div>
-  </form>
-</div>
+    <h1 class="auth-title">Crear cuenta</h1>
+    <p class="auth-subtitle">Introduce tus credenciales para crear tu cuenta</p>
+
+    <form id="signup-form" class="auth-form">
+      <div class="input-group">
+        <input id="user-register" type="text" placeholder="Nombre de usuario" required>
+        <i class="fas fa-user"></i>
+      </div>
+      <div id="username-requirements" class="requirements" style="display: none;">
+        <p id="first-letter" class="requirement">Debe comenzar con una letra <span>✔</span></p>
+        <p id="alphanumeric" class="requirement">Solo se permiten letras y números <span>✔</span></p>
+        <p id="length" class="requirement">Debe tener al menos 5 caracteres <span>✔</span></p>
+      </div>
+
+      <div class="input-group">
+        <input id="email-register" type="email" placeholder="Email" required>
+        <i class="bx bxs-envelope"></i>
+      </div>
+      <div class="input-group">
+        <input id="password-register" type="password" placeholder="Contraseña" required>
+        <i class="fas fa-lock"></i>
+      </div>
+      <div id="password-requirements" class="requirements" style="display: none;">
+        <p id="password-length" class="requirement">Debe tener al menos 8 caracteres <span>✔</span></p>
+        <p id="password-uppercase" class="requirement">Debe tener una mayúscula <span>✔</span></p>
+        <p id="password-number" class="requirement">Debe tener un número <span>✔</span></p>
+        <p id="password-lowercase" class="requirement">Debe tener una minúscula <span>✔</span></p>
+        <p id="password-special" class="requirement">Debe tener un carácter especial <span>✔</span></p>
+      </div>
+
+      <button type="submit" class="primary-button">Crear cuenta</button>
+
+      <div class="form-divider">
+        <span>o</span>
+      </div>
+
+      <button type="button" class="secondary-button" id="sign-up-btn" >
+        Iniciar Sesión
+      </button>
+    </form>
+  </div>
+</main>
+
+<script type="module" src="sign-up.js"></script>
 </body>
 </html>
