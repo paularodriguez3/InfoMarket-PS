@@ -1,4 +1,5 @@
 import {createDocOnCollection, readCollection, readDoc, filterEqualsByFieldOnCollection, deleteDocOnCollection, updateDocOnCollection, getImageUrl, getCategory } from "../../scripts/firebase/firebase.js";
+import {addToCart} from "../shopping-cart/shopping-cart.js";
 
 async function cargarComponenteProducto() {
     const response = await fetch("../templates/product-component/product-component.html");

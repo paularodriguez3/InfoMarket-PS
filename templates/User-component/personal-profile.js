@@ -21,7 +21,7 @@ waitForElement("#profile", () => {
         }
     });
     if (localStorage.getItem("currentUser") === null) {
-        window.location.href = "../screens/Sing-in.html";
+        window.location.href = "../screens/sign-in.html";
     }
 
 

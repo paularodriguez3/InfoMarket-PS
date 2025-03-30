@@ -1,5 +1,4 @@
 import { signIn } from "../../scripts/firebase/firebase.js";
-console.log("¿Se está cargando sign-in.js?");
 
 function waitForElement(selector, callback) {
     const element = document.querySelector(selector);
@@ -51,6 +50,6 @@ function setupLoginForm(loginForm) {
 
     const signUpButton = document.getElementById("sign-up-btn");
     signUpButton.addEventListener("click", () => {
-        window.location.href = "Sing-up.html";
+        window.location.href = "Sign-up.html";
     });
 }

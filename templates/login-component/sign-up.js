@@ -1,4 +1,3 @@
-console.log("¿Se está cargando sign-up.js?");
 import { createUser, signOut } from "../../scripts/firebase/firebase.js";
 
 function waitForElement(selector, callback) {
@@ -105,7 +104,7 @@ waitForElement("#signup-form", () => {
                     }
 
                     // Redirigir a la página deseada después del registro
-                    window.open("Sing-in.html", "_blank"); // Abre en una nueva pestaña
+                    window.open("sign-in.html", "_blank"); // Abre en una nueva pestaña
                 }
             } catch (error) {
                 alert(`Error: ${error.message}`);
@@ -114,6 +113,6 @@ waitForElement("#signup-form", () => {
     }
 
     document.getElementById("sign-up-btn").addEventListener("click", function() {
-        window.location.href = "Sing-in.html";
+        window.location.href = "sign-in.html";
     });
 });

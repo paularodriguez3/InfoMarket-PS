@@ -116,6 +116,24 @@ body {
     background-color: #999999;
 }
 
+.logout-button {
+    width: 100%;
+    padding: 1rem;
+    background-color: #C2C2C2;
+    color: white;
+    border: none;
+    border-radius: 0.75rem;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: 0.1rem;
+}
+
+.logout-button:hover {
+    background-color: #999999;
+}
+
 @media (max-width: 768px) {
     .profile-card {
         padding: 1.5rem;
