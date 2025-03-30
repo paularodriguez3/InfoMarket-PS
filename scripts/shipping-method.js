@@ -33,8 +33,19 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     const continueButton = document.getElementById("button");
-    continueButton.addEventListener("click", () => {
-        window.location.href = "../screens/payment-method.html";
+    continueButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        let canContinue = true;
+        console.log(document.getElementById('address').value);
+        console.log(document.getElementById('shop').selectedIndex);
+        if (document.getElementById('address').value === "" && document.getElementById('shop').selectedIndex === 0) {
+            canContinue = false;
+        }
+        if (canContinue) {
+            window.location.href = "../screens/payment.html";
+        } else {
+            alert("Rellena todos los campos, por favor.")
+        }
     });
 
 });
