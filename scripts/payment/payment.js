@@ -4,8 +4,9 @@ document.addEventListener("DOMContentLoaded", async function() {
     try {
         await loadPayPalSDK();
 
-        let precioOriginal = 10.00;
+        let precioOriginal = parseFloat(localStorage.getItem('precio-total'));
         let precioFinal = precioOriginal;
+        document.getElementById("total-amount").innerText = precioFinal;
 
         const totalAmountElement = document.getElementById("total-amount");
         const discountInput = document.getElementById("discount-code");
