@@ -1,0 +1,17 @@
+Index: scripts/common.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>async function loadTemplate(template, targetElementId, scriptPath = null) {\r\n    try {\r\n        const response = await fetch(`../../templates/${template}`);\r\n        const html = await response.text();\r\n        document.getElementById(targetElementId).innerHTML = html;\r\n\r\n        if (scriptPath) {\r\n            const scriptElement = document.createElement(\"script\");\r\n            scriptElement.src = scriptPath;\r\n            scriptElement.defer = true;\r\n            document.body.appendChild(scriptElement);\r\n        }\r\n    } catch (error) {\r\n        console.error(`Error loading template ${template}:`, error);\r\n    }\r\n}\r\n\r\nasync function loadCommonTemplates() {\r\n    await loadTemplate('header/header.html', 'header', '../../templates/header/header.js');\r\n    await loadTemplate('footer/footer.html', 'footer');\r\n\r\n    const pagina = window.location.pathname;\r\n\r\n    if (!(pagina.endsWith('billing-adress.html') || pagina.endsWith('order-review.html') || pagina.endsWith('payment-method.html') || pagina.endsWith('shipping-method.html'))) {\r\n        await loadTemplate('nav-bar/nav-bar.html', 'nav-bar', '../../templates/nav-bar/nav-bar.js');\r\n    } else {\r\n        await loadTemplate('shopping-info-component/shopping-info-component.html', 'shopping');\r\n    }\r\n\r\n    if (pagina.endsWith('Sing-in.html')) {\r\n        await loadTemplate('login-component/componente-inicio-sesion.html','sign-in');\r\n    }\r\n\r\n    if (pagina.endsWith('Personal-profile.html')) {\r\n        await loadTemplate('User-component/Personal-profile-component.html', 'profile');\r\n    }\r\n\r\n    if (pagina.endsWith('order-review.html')) {\r\n        await loadTemplate('order-review-component/order-review-component.html', 'review');\r\n    }\r\n}\r\n\r\nloadCommonTemplates();\r\n
+===================================================================
+diff --git a/scripts/common.js b/scripts/common.js
+--- a/scripts/common.js	(revision e299689d967a4c4a68cbadad984a6bdb527bf070)
++++ b/scripts/common.js	(date 1743254991626)
+@@ -37,7 +37,7 @@
+ 
+     if (pagina.endsWith('order-review.html')) {
+         await loadTemplate('order-review-component/order-review-component.html', 'review');
+-    }
++    }z
+ }
+ 
+ loadCommonTemplates();
