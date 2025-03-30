@@ -8,12 +8,12 @@ body {
     flex-direction: column;
     min-height: 100vh;
     background-color: #FAFAFC;
-    padding-top: 100px;
 }
 
 main {
     background-color: #FAFAFC;
 }
+
 header {
     position: fixed;
     top: 0;
@@ -23,38 +23,61 @@ header {
     z-index: 1000;
 }
 
-#billing-shopping-wrapper {
-     display: flex;
-     justify-content: center; /* Centra horizontalmente */
-     align-items: center; /* Centra verticalmente */
-     width: 90%;
-     gap: 5%;
-     margin-top: 0; /* Eliminar margen extra */
- }
+#container1 {
+    width: 90%;
+}
 
-#billing-address {
+#container2 {
+    justify-items: center;
+    width: 100%;
+}
+
+#shipping-method-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 90%;
+    gap: 5%;
+    margin-top: 0;
+}
+
+#shipping-method {
     flex: 1;
+    height: fit-content;
     background-color: white;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    min-width: 500px;
+    width: 500px;
 }
 
-#billing-address form {
+#shipping-method form {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-#billing-address input {
+#shipping-method input {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
 }
 
-#billing-address button {
+#shipping-method select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: white;
+    cursor: pointer;
+}
+
+#shipping-method select:disabled {
+    background-color: #f0f0f0;
+    cursor: not-allowed;
+}
+
+#shipping-method button {
     padding: 12px;
     background-color: #746F6F;
     color: white;
@@ -62,35 +85,60 @@ header {
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
+    margin-top: 10px;
 }
 
 #billing-address button:hover {
     background-color: #5A4F4F;
 }
 
-#billing-shopping-wrapper {
+#shipping-method-wrapper {
     padding-bottom: 70px;
 }
 
-#billing-address h2 {
+#shipping-method h2 {
     margin-bottom: 20px;
 }
 
-#billing-address form {
+#shipping-method form {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.progress-container {
-    margin-top: 165px;
-}
-
-#shopping-info-component article{
-    overflow: hidden;
-}
-
 footer {
     margin-top: auto;
     width: 100%;
+}
+
+@media(max-width: 1300px) {
+    #shipping-method-wrapper {
+        width: 90%;
+        align-items: center;
+        justify-self: center;
+        flex-direction: column;
+    }
+    #shipping-method {
+        width: 80%;
+    }
+}
+
+@media(max-width: 820px) {
+    #shipping-method-wrapper {
+        width: 80%;
+    }
+
+    #shipping-method {
+        width: 70%;
+    }
+}
+
+@media(max-width: 630px) {
+    #shipping-method-wrapper {
+        width: 60%;
+    }
+
+    #shipping-method {
+        width: 60%;
+    }
 }

@@ -8,7 +8,6 @@ body {
     flex-direction: column;
     min-height: 100vh;
     background-color: #FAFAFC;
-    padding-top: 100px
 }
 
 main {
@@ -23,46 +22,36 @@ header {
     z-index: 1000;
 }
 
+#container1 {
+    width: 90%;
+}
+
+#container2 {
+    justify-items: center;
+    width: 100%;
+}
+
 #wrapper-component {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    width: 90%;
+    justify-content: center;
+    width: 100%;
     gap: 5%;
-    margin-top: 10px;
+    margin-top: 0;
 }
-
-
-
-#order-review form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-
-
 
 #wrapper-component {
     padding-bottom: 70px;
 }
 
-
-#order-review form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.progress-container {
-    margin-top: 600px;
-}
-
-#shopping-info-component article{
-    overflow: hidden;
-}
-
 footer {
     margin-top: auto;
     width: 100%;
+}
+
+@media(max-width: 1300px) {
+    #wrapper-component {
+        width: 100%;
+        justify-self: center;
+        flex-direction: column;
+    }
 }

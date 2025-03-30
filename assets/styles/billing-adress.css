@@ -6,9 +6,7 @@
 body {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
     background-color: #FAFAFC;
-    padding-top: 100px
 }
 
 main {
@@ -23,10 +21,18 @@ header {
     z-index: 1000;
 }
 
+#container1 {
+    width: 90%;
+}
+
+#container2 {
+    justify-items: center;
+    width: 100%;
+}
+
 #billing-shopping-wrapper {
     display: flex;
     justify-content: center;
-    align-items: center;
     width: 90%;
     gap: 5%;
     margin-top: 10px;
@@ -35,10 +41,11 @@ header {
 #billing-address {
     flex: 1;
     background-color: white;
+    height: fit-content;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    min-width: 500px;
+    width: 800px;
 }
 
 #billing-address form {
@@ -82,10 +89,6 @@ header {
     gap: 10px;
 }
 
-.progress-container {
-    margin-top: 300px;
-}
-
 #shopping-info-component article{
     overflow: hidden;
 }
@@ -93,4 +96,32 @@ header {
 footer {
     margin-top: auto;
     width: 100%;
+}
+
+@media(max-width: 1300px) {
+    #billing-shopping-wrapper {
+        width: 90%;
+        justify-self: center;
+        flex-direction: column;
+        align-items: center;
+    }
+    #billing-address {
+        width: 80%;
+    }
+}
+
+@media(max-width: 820px) {
+    #billing-shopping-wrapper {
+        width: 80%;
+    }
+
+    #billing-address {
+        width: 70%;
+    }
+}
+
+@media(max-width: 630px) {
+    #billing-shopping-wrapper {
+        width: 60%;
+    }
 }
