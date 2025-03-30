@@ -40,6 +40,10 @@
     <section id="billing-address">
       <h2>DIRECCIÓN DE FACTURACIÓN</h2>
       <form>
+        <label class="hideauth" for="name">Nombre</label>
+        <input class="hideauth" type="text" id="name" name="name" required>
+        <label class="hideauth" for="email">Email</label>
+        <input class="hideauth" type="email" id="email" name="email" required>
         <label for="country">País</label>
         <input type="text" id="country" name="country" required>
         <label for="address">Dirección</label>
@@ -60,5 +64,6 @@
 <footer id="footer"></footer>
 
 <script src="../scripts/common.js"></script>
+<script src="../scripts/billing-address.js"></script>
 </body>
 </html>
