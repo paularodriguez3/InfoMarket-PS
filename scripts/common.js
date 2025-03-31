@@ -25,7 +25,7 @@ async function loadCommonTemplates() {
     if (!(pagina.endsWith('billing-adress.html') || pagina.endsWith('order-review.html') || pagina.endsWith('payment-method.html') || pagina.endsWith('shipping-method.html'))) {
         await loadTemplate('nav-bar/nav-bar.html', 'nav-bar', '../../templates/nav-bar/nav-bar.js');
     } else {
-        // await loadTemplate('shopping-process-component/shopping-process-component.html', 'shopping-process');
+        await loadTemplate('shopping-process-component/shopping-process-component.html', 'shopping-process');
         await loadTemplate('shopping-info-component/shopping-info-component.html', 'shopping', '../templates/shopping-info-component/shopping-info-component.js');
     }
 

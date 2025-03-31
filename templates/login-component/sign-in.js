@@ -50,6 +50,6 @@ function setupLoginForm(loginForm) {
 
     const signUpButton = document.getElementById("sign-up-btn");
     signUpButton.addEventListener("click", () => {
-        window.location.href = "Sign-up.html";
+        window.location.href = "sign-up.html";
     });
 }
