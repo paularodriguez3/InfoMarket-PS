@@ -1,9 +1,9 @@
 import {getImageUrl, readCollection} from "../firebase/firebase.js";
 
-
-
 document.addEventListener("DOMContentLoaded", async () => {
-    await showShoppingCart();
+    const shoppingCart = JSON.parse(localStorage.getItem("carrito")) || [];
+
+    await showShoppingCart(shoppingCart);
 
     const continueShopping = document.getElementById("continue-shopping-button");
     continueShopping.addEventListener("click", () => {
@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const buy = document.getElementById("buy-button");
     buy.addEventListener("click", () => {
+        localStorage.setItem("pedido", JSON.stringify({ productos: shoppingCart, direccion: {}, metodoEnvio: null }));
         window.location.href = "../screens/billing-adress.html";
     });
 });
@@ -28,7 +29,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 });*/
 // =============================
 
-async function showShoppingCart() {
+async function showShoppingCart(shoppingCart) {
     // Obtener el template de product-info-component
     await loadProductInfoComponent();
     const template = document.getElementById("product-info-template").content;
@@ -36,7 +37,6 @@ async function showShoppingCart() {
     // Obtener el elemento shopping-cart
     const shoppingCartList = document.getElementById("shopping-cart-list");
 
-    const shoppingCart = JSON.parse(localStorage.getItem("carrito")) || [];
     let totalPrice = 0;
     for (const item of shoppingCart) {
         // Cargar el template

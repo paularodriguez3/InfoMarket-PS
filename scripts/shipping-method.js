@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+    const pedido = JSON.parse(localStorage.getItem("pedido"));
     const addressInput = document.getElementById("address");
     const shopInput = document.getElementById("shop");
     const form = document.querySelector("form");
@@ -42,6 +43,12 @@ document.addEventListener("DOMContentLoaded", function () {
             canContinue = false;
         }
         if (canContinue) {
+            if (document.getElementById('address').value === "") {
+                pedido.metodoEnvio = document.getElementById('shop').value;
+            } else {
+                pedido.metodoEnvio = document.getElementById('address').value;
+            }
+            localStorage.setItem("pedido", JSON.stringify(pedido));
             window.location.href = "../screens/payment.html";
         } else {
             alert("Rellena todos los campos, por favor.")

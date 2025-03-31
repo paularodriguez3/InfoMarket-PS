@@ -1,4 +1,5 @@
 import { loadPayPalSDK } from '../../config.js';
+import {createDocOnCollection} from "../firebase/firebase.js";
 
 document.addEventListener("DOMContentLoaded", async function() {
     try {
@@ -47,8 +48,11 @@ document.addEventListener("DOMContentLoaded", async function() {
                 });
             },
             onApprove: function(data, actions) {
-                return actions.order.capture().then(function(details) {
+                return actions.order.capture().then(async function (details) {
                     alert('Pago realizado con éxito por ' + details.payer.name.given_name);
+                    const pedido = JSON.parse(localStorage.getItem("pedido"));
+                    const ref = await createDocOnCollection("pedidos", pedido);
+                    window.location.href = "../screens/order-review.html";
                 });
             },
             onError: function(err) {
