@@ -92,20 +92,8 @@ waitForElement("#signup-form", () => {
 
             try {
                 const userCredential = await createUser(email, password, username);
-                const user = userCredential.user;
                 alert("Usuario creado con éxito");
-
-                if (user) {
-                    await user.updateProfile({ displayName: username });
-
-                    if (!user.emailVerified) {
-                        await user.sendEmailVerification();
-                        alert("Se ha enviado un correo de verificación.");
-                    }
-
-                    // Redirigir a la página deseada después del registro
-                    window.open("sign-in.html", "_blank"); // Abre en una nueva pestaña
-                }
+                window.location.href = "sign-in.html";
             } catch (error) {
                 alert(`Error: ${error.message}`);
             }
