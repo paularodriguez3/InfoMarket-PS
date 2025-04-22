@@ -13,8 +13,7 @@ import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.compo
 import { ClientSupportComponent } from './pages/client-support/client-support.component';
 import { ForgottenPasswordComponent } from './pages/forgotten-password/forgotten-password.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
-import { SignUpComponent } from './pages/sign-up/sign-up.component';
-import { PersonalProfileComponent } from './pages/personal-profile/personal-profile.component';
+import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -29,8 +28,7 @@ import { PersonalProfileComponent } from './pages/personal-profile/personal-prof
     ClientSupportComponent,
     ForgottenPasswordComponent,
     SignInComponent,
-    SignUpComponent,
-    PersonalProfileComponent
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,
