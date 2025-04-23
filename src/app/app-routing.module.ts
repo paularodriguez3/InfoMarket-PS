@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'forgotten-password', component: ForgottenPasswordComponent },
   { path: 'sign-in', component: SignInComponent },
   { path: 'product-details', component: ProductDetailsComponent },
-  { path: 'sign-up', component: SignUpComponent },
+  { path:  'sign-up', component: SignUpComponent },
   { path: 'personal-profile', component: PersonalProfileComponent },
 ];
 
