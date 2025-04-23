@@ -16,6 +16,7 @@ import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 import { ShoppingProcessComponent } from './pages/shopping-process/shopping-process.component';
 import { ShoppingInfoComponent } from './pages/shopping-info/shopping-info.component';
+import { BillingAddressComponent } from './pages/billing-address/billing-address.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ShoppingInfoComponent } from './pages/shopping-info/shopping-info.compo
     SignInComponent,
     ProductDetailsComponent,
     ShoppingProcessComponent,
-    ShoppingInfoComponent
+    ShoppingInfoComponent,
+    BillingAddressComponent
   ],
   imports: [
     BrowserModule,
