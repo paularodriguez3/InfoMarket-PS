@@ -11,6 +11,7 @@ import {ProductDetailsComponent} from './pages/product-details/product-details.c
 import {SignUpComponent} from './pages/sign-up/sign-up.component';
 import {PersonalProfileComponent} from './pages/personal-profile/personal-profile.component';
 import {BillingAddressComponent} from './pages/billing-address/billing-address.component';
+import {OrderReviewTemplateComponent} from './pages/order-review-template/order-review-template.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path:  'sign-up', component: SignUpComponent },
   { path: 'personal-profile', component: PersonalProfileComponent },
   { path: 'billing-address', component: BillingAddressComponent },
+  { path : 'order-review-template', component: OrderReviewTemplateComponent}
 ];
 
 @NgModule({

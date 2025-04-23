@@ -17,6 +17,8 @@ import { ProductDetailsComponent } from './pages/product-details/product-details
 import { ShoppingProcessComponent } from './pages/shopping-process/shopping-process.component';
 import { ShoppingInfoComponent } from './pages/shopping-info/shopping-info.component';
 import { BillingAddressComponent } from './pages/billing-address/billing-address.component';
+import { OrderReviewComponent } from './pages/order-review/order-review.component';
+import { OrderReviewTemplateComponent } from './pages/order-review-template/order-review-template.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { BillingAddressComponent } from './pages/billing-address/billing-address
     ProductDetailsComponent,
     ShoppingProcessComponent,
     ShoppingInfoComponent,
-    BillingAddressComponent
+    BillingAddressComponent,
+    OrderReviewComponent,
+    OrderReviewTemplateComponent
   ],
   imports: [
     BrowserModule,
