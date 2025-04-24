@@ -12,6 +12,9 @@ import {SignUpComponent} from './pages/sign-up/sign-up.component';
 import {PersonalProfileComponent} from './pages/personal-profile/personal-profile.component';
 import {BillingAddressComponent} from './pages/billing-address/billing-address.component';
 import {OrderReviewTemplateComponent} from './pages/order-review-template/order-review-template.component';
+import {OrderReviewComponent} from './pages/order-review/order-review.component';
+import {PaymentMethodComponent} from './pages/payment-method/payment-method.component';
+import {ShippingMethodComponent} from './pages/shipping-method/shipping-method.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -25,7 +28,11 @@ const routes: Routes = [
   { path:  'sign-up', component: SignUpComponent },
   { path: 'personal-profile', component: PersonalProfileComponent },
   { path: 'billing-address', component: BillingAddressComponent },
-  { path : 'order-review-template', component: OrderReviewTemplateComponent}
+  { path : 'order-review-template', component: OrderReviewTemplateComponent},
+  { path : 'order-review', component: OrderReviewComponent },
+  { path : 'payment-method', component: PaymentMethodComponent },
+  { path : 'shipping-method', component: ShippingMethodComponent },
+
 ];
 
 @NgModule({
