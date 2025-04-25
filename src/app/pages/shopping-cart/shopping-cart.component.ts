@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 import {ShoppingCartService} from './shopping-cart.service';
 
 @Component({
@@ -10,7 +11,7 @@ import {ShoppingCartService} from './shopping-cart.service';
 export class ShoppingCartComponent implements OnInit{
   shoppingCart: any[] = []
 
-  constructor(private shoppingCartService: ShoppingCartService) {}
+  constructor(private shoppingCartService: ShoppingCartService, private router: Router) {}
 
   ngOnInit(): void{
     this.shoppingCart = this.shoppingCartService.getCart();
@@ -36,10 +37,10 @@ export class ShoppingCartComponent implements OnInit{
       direccion: {},
       metodoEnvio: null
     }));
-    window.location.href = "../screens/billing-adress.html"; // TODO: Cambiar por alternativa de angular
+    this.router.navigate(["../billing-address"]);
   }
 
   continueShopping(): void {
-    window.location.href = "../screens/index.html"; // TODO: Cambiar por alternativa de angular
+    this.router.navigate(["../home"]); // FIXME
   }
 }
