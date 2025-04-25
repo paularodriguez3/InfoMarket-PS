@@ -2,16 +2,18 @@
   <section id="header-navigation">
     <article id="nav-top">
       <div id="logo-searchbar">
-        <a id="header-logo" routerLink="/"><img src="assets/icons/header/infomarket_logo.png" width="92px" height="92px" alt=""></a>
+        <a id="header-logo" routerLink="/">
+          <img src="assets/icons/header/infomarket_logo.png" width="92px" height="92px" alt="">
+        </a>
       </div>
       <div id="user-cart">
-        <div class="search">
-          <input type="text" class="input" placeholder="¿Qué estás buscando?...">
-          <button class="btn">
+        <div class="search" #searchBar>
+          <input type="text" class="input" placeholder="¿Qué estás buscando?..." #inputBar>
+          <button class="btn" (click)="toggleSearch()">
             <i class="fi fi-rr-search"></i>
           </button>
         </div>
-        <a id="user" href="../screens/Personal-profile.html"><i class="fi fi-rr-user"></i></a>
+        <a id="user" routerLink="/personal-profile"><i class="fi fi-rr-user"></i></a>
         <a id="cart" routerLink="/shopping-cart"><i class="fi fi-rr-briefcase-blank"></i></a>
       </div>
     </article>
