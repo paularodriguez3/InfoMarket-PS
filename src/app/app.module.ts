@@ -21,6 +21,8 @@ import { OrderReviewComponent } from './pages/order-review/order-review.componen
 import { OrderReviewTemplateComponent } from './pages/order-review-template/order-review-template.component';
 import { PaymentMethodComponent } from './pages/payment-method/payment-method.component';
 import { ShippingMethodComponent } from './pages/shipping-method/shipping-method.component';
+import {FormsModule} from '@angular/forms';
+import { AddProductComponent } from './pages/add-product/add-product.component';
 
 @NgModule({
   declarations: [
@@ -42,11 +44,13 @@ import { ShippingMethodComponent } from './pages/shipping-method/shipping-method
     OrderReviewComponent,
     OrderReviewTemplateComponent,
     PaymentMethodComponent,
-    ShippingMethodComponent
+    ShippingMethodComponent,
+    AddProductComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

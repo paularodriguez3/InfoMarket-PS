@@ -15,6 +15,7 @@ import {OrderReviewTemplateComponent} from './pages/order-review-template/order-
 import {OrderReviewComponent} from './pages/order-review/order-review.component';
 import {PaymentMethodComponent} from './pages/payment-method/payment-method.component';
 import {ShippingMethodComponent} from './pages/shipping-method/shipping-method.component';
+import {AddProductComponent} from './pages/add-product/add-product.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -32,7 +33,7 @@ const routes: Routes = [
   { path : 'order-review', component: OrderReviewComponent },
   { path : 'payment-method', component: PaymentMethodComponent },
   { path : 'shipping-method', component: ShippingMethodComponent },
-
+  { path : 'add-product', component: AddProductComponent },
 ];
 
 @NgModule({

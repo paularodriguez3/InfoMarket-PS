@@ -1,141 +1,128 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-body {
+body, html {
+  height: 100%;
   display: flex;
-  min-height: 100vh;
-  background-color: #FAFAFC;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  text-align: center;
+  padding: 2rem;
+  transition: transform 0.3s ease-in-out; /* Suaviza el movimiento */
 }
 
-main {
-  flex: 1;
+/* Título principal */
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Párrafos */
+p {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+/* Contenedor de PayPal */
+#paypal-button-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #FAFAFC;
-  margin-bottom: 80px;
-  flex-direction: column;
+  width: 100%;
+  max-width: 30rem;
+  height: auto;
+  margin-top: 1rem;
 }
 
-header {
+/* Contenedor de pago */
+.payment-container {
+  width: 100%;
+  max-width: 500px;
+  padding: 2rem;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para el campo de descuento */
+label {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+input#discount-code {
+  padding: 0.7rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  width: 100%;
+  max-width: 300px;
+  text-align: center;
+}
+
+/* Botón de aplicar descuento */
+button#apply-discount {
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
+  color: white;
+  background-color: #0070ba;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  width: 100%;
+  max-width: 300px;
+}
+
+button#apply-discount:hover {
+  background-color: #005ea6;
+}
+
+/* Ajusta la posición de la página cuando PayPal está activo */
+.body-paypal-active {
+  transform: translateY(-50px); /* Mueve todo hacia arriba */
+}
+
+/* Capa de fondo cuando el pago está activo */
+.overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #FAFAFC;
-  z-index: 1000;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  display: none; /* Se mostrará solo cuando se active */
 }
 
-#container1 {
-  width: 90%;
-}
+/* Responsividad para pantallas pequeñas */
+@media (max-width: 768px) {
+  body {
+    padding: 1rem;
+  }
 
-#container2 {
-  justify-items: center;
-  width: 100%;
-}
+  h1 {
+    font-size: 2rem;
+  }
 
-#payment-method-container {
-  display: flex;
-  justify-content: center;
-  width: 90%;
-  gap: 5%;
-  margin-top: 0;
-}
+  p {
+    font-size: 1rem;
+  }
 
-#payment-method {
-  flex: 1;
-  background-color: white;
-  height: fit-content;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 400px;
-}
-
-.payment-option {
-  display: flex;
-  align-items: center;
-  background: #d9d9d9;
-  padding: 12px;
-  margin-bottom: 10px;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.payment-option input {
-  margin-right: 10px;
-}
-
-.payment-option label {
-  flex-grow: 1;
-  cursor: pointer;
-}
-
-.pay-button {
-  width: 100%;
-  background: #625d5d;
-  color: white;
-  padding: 12px;
-  text-align: center;
-  border-radius: 6px;
-  font-size: 16px;
-  cursor: pointer;
-  border: none;
-}
-
-.pay-button:hover {
-  background-color: #5A4F4F;
-}
-
-#payment-method h2 {
-  margin-bottom: 15px;
-}
-
-#billing-shopping-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 90%;
-  gap: 5%;
-  margin-top: 10px;
-}
-
-footer {
-  margin-top: auto;
-  width: 100%;
-}
-
-@media(max-width: 1300px) {
-  #payment-method-container {
+  .payment-container {
     width: 90%;
-    align-items: center;
-    justify-self: center;
-    flex-direction: column;
-  }
-  #payment-method {
-    width: 80%;
-  }
-}
-
-@media(max-width: 820px) {
-  #payment-method-container {
-    width: 80%;
+    padding: 1.5rem;
   }
 
-  #payment-method {
-    width: 70%;
-  }
-}
-
-@media(max-width: 630px) {
-  #payment-method-container {
-    width: 60%;
-  }
-
-  #payment-method {
-    width: 60%;
+  input#discount-code, button#apply-discount {
+    max-width: 100%;
   }
 }
