@@ -9,6 +9,7 @@ import { Component, HostListener } from '@angular/core';
 export class NavBarComponent {
   isDesktopMenuVisible = false;
   isMobileMenuVisible = false;
+  isScrolling = false;
 
   toggleDesktopMenu(): void {
     if (window.innerWidth >= 769) {
@@ -29,5 +30,10 @@ export class NavBarComponent {
     } else {
       this.isDesktopMenuVisible = false;
     }
+  }
+
+  @HostListener('window:scroll', [])
+  onWindowScroll(): void {
+    this.isScrolling = window.scrollY > 0;
   }
 }
