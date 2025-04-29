@@ -19,7 +19,7 @@ export class ShoppingCartComponent implements OnInit{
   }
 
   increase(item: ShoppingCartItem): void {
-    this.shoppingCartService.addToCart(item, 1);
+    this.shoppingCartService.addToCart(item.product, 1);
     this.refreshShoppingCart();
   }
 
@@ -43,5 +43,11 @@ export class ShoppingCartComponent implements OnInit{
 
   continueShopping(): void {
     this.router.navigate(["../home"]); // FIXME
+  }
+
+  calculateTotalPrice(): number {
+    let total:number = 0;
+
+    return total;
   }
 }

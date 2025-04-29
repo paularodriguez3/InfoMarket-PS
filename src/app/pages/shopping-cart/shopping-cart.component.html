@@ -11,11 +11,11 @@
             <div id="product-name-component">{{item.product.Nombre}}</div>
             <div id="product-desc-component">{{item.product.Descripcion}}</div>
           </div>
-          <div id="button-minus" class="qty-button hidden-button">
+          <div id="button-minus" class="qty-button" (click)="decrease(item)">
             <button class="qty-button"><i class='bx bxs-minus-circle'></i></button>
           </div>
           <div id="product-quantity-component">Qty: {{item.quantity}}</div>
-          <div id="button-plus" class="qty-button hidden-button">
+          <div id="button-plus" class="qty-button" (click)="increase(item)">
             <button class="qty-button" ><i class='bx bxs-plus-circle' ></i></button>
           </div>
           <div id="product-price-component">
@@ -25,7 +25,7 @@
       </div>
     </div>
     <section id="buy-panel">
-      <div id="total-price"></div>
+      <div id="total-price">{{calculateTotalPrice()}}</div>
       <button id="buy-button" (click)="buy()">Procesar pedido</button>
       <button id="continue-shopping-button" (click)="continueShopping()">Seguir comprando</button>
     </section>
