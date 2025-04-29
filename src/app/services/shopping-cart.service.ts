@@ -36,5 +36,6 @@ export class ShoppingCartService {
     if (cartItem.quantity === 0) {
       shoppingCart.splice(shoppingCart.indexOf(cartItem), 1);
     }
+    this.saveCart(shoppingCart);
   }
 }
