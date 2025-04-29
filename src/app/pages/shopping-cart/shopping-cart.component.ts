@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ShoppingCartService} from './shopping-cart.service';
+import {ShoppingCartService} from '../../services/shopping-cart.service';
+import {ShoppingCartItem} from '../../models/shopping-cart-item.model';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -9,7 +10,7 @@ import {ShoppingCartService} from './shopping-cart.service';
   styleUrl: './shopping-cart.component.css'
 })
 export class ShoppingCartComponent implements OnInit{
-  shoppingCart: any[] = []
+  shoppingCart: ShoppingCartItem[] = []
 
   constructor(private shoppingCartService: ShoppingCartService, private router: Router) {}
 
@@ -17,12 +18,12 @@ export class ShoppingCartComponent implements OnInit{
     this.shoppingCart = this.shoppingCartService.getCart();
   }
 
-  increase(item: any): void {
+  increase(item: ShoppingCartItem): void {
     this.shoppingCartService.addToCart(item, 1);
     this.refreshShoppingCart();
   }
 
-  decrease(item: any): void {
+  decrease(item: ShoppingCartItem): void {
     this.shoppingCartService.removeFromCart(item);
     this.refreshShoppingCart();
   }
@@ -32,7 +33,7 @@ export class ShoppingCartComponent implements OnInit{
   }
 
   buy(): void {
-    localStorage.setItem("", JSON.stringify({
+    localStorage.setItem("pedido", JSON.stringify({
       productos: this.shoppingCart,
       direccion: {},
       metodoEnvio: null

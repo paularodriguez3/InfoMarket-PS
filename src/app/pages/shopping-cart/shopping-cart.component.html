@@ -1,7 +1,29 @@
 <main>
   <h1 id="shopping-cart-title"><i class='bx bx-cart'></i> Carrito de compra</h1>
   <article id="shopping-info">
-    <div id="shopping-cart-list"></div>
+    <div id="shopping-cart-list">
+      <div *ngFor="let item of shoppingCart">
+        <section id="product-info-component">
+          <div id="product-image-component">
+            <img id="image" alt="Producto">
+          </div>
+          <div id="product-info">
+            <div id="product-name-component">{{item.product.Nombre}}</div>
+            <div id="product-desc-component">{{item.product.Descripcion}}</div>
+          </div>
+          <div id="button-minus" class="qty-button hidden-button">
+            <button class="qty-button"><i class='bx bxs-minus-circle'></i></button>
+          </div>
+          <div id="product-quantity-component">Qty: {{item.quantity}}</div>
+          <div id="button-plus" class="qty-button hidden-button">
+            <button class="qty-button" ><i class='bx bxs-plus-circle' ></i></button>
+          </div>
+          <div id="product-price-component">
+            {{item.product.Precio * item.quantity}}€
+          </div>
+        </section>
+      </div>
+    </div>
     <section id="buy-panel">
       <div id="total-price"></div>
       <button id="buy-button" (click)="buy()">Procesar pedido</button>

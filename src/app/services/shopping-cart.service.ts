@@ -1,24 +1,26 @@
 import {Injectable} from '@angular/core';
+import {ShoppingCartItem} from '../models/shopping-cart-item.model'
+
 
 @Injectable({providedIn:'root'})
 export class ShoppingCartService {
-  getCart(): any[] {
+  getCart(): ShoppingCartItem[] {
     const json = localStorage.getItem("cart");
     return json ? JSON.parse(json) : [];
   }
 
-  saveCart(cart: any[]): void {
+  saveCart(cart: ShoppingCartItem[]): void {
     localStorage.setItem("cart", JSON.stringify(cart));
   }
 
-  addToCart(item: any , quantity: number): void {
+  addToCart(item: ShoppingCartItem, quantity: number): void {
     const shoppingCart = this.getCart();
     const cartItem = shoppingCart.find(e => e.id === item.id);
-    if (cartItem) {
-      item.Cantidad = quantity;
+    if (!cartItem) {
+      item.quantity = quantity;
       shoppingCart.push(item);
     } else {
-      cartItem.Cantidad += quantity;
+      cartItem.quantity+= quantity;
     }
     this.saveCart(shoppingCart);
   }
@@ -30,8 +32,8 @@ export class ShoppingCartService {
       console.log("Objeto no encontrado.");
       return;
     }
-    cartItem.Cantidad--;
-    if (cartItem.Cantidad === 0) {
+    cartItem.quantity--;
+    if (cartItem.quantity === 0) {
       shoppingCart.splice(shoppingCart.indexOf(cartItem), 1);
     }
   }
