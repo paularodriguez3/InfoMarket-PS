@@ -5,6 +5,7 @@
       <div *ngFor="let item of shoppingCart">
         <app-product-info
           [item]="item"
+          [showButtons]="true"
           (increaseQty)="increase($event)"
           (decreaseQty)="decrease($event)">
         </app-product-info>
