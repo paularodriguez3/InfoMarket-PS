@@ -29,7 +29,6 @@ import { AddProductComponent } from './pages/add-product/add-product.component';
     AppComponent,
     FooterComponent,
     HeaderComponent,
-    HomeComponent,
     NavBarComponent,
     AboutUsComponent,
     ProductListComponent,
@@ -50,7 +49,8 @@ import { AddProductComponent } from './pages/add-product/add-product.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HomeComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
