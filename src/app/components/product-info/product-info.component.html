@@ -1,0 +1,19 @@
+<section id="product-info-component">
+  <div id="product-image-component">
+    <img id="image" alt="Producto" [src]="item.product.Imagen">
+  </div>
+  <div id="product-info">
+    <div id="product-name-component">{{item.product.Nombre}}</div>
+    <div id="product-desc-component">{{item.product.Descripcion}}</div>
+  </div>
+  <div id="button-minus" class="qty-button" (click)="decrease()">
+    <button class="qty-button"><i class='bx bxs-minus-circle'></i></button>
+  </div>
+  <div id="product-quantity-component">Qty: {{item.quantity}}</div>
+  <div id="button-plus" class="qty-button" (click)="increase()">
+    <button class="qty-button" ><i class='bx bxs-plus-circle' ></i></button>
+  </div>
+  <div id="product-price-component">
+    {{item.product.Precio * item.quantity}}€
+  </div>
+</section>

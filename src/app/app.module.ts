@@ -23,6 +23,7 @@ import { PaymentMethodComponent } from './pages/payment-method/payment-method.co
 import { ShippingMethodComponent } from './pages/shipping-method/shipping-method.component';
 import {FormsModule} from '@angular/forms';
 import { AddProductComponent } from './pages/add-product/add-product.component';
+import { ProductInfoComponent } from './components/product-info/product-info.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { AddProductComponent } from './pages/add-product/add-product.component';
     OrderReviewTemplateComponent,
     PaymentMethodComponent,
     ShippingMethodComponent,
-    AddProductComponent
+    AddProductComponent,
+    ProductInfoComponent
   ],
   imports: [
     BrowserModule,
