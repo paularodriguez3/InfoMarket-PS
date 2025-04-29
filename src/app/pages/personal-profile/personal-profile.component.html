@@ -9,33 +9,33 @@
         <p>Administra tu información personal</p>
       </div>
 
-      <form class="profile-form">
+      <form class="profile-form" (ngSubmit)="uploadChanges()">
         <div class="form-group">
           <label>Nombre de usuario</label>
-          <input type="text" name="user-name" placeholder="Ej: User">
+          <input type="text" name="user-name" placeholder="Ej: User" [(ngModel)]="user.username">
         </div>
         <div class="form-group">
           <label>Nombre</label>
-          <input type="text" name="firstName" placeholder="Ej: Paula Rosa">
+          <input type="text" name="firstName" placeholder="Ej: Paula Rosa" [(ngModel)]="user.name">
         </div>
 
         <div class="form-group">
           <label>Apellidos</label>
-          <input type="text" name="lastName" placeholder="Ej: Rodríguez Morales">
+          <input type="text" name="lastName" placeholder="Ej: Rodríguez Morales" [(ngModel)]="user.surname">
         </div>
 
         <div class="form-group">
           <label>Correo electrónico</label>
-          <input type="email" name="email" placeholder="Ej: ejemplo@gmail.com">
+          <input type="email" name="email" placeholder="Ej: ejemplo@gmail.com" [(ngModel)]="user.email">
         </div>
 
         <div class="form-group">
           <label>Teléfono</label>
-          <input type="tel" name="phone" placeholder="Ej: 600 000 000">
+          <input type="tel" name="phone" placeholder="Ej: 600 000 000" [(ngModel)]="user.tlf">
         </div>
 
         <button type="submit" class="save-button">Guardar cambios</button>
-        <button type="button" class="logout-button">Cerrar sesión</button>
+        <button type="button" class="logout-button" (click)="signOut()">Cerrar sesión</button>
       </form>
     </div>
   </div>
