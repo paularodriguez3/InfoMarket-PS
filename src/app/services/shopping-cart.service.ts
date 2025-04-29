@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {ShoppingCartItem} from '../models/shopping-cart-item.model'
+import {Product} from '../models/product.model';
 
 
 @Injectable({providedIn:'root'})
@@ -13,12 +14,11 @@ export class ShoppingCartService {
     localStorage.setItem("cart", JSON.stringify(cart));
   }
 
-  addToCart(item: ShoppingCartItem, quantity: number): void {
+  addToCart(item: Product, quantity: number): void {
     const shoppingCart = this.getCart();
-    const cartItem = shoppingCart.find(e => e.id === item.id);
+    const cartItem = shoppingCart.find(e => e.product.id === item.id);
     if (!cartItem) {
-      item.quantity = quantity;
-      shoppingCart.push(item);
+      shoppingCart.push({product: item, quantity: quantity});
     } else {
       cartItem.quantity+= quantity;
     }
