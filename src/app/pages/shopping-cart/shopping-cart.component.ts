@@ -43,7 +43,7 @@ export class ShoppingCartComponent implements OnInit{
   }
 
   continueShopping(): void {
-    this.router.navigate(["../home"]); // FIXME
+    this.router.navigate(["../"]);
   }
 
   calculateTotalPrice(): number {
