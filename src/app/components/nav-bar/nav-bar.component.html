@@ -1,7 +1,7 @@
 <section id="header-navigation">
   <article id="nav-bottom">
     <ul id="nav-list">
-      <a><li><i class="fi fi-rr-menu-burger"></i>Menú</li></a>
+      <a (click)="toggleDesktopMenu()"><li><i class="fi fi-rr-menu-burger"></i>Menú</li></a>
       <a><li><i class="fi fi-rr-badge-percent"></i>Ofertas</li></a>
       <a routerLink="/product-list/Informatica"><li><i class="fi fi-rr-computer"></i>Informática</li></a>
       <a routerLink="/product-list/Gaming"><li><i class="fi fi-rr-console-controller"></i>Gaming</li></a>
@@ -12,8 +12,8 @@
   </article>
 </section>
 <section id="header-menu">
-  <article id="menu-wrapper" class="hidden-menu">
-    <div class="menu-item">
+  <article id="menu-wrapper" [ngClass]="{'show-menu': isDesktopMenuVisible, 'hidden-menu': !isDesktopMenuVisible}">
+  <div class="menu-item">
       <h1>Informática</h1>
       <ul class="menu-list">
         <li><a>PC sobremesa</a></li>
@@ -67,12 +67,12 @@
 </section>
 
 <div id="mobile-nav-container">
-  <button id="mobile-menu-btn" class="mobile-only">
+  <button id="mobile-menu-btn" class="mobile-only" (click)="toggleMobileMenu()">
     <i class="fi fi-rr-menu-burger"></i>
   </button>
 
-  <section id="mobile-menu" class="mobile-menu hidden">
-    <ul>
+  <section id="mobile-menu" [class.hidden]="!isMobileMenuVisible" class="mobile-menu">
+  <ul>
       <li><a href="./product-list.html?categoria=productos/Informatica"><i class="fi fi-rr-computer"></i>Informática</a></li>
       <li><a href="./product-list.html?categoria=productos/Gaming"><i class="fi fi-rr-console-controller"></i>Gaming</a></li>
       <li><a href="./product-list.html?categoria=productos/Telefonia"><i class="fi fi-rr-mobile-button"></i>Telefonía</a></li>
