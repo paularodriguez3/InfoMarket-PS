@@ -15,7 +15,7 @@ import { ForgottenPasswordComponent } from './pages/forgotten-password/forgotten
 import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 import { ShoppingProcessComponent } from './pages/shopping-process/shopping-process.component';
-import { ShoppingInfoComponent } from './pages/shopping-info/shopping-info.component';
+import { ShoppingInfoComponent } from './components/shopping-info/shopping-info.component';
 import { BillingAddressComponent } from './pages/billing-address/billing-address.component';
 import { OrderReviewComponent } from './pages/order-review/order-review.component';
 import { OrderReviewTemplateComponent } from './pages/order-review-template/order-review-template.component';
