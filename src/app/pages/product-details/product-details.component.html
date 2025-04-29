@@ -1,29 +1,33 @@
 <main>
   <article id="product-details">
     <section id="product-details-info">
-      <h1 id="product-name"></h1>
-      <p id="product-desc"> </p>
+      <h1 id="product-name">{{product.Nombre}}</h1>
+      <p id="product-desc">{{product.Descripcion}}</p>
       <p id="features">Características del producto: </p>
       <hr class = "hr-features">
-      <div id="product-features"></div>
+      <div id="product-features">
+        @for (caracteristica of product.Caracteristicas; track product.id) {
+          <p>{{caracteristica}}</p>
+        }
+      </div>
       <hr class = "hr-features">
       <p id="product-stock">Stock: <span>¡Últimas unidades!</span></p>
       <div id="quantity-container">
         <div class="quantity-selector">
           <p id="product-quantity">Cantidad: </p>
-          <button class="qty-button" id="minus"><i class='bx bxs-minus-circle' ></i></button>
-          <p id="qty-value">1</p>
-          <button class="qty-button" id="plus"><i class='bx bxs-plus-circle' ></i></button>
+          <button class="qty-button" id="minus" (click)="decrementQty()"><i class='bx bxs-minus-circle' ></i></button>
+          <p id="qty-value">{{cantidad}}</p>
+          <button class="qty-button" id="plus" (click)="incrementQty()"><i class='bx bxs-plus-circle' ></i></button>
         </div>
       </div>
-      <p id="final-price"> Precio total: <span id="price"></span> € </p>
+      <p id="final-price"> Precio total: <span id="price">{{product.Precio}}</span> € </p>
       <hr class = "hr-features">
       <div id="add-to-cart">
-        <button type=submit id="add-to-cart-button">Añadir al carrito</button>
+        <button type=button id="add-to-cart-button" (click)="shoppingCartService.addToCart(product, cantidad)">Añadir al carrito</button>
       </div>
     </section>
     <div id="product-image">
-      <img id="image" alt="Producto">
+      <img id="image" alt="Producto" [src] = product.Imagen>
       <div id="button-arrows">
         <button id="prev-image"><i class='bx bx-chevron-left'></i></button>
         <button id="next-image"><i class='bx bx-chevron-right'></i></button>
