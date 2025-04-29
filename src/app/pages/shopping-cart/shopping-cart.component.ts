@@ -30,6 +30,7 @@ export class ShoppingCartComponent implements OnInit{
 
   refreshShoppingCart(): void {
     this.shoppingCart = this.shoppingCartService.getCart();
+    this.calculateTotalPrice();
   }
 
   buy(): void {
@@ -47,7 +48,9 @@ export class ShoppingCartComponent implements OnInit{
 
   calculateTotalPrice(): number {
     let total:number = 0;
-
+    for (let item of this.shoppingCart) {
+      total += item.product.Precio * item.quantity;
+    }
     return total;
   }
 }
