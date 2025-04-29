@@ -13,7 +13,7 @@
 </section>
 <section id="header-menu">
   <article id="menu-wrapper" [ngClass]="{'show-menu': isDesktopMenuVisible, 'hidden-menu': !isDesktopMenuVisible}">
-  <div class="menu-item">
+    <div class="menu-item">
       <h1>Informática</h1>
       <ul class="menu-list">
         <li><a>PC sobremesa</a></li>
@@ -67,12 +67,17 @@
 </section>
 
 <div id="mobile-nav-container">
-  <button id="mobile-menu-btn" class="mobile-only" (click)="toggleMobileMenu()">
+  <button
+    *ngIf="!isScrolling"
+    id="mobile-menu-btn"
+    class="mobile-only"
+    (click)="toggleMobileMenu()"
+  >
     <i class="fi fi-rr-menu-burger"></i>
   </button>
 
   <section id="mobile-menu" [class.hidden]="!isMobileMenuVisible" class="mobile-menu">
-  <ul>
+    <ul>
       <li><a href="./product-list.html?categoria=productos/Informatica"><i class="fi fi-rr-computer"></i>Informática</a></li>
       <li><a href="./product-list.html?categoria=productos/Gaming"><i class="fi fi-rr-console-controller"></i>Gaming</a></li>
       <li><a href="./product-list.html?categoria=productos/Telefonia"><i class="fi fi-rr-mobile-button"></i>Telefonía</a></li>
@@ -82,3 +87,4 @@
     </ul>
   </section>
 </div>
+
