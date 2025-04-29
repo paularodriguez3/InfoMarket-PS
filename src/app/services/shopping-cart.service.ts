@@ -25,9 +25,9 @@ export class ShoppingCartService {
     this.saveCart(shoppingCart);
   }
 
-  removeFromCart(item: any): void {
+  removeFromCart(item: Product): void {
     const shoppingCart = this.getCart();
-    const cartItem = shoppingCart.find(e => e.id === item.id);
+    const cartItem = shoppingCart.find(e => e.product.id === item.id);
     if (!cartItem) {
       console.log("Objeto no encontrado.");
       return;
