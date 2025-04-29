@@ -35,6 +35,65 @@ body {
   color: #000000;
 }
 
+/* Overlay del menú */
+#menu-dropdown {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(8px);
+  background-color: rgba(250, 250, 252, 0.75); /* fondo semitransparente */
+  display: none;
+}
+
+#menu-dropdown.menu-visible {
+  display: block;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.menu-content {
+  padding-top: 120px; /* espacio para que no tape el header */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.dropdown-columns {
+  display: flex;
+  gap: 80px;
+  background: none;
+}
+
+.dropdown-columns div {
+  display: flex;
+  flex-direction: column;
+  font-family: 'SF Pro Display', sans-serif;
+}
+
+.dropdown-columns strong {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.dropdown-columns p {
+  margin: 4px 0;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.dropdown-columns p:hover {
+  color: #000;
+  font-weight: 500;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+
 #nav-top {
   align-items: center;
   display: flex;
@@ -108,6 +167,9 @@ main {
   align-items: center;
   justify-content: center;
   background-color: #FAFAFC;
+  width: 100%;
+  padding: 0;
+  margin: 0;
 }
 
 #main-video {
@@ -121,14 +183,39 @@ main {
   background-color: #EFEFEF;
 }
 
+
+
 #main-title-wrapper, #offers-wrapper {
   font-family: 'SF Pro Display', sans-serif;
-  padding: 30px 6%;
+  padding: 60px 6% 40px 6%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   color: #1D1D1F;
+  margin-top: 60px;
+  margin-bottom: 40px;
 }
+
+#menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  background: rgba(250, 250, 252, 0.95);
+  backdrop-filter: blur(6px);
+  display: none;
+  padding: 40px;
+}
+
+.blurred {
+  filter: blur(4px);
+  pointer-events: none;
+  user-select: none;
+  transition: filter 0.3s ease;
+}
+
 
 #main-title, #offer-title {
   font-size: 60px;
@@ -504,3 +591,4 @@ main {
     width: 20px;
   }
 }
+

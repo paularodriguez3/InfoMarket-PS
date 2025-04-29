@@ -14,8 +14,18 @@ export class NavBarComponent {
   toggleDesktopMenu(): void {
     if (window.innerWidth >= 769) {
       this.isDesktopMenuVisible = !this.isDesktopMenuVisible;
+
+      const main = document.querySelector('main');
+      if (main) {
+        if (this.isDesktopMenuVisible) {
+          main.classList.add('blurred');
+        } else {
+          main.classList.remove('blurred');
+        }
+      }
     }
   }
+
 
   toggleMobileMenu(): void {
     if (window.innerWidth < 769) {
