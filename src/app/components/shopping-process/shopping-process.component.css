@@ -1,0 +1,99 @@
+main {
+  font-family: 'SF Pro Display', sans-serif;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.progress-container {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  justify-content: center;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  flex: 1;
+}
+
+/* Círculo de los pasos */
+.circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #E9E9EA;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: bold;
+  z-index: 2;
+  margin-bottom: 15px;
+}
+
+.step.active .circle {
+  background-color: #746F6F;
+  color: white;
+}
+
+.step p {
+  margin-top: 5px;
+  font-size: 14px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 100px;
+  padding: 0 5px;
+}
+
+.step::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: calc(50% + 20px);
+  width: calc(100% - 40px);
+  height: 2px;
+  border-top: 2px dashed #aaa;
+  z-index: 1;
+}
+
+.step:last-child::after {
+  display: none;
+}
+
+
+.step:first-child::after {
+  left: calc(50% + 20px);
+}
+
+@media (max-width: 768px) {
+  .progress-container {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .step p {
+    font-size: 12px;
+    max-width: 80px;
+  }
+
+  .circle {
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  .step::after {
+    top: 15px;
+    left: calc(50% + 15px);
+    width: calc(100% - 30px);
+  }
+}
