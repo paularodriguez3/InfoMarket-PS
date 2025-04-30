@@ -15,7 +15,8 @@ export class ProductDetailsComponent {
     Imagen : "",
     Precio : 0,
     Caracteristicas: [],
-    id: ""
+    id: "",
+    Color:'',
   };
   cantidad: number = 1;
   precioTotal: number = this.product.Precio;
