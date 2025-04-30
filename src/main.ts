@@ -11,13 +11,13 @@ function isFirebaseConfigValid(config: any): boolean {
 import {getFirestore, provideFirestore} from '@angular/fire/firestore';
 import {getStorage, provideStorage} from '@angular/fire/storage';
 
-
 bootstrapApplication(AppComponent, {
   providers: [
     provideRouter(appRoutes),
     ...(isFirebaseConfigValid(environment.firebaseConfig)
       ? [
         provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+        provideAuth(() => getAuth()),
         provideFirestore(() => getFirestore()),
         provideStorage(() => getStorage())
       ]
