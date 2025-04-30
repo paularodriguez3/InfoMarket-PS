@@ -1,11 +1,17 @@
 import { Component } from '@angular/core';
 import {ShoppingCartService} from '../../services/shopping-cart.service';
 import {ShoppingCartItem} from '../../models/shopping-cart-item.model';
+import {ProductInfoComponent} from '../product-info/product-info.component';
+import {NgForOf} from '@angular/common';
 
 @Component({
   selector: 'app-shopping-info',
-  standalone: false,
+  standalone: true,
   templateUrl: './shopping-info.component.html',
+  imports: [
+    ProductInfoComponent,
+    NgForOf
+  ],
   styleUrl: './shopping-info.component.css'
 })
 export class ShoppingInfoComponent {

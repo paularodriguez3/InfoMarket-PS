@@ -12,6 +12,7 @@ export interface User {
 
 @Component({
   selector: 'app-personal-profile',
+  standalone: true,
   templateUrl: './personal-profile.component.html',
   imports: [
     FormsModule

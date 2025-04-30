@@ -1,8 +1,15 @@
 import { Component, HostListener } from '@angular/core';
+import {NgClass, NgIf} from '@angular/common';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-nav-bar',
-  standalone: false,
+  standalone: true,
+  imports: [
+    NgClass,
+    RouterLink,
+    NgIf
+  ],
   templateUrl: './nav-bar.component.html',
   styleUrl: './nav-bar.component.css'
 })

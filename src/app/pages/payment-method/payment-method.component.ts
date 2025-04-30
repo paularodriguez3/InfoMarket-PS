@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-payment-method',
-  standalone: false,
+  standalone: true,
   templateUrl: './payment-method.component.html',
   styleUrl: './payment-method.component.css'
 })

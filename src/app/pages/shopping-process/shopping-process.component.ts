@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-shopping-process',
-  standalone: false,
+  standalone: true,
   templateUrl: './shopping-process.component.html',
   styleUrl: './shopping-process.component.css'
 })

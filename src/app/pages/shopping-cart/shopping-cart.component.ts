@@ -2,10 +2,16 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ShoppingCartService} from '../../services/shopping-cart.service';
 import {ShoppingCartItem} from '../../models/shopping-cart-item.model';
+import {NgFor} from '@angular/common';
+import {ProductInfoComponent} from '../../components/product-info/product-info.component';
 
 @Component({
   selector: 'app-shopping-cart',
-  standalone: false,
+  standalone: true,
+  imports: [
+    NgFor,
+    ProductInfoComponent
+  ],
   templateUrl: './shopping-cart.component.html',
   styleUrl: './shopping-cart.component.css'
 })

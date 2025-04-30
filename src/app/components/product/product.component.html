@@ -1,0 +1,14 @@
+<article id="product" class="product-info-link">
+  <div id="product-image" class="product-info-link">
+    <img id="image" [src]="imageUrl" [alt]="product.Nombre">
+  </div>
+  <p id="product-name">{{ product.Nombre }}</p>
+  <p id="product-desc">{{ product.Descripcion }}</p>
+  <p class="price">
+    <span id="price" class="price">{{ product.Precio }}</span> €
+  </p>
+  <div class="buttons">
+    <button id="see" (click)="onSee()">Ver</button>
+    <button id="add-to-cart" (click)="onAddToCart()">Añadir al carrito</button>
+  </div>
+</article>

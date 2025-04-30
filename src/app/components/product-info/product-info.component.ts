@@ -1,10 +1,14 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import {ShoppingCartItem} from '../../models/shopping-cart-item.model';
+import {NgClass} from '@angular/common';
 
 @Component({
   selector: 'app-product-info',
-  standalone: false,
+  standalone: true,
   templateUrl: './product-info.component.html',
+  imports: [
+    NgClass
+  ],
   styleUrl: './product-info.component.css'
 })
 export class ProductInfoComponent {
