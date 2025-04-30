@@ -1,128 +1,134 @@
+/* ─── RESET & BOX‐SIZING ───────────────────────────────────── */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body, html {
-  height: 100%;
+/* ─── BODY & HEADER ───────────────────────────────────────── */
+body {
+  min-height: 100vh;
+  font-family: 'SF Pro Display', sans-serif;
+  background-color: #FAFAFC;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+}
+header {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  background-color: #FAFAFC;
+  z-index: 1000;
+}
+
+/* ─── MAIN (padding-top igual en los otros) ───────────────── */
+main {
+  flex: 1;
+  font-family: 'SF Pro Display', sans-serif;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  text-align: center;
-  padding: 2rem;
-  transition: transform 0.3s ease-in-out; /* Suaviza el movimiento */
+  padding-top: 120px;
+  background-color: #FAFAFC;
 }
 
-/* Título principal */
-h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-}
-
-/* Párrafos */
-p {
-  font-size: 1.25rem;
-  margin-bottom: 2rem;
-}
-
-/* Contenedor de PayPal */
-#paypal-button-container {
+/* ─── WRAPPER (igual que en Shipping y Billing) ───────────── */
+#payment-method-wrapper {
   display: flex;
   justify-content: center;
-  align-items: center;
-  width: 100%;
-  max-width: 30rem;
-  height: auto;
-  margin-top: 1rem;
+  align-items: flex-start;
+  width: 90%;
+  gap: 5%;
+  margin-top: 0;
+  padding-bottom: 70px;
 }
 
-/* Contenedor de pago */
-.payment-container {
-  width: 100%;
-  max-width: 500px;
-  padding: 2rem;
-  background: white;
+/* ─── CAJA BLANCA DEL FORMULARIO ──────────────────────────── */
+#payment-method {
+  flex: none;
+  width: 500px;              /* mismo ancho que ShippingMethod */
+  background-color: white;
+  padding: 20px;
   border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-/* Estilos para el campo de descuento */
-label {
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
-  display: block;
-}
-
-input#discount-code {
-  padding: 0.7rem;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-bottom: 1rem;
-  width: 100%;
-  max-width: 300px;
-  text-align: center;
-}
-
-/* Botón de aplicar descuento */
-button#apply-discount {
-  padding: 0.7rem 1.5rem;
-  font-size: 1rem;
-  color: white;
-  background-color: #0070ba;
-  border: none;
-  border-radius: 5px;
+/* ─── OPCIONES DE RADIO ───────────────────────────────────── */
+.payment-option {
+  display: flex;
+  align-items: center;
+  background: #d9d9d9;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background 0.3s ease;
+}
+.payment-option input {
+  margin-right: 10px;
+}
+.payment-option label {
+  flex-grow: 1;
+  font-size: 16px;
+}
+
+/* ─── CAMPOS DINÁMICOS ────────────────────────────────────── */
+#payment-fields {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+#payment-fields input {
   width: 100%;
-  max-width: 300px;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+#payment-fields input:focus {
+  outline: none;
+  border-color: #746F6F;
+  box-shadow: 0 0 5px rgba(116,111,111,0.5);
+  background-color: white;
 }
 
-button#apply-discount:hover {
-  background-color: #005ea6;
-}
-
-/* Ajusta la posición de la página cuando PayPal está activo */
-.body-paypal-active {
-  transform: translateY(-50px); /* Mueve todo hacia arriba */
-}
-
-/* Capa de fondo cuando el pago está activo */
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
+/* ─── BOTÓN PAGAR ────────────────────────────────────────── */
+.pay-button {
   width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 10;
-  display: none; /* Se mostrará solo cuando se active */
+  margin-top: 20px;
+  padding: 14px;
+  font-size: 16px;
+  background-color: #746F6F;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.pay-button:hover {
+  background-color: #5A4F4F;
 }
 
-/* Responsividad para pantallas pequeñas */
-@media (max-width: 768px) {
-  body {
-    padding: 1rem;
-  }
+/* ─── SHOPPING INFO (TOTAL) ───────────────────────────────── */
+app-shopping-info {
+  flex: none;
+  width: 600px;     /* coincide con shopping-info-component */
+  max-width: 90%;
+  margin: 0 auto;   /* centrado */
+}
 
-  h1 {
-    font-size: 2rem;
-  }
-
-  p {
-    font-size: 1rem;
-  }
-
-  .payment-container {
-    width: 90%;
-    padding: 1.5rem;
-  }
-
-  input#discount-code, button#apply-discount {
-    max-width: 100%;
-  }
+/* ─── RESPONSIVE (idéntico a Shipping y OrderReview) ─────── */
+@media (max-width: 1300px) {
+  #payment-method-wrapper { flex-direction: column; }
+  #payment-method           { width: 80%; }
+  app-shopping-info         { width: 80%; }
+}
+@media (max-width: 820px) {
+  #payment-method-wrapper { width: 80%; }
+  #payment-method           { width: 70%; }
+  app-shopping-info         { width: 70%; }
+}
+@media (max-width: 630px) {
+  #payment-method-wrapper { width: 60%; }
+  #payment-method           { width: 60%; }
+  app-shopping-info         { width: 60%; }
 }
