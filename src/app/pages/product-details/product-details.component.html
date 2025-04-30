@@ -20,7 +20,7 @@
           <button class="qty-button" id="plus" (click)="incrementQty()"><i class='bx bxs-plus-circle' ></i></button>
         </div>
       </div>
-      <p id="final-price"> Precio total: <span id="price">{{product.Precio}}</span> € </p>
+      <p id="final-price"> Precio total: <span id="price">{{precioTotal === 0 ? product.Precio : precioTotal}}</span> € </p>
       <hr class = "hr-features">
       <div id="add-to-cart">
         <button type=button id="add-to-cart-button" (click)="shoppingCartService.addToCart(product, cantidad)">Añadir al carrito</button>

@@ -10,22 +10,38 @@ import {ShoppingCartService} from '../../services/shopping-cart.service';
 })
 export class ProductDetailsComponent {
   product: Product = {
-    Nombre : "Lavadora multifunción Teka",
-    Descripcion : "Lavadora multifunción muy resistente",
-    Imagen : "https://th.bing.com/th/id/OIP.gwTG8IIrrG0FeBx3FUJUYAHaKB?rs=1&pid=ImgDetMain",
-    Precio : 2000,
-    Caracteristicas: ["Lavadora multifunción", "Resistente"]
+    Nombre : "",
+    Descripcion : "",
+    Imagen : "",
+    Precio : 0,
+    Caracteristicas: []
   };
   cantidad: number = 1;
+  precioTotal: number = this.product.Precio;
   shoppingCartService: ShoppingCartService = inject(ShoppingCartService);
+
+  ngOnInit() {
+    this.product.Nombre = history.state.product.Nombre;
+    this.product.Descripcion = history.state.product.Descripcion;
+    this.product.Imagen = history.state.product.Imagen;
+    this.product.Precio = history.state.product.Precio;
+    let caracteristicas: string[] = [];
+    for (let caracteristica in history.state.product.Caracteristicas) {
+      const carString: string = caracteristica + ": " + history.state.product.Caracteristicas[caracteristica];
+      caracteristicas.push(carString);
+    }
+    this.product.Caracteristicas = caracteristicas;
+  }
 
   decrementQty() {
     if (this.cantidad > 1) {
       this.cantidad--;
+      this.precioTotal = this.product.Precio * this.cantidad;
     }
   }
 
   incrementQty() {
     this.cantidad++;
+    this.precioTotal = this.product.Precio * this.cantidad;
   }
 }
