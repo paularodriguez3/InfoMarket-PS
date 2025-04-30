@@ -1,9 +1,14 @@
 import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import {ShoppingCartService} from '../../services/shopping-cart.service';
+import {NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-header',
   standalone: true,
   templateUrl: './header.component.html',
+  imports: [
+    NgIf
+  ],
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
@@ -11,6 +16,18 @@ export class HeaderComponent {
   @ViewChild('inputBar') inputRef!: ElementRef;
 
   isSearchActive = false;
+
+  cartItemCount = 0;
+
+  constructor(private cartService: ShoppingCartService) {}
+
+  ngOnInit() {
+    this.cartItemCount = this.cartService.getLength();
+
+    this.cartService.cartChanged$.subscribe(count => {
+      this.cartItemCount = count;
+    });
+  }
 
   toggleSearch(): void {
     const searchEl = this.searchRef.nativeElement as HTMLElement;

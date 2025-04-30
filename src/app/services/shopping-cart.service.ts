@@ -1,10 +1,15 @@
 import {Injectable} from '@angular/core';
 import {ShoppingCartItem} from '../models/shopping-cart-item.model'
 import {Product} from '../models/product.model';
+import {BehaviorSubject} from 'rxjs';
 
 
 @Injectable({providedIn:'root'})
 export class ShoppingCartService {
+  private cartChanged = new BehaviorSubject<number>(this.getLength());
+
+  cartChanged$ = this.cartChanged.asObservable();
+
   getCart(): ShoppingCartItem[] {
     const json = localStorage.getItem("cart");
     return json ? JSON.parse(json) : [];
@@ -16,6 +21,7 @@ export class ShoppingCartService {
 
   saveCart(cart: ShoppingCartItem[]): void {
     localStorage.setItem("cart", JSON.stringify(cart));
+    this.cartChanged.next(this.getLength());
   }
 
   addToCart(item: Product, quantity: number): void {

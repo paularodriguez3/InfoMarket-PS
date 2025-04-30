@@ -14,7 +14,10 @@
           </button>
         </div>
         <a id="user" routerLink="/personal-profile"><i class="fi fi-rr-user"></i></a>
-        <a id="cart" routerLink="/shopping-cart"><i class="fi fi-rr-briefcase-blank"></i></a>
+        <a id="cart" routerLink="/shopping-cart">
+          <i class="fi fi-rr-briefcase-blank"></i>
+          <span class="cart-notification" *ngIf="cartItemCount > 0"> {{cartItemCount}}</span>
+        </a>
       </div>
     </article>
   </section>
