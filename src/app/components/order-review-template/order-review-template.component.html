@@ -1,20 +1,19 @@
-
 <main>
-
   <div id="component">
     <div class="page-container">
       <div class="page-content">
+
         <div class="wrapper-component-one">
           <h1>Resumen de pago</h1>
           <div class="payment-summary">
             <p id="status">
               Su pago ha sido confirmado <i class='bx bx-check-circle'></i>
             </p>
-            <p id="método-de-pago">
-              Método de pago: Tarjeta de crédito <i class='bx bx-credit-card'></i>
+            <p id="metodo-de-pago">
+              Método de pago: {{ paymentMethod }} <i class='bx bx-credit-card'></i>
             </p>
             <p id="fecha-de-llegada">
-              Su fecha de llegada es: 00/00/0000 <i class='bx bxs-plane-land'></i>
+              Su fecha de llegada es: {{ arrivalDate }} <i class='bx bxs-plane-land'></i>
             </p>
           </div>
         </div>
@@ -27,8 +26,8 @@
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </div>
-
 </main>

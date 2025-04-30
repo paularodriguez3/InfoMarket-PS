@@ -1,11 +1,13 @@
 <main>
-  <app-shopping-process />
+  <app-shopping-process></app-shopping-process>
   <div id="wrapper-component">
     <section id="order-review">
-      <app-order-review-template />
+      <!-- Pasamos también arrivalDate -->
+      <app-order-review-template
+        [paymentMethod]="paymentMethod"
+        [arrivalDate]="arrivalDate">
+      </app-order-review-template>
     </section>
-
-    <app-shopping-info />
-
+    <app-shopping-info></app-shopping-info>
   </div>
 </main>
