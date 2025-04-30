@@ -14,7 +14,8 @@ export class ProductDetailsComponent {
     Descripcion : "",
     Imagen : "",
     Precio : 0,
-    Caracteristicas: []
+    Caracteristicas: [],
+    id: ""
   };
   cantidad: number = 1;
   precioTotal: number = this.product.Precio;
@@ -30,6 +31,7 @@ export class ProductDetailsComponent {
       const carString: string = caracteristica + ": " + history.state.product.Caracteristicas[caracteristica];
       caracteristicas.push(carString);
     }
+    this.product.id = history.state.product.id;
     this.product.Caracteristicas = caracteristicas;
   }
 
