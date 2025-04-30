@@ -67,7 +67,7 @@ main {
   padding: 20px;
   box-shadow: -4px 0 10px rgba(0, 0, 0, 0.1);
   position: fixed;
-  top: 60px;
+  top: 300px;
   right: 20px;
   border-radius: 10px 0 0 10px;
   z-index: 1050;
@@ -149,3 +149,4 @@ main {
   }
 
 }
+
