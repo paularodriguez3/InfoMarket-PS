@@ -1,12 +1,14 @@
 import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import {ShoppingCartService} from '../../services/shopping-cart.service';
 import {NgIf} from '@angular/common';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-header',
   standalone: true,
   templateUrl: './header.component.html',
   imports: [
+    RouterLink,
     NgIf
   ],
   styleUrls: ['./header.component.css']
