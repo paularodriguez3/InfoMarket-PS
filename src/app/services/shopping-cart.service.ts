@@ -10,6 +10,10 @@ export class ShoppingCartService {
     return json ? JSON.parse(json) : [];
   }
 
+  getLength(): number {
+    return this.getCart().length;
+  }
+
   saveCart(cart: ShoppingCartItem[]): void {
     localStorage.setItem("cart", JSON.stringify(cart));
   }
