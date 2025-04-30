@@ -1,6 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { ProductComponent } from '../../components/product/product.component';
-import { NgForOf } from '@angular/common';
+import {NgClass, NgForOf} from '@angular/common';
 import { Product } from '../../models/product.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../../services/product.service';
@@ -13,7 +13,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     ProductComponent,
     NgForOf,
-    FormsModule
+    FormsModule,
+    NgClass
   ],
   styleUrl: './product-list.component.css'
 })
@@ -63,7 +64,9 @@ export class ProductListComponent implements OnInit {
 
   toggleFilterMenu() {
     this.isFilterMenuVisible = !this.isFilterMenuVisible;
+    console.log('isFilterMenuVisible:', this.isFilterMenuVisible);
   }
+
 
   aplicarFiltros() {
     this.filteredProducts = this.products.filter(product => {
@@ -115,10 +118,12 @@ export class ProductListComponent implements OnInit {
 
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: MouseEvent) {
-    const target = event.target as HTMLElement;
-    const clickedInside = target.closest('#filter-menu-wrapper') || target.closest('#filter-button');
-    if (!clickedInside && this.isFilterMenuVisible) {
-      this.isFilterMenuVisible = false;
-    }
+    setTimeout(() => {
+      const target = event.target as HTMLElement;
+      const clickedInside = target.closest('#filter-menu-wrapper') || target.closest('#filter-button');
+      if (!clickedInside && this.isFilterMenuVisible) {
+        this.isFilterMenuVisible = false;
+      }
+    }, 0);
   }
 }

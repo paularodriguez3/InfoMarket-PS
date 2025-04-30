@@ -6,7 +6,13 @@
     </button>
   </section>
 
-  <section id="filter-menu-wrapper" [class.show-filter-menu]="isFilterMenuVisible" [class.hidden-filter-menu]="!isFilterMenuVisible">
+  <section
+    id="filter-menu-wrapper"
+    [ngClass]="{
+    'visible-filter': isFilterMenuVisible,
+    'hidden-filter': !isFilterMenuVisible
+  }"
+  >
     <ul id="filter-menu">
       <li>
         <label>Ordenar por:</label>
