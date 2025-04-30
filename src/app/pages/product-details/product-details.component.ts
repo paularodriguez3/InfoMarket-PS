@@ -36,12 +36,12 @@ export class ProductDetailsComponent {
   decrementQty() {
     if (this.cantidad > 1) {
       this.cantidad--;
-      this.precioTotal = this.product.Precio * this.cantidad;
+      this.precioTotal = Number((this.product.Precio * this.cantidad).toFixed(2));
     }
   }
 
   incrementQty() {
     this.cantidad++;
-    this.precioTotal = this.product.Precio * this.cantidad;
+    this.precioTotal = Number((this.product.Precio * this.cantidad).toFixed(2));
   }
 }
