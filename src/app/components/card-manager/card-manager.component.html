@@ -1,0 +1,53 @@
+<div class="card-manager">
+  <h3>Mis tarjetas</h3>
+
+  <div *ngIf="cards.length === 0" class="no-cards">
+    No has añadido tarjetas aún.
+  </div>
+
+  <ul>
+    <li *ngFor="let card of cards" class="card-item">
+      <div class="card-info">
+        <strong>{{ card.brand }}</strong> — {{ card.cardNumberMasked }}
+        <br>
+        <small>Vence: {{ card.expiry }}</small>
+      </div>
+      <i class='bx bx-trash delete-icon' (click)="confirmDelete(card)"></i>
+    </li>
+  </ul>
+
+
+  <button class="button-cancel-add" type="button" (click)="showAddForm = !showAddForm">
+    {{ showAddForm ? 'Cancelar' : 'Añadir tarjeta' }}
+  </button>
+
+  <div class="add-form" *ngIf="showAddForm">
+    <div class="input-icon-cards">
+      <i class="bx bxs-user"></i>
+      <input type="text" placeholder="Nombre del titular" [(ngModel)]="cardholderName" required minlength="3" name="cardholderName">
+    </div>
+    <div class="input-icon-cards">
+      <input [(ngModel)]="cardNumber" placeholder="Número de tarjeta">
+      <i class='bx bxs-credit-card-alt'></i>
+    </div>
+    <div class="input-icon-cards">
+      <input [(ngModel)]="expiry" placeholder="MM/AA">
+      <i class='bx bxs-credit-card'></i>
+    </div>
+    <div class="input-icon-cards">
+      <input [(ngModel)]="brand" placeholder="Marca (Visa, Mastercard...)">
+      <i class='bx bxs-bank'></i>
+    </div>
+    <button (click)="addCard()">Guardar tarjeta</button>
+  </div>
+
+  <div class="delete-confirmation" *ngIf="showConfirmPopup">
+    <div class="popup-delete">
+      <p>¿Estás seguro de que deseas eliminar esta tarjeta?</p>
+      <div class="popup-buttons">
+        <button (click)="confirmDeleteCard()">Sí, eliminar mi tarjeta</button>
+        <button class="button-confirm" (click)="cancelDelete()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>

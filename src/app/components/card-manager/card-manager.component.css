@@ -1,0 +1,123 @@
+.card-manager {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+.card-manager h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #333;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.5rem;
+}
+
+.card-manager ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1.5rem;
+}
+
+.card-manager li {
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.card-manager button {
+  background-color: #C2C2C2;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.95rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.card-manager button:hover {
+  background-color: #999999;
+}
+
+.add-form {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.add-form input {
+  padding: 0.55rem 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  background-color: #fafafa;
+  outline: none;
+  transition: border 0.2s ease;
+}
+
+.add-form input:focus {
+  border-color: #999;
+  background-color: #fff;
+}
+
+.card-manager .no-cards {
+  font-style: italic;
+  color: #777;
+  margin-bottom: 1rem;
+}
+
+
+.input-icon-cards {
+  position: relative;
+}
+
+.input-icon-cards i {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: #666;
+}
+
+.input-icon-cards input {
+  padding-left: 35px;
+  height: 40px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.card-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+.delete-icon {
+  cursor: pointer;
+  font-size: 18px;
+  color: #c0392b;
+  transition: color 0.2s;
+}
+
+.delete-icon:hover {
+  color: #e74c3c;
+}
+
+.button-confirm{
+  margin-left: 11.9rem;
+}
+

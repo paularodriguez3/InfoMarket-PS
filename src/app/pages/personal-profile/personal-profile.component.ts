@@ -1,41 +1,108 @@
-import {Component, inject} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
-export interface User {
-  name: string,
-  username: string,
-  surname: string,
-  email: string,
-  tlf: string
-}
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { Firestore, doc, getDoc, updateDoc } from '@angular/fire/firestore';
+import { Auth, signOut } from '@angular/fire/auth';
+import {CardManagerComponent} from '../../components/card-manager/card-manager.component';
 
 @Component({
   selector: 'app-personal-profile',
   standalone: true,
   templateUrl: './personal-profile.component.html',
-  imports: [
-    FormsModule
-  ],
-  styleUrl: './personal-profile.component.css'
+  styleUrl: './personal-profile.component.css',
+  imports: [CommonModule, FormsModule, CardManagerComponent]
 })
-export class PersonalProfileComponent {
-  router: Router = inject(Router);
+export class PersonalProfileComponent implements OnInit {
+  username = '';
+  firstName = '';
+  lastName = '';
+  email = '';
+  phone = '';
+  uid = '';
+  direction1 = '';
 
-    user: User = {
-      name: "Kevin",
-      username: "kevinjfa",
-      surname: "Falcón",
-      email: "kevinjfa@infomarket.es",
-      tlf: "123456789"
-    };
-
-  uploadChanges() {
-    //TODO: use firestore service to upload changes
+  private router = inject(Router);
+  private firestore = inject(Firestore, {optional: true});
+  private auth = inject(Auth, {optional: true});
+  showCardManager = false; // ✅ Añadí esta línea
+  toggleCardManager() {
+    this.showCardManager = !this.showCardManager; // ✅ Y esta función
   }
 
-  signOut() {
-    localStorage.removeItem('user');
-    this.router.navigate(['/']);
+  ngOnInit() {
+    if (!this.firestore) {
+      console.warn('InfoMarket informa de que el perfil no funciona temporalmente, estamos intentando solucioanr el problema.');
+      return;
+    }
+
+    const userData = localStorage.getItem('user');
+    if (!userData) {
+      this.router.navigate(['/sign-in']);
+      return;
+    }
+
+    const user = JSON.parse(userData);
+    this.uid = user.uid;
+    this.loadUserData();
+  }
+
+
+  async loadUserData() {
+    if (!this.firestore) return;
+
+    try {
+      const userRef = doc(this.firestore, 'users', this.uid);
+      const snapshot = await getDoc(userRef);
+
+      if (snapshot.exists()) {
+        const data = snapshot.data();
+        this.username = data['username'] || '';
+        this.firstName = data['firstName'] || '';
+        this.lastName = data['lastName'] || '';
+        this.email = data['email'] || '';
+        this.phone = data['phone'] || '';
+        this.direction1 = data['direction'] || '';
+      } else {
+        alert('No se encontraron datos del usuario.');
+      }
+    } catch (err) {
+      console.error('Error al cargar el perfil:', err);
+    }
+  }
+
+
+  async onSave() {
+    if (!this.firestore) {
+      alert('No se puede guardar: Firestore no está disponible.');
+      return;
+    }
+
+    try {
+      const userRef = doc(this.firestore, 'users', this.uid);
+      await updateDoc(userRef, {
+        username: this.username,
+        firstName: this.firstName,
+        lastName: this.lastName,
+        email: this.email,
+        phone: this.phone,
+        direction1: this.direction1
+      });
+
+      alert('Datos de perfil actualizados.');
+    } catch (err) {
+      console.error('Error al guardar el perfil:', err);
+    }
+  }
+
+
+  async logout() {
+    try {
+      if (this.auth) await signOut(this.auth);
+      localStorage.clear();
+      this.router.navigate(['/']);
+    } catch (err) {
+      console.error('Error al cerrar sesión:', err);
+    }
   }
 }
