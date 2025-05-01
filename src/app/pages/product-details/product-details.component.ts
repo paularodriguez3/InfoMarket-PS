@@ -36,7 +36,7 @@ export class ProductDetailsComponent {
       caracteristicas.push(carString);
     }
     this.product.id = history.state.product.id;
-    this.product.Caracteristicas = caracteristicas;
+    // this.product.Caracteristicas = caracteristicas; // FIXME: Ahora las características son objects
   }
 
   decrementQty() {
