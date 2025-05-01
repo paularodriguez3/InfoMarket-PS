@@ -1,6 +1,7 @@
 import {Component, inject} from '@angular/core';
 import {Product} from '../../models/product.model';
 import {ShoppingCartService} from '../../services/shopping-cart.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-product-details',
@@ -21,6 +22,8 @@ export class ProductDetailsComponent {
   cantidad: number = 1;
   precioTotal: number = this.product.Precio;
   shoppingCartService: ShoppingCartService = inject(ShoppingCartService);
+
+  constructor(private router:Router) {}
 
   ngOnInit() {
     this.product.Nombre = history.state.product.Nombre;
@@ -46,5 +49,9 @@ export class ProductDetailsComponent {
   incrementQty() {
     this.cantidad++;
     this.precioTotal = Number((this.product.Precio * this.cantidad).toFixed(2));
+  }
+
+  editProduct(product: Product) {
+    this.router.navigate(["../add-product"], {queryParams: {product: product}});
   }
 }

@@ -31,6 +31,7 @@ export class AddProductComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.product);
     if (this.product) {
       this.selectedProductName = this.product.Nombre;
       this.selectedDescription = this.product.Descripcion;
