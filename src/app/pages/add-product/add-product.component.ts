@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AddProductService } from '../../services/add-product.service';
-import { collection, getDocs, setDoc, doc } from '@angular/fire/firestore'; // Importar setDoc y doc
+import { Storage } from '@angular/fire/storage';
+import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
+import { collection, getDocs } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-add-product',
@@ -20,17 +22,15 @@ export class AddProductComponent implements OnInit {
   selectedProductName = '';
   selectedDescription = '';
   selectedPrice: number = 0;
-  selectedImageUrl: string = ''; // Nueva propiedad para la URL de la imagen
-  features = {
-    feature1: '',
-    feature2: '',
-    feature3: '',
-    feature4: ''
-  };
+  selectedImageUrl: string = '';
+  selectedImagePath: string = '';
+  features: { name: string, value: string }[] = [];
+
   documentsCount: number = 0;
 
-  constructor(private addProductService: AddProductService) {
-  }
+  private storage = inject(Storage);
+
+  constructor(private addProductService: AddProductService) {}
 
   ngOnInit() {
     this.addProductService.getCategories().subscribe(
@@ -49,7 +49,7 @@ export class AddProductComponent implements OnInit {
       const routeExists = await this.addProductService.checkIfRouteExists(this.selectedCategory, this.selectedSubcategory);
 
       if (routeExists) {
-        const firestore = this.addProductService.getFirestore(); // Obtén firestore desde el servicio
+        const firestore = this.addProductService.getFirestore();
         const productsRef = collection(firestore, `productos/${this.selectedCategory}/${this.selectedSubcategory}`);
         getDocs(productsRef).then(querySnapshot => {
           this.documentsCount = querySnapshot.size;
@@ -71,9 +71,45 @@ export class AddProductComponent implements OnInit {
     if (this.quantity > 1) this.quantity--;
   }
 
+  onImageSelect(event: any) {
+    const file = event.target.files[0];
+    console.log("Archivo seleccionado:", file);
+    if (file) {
+      this.selectedImagePath = file.name;
+    }
+  }
+
+  uploadImage(file: File) {
+    const filePath = `Informatica/${file.name}`;
+    this.selectedImagePath = filePath;
+    const storageRef = ref(this.storage, filePath);
+
+    const uploadTask = uploadBytesResumable(storageRef, file);
+
+    uploadTask.on('state_changed',
+      (snapshot) => {
+      },
+      (error) => {
+        console.error("Error al subir la imagen: ", error);
+        alert("Error al subir la imagen.");
+      },
+      () => {
+        // Una vez subida la imagen, obtenemos la URL
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          console.log("Imagen subida con éxito:", downloadURL);
+          this.selectedImageUrl = downloadURL; // Si es necesario, guarda la URL completa aquí
+          this.imageUploaded(); // Llamamos al método imageUploaded para continuar
+        });
+      }
+    );
+  }
+
+  imageUploaded() {
+    console.log("Imagen subida correctamente.");
+    alert("Imagen subida correctamente.");
+  }
 
   saveProduct() {
-    // Comprobamos cada campo individualmente
     if (!this.selectedProductName) {
       alert("Por favor, complete el campo 'Nombre del producto'.");
       return;
@@ -99,7 +135,17 @@ export class AddProductComponent implements OnInit {
       return;
     }
 
-    // Si los campos están completos, guardamos el producto
+    if (this.selectedImagePath) {
+      this.uploadImage(new File([], this.selectedImagePath)); // Subimos la imagen seleccionada
+    }
+
+    const formattedFeatures: { [key: string]: string } = {};
+    this.features.forEach(feature => {
+      if (feature.name && feature.value) {
+        formattedFeatures[feature.name] = feature.value;
+      }
+    });
+
     const productData = {
       Nombre: this.selectedProductName,
       Descripcion: this.selectedDescription,
@@ -107,12 +153,8 @@ export class AddProductComponent implements OnInit {
       subcategory: this.selectedSubcategory,
       Precio: this.selectedPrice,
       Cantidad: this.quantity,
-      Caracteristicas: {
-        feature1: this.features.feature1,
-        feature2: this.features.feature2,
-        feature3: this.features.feature3,
-        feature4: this.features.feature4
-      }
+      Caracteristicas: formattedFeatures,
+      Imagen: this.selectedImagePath
     };
 
     this.addProductService.saveProduct(productData).then(() => {
@@ -124,4 +166,11 @@ export class AddProductComponent implements OnInit {
     });
   }
 
+  addFeature() {
+    this.features.push({ name: '', value: '' });
+  }
+
+  removeFeature(index: number) {
+    this.features.splice(index, 1);
+  }
 }
