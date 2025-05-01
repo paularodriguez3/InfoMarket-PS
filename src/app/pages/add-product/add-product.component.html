@@ -1,39 +1,32 @@
 <article id="product-details">
   <section id="product-details-info">
 
-    <label for="product-desc">Nombre del producto:</label>
-    <input type="text" id="product-name" name="product-name" placeholder="Introduce el nombre del producto">
+    <label for="product-name">Nombre del producto:</label>
+    <input type="text" id="product-name" name="product-name" [(ngModel)]="selectedProductName" placeholder="Introduce el nombre del producto">
 
     <label for="product-desc">Descripción del producto:</label>
-    <input type="text" id="product-desc" name="product-desc" placeholder="Introduce la descripción del producto">
+    <input type="text" id="product-desc" name="product-desc" [(ngModel)]="selectedDescription" placeholder="Introduce la descripción del producto">
 
     <label for="category-select">Categoría:</label>
-    <select id="category-select" name="category">
+    <select id="category-select" name="category" [(ngModel)]="selectedCategory" (change)="onCategoryChange()">
       <option value="">Selecciona una categoría</option>
-      <option value="Informática">Informática</option>
-      <option value="Gaming">Gaming</option>
-      <option value="Telefonia">Telefonia</option>
-      <option value="Televisores">Televisores</option>
-      <option value="Electrónica">Electrónica</option>
-
+      <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
     </select>
 
     <label for="subcategory-select">Subcategoría:</label>
-    <select id="subcategory-select" name="subcategory">
+    <select id="subcategory-select" name="subcategory" [(ngModel)]="selectedSubcategory" (change)="onSubcategoryChange()">
       <option value="">Selecciona una subcategoría</option>
-      <option value="moviles">Móviles</option>
-      <option value="camisetas">Camisetas</option>
-      <option value="cocina">Cocina</option>
+      <option *ngFor="let sub of subcategories" [value]="sub">{{ sub }}</option>
     </select>
 
     <hr class="hr-features">
 
     <div id="product-features">
       <label>Características:</label>
-      <input type="text" name="feature1" placeholder="Característica 1">
-      <input type="text" name="feature2" placeholder="Característica 2">
-      <input type="text" name="feature3" placeholder="Característica 3">
-      <input type="text" name="feature4" placeholder="Característica 4">
+      <input type="text" name="feature1" [(ngModel)]="features.feature1" placeholder="Característica 1">
+      <input type="text" name="feature2" [(ngModel)]="features.feature2" placeholder="Característica 2">
+      <input type="text" name="feature3" [(ngModel)]="features.feature3" placeholder="Característica 3">
+      <input type="text" name="feature4" [(ngModel)]="features.feature4" placeholder="Característica 4">
     </div>
 
     <hr class="hr-features">
@@ -41,19 +34,19 @@
     <div id="quantity-container">
       <div class="quantity-selector">
         <p id="product-quantity">Cantidad:</p>
-        <button class="qty-button" id="minus"><i class='bx bxs-minus-circle'></i></button>
-        <p id="qty-value">1</p>
-        <button class="qty-button" id="plus"><i class='bx bxs-plus-circle'></i></button>
+        <p id="qty-value">{{ quantity }}</p>
+        <button class="qty-button" id="minus" (click)="decreaseQuantity()"><i class='bx bxs-minus-circle'></i></button>
+        <button class="qty-button" id="plus" (click)="increaseQuantity()"><i class='bx bxs-plus-circle'></i></button>
       </div>
     </div>
 
     <label for="price">Precio por unidad (€):</label>
-    <input type="number" id="price" name="price" placeholder="0.00" step="0.01" min="0">
+    <input type="number" id="price" name="price" [(ngModel)]="selectedPrice" placeholder="0.00" step="0.01" min="0">
 
     <hr class="hr-features">
 
     <div id="add-to-cart">
-      <button type="submit" id="add-to-cart-button">Añadir producto</button>
+      <button type="button" id="add-to-cart-button" (click)="saveProduct()">Añadir producto</button>
     </div>
   </section>
 
