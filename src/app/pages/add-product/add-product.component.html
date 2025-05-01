@@ -23,14 +23,16 @@
 
     <div id="product-features">
       <label>Características:</label>
-      <div *ngFor="let feature of features; let i = index" class="feature-row">
-        <input type="text" [name]="'feature' + (i+1)" [(ngModel)]="features[i]" [placeholder]="'Característica' + (i+1)">
-        <button *ngIf="i>0" type="button" (click)="removeFeature(i)" class="remove-feature-button">-</button>
-        <div *ngIf="i===0" class="remove-feature-whitespace"></div>
+      <div *ngFor="let feature of features; let i = index">
+        <div class="feature-inputs">
+          <input type="text" [(ngModel)]="feature.name" placeholder="Nombre de la característica">
+          <input type="text" [(ngModel)]="feature.value" placeholder="Valor de la característica">
+        </div>
+        <!-- Solo mostrar el botón de eliminar si hay más de 1 característica -->
+        <button *ngIf="features.length > 1" (click)="removeFeature(i)">Eliminar</button>
       </div>
-      <div class="add-feature-button-container">
-        <button type="button" (click)="addFeature()" class="add-feature-button">+</button>
-      </div>
+
+      <button type="button" (click)="addFeature()">Añadir característica</button>
     </div>
 
     <hr class="hr-features">
@@ -49,9 +51,18 @@
 
     <hr class="hr-features">
 
+    <label for="imageUpload">Selecciona una imagen del producto:</label>
+    <input type="file" id="imageUpload" (change)="onImageSelect($event)" accept="image/*">
+
+    <div *ngIf="imageUploaded">
+    </div>
+
+    <hr class="hr-features">
+
     <div id="add-to-cart">
       <button type="button" id="add-to-cart-button" (click)="saveProduct()">Añadir producto</button>
     </div>
+
   </section>
 
   <div id="product-image">
