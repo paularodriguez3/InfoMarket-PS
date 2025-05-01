@@ -24,7 +24,7 @@ export class AddProductComponent implements OnInit {
   selectedDescription = '';
   selectedPrice: number = 0;
   selectedImageUrl: string = ''; // Nueva propiedad para la URL de la imagen
-  features:string[] = ['', ''];
+  features:string[] = [''];
   documentsCount: number = 0;
 
   constructor(private addProductService: AddProductService) {
@@ -83,6 +83,10 @@ export class AddProductComponent implements OnInit {
 
   addFeature() {
     this.features.push('');
+  }
+
+  removeFeature(index: number) {
+    this.features.splice(index, 1);
   }
 
   saveProduct() {

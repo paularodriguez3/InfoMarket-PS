@@ -233,6 +233,40 @@ button i {
   background-color: #3D3D3D;
 }
 
+.feature-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.remove-feature-whitespace,
+.remove-feature-button {
+  width: 30px;
+  height: 30px;
+  font-size: 20px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  text-align: center;
+}
+
+.remove-feature-button {
+  font-size: 1.2rem;
+  border: none;
+  background-color: #1D1D1F;
+  color: white;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.remove-feature-button:hover {
+  background-color: #3D3D3D;
+}
+
 /* Responsive */
 @media(max-width: 991px) {
   #product-details {
