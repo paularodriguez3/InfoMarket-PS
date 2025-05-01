@@ -25,9 +25,9 @@ export class PersonalProfileComponent implements OnInit {
   private router = inject(Router);
   private firestore = inject(Firestore, {optional: true});
   private auth = inject(Auth, {optional: true});
-  showCardManager = false; // ✅ Añadí esta línea
+  showCardManager = false;
   toggleCardManager() {
-    this.showCardManager = !this.showCardManager; // ✅ Y esta función
+    this.showCardManager = !this.showCardManager;
   }
 
   ngOnInit() {
