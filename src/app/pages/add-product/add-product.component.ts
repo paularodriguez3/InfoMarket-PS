@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AddProductService } from '../../services/add-product.service';
-import { collection, getDocs, setDoc, doc } from '@angular/fire/firestore'; // Importar setDoc y doc
+import { collection, getDocs, setDoc, doc } from '@angular/fire/firestore';
+import { Storage } from '@angular/fire/storage';
+import {getDownloadURL, ref, uploadBytesResumable} from '@angular/fire/storage';
+import {Product} from '../../models/product.model'; // Importar setDoc y doc
 
 @Component({
   selector: 'app-add-product',
@@ -12,6 +15,8 @@ import { collection, getDocs, setDoc, doc } from '@angular/fire/firestore'; // I
   styleUrls: ['./add-product.component.css']
 })
 export class AddProductComponent implements OnInit {
+  product?: Product;
+
   quantity = 1;
   categories: string[] = [];
   subcategories: string[] = [];
@@ -20,7 +25,6 @@ export class AddProductComponent implements OnInit {
   selectedProductName = '';
   selectedDescription = '';
   selectedPrice: number = 0;
-  selectedImageUrl: string = ''; // Nueva propiedad para la URL de la imagen
   selectedImageUrl: string = '';
   selectedImagePath: string = '';
   features: { name: string, value: string }[] = [];
@@ -40,7 +44,7 @@ export class AddProductComponent implements OnInit {
     if (this.product) {
       this.selectedProductName = this.product.Nombre;
       this.selectedDescription = this.product.Descripcion;
-      this.features = this.product.Caracteristicas;
+      // this.features = this.product.Caracteristicas;
       this.selectedPrice = this.product.Precio;
     }
 
