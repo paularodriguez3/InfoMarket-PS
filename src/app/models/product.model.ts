@@ -6,5 +6,10 @@ export interface Product {
   Precio: number;
   Marca?: string;
   Color: string;
-  Caracteristicas: string[];
+  Caracteristicas: Feature[];
+}
+
+export interface Feature {
+  name: string;
+  value: string;
 }

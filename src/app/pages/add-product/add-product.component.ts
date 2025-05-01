@@ -5,7 +5,7 @@ import { AddProductService } from '../../services/add-product.service';
 import { collection, getDocs, setDoc, doc } from '@angular/fire/firestore';
 import { Storage } from '@angular/fire/storage';
 import {getDownloadURL, ref, uploadBytesResumable} from '@angular/fire/storage';
-import {Product} from '../../models/product.model'; // Importar setDoc y doc
+import {Feature, Product} from '../../models/product.model';
 
 @Component({
   selector: 'app-add-product',
@@ -27,7 +27,7 @@ export class AddProductComponent implements OnInit {
   selectedPrice: number = 0;
   selectedImageUrl: string = '';
   selectedImagePath: string = '';
-  features: { name: string, value: string }[] = [];
+  features: Feature[] = [];
 
   documentsCount: number = 0;
 
@@ -44,7 +44,7 @@ export class AddProductComponent implements OnInit {
     if (this.product) {
       this.selectedProductName = this.product.Nombre;
       this.selectedDescription = this.product.Descripcion;
-      // this.features = this.product.Caracteristicas;
+      this.features = this.product.Caracteristicas;
       this.selectedPrice = this.product.Precio;
     }
 

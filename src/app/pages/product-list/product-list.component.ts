@@ -79,7 +79,7 @@ export class ProductListComponent implements OnInit {
       for (const clave in this.caracteristicas) {
         const valorFiltro = this.caracteristicas[clave].toLowerCase();
         if (valorFiltro) {
-          const caracteristicasLower = product.Caracteristicas.map(c => c.toLowerCase());
+          const caracteristicasLower = product.Caracteristicas.map(c => c["value"].toLowerCase());
           if (!caracteristicasLower.some(caracteristica => caracteristica.includes(valorFiltro))) {
             cumpleCaracteristicas = false;
             break;
