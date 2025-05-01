@@ -23,10 +23,7 @@
 
     <div id="product-features">
       <label>Características:</label>
-      <input type="text" name="feature1" [(ngModel)]="features.feature1" placeholder="Característica 1">
-      <input type="text" name="feature2" [(ngModel)]="features.feature2" placeholder="Característica 2">
-      <input type="text" name="feature3" [(ngModel)]="features.feature3" placeholder="Característica 3">
-      <input type="text" name="feature4" [(ngModel)]="features.feature4" placeholder="Característica 4">
+      <input type="text" *ngFor="let feature of features; let i = index" [name]="'feature' + (i+1)" [(ngModel)]="features[i]" [placeholder]="'Característica' + (i+1)">
     </div>
 
     <hr class="hr-features">

@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AddProductService } from '../../services/add-product.service';
-import { collection, getDocs, setDoc, doc } from '@angular/fire/firestore'; // Importar setDoc y doc
+import { collection, getDocs, setDoc, doc } from '@angular/fire/firestore';
+import {Product} from '../../models/product.model';
 
 @Component({
   selector: 'app-add-product',
@@ -12,6 +13,8 @@ import { collection, getDocs, setDoc, doc } from '@angular/fire/firestore'; // I
   styleUrls: ['./add-product.component.css']
 })
 export class AddProductComponent implements OnInit {
+  @Input() product?: Product;
+
   quantity = 1;
   categories: string[] = [];
   subcategories: string[] = [];
@@ -21,18 +24,20 @@ export class AddProductComponent implements OnInit {
   selectedDescription = '';
   selectedPrice: number = 0;
   selectedImageUrl: string = ''; // Nueva propiedad para la URL de la imagen
-  features = {
-    feature1: '',
-    feature2: '',
-    feature3: '',
-    feature4: ''
-  };
+  features:string[] = ['', ''];
   documentsCount: number = 0;
 
   constructor(private addProductService: AddProductService) {
   }
 
   ngOnInit() {
+    if (this.product) {
+      this.selectedProductName = this.product.Nombre;
+      this.selectedDescription = this.product.Descripcion;
+      this.features = this.product.Caracteristicas;
+      this.selectedPrice = this.product.Precio;
+    }
+
     this.addProductService.getCategories().subscribe(
       (categories: string[]) => this.categories = categories,
       (error) => console.error("Error al obtener categorías:", error)
@@ -107,12 +112,10 @@ export class AddProductComponent implements OnInit {
       subcategory: this.selectedSubcategory,
       Precio: this.selectedPrice,
       Cantidad: this.quantity,
-      Caracteristicas: {
-        feature1: this.features.feature1,
-        feature2: this.features.feature2,
-        feature3: this.features.feature3,
-        feature4: this.features.feature4
-      }
+      Caracteristicas: this.features.reduce((acc, val, idx) => {
+        acc[`feature${idx + 1}`] = val;
+        return acc;
+      }, {} as { [key: string]: string })
     };
 
     this.addProductService.saveProduct(productData).then(() => {
