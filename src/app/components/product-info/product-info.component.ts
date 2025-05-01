@@ -24,4 +24,8 @@ export class ProductInfoComponent {
   decrease() {
     this.decreaseQty.emit(this.item);
   }
+
+  getPrice() {
+    return Number((this.item.product.Precio * this.item.quantity).toFixed(2));
+  }
 }

@@ -55,7 +55,7 @@ export class ShoppingCartComponent implements OnInit{
   calculateTotalPrice(): number {
     let total:number = 0;
     for (let item of this.shoppingCart) {
-      total += item.product.Precio * item.quantity;
+      total += Number((item.product.Precio * item.quantity).toFixed(2));
     }
     return total;
   }
