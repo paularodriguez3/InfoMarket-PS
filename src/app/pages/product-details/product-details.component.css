@@ -213,6 +213,28 @@ button i {
   cursor: pointer;
 }
 
+#edit-product {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+#edit-product-button {
+  background-color: #1D1D1F;
+  color: white;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  height: 60px;
+  text-align: center;
+  border-radius: 10px;
+  width: 70%;
+}
+
+#edit-product-button:hover {
+  background-color: #3D3D3D;
+}
+
 @media(max-width: 991px) {
   #product-details {
     flex-direction: column-reverse;

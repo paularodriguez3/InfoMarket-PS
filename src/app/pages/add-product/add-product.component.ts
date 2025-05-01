@@ -1,8 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AddProductService } from '../../services/add-product.service';
-import { collection, getDocs, setDoc, doc } from '@angular/fire/firestore';
+import { collection, getDocs} from '@angular/fire/firestore';
 import {Product} from '../../models/product.model';
 
 @Component({
@@ -13,7 +13,7 @@ import {Product} from '../../models/product.model';
   styleUrls: ['./add-product.component.css']
 })
 export class AddProductComponent implements OnInit {
-  @Input() product?: Product;
+  product?: Product;
 
   quantity = 1;
   categories: string[] = [];
@@ -31,7 +31,11 @@ export class AddProductComponent implements OnInit {
   }
 
   ngOnInit() {
+    const productJSON = localStorage.getItem('edit-product');
+    localStorage.removeItem('edit-product');
+    this.product = productJSON ? JSON.parse(productJSON): null;
     console.log(this.product);
+
     if (this.product) {
       this.selectedProductName = this.product.Nombre;
       this.selectedDescription = this.product.Descripcion;

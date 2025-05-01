@@ -51,7 +51,9 @@ export class ProductDetailsComponent {
     this.precioTotal = Number((this.product.Precio * this.cantidad).toFixed(2));
   }
 
-  editProduct(product: Product) {
-    this.router.navigate(["../add-product"], {queryParams: {product: product}});
+  editProduct() {
+    const productJSON = JSON.stringify(this.product);
+    localStorage.setItem('edit-product', productJSON);
+    this.router.navigate(["../add-product"]);
   }
 }

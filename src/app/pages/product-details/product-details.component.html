@@ -25,6 +25,9 @@
       <div id="add-to-cart">
         <button type=button id="add-to-cart-button" (click)="shoppingCartService.addToCart(product, cantidad)">Añadir al carrito</button>
       </div>
+      <div id="edit-product">
+        <button id="edit-product-button" (click)="editProduct()">Editar</button>
+      </div>
     </section>
     <div id="product-image">
       <img id="image" alt="Producto" [src] = product.Imagen>
@@ -34,6 +37,4 @@
       </div>
     </div>
   </article>
-
-  <button id="edit-product" (click)="editProduct(product)">Editar</button>
 </main>
