@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
-import { ShoppingProcessComponent } from '../../components/shopping-process/shopping-process.component';
 import { ShoppingInfoComponent } from '../../components/shopping-info/shopping-info.component';
+import {ShoppingProcessComponent} from '../shopping-process/shopping-process.component';
 
 @Component({
   selector: 'app-billing-address',
