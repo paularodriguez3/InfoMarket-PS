@@ -209,6 +209,30 @@ button i {
   cursor: pointer;
 }
 
+.add-feature-button-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.add-feature-button {
+  font-size: 1.5rem;
+  border: none;
+  background-color: #1D1D1F;
+  color: white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-feature-button:hover {
+  background-color: #3D3D3D;
+}
+
 /* Responsive */
 @media(max-width: 991px) {
   #product-details {

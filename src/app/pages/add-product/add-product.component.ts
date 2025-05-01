@@ -81,6 +81,9 @@ export class AddProductComponent implements OnInit {
     if (this.quantity > 1) this.quantity--;
   }
 
+  addFeature() {
+    this.features.push('');
+  }
 
   saveProduct() {
     // Comprobamos cada campo individualmente
