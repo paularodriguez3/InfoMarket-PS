@@ -23,6 +23,8 @@ export class ProductDetailsComponent {
   precioTotal: number = this.product.Precio;
   shoppingCartService: ShoppingCartService = inject(ShoppingCartService);
 
+  category:string = "";
+
   constructor(private router:Router) {}
 
   ngOnInit() {
@@ -40,6 +42,8 @@ export class ProductDetailsComponent {
     }
     this.product.id = history.state.product.id;
     this.product.Caracteristicas = caracteristicas;
+
+    this.category = history.state.categoria;
   }
 
   decrementQty() {
@@ -55,7 +59,11 @@ export class ProductDetailsComponent {
   }
 
   editProduct() {
-    const productJSON = JSON.stringify(this.product);
+    const productJSON = JSON.stringify({
+      product: this.product,
+      category: this.category,
+    });
+    console.log(productJSON);
     localStorage.setItem('edit-product', productJSON);
     this.router.navigate(["../add-product"]);
   }

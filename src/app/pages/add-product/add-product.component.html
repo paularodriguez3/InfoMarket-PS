@@ -62,6 +62,9 @@
     <div id="add-to-cart">
       <button type="button" id="add-to-cart-button" (click)="saveProduct()">Añadir producto</button>
     </div>
+    <div id="delete-product" *ngIf="isEditing">
+      <button type="button" id="delete-product-button" (click)="removeProduct()">Eliminar Producto</button>
+    </div>
 
   </section>
 

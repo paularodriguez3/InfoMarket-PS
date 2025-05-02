@@ -16,6 +16,7 @@ import {Feature, Product} from '../../models/product.model';
 })
 export class AddProductComponent implements OnInit {
   product?: Product;
+  isEditing = false;
 
   quantity = 1;
   categories: string[] = [];
@@ -36,18 +37,26 @@ export class AddProductComponent implements OnInit {
   constructor(private addProductService: AddProductService) {}
 
   ngOnInit() {
-    const productJSON = localStorage.getItem('edit-product');
+    const inputJSON = localStorage.getItem('edit-product');
     localStorage.removeItem('edit-product');
-    this.product = productJSON ? JSON.parse(productJSON): null;
-    console.log(this.product);
+    const input = inputJSON? JSON.parse(inputJSON): null;
 
-    if (this.product) {
+    if (input) {
+      this.isEditing = true;
+
+      this.product = input['product'] as Product;
+      console.log(this.product);
+
+      // FIXME: La categoría no se le pasa bien
+      // this.selectedCategory = input['category'];
+      // console.log(this.selectedCategory);
+      // this.onCategoryChange();
+
       this.selectedProductName = this.product.Nombre;
       this.selectedDescription = this.product.Descripcion;
       this.features = this.product.Caracteristicas;
       this.selectedPrice = this.product.Precio;
       this.selectedImageUrl = this.product.Imagen;
-      // this.selectedImagePath = this.product.Imagen;
     }
 
     this.addProductService.getCategories().subscribe(
@@ -190,5 +199,9 @@ export class AddProductComponent implements OnInit {
 
   removeFeature(index: number) {
     this.features.splice(index, 1);
+  }
+
+  removeProduct() {
+    // TODO
   }
 }

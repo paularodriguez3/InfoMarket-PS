@@ -267,6 +267,30 @@ button i {
   background-color: #3D3D3D;
 }
 
+#delete-product {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 5% 0;
+}
+
+#delete-product-button {
+  background-color: #1D1D1F;
+  color: white;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  height: 60px;
+  text-align: center;
+  border-radius: 10px;
+  width: 70%;
+}
+
+#delete-product-button:hover {
+  background-color: #3D3D3D;
+}
+
 /* Responsive */
 @media(max-width: 991px) {
   #product-details {

@@ -19,7 +19,7 @@ export class ProductComponent {
   router: Router = inject(Router);
 
   onSee() {
-    this.router.navigate(['/product-details'], {state: {product: this.product}});
+    this.router.navigate(['/product-details'], {state: {product: this.product, category: ''}});
   }
 
   onAddToCart() {
