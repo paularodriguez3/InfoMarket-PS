@@ -1,5 +1,5 @@
 import {Component, inject} from '@angular/core';
-import {Product} from '../../models/product.model';
+import {Feature, Product} from '../../models/product.model';
 import {ShoppingCartService} from '../../services/shopping-cart.service';
 import {Router} from '@angular/router';
 
@@ -30,13 +30,16 @@ export class ProductDetailsComponent {
     this.product.Descripcion = history.state.product.Descripcion;
     this.product.Imagen = history.state.product.Imagen;
     this.product.Precio = history.state.product.Precio;
-    let caracteristicas: string[] = [];
+    let caracteristicas: Feature[] = [];
     for (let caracteristica in history.state.product.Caracteristicas) {
-      const carString: string = caracteristica + ": " + history.state.product.Caracteristicas[caracteristica];
-      caracteristicas.push(carString);
+      const feature: Feature = {
+        name: caracteristica,
+        value: history.state.product.Caracteristicas[caracteristica]
+      };
+      caracteristicas.push(feature);
     }
     this.product.id = history.state.product.id;
-    // this.product.Caracteristicas = caracteristicas; // FIXME: Ahora las características son objects
+    this.product.Caracteristicas = caracteristicas; // FIXME: Ahora las características son objects
   }
 
   decrementQty() {

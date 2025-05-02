@@ -7,7 +7,7 @@
       <hr class = "hr-features">
       <div id="product-features">
         @for (caracteristica of product.Caracteristicas; track product.id) {
-          <p>{{caracteristica}}</p>
+          <p>{{caracteristica.name + ": " + caracteristica.value }}</p>
         }
       </div>
       <hr class = "hr-features">
