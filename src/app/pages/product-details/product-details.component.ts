@@ -39,7 +39,7 @@ export class ProductDetailsComponent {
       caracteristicas.push(feature);
     }
     this.product.id = history.state.product.id;
-    this.product.Caracteristicas = caracteristicas; // FIXME: Ahora las características son objects
+    this.product.Caracteristicas = caracteristicas;
   }
 
   decrementQty() {
