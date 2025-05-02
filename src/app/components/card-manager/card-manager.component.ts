@@ -26,27 +26,21 @@ export class CardManagerComponent implements OnInit {
   async ngOnInit() {
     if (this.uid) {
       this.cards = await this.cardService.getCards(this.uid);
-      console.log('UID recibido en CardManagerComponent:', this.uid);
+      console.log('UID en CardManagerComponent:', this.uid);
     }
   }
 
   async addCard() {
     if (!this.uid) return;
 
-    await this.cardService.addCard(this.uid, {
+    const newCard = await this.cardService.addCard(this.uid, {
       cardholderName: this.cardholderName,
       cardNumber: this.cardNumber,
       expiry: this.expiry,
       brand: this.brand
     });
 
-    this.cards.push({
-      cardholderName: this.cardholderName,
-      cardNumberMasked: '**** **** **** ' + this.cardNumber.slice(-4),
-      expiry: this.expiry,
-      brand: this.brand
-    });
-
+    this.cards.push(newCard);
 
     this.cardholderName = '';
     this.cardNumber = '';
@@ -54,6 +48,7 @@ export class CardManagerComponent implements OnInit {
     this.brand = '';
     this.showAddForm = false;
   }
+
   async deleteCard(card: any) {
     if (!this.uid || !card.id) {
       console.warn('No se puede eliminar: UID o ID no disponible');
