@@ -66,7 +66,9 @@
   </section>
 
   <div id="product-image">
-    <img id="image" alt="Producto" src="/assets/images/Tiendas-en-las-que-operamos.png">
+    <img id="image" *ngIf="selectedImageUrl" alt="Producto" [src]="selectedImageUrl">
+    <img id="image" *ngIf="!selectedImageUrl" alt="Producto" src="/assets/images/Tiendas-en-las-que-operamos.png">
+
     <div id="button-arrows">
       <button id="prev-image"><i class='bx bx-chevron-left'></i></button>
       <button id="next-image"><i class='bx bx-chevron-right'></i></button>
