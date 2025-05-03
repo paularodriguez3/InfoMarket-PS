@@ -54,11 +54,7 @@ export class AddProductComponent implements OnInit {
       this.features = this.product.Caracteristicas;
       this.selectedPrice = this.product.Precio;
       this.selectedImageUrl = this.product.Imagen;
-      this.selectedImagePath = this.product.Imagen;
       this.selectedCategory = this.product.Categoria;
-      this.onCategoryChange();
-      this.selectedSubcategory = this.product.Subcategoria;
-      this.onSubcategoryChange();
     }
 
     this.addProductService.getCategories().subscribe(
@@ -177,27 +173,21 @@ export class AddProductComponent implements OnInit {
     const productData = {
       Nombre: this.selectedProductName,
       Descripcion: this.selectedDescription,
-      Categoria: this.selectedCategory,
-      Subcategoria: this.selectedSubcategory,
+      category: this.selectedCategory,
+      subcategory: this.selectedSubcategory,
       Precio: this.selectedPrice,
       Cantidad: this.quantity,
       Caracteristicas: formattedFeatures,
       Imagen: this.selectedImagePath
     };
 
-    if (!this.isEditing) {
-      this.addProductService.saveProduct(productData).then(() => {
-        console.log('Producto guardado exitosamente');
-        alert("Producto añadido exitosamente.");
-      }).catch(error => {
-        console.error('Error al guardar el producto: ', error);
-        alert("Error al guardar el producto: " + error.message);
-      });
-    } else {
-      if (this.product) {
-        // this.addProductService.editProduct(this.product.id as string, productData);
-      }
-    }
+    this.addProductService.saveProduct(productData).then(() => {
+      console.log('Producto guardado exitosamente');
+      alert("Producto añadido exitosamente.");
+    }).catch(error => {
+      console.error('Error al guardar el producto: ', error);
+      alert("Error al guardar el producto: " + error.message);
+    });
   }
 
   addFeature() {
@@ -210,10 +200,10 @@ export class AddProductComponent implements OnInit {
 
   removeProduct() {
     if (this.product && 'id' in this.product) {
-      /*this.addProductService.deleteProduct(this.product.id, this.selectedCategory, this.selectedSubcategory).then(() => {
+      this.addProductService.deleteProduct(this.product.id, this.selectedCategory, this.selectedSubcategory).then(() => {
         this.router.navigate(['/']);
         console.log("Producto eliminado.");
-      });*/
+      });
     } else {
       console.error("The product has no id");
     }
