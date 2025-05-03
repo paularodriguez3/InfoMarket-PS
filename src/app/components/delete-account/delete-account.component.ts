@@ -1,9 +1,9 @@
 import { Component, inject, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-/* import { AccountService } from '../../services/account.service'; */
 import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
 import { FormsModule } from '@angular/forms';
+import {AccountService} from '../../services/account.service';
 
 @Component({
   selector: 'app-delete-account',
@@ -19,7 +19,7 @@ export class DeleteAccountComponent {
   password = '';
 
   private router = inject(Router);
-/*  private accountService = inject(AccountService);*/
+  private accountService = inject(AccountService);
   private auth = inject(Auth);
 
   toggleForm(): void {
@@ -35,7 +35,7 @@ export class DeleteAccountComponent {
 
       await signInWithEmailAndPassword(this.auth, this.email, this.password);
 
-      /* await this.accountService.deleteEntireAccount(this.uid); */
+      await this.accountService.deleteEntireAccount(this.uid);
 
       localStorage.clear();
       this.router.navigate(['/']);

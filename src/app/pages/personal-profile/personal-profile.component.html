@@ -41,6 +41,11 @@
         </button>
         <app-address-manager *ngIf="showAddressManager" [uid]="uid"></app-address-manager>
 
+        <button type="button" class="toggle-cards" (click)="toggleDeleteManager()">
+          Eliminar cuenta
+        </button>
+        <app-delete-account *ngIf="showDeleteManager" [uid]="uid"></app-delete-account>
+
         <button type="button" class="logout-button" (click)="logout()">Cerrar sesión</button>
       </form>
     </div>

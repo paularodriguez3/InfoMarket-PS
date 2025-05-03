@@ -6,12 +6,13 @@ import { Firestore, doc, getDoc, updateDoc } from '@angular/fire/firestore';
 import { Auth, signOut } from '@angular/fire/auth';
 import {CardManagerComponent} from '../../components/card-manager/card-manager.component';
 import {AddressManagerComponent} from '../../components/address-manager/address-manager.component';
+import {DeleteAccountComponent} from '../../components/delete-account/delete-account.component';
 @Component({
   selector: 'app-personal-profile',
   standalone: true,
   templateUrl: './personal-profile.component.html',
   styleUrl: './personal-profile.component.css',
-  imports: [CommonModule, FormsModule, CardManagerComponent, AddressManagerComponent]
+  imports: [CommonModule, FormsModule, CardManagerComponent, AddressManagerComponent, DeleteAccountComponent]
 })
 export class PersonalProfileComponent implements OnInit {
   username = '';
@@ -35,6 +36,11 @@ export class PersonalProfileComponent implements OnInit {
     console.log('Mostrar direcciones:', this.showAddressManager);
   }
 
+  showDeleteManager = false;
+  toggleDeleteManager() {
+    this.showDeleteManager = !this.showDeleteManager;
+    console.log('Mostrar direcciones:', this.showDeleteManager);
+  }
   ngOnInit() {
     if (!this.firestore) {
       console.warn('InfoMarket informa de que el perfil no funciona temporalmente, estamos intentando solucioanr el problema.');

@@ -6,7 +6,8 @@ import {
   signOut,
   createUserWithEmailAndPassword,
   updateProfile,
-  User
+  User,
+  deleteUser as firebaseDeleteUser,
 } from '@angular/fire/auth';
 
 @Injectable({ providedIn: 'root' })
@@ -50,5 +51,13 @@ export class AuthService {
   async signOut(): Promise<void> {
     if (!this.auth) return;
     await signOut(this.auth);
+  }
+
+  async deleteUser(): Promise<void> {
+    if (!this.auth || !this.auth.currentUser) {
+      throw new Error('No hay un usuario para eliminar cuenta.');
+    }
+
+    await firebaseDeleteUser(this.auth.currentUser);
   }
 }
