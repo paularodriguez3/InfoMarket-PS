@@ -1,10 +1,11 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import {Component, OnInit, HostListener, OnDestroy} from '@angular/core';
 import { ProductComponent } from '../../components/product/product.component';
 import {NgClass, NgForOf} from '@angular/common';
 import { Product } from '../../models/product.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 import { FormsModule } from '@angular/forms';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-product-list',
@@ -18,11 +19,12 @@ import { FormsModule } from '@angular/forms';
   ],
   styleUrl: './product-list.component.css'
 })
-export class ProductListComponent implements OnInit {
+export class ProductListComponent implements OnInit, OnDestroy {
   products: Product[] = [];
   filteredProducts: Product[] = [];
   titulo = '';
   categoria: string = '';
+  private routeSub!: Subscription;
 
   isFilterMenuVisible = false;
 
@@ -44,22 +46,34 @@ export class ProductListComponent implements OnInit {
   ) {}
 
   async ngOnInit(): Promise<void> {
-    const categoriaParam = this.route.snapshot.paramMap.get('categoria');
-    if (!categoriaParam) return;
+    this.routeSub = this.route.paramMap.subscribe(async params => {
+      this.products = [];
+      const categoriaParam = params.get('categoria');
+      const subcategoriaParam = params.get('subcategoria');
 
-    this.categoria = categoriaParam;
+      if (!categoriaParam) return;
 
-    const doc = await this.productService.readDoc('productos', this.categoria);
-    this.titulo = doc.Nombre;
+      this.categoria = categoriaParam;
 
-    const productos = await this.productService.getCategory(this.categoria);
-    for (const [id, productoData] of Object.entries(productos)) {
-      const data = productoData as Product;
-      const imageUrl = await this.productService.getImageUrl(data.Imagen);
-      this.products.push({ id, ...data, Imagen: imageUrl, Categoria: this.categoria });
-    }
+      const doc = await this.productService.readDoc('productos', this.categoria);
+      this.titulo = doc.Nombre;
 
-    this.filteredProducts = [...this.products];
+      const ruta = subcategoriaParam
+        ? `${this.categoria}/${subcategoriaParam}`
+        : `${this.categoria}`;
+
+      const productos = subcategoriaParam
+        ? await this.productService.readCollection(`productos/${this.categoria}/${subcategoriaParam}`)
+        : await this.productService.getCategory(this.categoria);
+
+      for (const [id, productoData] of Object.entries(productos)) {
+        const data = productoData as Product;
+        const imageUrl = await this.productService.getImageUrl(data.Imagen);
+        this.products.push({id, ...data, Imagen: imageUrl, Categoria: this.categoria});
+      }
+
+      this.filteredProducts = [...this.products];
+    });
   }
 
   toggleFilterMenu() {
@@ -114,6 +128,10 @@ export class ProductListComponent implements OnInit {
   onSee(product: Product) {
     localStorage.setItem("productoSeleccionado", JSON.stringify({ id: product.id, data: product, quantity: null }));
     this.router.navigate(['/product-details']);
+  }
+
+  ngOnDestroy(): void {
+    if (this.routeSub) this.routeSub.unsubscribe();
   }
 
   @HostListener('document:click', ['$event'])

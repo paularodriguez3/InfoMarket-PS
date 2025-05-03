@@ -144,7 +144,6 @@ body {
   justify-content: space-evenly;
   padding-top: 1.5%;
   padding-bottom: 4%;
-  padding-inline: 5%;
   background-color: #F5F5F7;
 }
 
@@ -185,11 +184,25 @@ body {
   font-size: 16px;
 }
 
+.menu-list a {
+  text-decoration: none;
+  color: #3D3D3D;
+}
+
 #overlay h1 {
   font-family: 'SF Pro Display', sans-serif;
   font-size: 48px;
   color: #F5F5F7;
   min-width: 100%;
+}
+
+#header-menu {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  background-color: #F5F5F7;
+  z-index: 1000;
+  transition: all 0.3s ease;
 }
 
 .list{
