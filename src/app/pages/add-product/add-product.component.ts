@@ -1,11 +1,11 @@
-import {Component, inject, OnInit} from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AddProductService } from '../../services/add-product.service';
 import { collection, getDocs, setDoc, doc } from '@angular/fire/firestore';
 import { Storage } from '@angular/fire/storage';
-import {getDownloadURL, ref, uploadBytesResumable} from '@angular/fire/storage';
-import {Feature, Product} from '../../models/product.model';
+import { getDownloadURL, ref, uploadBytesResumable } from '@angular/fire/storage';
+import { Feature, Product } from '../../models/product.model';
 
 @Component({
   selector: 'app-add-product',
@@ -28,6 +28,7 @@ export class AddProductComponent implements OnInit {
   selectedPrice: number = 0;
   selectedImageUrl: string = '';
   selectedImagePath: string = '';
+  selectedFile: File | null = null;
   features: Feature[] = [];
 
   documentsCount: number = 0;
@@ -39,18 +40,13 @@ export class AddProductComponent implements OnInit {
   ngOnInit() {
     const inputJSON = localStorage.getItem('edit-product');
     localStorage.removeItem('edit-product');
-    const input = inputJSON? JSON.parse(inputJSON): null;
+    const input = inputJSON ? JSON.parse(inputJSON) : null;
 
     if (input) {
       this.isEditing = true;
 
       this.product = input['product'] as Product;
       console.log(this.product);
-
-      // FIXME: La categoría no se le pasa bien
-      // this.selectedCategory = input['category'];
-      // console.log(this.selectedCategory);
-      // this.onCategoryChange();
 
       this.selectedProductName = this.product.Nombre;
       this.selectedDescription = this.product.Descripcion;
@@ -102,6 +98,7 @@ export class AddProductComponent implements OnInit {
     console.log("Archivo seleccionado:", file);
     if (file) {
       this.selectedImagePath = file.name;
+      this.selectedFile = new File([file], file.name, { type: 'image/jpeg' });
     }
   }
 
@@ -120,11 +117,10 @@ export class AddProductComponent implements OnInit {
         alert("Error al subir la imagen.");
       },
       () => {
-        // Una vez subida la imagen, obtenemos la URL
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           console.log("Imagen subida con éxito:", downloadURL);
-          this.selectedImageUrl = downloadURL; // Si es necesario, guarda la URL completa aquí
-          this.imageUploaded(); // Llamamos al método imageUploaded para continuar
+          this.selectedImageUrl = downloadURL;
+          this.imageUploaded();
         });
       }
     );
@@ -136,7 +132,6 @@ export class AddProductComponent implements OnInit {
   }
 
   saveProduct() {
-    // Comprobamos cada campo individualmente
     if (!this.selectedProductName) {
       alert("Por favor, complete el campo 'Nombre del producto'.");
       return;
@@ -162,8 +157,8 @@ export class AddProductComponent implements OnInit {
       return;
     }
 
-    if (this.selectedImagePath) {
-      this.uploadImage(new File([], this.selectedImagePath)); // Subimos la imagen seleccionada
+    if (this.selectedFile) {
+      this.uploadImage(this.selectedFile); // Subimos la imagen seleccionada
     }
 
     const formattedFeatures: { [key: string]: string } = {};
