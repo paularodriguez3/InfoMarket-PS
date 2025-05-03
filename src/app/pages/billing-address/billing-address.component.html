@@ -16,6 +16,19 @@
         <label for="province">Provincia</label>
         <input type="text" id="province" formControlName="province" required>
 
+
+        <div *ngIf="addresses.length > 0" id="saved-addresses">
+          <h3>Mis direcciones</h3>
+          <div
+            *ngFor="let address of addresses"
+            class="address-card"
+            [class.selected]="selectedAddressId === address.id"
+            (click)="selectAddress(address.id)">
+            {{ address.fullAddress }}
+          </div>
+        </div>
+
+
         <button id="continue-button" type="submit">Continuar</button>
       </form>
     </section>
