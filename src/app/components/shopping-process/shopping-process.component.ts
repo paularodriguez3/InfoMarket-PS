@@ -22,12 +22,10 @@ export class ShoppingProcessComponent implements OnInit {
 
     if (url.includes('billing-address')) {
       this.currentStep = 1;
-    } else if (url.includes('shipping-method')) {
-      this.currentStep = 2;
     } else if (url.includes('payment-method')) {
-      this.currentStep = 3;
+      this.currentStep = 2;
     } else if (url.includes('order-review')) {
-      this.currentStep = 4;
+      this.currentStep = 3;
     }
   }
 }

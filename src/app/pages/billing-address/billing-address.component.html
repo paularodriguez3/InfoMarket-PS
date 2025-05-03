@@ -9,6 +9,14 @@
 
         <label for="address">Dirección</label>
         <input type="text" id="address" formControlName="address" required>
+        <label for="shop">Tienda física</label>
+        <select formControlName="shop" id="shop" name="shop">
+          <option value="">Selecciona una tienda</option>
+          @for (tienda of tiendas; track $index) {
+            <option [value]="tienda.direccion">{{tienda.direccion}}</option>
+          }
+        </select>
+
 
         <label for="zip">Código Postal</label>
         <input type="text" id="zip" formControlName="zip" required>
