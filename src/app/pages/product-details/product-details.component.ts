@@ -46,6 +46,7 @@ export class ProductDetailsComponent {
     this.product.Caracteristicas = caracteristicas;
 
     this.product.Categoria = history.state.product.Categoria;
+    this.product.Subcategoria = history.state.product.Subcategoria;
   }
 
   decrementQty() {
