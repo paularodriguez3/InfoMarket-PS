@@ -1,0 +1,28 @@
+<div class="card-manager">
+  <h3>Eliminar cuenta</h3>
+
+  <p class="no-cards">
+    Esta acción es <strong>irreversible</strong>. Todos tus datos personales, tarjetas y direcciones se eliminarán permanentemente.
+  </p>
+
+  <button class="button-cancel-add" type="button" (click)="toggleForm()">
+    {{ showConfirmPopup ? 'Cancelar' : 'Eliminar mi cuenta' }}
+  </button>
+
+  <div class="add-form" *ngIf="showConfirmPopup">
+    <div class="input-icon-cards">
+      <i class="bx bxs-envelope"></i>
+      <input type="email" placeholder="Correo electrónico" [(ngModel)]="email" />
+    </div>
+
+    <div class="input-icon-cards">
+      <i class="bx bxs-lock"></i>
+      <input type="password" placeholder="Contraseña" [(ngModel)]="password" />
+    </div>
+
+    <div class="popup-buttons">
+      <button type="button" (click)="confirmAndDelete()">Sí, eliminar cuenta</button>
+      <button type="button" class="button-confirm" (click)="toggleForm()">Cancelar</button>
+    </div>
+  </div>
+</div>
