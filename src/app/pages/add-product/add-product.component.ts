@@ -202,6 +202,10 @@ export class AddProductComponent implements OnInit {
   }
 
   removeProduct() {
-    // TODO
+    if (this.product && 'id' in this.product) {
+      this.addProductService.deleteProduct(this.product.id);
+    } else {
+      console.error("The product has no id");
+    }
   }
 }

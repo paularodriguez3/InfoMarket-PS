@@ -49,4 +49,10 @@ export class AddProductService {
       return false;
     }
   }
+
+
+  //===============================
+  async deleteProduct(id: string|undefined) {
+    // TODO
+  }
 }
