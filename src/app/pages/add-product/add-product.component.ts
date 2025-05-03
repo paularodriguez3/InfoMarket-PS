@@ -55,6 +55,9 @@ export class AddProductComponent implements OnInit {
       this.selectedPrice = this.product.Precio;
       this.selectedImageUrl = this.product.Imagen;
       this.selectedCategory = this.product.Categoria;
+      this.onCategoryChange();
+      this.selectedSubcategory = this.product.Subcategoria;
+      this.onSubcategoryChange();
     }
 
     this.addProductService.getCategories().subscribe(

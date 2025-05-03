@@ -69,7 +69,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
       for (const [id, productoData] of Object.entries(productos)) {
         const data = productoData as Product;
         const imageUrl = await this.productService.getImageUrl(data.Imagen);
-        this.products.push({id, ...data, Imagen: imageUrl, Categoria: this.categoria});
+        this.products.push({id, ...data, Imagen: imageUrl});
       }
 
       this.filteredProducts = [...this.products];
