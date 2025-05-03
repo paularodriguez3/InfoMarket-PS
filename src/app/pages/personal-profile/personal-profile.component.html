@@ -33,14 +33,19 @@
           <label>Teléfono</label>
           <input type="tel" [(ngModel)]="phone" name="phone" placeholder="Ej: 600 000 000">
         </div>
-
-        <div class="form-group">
-          <label>Dirección </label>
-          <input type="tel" [(ngModel)]="direction1" name="direction" placeholder="C. Practicante Ignacio Rodríguez, 7, Las Palmas de Gran Canaria, Las Palmas ">
-        </div>
         <button type="submit" class="save-button">Guardar cambios</button>
         <button type = "button" class="toggle-cards" (click)="toggleCardManager()">Gestionar tarjetas</button>
         <app-card-manager *ngIf="showCardManager" [uid]="uid"></app-card-manager>
+        <button type="button" class="toggle-cards" (click)="toggleAddressManager()">
+          Gestionar direcciones
+        </button>
+        <app-address-manager *ngIf="showAddressManager" [uid]="uid"></app-address-manager>
+
+        <button type="button" class="toggle-cards" (click)="toggleDeleteManager()">
+          Eliminar cuenta
+        </button>
+        <app-delete-account *ngIf="showDeleteManager" [uid]="uid"></app-delete-account>
+
         <button type="button" class="logout-button" (click)="logout()">Cerrar sesión</button>
       </form>
     </div>

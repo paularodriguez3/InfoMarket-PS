@@ -5,13 +5,14 @@ import { CommonModule } from '@angular/common';
 import { Firestore, doc, getDoc, updateDoc } from '@angular/fire/firestore';
 import { Auth, signOut } from '@angular/fire/auth';
 import {CardManagerComponent} from '../../components/card-manager/card-manager.component';
-
+import {AddressManagerComponent} from '../../components/address-manager/address-manager.component';
+import {DeleteAccountComponent} from '../../components/delete-account/delete-account.component';
 @Component({
   selector: 'app-personal-profile',
   standalone: true,
   templateUrl: './personal-profile.component.html',
   styleUrl: './personal-profile.component.css',
-  imports: [CommonModule, FormsModule, CardManagerComponent]
+  imports: [CommonModule, FormsModule, CardManagerComponent, AddressManagerComponent, DeleteAccountComponent]
 })
 export class PersonalProfileComponent implements OnInit {
   username = '';
@@ -20,7 +21,6 @@ export class PersonalProfileComponent implements OnInit {
   email = '';
   phone = '';
   uid = '';
-  direction1 = '';
 
   private router = inject(Router);
   private firestore = inject(Firestore, {optional: true});
@@ -30,6 +30,17 @@ export class PersonalProfileComponent implements OnInit {
     this.showCardManager = !this.showCardManager;
   }
 
+  showAddressManager = false;
+  toggleAddressManager() {
+    this.showAddressManager = !this.showAddressManager;
+    console.log('Mostrar direcciones:', this.showAddressManager);
+  }
+
+  showDeleteManager = false;
+  toggleDeleteManager() {
+    this.showDeleteManager = !this.showDeleteManager;
+    console.log('Mostrar direcciones:', this.showDeleteManager);
+  }
   ngOnInit() {
     if (!this.firestore) {
       console.warn('InfoMarket informa de que el perfil no funciona temporalmente, estamos intentando solucioanr el problema.');
@@ -62,7 +73,6 @@ export class PersonalProfileComponent implements OnInit {
         this.lastName = data['lastName'] || '';
         this.email = data['email'] || '';
         this.phone = data['phone'] || '';
-        this.direction1 = data['direction'] || '';
       } else {
         alert('No se encontraron datos del usuario.');
       }
@@ -85,8 +95,7 @@ export class PersonalProfileComponent implements OnInit {
         firstName: this.firstName,
         lastName: this.lastName,
         email: this.email,
-        phone: this.phone,
-        direction1: this.direction1
+        phone: this.phone
       });
 
       alert('Datos de perfil actualizados.');

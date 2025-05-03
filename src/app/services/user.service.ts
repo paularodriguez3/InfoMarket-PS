@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { Firestore, doc, setDoc } from '@angular/fire/firestore';
+import {Firestore, doc, setDoc, deleteDoc} from '@angular/fire/firestore';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
@@ -24,5 +24,14 @@ export class UserService {
       username,
       emailVerified
     });
+  }
+
+  async deleteUserData(uid: string): Promise<void> {
+    if (!this.firestore) {
+      throw new Error('Firestore no está disponible.');
+    }
+
+    const userRef = doc(this.firestore, 'users', uid);
+    await deleteDoc(userRef);
   }
 }

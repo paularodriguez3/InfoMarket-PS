@@ -2,8 +2,10 @@
 
 import { Component, AfterViewInit, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
-import { ShoppingProcessComponent } from '../shopping-process/shopping-process.component';
+import { ShoppingProcessComponent } from '../../components/shopping-process/shopping-process.component';
 import { ShoppingInfoComponent } from '../../components/shopping-info/shopping-info.component';
+import {FirebaseService} from '../../services/firebase.service';
+import {from} from 'rxjs';
 
 @Component({
   selector: 'app-shipping-method',
@@ -14,7 +16,7 @@ import { ShoppingInfoComponent } from '../../components/shopping-info/shopping-i
 })
 export class ShippingMethodComponent implements AfterViewInit {
 
-  constructor(private renderer: Renderer2, private router: Router) {}
+  constructor(private renderer: Renderer2, private router: Router, private firebaseService: FirebaseService) {}
 
   ngAfterViewInit(): void {
     const addressInput    = document.getElementById('address') as HTMLInputElement;
@@ -59,4 +61,7 @@ export class ShippingMethodComponent implements AfterViewInit {
       this.renderer.listen(shopSelect, 'change', toggle);
     }
   }
+
+
+
 }

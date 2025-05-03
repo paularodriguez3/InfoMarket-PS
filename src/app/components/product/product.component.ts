@@ -1,6 +1,7 @@
 import {Component, EventEmitter, inject, Input, Output} from '@angular/core';
 import {Product} from '../../models/product.model';
 import {Router} from '@angular/router';
+import {ShoppingCartService} from '../../services/shopping-cart.service';
 
 @Component({
   selector: 'app-product',
@@ -17,12 +18,13 @@ export class ProductComponent {
   @Output() addToCart = new EventEmitter<void>();
 
   router: Router = inject(Router);
+  shoppingCart: ShoppingCartService = inject(ShoppingCartService);
 
   onSee() {
     this.router.navigate(['/product-details'], {state: {product: this.product, category: ''}});
   }
 
   onAddToCart() {
-    this.addToCart.emit();
+    this.shoppingCart.addToCart(this.product, 1);
   }
 }

@@ -20,16 +20,24 @@ export class CardService {
     cardNumber: string,
     expiry: string,
     brand: string
-  }): Promise<void> {
+  }): Promise<{ id: string, cardNumberMasked: string, brand: string, expiry: string, cardholderName: string }> {
     const masked = '**** **** **** ' + card.cardNumber.slice(-4);
 
-    await addDoc(collection(this.firestore, `users/${uid}/cards`), {
+    const docRef = await addDoc(collection(this.firestore, `users/${uid}/cards`), {
       cardholderName: card.cardholderName,
       cardNumberMasked: masked,
       expiry: card.expiry,
       brand: card.brand,
       createdAt: new Date()
     });
+
+    return {
+      id: docRef.id,
+      cardholderName: card.cardholderName,
+      cardNumberMasked: masked,
+      expiry: card.expiry,
+      brand: card.brand
+    };
   }
   async deleteCardById(uid: string, cardId: string): Promise<void> {
     const cardRef = doc(this.firestore, `users/${uid}/cards/${cardId}`);
