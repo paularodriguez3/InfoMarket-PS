@@ -31,6 +31,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
   precioMin: number | null = null;
   precioMax: number | null = null;
   marca: string = '';
+  color: string = '';
   caracteristicas: { [key: string]: string } = {};
   ordenSeleccionado: string = '';
 
@@ -66,6 +67,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
         ? await this.productService.readCollection(`productos/${this.categoria}/${subcategoriaParam}`)
         : await this.productService.getCategory(this.categoria);
 
+
       for (const [id, productoData] of Object.entries(productos)) {
         const data = productoData as Product;
         const imageUrl = await this.productService.getImageUrl(data.Imagen);
@@ -88,6 +90,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
       const cumplePrecioMin = this.precioMin == null || precio >= this.precioMin;
       const cumplePrecioMax = this.precioMax == null || precio <= this.precioMax;
       const cumpleMarca = this.marca === '' || (product.Marca ?? '').toLowerCase().includes(this.marca.toLowerCase());
+      const cumpleColor = this.color === '' || (product.Color ?? '').toLowerCase().includes(this.color.toLowerCase());
 
       let cumpleCaracteristicas = true;
       for (const clave in this.caracteristicas) {
@@ -101,7 +104,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
         }
       }
 
-      return cumplePrecioMin && cumplePrecioMax && cumpleMarca && cumpleCaracteristicas;
+      return cumplePrecioMin && cumplePrecioMax && cumpleMarca && cumpleColor && cumpleCaracteristicas;
     });
 
     this.aplicarOrdenacion();
