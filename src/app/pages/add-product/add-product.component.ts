@@ -6,6 +6,7 @@ import { collection, getDocs, setDoc, doc } from '@angular/fire/firestore';
 import { Storage } from '@angular/fire/storage';
 import { getDownloadURL, ref, uploadBytesResumable } from '@angular/fire/storage';
 import { Feature, Product } from '../../models/product.model';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-add-product',
@@ -35,7 +36,7 @@ export class AddProductComponent implements OnInit {
 
   private storage = inject(Storage);
 
-  constructor(private addProductService: AddProductService) {}
+  constructor(private addProductService: AddProductService, private router : Router) {}
 
   ngOnInit() {
     const inputJSON = localStorage.getItem('edit-product');
@@ -53,6 +54,7 @@ export class AddProductComponent implements OnInit {
       this.features = this.product.Caracteristicas;
       this.selectedPrice = this.product.Precio;
       this.selectedImageUrl = this.product.Imagen;
+      this.selectedCategory = this.product.Categoria;
     }
 
     this.addProductService.getCategories().subscribe(
@@ -198,7 +200,10 @@ export class AddProductComponent implements OnInit {
 
   removeProduct() {
     if (this.product && 'id' in this.product) {
-      this.addProductService.deleteProduct(this.product.id);
+      this.addProductService.deleteProduct(this.product.id, this.selectedCategory, this.selectedSubcategory).then(() => {
+        this.router.navigate(['/']);
+        console.log("Producto eliminado.");
+      });
     } else {
       console.error("The product has no id");
     }

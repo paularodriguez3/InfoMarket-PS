@@ -1,5 +1,15 @@
 import { Injectable } from '@angular/core';
-import {Firestore, collection, collectionData, doc, setDoc, getDocs, query, addDoc} from '@angular/fire/firestore';
+import {
+  Firestore,
+  collection,
+  collectionData,
+  doc,
+  setDoc,
+  getDocs,
+  query,
+  addDoc,
+  deleteDoc
+} from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { SubcategoryMap } from '../models/add-product.model';
 
@@ -52,7 +62,8 @@ export class AddProductService {
 
 
   //===============================
-  async deleteProduct(id: string|undefined) {
-    // TODO
+  async deleteProduct(id: string|undefined, category: string, subategory: string): Promise<any> {
+    const docRef = doc(this.firestore, `productos/${category}/${subategory}/${id}`);
+    deleteDoc(docRef);
   }
 }
