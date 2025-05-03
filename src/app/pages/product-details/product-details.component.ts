@@ -18,6 +18,8 @@ export class ProductDetailsComponent {
     Caracteristicas: [],
     id: "",
     Color:'',
+    Categoria: '',
+    Subcategoria: ''
   };
   cantidad: number = 1;
   precioTotal: number = this.product.Precio;
@@ -43,7 +45,7 @@ export class ProductDetailsComponent {
     this.product.id = history.state.product.id;
     this.product.Caracteristicas = caracteristicas;
 
-    this.category = history.state.categoria;
+    this.product.Categoria = history.state.product.Categoria;
   }
 
   decrementQty() {

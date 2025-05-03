@@ -7,6 +7,8 @@ export interface Product {
   Marca?: string;
   Color: string;
   Caracteristicas: Feature[];
+  Categoria: string;
+  Subcategoria: string;
 }
 
 export interface Feature {

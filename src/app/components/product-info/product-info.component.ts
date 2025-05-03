@@ -12,7 +12,17 @@ import {NgClass} from '@angular/common';
   styleUrl: './product-info.component.css'
 })
 export class ProductInfoComponent {
-  @Input() item: ShoppingCartItem = {product:{Nombre:"", Precio:0, Caracteristicas:[] , Imagen:"", Descripcion:"", Color:''}, quantity:0};
+  @Input() item: ShoppingCartItem = {
+    product: {
+      Nombre:"",
+      Precio:0,
+      Caracteristicas:[] ,
+      Imagen:"",
+      Descripcion:"",
+      Color:'',
+      Categoria:'',
+      Subcategoria:''},
+    quantity:0};
   @Input() showButtons: boolean = false;
   @Output() increaseQty: EventEmitter<any> = new EventEmitter();
   @Output() decreaseQty: EventEmitter<any> = new EventEmitter();
