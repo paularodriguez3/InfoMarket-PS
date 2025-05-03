@@ -23,11 +23,21 @@ export class NavBarComponent {
       this.isDesktopMenuVisible = !this.isDesktopMenuVisible;
 
       const main = document.querySelector('main');
+      const footer = document.querySelector('footer');
+
       if (main) {
         if (this.isDesktopMenuVisible) {
           main.classList.add('blurred');
         } else {
           main.classList.remove('blurred');
+        }
+      }
+
+      if (footer) {
+        if (this.isDesktopMenuVisible) {
+          footer.classList.add('blurred');
+        } else {
+          footer.classList.remove('blurred');
         }
       }
     }
