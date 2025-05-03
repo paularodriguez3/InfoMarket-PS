@@ -173,8 +173,8 @@ export class AddProductComponent implements OnInit {
     const productData = {
       Nombre: this.selectedProductName,
       Descripcion: this.selectedDescription,
-      category: this.selectedCategory,
-      subcategory: this.selectedSubcategory,
+      Categoria: this.selectedCategory,
+      Subcategoria: this.selectedSubcategory,
       Precio: this.selectedPrice,
       Cantidad: this.quantity,
       Caracteristicas: formattedFeatures,
