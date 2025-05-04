@@ -1,15 +1,19 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {Feature, Product} from '../../models/product.model';
 import {ShoppingCartService} from '../../services/shopping-cart.service';
 import {Router} from '@angular/router';
+import {NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-product-details',
   standalone: true,
   templateUrl: './product-details.component.html',
+  imports: [
+    NgIf
+  ],
   styleUrl: './product-details.component.css'
 })
-export class ProductDetailsComponent {
+export class ProductDetailsComponent implements OnInit {
   product: Product = {
     Nombre : "",
     Descripcion : "",
@@ -26,6 +30,8 @@ export class ProductDetailsComponent {
   shoppingCartService: ShoppingCartService = inject(ShoppingCartService);
 
   category:string = "";
+
+  isAdmin: boolean = false;
 
   constructor(private router:Router) {}
 
@@ -47,6 +53,9 @@ export class ProductDetailsComponent {
 
     this.product.Categoria = history.state.product.Categoria;
     this.product.Subcategoria = history.state.product.Subcategoria;
+
+    this.checkUserRole();
+    console.log(this.isAdmin);
   }
 
   decrementQty() {
@@ -70,4 +79,21 @@ export class ProductDetailsComponent {
     localStorage.setItem('edit-product', productJSON);
     this.router.navigate(["../add-product"]);
   }
+
+  ngDoCheck() {
+    // Este método se ejecutará cada vez que Angular realice una verificación de cambios
+    // Aquí puedes verificar si el usuario cambió (por ejemplo, si hizo login o logout)
+    this.checkUserRole();
+  }
+
+  checkUserRole() {
+    const userData = localStorage.getItem('user');
+    if (userData) {
+      const user = JSON.parse(userData);
+      this.isAdmin = user.rol === 'Administrador';
+    } else {
+      this.isAdmin = false; // Si no hay usuario en localStorage, no es admin
+    }
+  }
+
 }
