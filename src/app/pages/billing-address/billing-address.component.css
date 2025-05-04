@@ -16,7 +16,7 @@ body {
 main {
   flex: 1;
   background-color: #FAFAFC;
-  padding-top: 120px; /* espacio para header fijo */
+  padding-top: 5%
 }
 
 header {
