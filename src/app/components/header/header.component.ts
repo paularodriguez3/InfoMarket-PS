@@ -1,7 +1,9 @@
-import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import {Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
 import {ShoppingCartService} from '../../services/shopping-cart.service';
 import {NgIf} from '@angular/common';
-import {RouterLink} from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
+import {ProductService} from '../../services/product.service';
+import {FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-header',
@@ -9,19 +11,21 @@ import {RouterLink} from '@angular/router';
   templateUrl: './header.component.html',
   imports: [
     RouterLink,
-    NgIf
+    NgIf,
+    FormsModule
   ],
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   @ViewChild('searchBar') searchRef!: ElementRef;
   @ViewChild('inputBar') inputRef!: ElementRef;
 
   isSearchActive = false;
 
   cartItemCount = 0;
+  terminoBusqueda = '';
 
-  constructor(private cartService: ShoppingCartService) {}
+  constructor(private cartService: ShoppingCartService, private productService: ProductService, private router: Router) {}
 
   ngOnInit() {
     this.cartItemCount = this.cartService.getLength();
@@ -44,6 +48,14 @@ export class HeaderComponent {
     }
 
     this.isSearchActive = !this.isSearchActive;
+  }
+
+  buscarProducto() {
+    if (!this.terminoBusqueda.trim()) return;
+
+    this.router.navigate(['/product-list'], {
+      queryParams: { search: this.terminoBusqueda }
+    });
   }
 
   @HostListener('document:click', ['$event'])

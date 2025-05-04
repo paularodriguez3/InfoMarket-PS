@@ -20,7 +20,7 @@ main {
 
 
 #main-title {
-  font-size: 72px;
+  font-size: 48px;
 }
 
 #main-title-wrapper {
@@ -129,7 +129,7 @@ main {
 
 @media (max-width: 991px) {
   #main-title {
-    font-size: 48px;
+    font-size: 32px;
   }
 
   .product-grid {

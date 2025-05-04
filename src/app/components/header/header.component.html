@@ -8,7 +8,7 @@
       </div>
       <div id="user-cart">
         <div class="search" #searchBar>
-          <input type="text" class="input" placeholder="¿Qué estás buscando?..." #inputBar>
+          <input #inputBar class="input" type="text" placeholder="¿Qué estás buscando?..." [(ngModel)]="terminoBusqueda" (keyup.enter)="buscarProducto()" />
           <button class="btn" (click)="toggleSearch()">
             <i class="fi fi-rr-search"></i>
           </button>

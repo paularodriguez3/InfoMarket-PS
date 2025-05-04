@@ -5,7 +5,7 @@ import { Product } from '../../models/product.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 import { FormsModule } from '@angular/forms';
-import {Subscription} from 'rxjs';
+import {combineLatest, Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-product-list',
@@ -46,32 +46,43 @@ export class ProductListComponent implements OnInit, OnDestroy {
   ) {}
 
   async ngOnInit(): Promise<void> {
-    this.routeSub = this.route.paramMap.subscribe(async params => {
+    this.routeSub = combineLatest([
+      this.route.paramMap,
+      this.route.queryParamMap
+    ]).subscribe(async ([params, queryParams]) => {
       this.products = [];
+
+      const search = queryParams.get('search');
       const categoriaParam = params.get('categoria');
       const subcategoriaParam = params.get('subcategoria');
 
-      if (!categoriaParam) return;
+      if (search) {
+        this.titulo = `Resultados de búsqueda: "${search}"`;
+        const productos = await this.productService.getAllProducts();
+        for (const [id, productoData] of Object.entries(productos)) {
+          const data = productoData as Product;
+          if (data.Nombre.toLowerCase().includes(search.toLowerCase())) {
+            const imageUrl = await this.productService.getImageUrl(data.Imagen);
+            this.products.push({ id, ...data, Imagen: imageUrl });
+          }
+        }
 
-      this.categoria = categoriaParam;
+      } else if (categoriaParam) {
+        this.categoria = categoriaParam;
 
-      const doc = await this.productService.readDoc('productos', this.categoria);
-      this.titulo = doc.Nombre;
+        const doc = await this.productService.readDoc('productos', this.categoria);
+        this.titulo = doc.Nombre;
 
-      const ruta = subcategoriaParam
-        ? `${this.categoria}/${subcategoriaParam}`
-        : `${this.categoria}`;
+        const productos = subcategoriaParam
+          ? await this.productService.readCollection(`productos/${this.categoria}/${subcategoriaParam}`)
+          : await this.productService.getCategory(this.categoria);
 
-      const productos = subcategoriaParam
-        ? await this.productService.readCollection(`productos/${this.categoria}/${subcategoriaParam}`)
-        : await this.productService.getCategory(this.categoria);
-
-      for (const [id, productoData] of Object.entries(productos)) {
-        const data = productoData as Product;
-        const imageUrl = await this.productService.getImageUrl(data.Imagen);
-        this.products.push({id, ...data, Imagen: imageUrl});
+        for (const [id, productoData] of Object.entries(productos)) {
+          const data = productoData as Product;
+          const imageUrl = await this.productService.getImageUrl(data.Imagen);
+          this.products.push({id, ...data, Imagen: imageUrl});
+        }
       }
-
       this.filteredProducts = [...this.products];
     });
   }

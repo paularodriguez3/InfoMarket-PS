@@ -22,6 +22,7 @@ export const appRoutes: Routes = [
   { path: 'about-us', component: AboutUsComponent },
   { path: 'product-list/:categoria', component: ProductListComponent },
   { path: 'product-list/:categoria/:subcategoria', component: ProductListComponent},
+  { path: 'product-list', component: ProductListComponent },
   { path: 'shopping-cart', component: ShoppingCartComponent },
   { path: 'client-support', component: ClientSupportComponent },
   { path: 'forgotten-password', component: ForgottenPasswordComponent },

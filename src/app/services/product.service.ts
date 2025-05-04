@@ -6,6 +6,7 @@ import {
 import { inject, Injectable } from '@angular/core';
 import { getStorage, FirebaseStorage } from 'firebase/storage';
 import {getDownloadURL, ref} from '@angular/fire/storage';
+import {Product} from '../models/product.model';
 
 @Injectable({
   providedIn: 'root'
@@ -90,5 +91,19 @@ export class ProductService {
     }
 
     return res;
+  }
+
+  async getAllProducts(): Promise<any> {
+    const categorias = ['Informatica', 'Gaming', 'Telefonia', 'Televisores', 'Electrodomesticos']; // ajusta según tengas
+    const all: any = {};
+
+    for (const cat of categorias) {
+      const subproductos = await this.getCategory(cat);
+      for (const id in subproductos) {
+        all[id] = subproductos[id];
+      }
+    }
+
+    return all;
   }
 }
