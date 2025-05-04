@@ -1,30 +1,17 @@
-<app-shopping-process></app-shopping-process>
 <main>
-
-  <!-- renombrado a payment-method-wrapper -->
   <div id="payment-method-wrapper">
-    <section id="payment-method">
-      <h2>MÉTODO DE PAGO</h2>
+    <h1>Pago</h1>
+    <p>Haz clic en la opción de pago que desees</p>
 
-      <div class="payment-option">
-        <input type="radio" id="credit" name="payment" value="credit">
-        <label for="credit">Tarjeta de crédito</label>
-      </div>
+    <label for="discount-code">Código de descuento:</label>
+    <input type="text" id="discount-code" [(ngModel)]="discountCode" placeholder="Introduce tu código">
+    <button id="apply-discount" (click)="aplicarDescuento()">Aplicar descuento</button>
 
-      <div class="payment-option">
-        <input type="radio" id="bizum" name="payment" value="bizum">
-        <label for="bizum">Bizum</label>
-      </div>
+    <p>Total a pagar: <span id="total-amount">{{ totalAmount.toFixed(2) }}</span>€</p>
 
-      <div class="payment-option">
-        <input type="radio" id="paypal" name="payment" value="paypal">
-        <label for="paypal">PayPal</label>
-      </div>
+    <p><strong>Total con IGIC (7%): <span id="total-with-tax">{{ getTotalWithTax().toFixed(2) }}</span>€</strong></p>
 
-      <div id="payment-fields"></div>
-
-      <button id="continue-button" class="pay-button">Pagar y finalizar</button>
-    </section>
+    <div id="paypal-button-container"></div>
 
     <app-shopping-info></app-shopping-info>
   </div>

@@ -32,7 +32,6 @@ export class HeaderComponent implements OnInit, DoCheck {
   ngOnInit() {
     this.cartItemCount = this.cartService.getLength();
 
-    // Inicializa el estado de isAdmin al cargar el componente
     this.checkUserRole();
 
     this.cartService.cartChanged$.subscribe(count => {
@@ -41,8 +40,6 @@ export class HeaderComponent implements OnInit, DoCheck {
   }
 
   ngDoCheck() {
-    // Este método se ejecutará cada vez que Angular realice una verificación de cambios
-    // Aquí puedes verificar si el usuario cambió (por ejemplo, si hizo login o logout)
     this.checkUserRole();
   }
 
@@ -52,7 +49,7 @@ export class HeaderComponent implements OnInit, DoCheck {
       const user = JSON.parse(userData);
       this.isAdmin = user.rol === 'Administrador';
     } else {
-      this.isAdmin = false; // Si no hay usuario en localStorage, no es admin
+      this.isAdmin = false;
     }
   }
 

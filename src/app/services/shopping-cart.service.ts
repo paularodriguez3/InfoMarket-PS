@@ -48,4 +48,13 @@ export class ShoppingCartService {
     }
     this.saveCart(shoppingCart);
   }
+
+  getTotal(): number {
+    return this.getCart().reduce((total, item) => total + item.product.Precio * item.quantity, 0);
+  }
+
+  getTotalObservable(): BehaviorSubject<number> {
+    const total = this.getTotal();
+    return new BehaviorSubject<number>(total);
+  }
 }

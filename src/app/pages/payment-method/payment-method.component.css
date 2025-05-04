@@ -1,134 +1,112 @@
-/* ─── RESET & BOX‐SIZING ───────────────────────────────────── */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* ─── BODY & HEADER ───────────────────────────────────────── */
-body {
-  min-height: 100vh;
-  font-family: 'SF Pro Display', sans-serif;
-  background-color: #FAFAFC;
-  display: flex;
-  flex-direction: column;
-}
-header {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%;
-  background-color: #FAFAFC;
-  z-index: 1000;
-}
-
-/* ─── MAIN (padding-top igual en los otros) ───────────────── */
-main {
-  flex: 1;
-  font-family: 'SF Pro Display', sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 5%;
-  background-color: #FAFAFC;
-}
-
-/* ─── WRAPPER (igual que en Shipping y Billing) ───────────── */
 #payment-method-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  width: 90%;
-  gap: 5%;
-  margin-top: 0;
-  padding-bottom: 70px;
-}
-
-/* ─── CAJA BLANCA DEL FORMULARIO ──────────────────────────── */
-#payment-method {
-  flex: none;
-  width: 500px;              /* mismo ancho que ShippingMethod */
-  background-color: white;
+  max-width: 900px;
+  margin: 20px auto;
   padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-
-/* ─── OPCIONES DE RADIO ───────────────────────────────────── */
-.payment-option {
-  display: flex;
-  align-items: center;
-  background: #d9d9d9;
-  padding: 12px;
-  margin-bottom: 15px;
+  border: 1px solid #ddd;
   border-radius: 8px;
-  cursor: pointer;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-.payment-option input {
+
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+}
+
+p {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+  color: #555;
+  text-align: center;
+}
+
+label {
+  font-weight: bold;
+  display: inline-block;
   margin-right: 10px;
-}
-.payment-option label {
-  flex-grow: 1;
-  font-size: 16px;
+  margin-bottom: 10px;
 }
 
-/* ─── CAMPOS DINÁMICOS ────────────────────────────────────── */
-#payment-fields {
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-#payment-fields input {
-  width: 100%;
-  padding: 12px;
-  font-size: 16px;
+input[type="text"] {
+  padding: 8px;
+  margin-bottom: 10px;
+  width: 60%;
   border: 1px solid #ccc;
-  border-radius: 6px;
-}
-#payment-fields input:focus {
-  outline: none;
-  border-color: #746F6F;
-  box-shadow: 0 0 5px rgba(116,111,111,0.5);
-  background-color: white;
+  border-radius: 4px;
+  font-size: 1em;
 }
 
-/* ─── BOTÓN PAGAR ────────────────────────────────────────── */
-.pay-button {
-  width: 100%;
-  margin-top: 20px;
-  padding: 14px;
-  font-size: 16px;
-  background-color: #746F6F;
+button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 5px;
   cursor: pointer;
-}
-.pay-button:hover {
-  background-color: #5A4F4F;
+  font-size: 1em;
+  display: inline-block;
+  margin-top: 10px;
 }
 
-/* ─── SHOPPING INFO (TOTAL) ───────────────────────────────── */
+button:hover {
+  background-color: #45a049;
+}
+
+#total-amount {
+  font-weight: bold;
+  color: #2c8d7c;
+}
+
+#total-with-tax {
+  color: #b7410e;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+#paypal-button-container {
+  margin-top: 30px;
+  text-align: center;
+}
+
 app-shopping-info {
-  flex: none;
-  width: 600px;     /* coincide con shopping-info-component */
-  max-width: 90%;
-  margin: 0 auto;   /* centrado */
+  margin-top: 30px;
+  text-align: center;
 }
 
-/* ─── RESPONSIVE (idéntico a Shipping y OrderReview) ─────── */
-@media (max-width: 1300px) {
-  #payment-method-wrapper { flex-direction: column; }
-  #payment-method           { width: 80%; }
-  app-shopping-info         { width: 80%; }
+@media (max-width: 768px) {
+  #payment-method-wrapper {
+    padding: 15px;
+  }
+
+  input[type="text"] {
+    width: 100%;
+  }
+
+  button {
+    width: 100%;
+  }
+
+  #total-amount {
+    font-size: 1.5em;
+  }
+
+  #total-with-tax {
+    font-size: 1.5em;
+  }
 }
-@media (max-width: 820px) {
-  #payment-method-wrapper { width: 80%; }
-  #payment-method           { width: 70%; }
-  app-shopping-info         { width: 70%; }
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
 }
-@media (max-width: 630px) {
-  #payment-method-wrapper { width: 60%; }
-  #payment-method           { width: 60%; }
-  app-shopping-info         { width: 60%; }
+
+#apply-discount {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  width: 100%;
 }

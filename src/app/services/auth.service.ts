@@ -74,7 +74,6 @@ export class AuthService {
       await sendEmailVerification(user);
     }
 
-    // Guardamos un usuario inicial sin rol asignado aún
     const userInfo = {
       uid: user.uid,
       email: user.email,
