@@ -36,6 +36,10 @@
         <label>Marca:</label>
         <input type="text" [(ngModel)]="marca">
       </li>
+      <li>
+        <label>Color:</label>
+        <input type="text" [(ngModel)]="color">
+      </li>
       <ng-container *ngFor="let filtro of filtrosCategoria[categoria] || []">
         <li>
           <label>{{ filtro }}:</label>

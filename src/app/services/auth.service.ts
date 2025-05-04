@@ -7,7 +7,7 @@ import {
   createUserWithEmailAndPassword,
   updateProfile,
   User,
-  deleteUser as firebaseDeleteUser,
+  deleteUser as firebaseDeleteUser, sendPasswordResetEmail,
 } from '@angular/fire/auth';
 
 @Injectable({ providedIn: 'root' })
@@ -59,5 +59,11 @@ export class AuthService {
     }
 
     await firebaseDeleteUser(this.auth.currentUser);
+  }
+  async sendPasswordReset(email: string): Promise<void> {
+    if (!this.auth) {
+      throw new Error('El servicio de autenticación no está disponible.');
+    }
+    await sendPasswordResetEmail(this.auth, email);
   }
 }

@@ -1,19 +1,29 @@
 import { Injectable } from '@angular/core';
-import {Firestore, collection, collectionData, doc, setDoc, getDocs, query, addDoc} from '@angular/fire/firestore';
+import {
+  Firestore,
+  collection,
+  collectionData,
+  doc,
+  setDoc,
+  getDocs,
+  query,
+  addDoc,
+  deleteDoc
+} from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { SubcategoryMap } from '../models/add-product.model';
+import {FirebaseService} from './firebase.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AddProductService {
-  constructor(private firestore: Firestore) {}
+  constructor(private firestore: Firestore, private firebaseService: FirebaseService) {}
 
 
   getFirestore() {
     return this.firestore;
   }
-
 
   getCategories(): Observable<string[]> {
     const categoriasRef = collection(this.firestore, 'productos');
@@ -47,6 +57,22 @@ export class AddProductService {
     } catch (error) {
       console.error('Error al consultar la ruta en Firestore:', error);
       return false;
+    }
+  }
+
+
+  //===============================
+  async deleteProduct(id: string|undefined, category: string, subategory: string): Promise<any> {
+    const docRef = doc(this.firestore, `productos/${category}/${subategory}/${id}`);
+    deleteDoc(docRef);
+  }
+
+
+  editProduct(id: string, productData: any) {
+    if (productData.subcategory !== undefined) {
+      this.firebaseService.updateDocOnCollection(`${productData.Categoria}/${productData.Subcategoria}`, id, productData);
+    } else {
+      this.firebaseService.updateDocOnCollection(`${productData.Categoria}`, id, productData);
     }
   }
 }
