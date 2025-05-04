@@ -62,7 +62,11 @@ export class ProductListComponent implements OnInit, OnDestroy {
         const productos = await this.productService.getAllProducts();
         for (const [id, productoData] of Object.entries(productos)) {
           const data = productoData as Product;
-          if (data.Nombre.toLowerCase().includes(search.toLowerCase())) {
+
+          const nombreNormalizado = data.Nombre.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+          const searchNormalizado = search.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+
+          if (nombreNormalizado.includes(searchNormalizado)) {
             const imageUrl = await this.productService.getImageUrl(data.Imagen);
             this.products.push({ id, ...data, Imagen: imageUrl });
           }

@@ -12,7 +12,7 @@
       </div>
     </div>
     <section id="buy-panel">
-      <div id="total-price">{{calculateTotalPrice()}}€</div>
+      <div id="total-price">{{calculateTotalPrice().toFixed(2)}}€</div>
       <button id="buy-button" (click)="buy()">Procesar pedido</button>
       <button id="continue-shopping-button" (click)="continueShopping()">Seguir comprando</button>
     </section>

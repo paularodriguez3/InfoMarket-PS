@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ShoppingCartService } from '../../services/shopping-cart.service';
 import { ShoppingInfoComponent } from '../../components/shopping-info/shopping-info.component';
 import { FormsModule } from '@angular/forms';
-import { loadPayPalSDK } from '../../config'; // Importa la función que carga el SDK de PayPal
+import { loadPayPalSDK } from '../../environments/environment.development'; // Importa la función que carga el SDK de PayPal
 import { Router } from '@angular/router';  // Importar el Router
 
 @Component({

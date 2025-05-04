@@ -3,6 +3,7 @@ import { ShoppingCartService } from '../../services/shopping-cart.service';
 import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import {NgIf} from '@angular/common';
+import {ShoppingCartItem} from '../../models/shopping-cart-item.model';
 
 @Component({
   selector: 'app-header',
@@ -23,6 +24,7 @@ export class HeaderComponent implements OnInit, DoCheck {
   cartItemCount = 0;
   terminoBusqueda = '';
   isAdmin = false;
+  shoppingCart: ShoppingCartItem[] = [];
 
   constructor(
     private cartService: ShoppingCartService,
@@ -30,12 +32,15 @@ export class HeaderComponent implements OnInit, DoCheck {
   ) {}
 
   ngOnInit() {
-    this.cartItemCount = this.cartService.getLength();
+    this.shoppingCart = this.cartService.getCart();
+
+    this.cartItemCount = this.shoppingCart.reduce((acc, item) => acc + item.quantity, 0);
 
     this.checkUserRole();
 
-    this.cartService.cartChanged$.subscribe(count => {
-      this.cartItemCount = count;
+    this.cartService.cartChanged$.subscribe(cart => {
+      this.shoppingCart = cart; // cart es un array de ShoppingCartItem
+      this.cartItemCount = cart.reduce((acc, item) => acc + item.quantity, 0);
     });
   }
 

@@ -6,8 +6,7 @@ import {BehaviorSubject} from 'rxjs';
 
 @Injectable({providedIn:'root'})
 export class ShoppingCartService {
-  private cartChanged = new BehaviorSubject<number>(this.getLength());
-
+  private cartChanged = new BehaviorSubject<ShoppingCartItem[]>(this.getCart());
   cartChanged$ = this.cartChanged.asObservable();
 
   getCart(): ShoppingCartItem[] {
@@ -21,7 +20,7 @@ export class ShoppingCartService {
 
   saveCart(cart: ShoppingCartItem[]): void {
     localStorage.setItem("cart", JSON.stringify(cart));
-    this.cartChanged.next(this.getLength());
+    this.cartChanged.next(cart);
   }
 
   addToCart(item: Product, quantity: number): void {
