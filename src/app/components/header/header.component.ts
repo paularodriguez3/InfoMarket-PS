@@ -1,9 +1,8 @@
-import {Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
-import {ShoppingCartService} from '../../services/shopping-cart.service';
+import { Component, ElementRef, HostListener, OnInit, ViewChild, DoCheck } from '@angular/core';
+import { ShoppingCartService } from '../../services/shopping-cart.service';
+import { Router, RouterLink } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import {NgIf} from '@angular/common';
-import {Router, RouterLink} from '@angular/router';
-import {ProductService} from '../../services/product.service';
-import {FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-header',
@@ -11,28 +10,50 @@ import {FormsModule} from '@angular/forms';
   templateUrl: './header.component.html',
   imports: [
     RouterLink,
-    NgIf,
-    FormsModule
+    FormsModule,
+    NgIf
   ],
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, DoCheck {
   @ViewChild('searchBar') searchRef!: ElementRef;
   @ViewChild('inputBar') inputRef!: ElementRef;
 
   isSearchActive = false;
-
   cartItemCount = 0;
   terminoBusqueda = '';
+  isAdmin = false;
 
-  constructor(private cartService: ShoppingCartService, private productService: ProductService, private router: Router) {}
+  constructor(
+    private cartService: ShoppingCartService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.cartItemCount = this.cartService.getLength();
 
+    // Inicializa el estado de isAdmin al cargar el componente
+    this.checkUserRole();
+
     this.cartService.cartChanged$.subscribe(count => {
       this.cartItemCount = count;
     });
+  }
+
+  ngDoCheck() {
+    // Este método se ejecutará cada vez que Angular realice una verificación de cambios
+    // Aquí puedes verificar si el usuario cambió (por ejemplo, si hizo login o logout)
+    this.checkUserRole();
+  }
+
+  checkUserRole() {
+    const userData = localStorage.getItem('user');
+    if (userData) {
+      const user = JSON.parse(userData);
+      this.isAdmin = user.rol === 'Administrador';
+    } else {
+      this.isAdmin = false; // Si no hay usuario en localStorage, no es admin
+    }
   }
 
   toggleSearch(): void {

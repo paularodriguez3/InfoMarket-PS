@@ -7,12 +7,15 @@ import {
   createUserWithEmailAndPassword,
   updateProfile,
   User,
-  deleteUser as firebaseDeleteUser, sendPasswordResetEmail,
+  deleteUser as firebaseDeleteUser,
+  sendPasswordResetEmail,
 } from '@angular/fire/auth';
+import { Firestore, doc, getDoc } from '@angular/fire/firestore';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   private auth = inject(Auth, { optional: true });
+  private firestore = inject(Firestore);
 
   constructor() {}
 
@@ -22,8 +25,39 @@ export class AuthService {
     }
 
     const userCredential = await signInWithEmailAndPassword(this.auth, email, password);
-    localStorage.setItem("user", JSON.stringify(userCredential.user));
-    return userCredential.user;
+    const user = userCredential.user;
+
+    try {
+      const userDocRef = doc(this.firestore, `users/${user.uid}`);
+      const userSnap = await getDoc(userDocRef);
+
+      let rol = 'Desconocido';
+
+      if (userSnap.exists()) {
+        const userData = userSnap.data() as { rol?: string };
+        rol = userData.rol || 'Sin rol';
+      }
+
+      const userInfo = {
+        uid: user.uid,
+        email: user.email,
+        rol: rol
+      };
+
+      console.log('Usuario logueado:', userInfo);
+      localStorage.setItem('user', JSON.stringify(userInfo));
+
+    } catch (e) {
+      console.error('Error al obtener el rol del usuario:', e);
+      const fallbackUser = {
+        uid: user.uid,
+        email: user.email,
+        rol: 'Error'
+      };
+      localStorage.setItem('user', JSON.stringify(fallbackUser));
+    }
+
+    return user;
   }
 
   async registerUser(email: string, password: string, displayName: string): Promise<User> {
@@ -40,6 +74,15 @@ export class AuthService {
       await sendEmailVerification(user);
     }
 
+    // Guardamos un usuario inicial sin rol asignado aún
+    const userInfo = {
+      uid: user.uid,
+      email: user.email,
+      rol: 'Desconocido'
+    };
+
+    localStorage.setItem('user', JSON.stringify(userInfo));
+
     return user;
   }
 
@@ -51,6 +94,7 @@ export class AuthService {
   async signOut(): Promise<void> {
     if (!this.auth) return;
     await signOut(this.auth);
+    localStorage.removeItem('user');
   }
 
   async deleteUser(): Promise<void> {
@@ -60,6 +104,7 @@ export class AuthService {
 
     await firebaseDeleteUser(this.auth.currentUser);
   }
+
   async sendPasswordReset(email: string): Promise<void> {
     if (!this.auth) {
       throw new Error('El servicio de autenticación no está disponible.');

@@ -109,6 +109,7 @@ export class PersonalProfileComponent implements OnInit {
     try {
       if (this.auth) await signOut(this.auth);
       localStorage.clear();
+      localStorage.removeItem('user')
       this.router.navigate(['/']);
     } catch (err) {
       console.error('Error al cerrar sesión:', err);
