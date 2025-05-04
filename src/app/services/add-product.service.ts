@@ -69,14 +69,16 @@ export class AddProductService {
 
 
   editProduct(old_product: Product, productData: any) {
-    // FIXME: Los productos no se edtian??
-    // FIXME: FirebaseError: Missing or insufficient permissions.
-    let docRef;
-    if (productData.subcategory !== undefined) {
-      docRef = doc(this.firestore, `${productData.Categoria}/${productData.Subcategoria}`, old_product.id as string);
+    // TODO: Si cambia la categoría/Subcategoria el documento no cambia de ruta
+    if (old_product.Categoria !== productData.Categoria || old_product.Subcategoria !== productData.Subcategoria) {
     } else {
-      docRef = doc(this.firestore, `${productData.Categoria}`, old_product.id as string);
+      let docRef;
+      if (productData.Subcategoria !== undefined) {
+        docRef = doc(this.firestore, `productos/${productData.Categoria}/${productData.Subcategoria}`, old_product.id as string);
+      } else {
+        docRef = doc(this.firestore, `productos/${productData.Categoria}`, old_product.id as string);
+      }
+      updateDoc(docRef, productData);
     }
-    updateDoc(docRef, productData);
   }
 }
