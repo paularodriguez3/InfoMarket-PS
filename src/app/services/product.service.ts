@@ -6,7 +6,6 @@ import {
 import { inject, Injectable } from '@angular/core';
 import { getStorage, FirebaseStorage } from 'firebase/storage';
 import {getDownloadURL, ref} from '@angular/fire/storage';
-import {Product} from '../models/product.model';
 
 @Injectable({
   providedIn: 'root'
