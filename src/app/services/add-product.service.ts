@@ -71,6 +71,7 @@ export class AddProductService {
   editProduct(old_product: Product, productData: any) {
     // TODO: Si cambia la categoría/Subcategoria el documento no cambia de ruta
     if (old_product.Categoria !== productData.Categoria || old_product.Subcategoria !== productData.Subcategoria) {
+      // TODO
     } else {
       let docRef;
       if (productData.Subcategoria !== undefined) {
