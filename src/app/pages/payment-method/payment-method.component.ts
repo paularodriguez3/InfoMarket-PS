@@ -3,7 +3,8 @@ import { ShoppingCartService } from '../../services/shopping-cart.service';
 import { ShoppingInfoComponent } from '../../components/shopping-info/shopping-info.component';
 import { FormsModule } from '@angular/forms';
 import { loadPayPalSDK } from '../../environments/environment.development'; // Importa la función que carga el SDK de PayPal
-import { Router } from '@angular/router';  // Importar el Router
+import { Router } from '@angular/router';
+import {ShoppingProcessComponent} from '../../components/shopping-process/shopping-process.component';  // Importar el Router
 
 @Component({
   selector: 'app-payment-method',
@@ -12,6 +13,7 @@ import { Router } from '@angular/router';  // Importar el Router
   imports: [
     ShoppingInfoComponent,
     FormsModule,
+    ShoppingProcessComponent,
   ],
   styleUrls: ['./payment-method.component.css']
 })

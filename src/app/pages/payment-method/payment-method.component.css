@@ -1,11 +1,25 @@
 #payment-method-wrapper {
-  max-width: 900px;
-  margin: 20px auto;
+  font-family: 'SF Pro Display', sans-serif;
+  max-width: 600px;
+  flex: 1;
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 8px;
   background-color: #f9f9f9;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+main {
+  padding-top: 5%
+}
+
+#payment-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 5%;
+  padding: 20px;
+  flex-wrap: wrap;
 }
 
 h1 {

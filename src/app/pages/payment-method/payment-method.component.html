@@ -1,18 +1,20 @@
 <main>
-  <div id="payment-method-wrapper">
-    <h1>Pago</h1>
-    <p>Haz clic en la opción de pago que desees</p>
+    <app-shopping-process></app-shopping-process>
+  <div id="payment-container">
+    <div id="payment-method-wrapper">
+      <h1>Pago</h1>
+      <p>Haz clic en la opción de pago que desees</p>
 
-    <label for="discount-code">Código de descuento:</label>
-    <input type="text" id="discount-code" [(ngModel)]="discountCode" placeholder="Introduce tu código">
-    <button id="apply-discount" (click)="aplicarDescuento()">Aplicar descuento</button>
+      <label for="discount-code">Código de descuento:</label>
+      <input type="text" id="discount-code" [(ngModel)]="discountCode" placeholder="Introduce tu código">
+      <button id="apply-discount" (click)="aplicarDescuento()">Aplicar descuento</button>
 
-    <p>Total a pagar: <span id="total-amount">{{ totalAmount.toFixed(2) }}</span>€</p>
+      <p>Total a pagar: <span id="total-amount">{{ totalAmount.toFixed(2) }}</span>€</p>
 
-    <p><strong>Total con IGIC (7%): <span id="total-with-tax">{{ getTotalWithTax().toFixed(2) }}</span>€</strong></p>
+      <p><strong>Total con IGIC (7%): <span id="total-with-tax">{{ getTotalWithTax().toFixed(2) }}</span>€</strong></p>
 
-    <div id="paypal-button-container"></div>
-
-    <app-shopping-info></app-shopping-info>
-  </div>
+      <div id="paypal-button-container"></div>
+    </div>
+  <app-shopping-info></app-shopping-info>
+    </div>
 </main>
