@@ -1,6 +1,6 @@
 import { Component, HostListener } from '@angular/core';
 import {NgClass, NgIf} from '@angular/common';
-import {RouterLink} from '@angular/router';
+import {NavigationEnd, Router, RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-nav-bar',
@@ -17,6 +17,18 @@ export class NavBarComponent {
   isDesktopMenuVisible = false;
   isMobileMenuVisible = false;
   isScrolling = false;
+
+  constructor(private router: Router) {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.isDesktopMenuVisible = false;
+        this.isMobileMenuVisible = false;
+
+        document.querySelector('main')?.classList.remove('blurred');
+        document.querySelector('footer')?.classList.remove('blurred');
+      }
+    });
+  }
 
   toggleDesktopMenu(): void {
     if (window.innerWidth >= 769) {
