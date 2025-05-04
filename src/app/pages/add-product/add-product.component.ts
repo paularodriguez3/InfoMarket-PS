@@ -55,6 +55,9 @@ export class AddProductComponent implements OnInit {
       this.selectedPrice = this.product.Precio;
       this.selectedImageUrl = this.product.Imagen;
       this.selectedCategory = this.product.Categoria;
+      this.onCategoryChange();
+      this.selectedSubcategory = this.product.Subcategoria;
+      this.onSubcategoryChange();
     }
 
     this.addProductService.getCategories().subscribe(
@@ -181,13 +184,19 @@ export class AddProductComponent implements OnInit {
       Imagen: this.selectedImagePath
     };
 
-    this.addProductService.saveProduct(productData).then(() => {
-      console.log('Producto guardado exitosamente');
-      alert("Producto añadido exitosamente.");
-    }).catch(error => {
-      console.error('Error al guardar el producto: ', error);
-      alert("Error al guardar el producto: " + error.message);
-    });
+    if (!this.isEditing) {
+      this.addProductService.saveProduct(productData).then(() => {
+        console.log('Producto guardado exitosamente');
+        alert("Producto añadido exitosamente.");
+      }).catch(error => {
+        console.error('Error al guardar el producto: ', error);
+        alert("Error al guardar el producto: " + error.message);
+      });
+    } else {
+      if(this.product) {
+        this.addProductService.editProduct(this.product, productData)
+      }
+    }
   }
 
   addFeature() {
