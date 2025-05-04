@@ -8,17 +8,17 @@ import {
   getDocs,
   query,
   addDoc,
-  deleteDoc
+  deleteDoc, updateDoc
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { SubcategoryMap } from '../models/add-product.model';
-import {FirebaseService} from './firebase.service';
+import {Product} from '../models/product.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AddProductService {
-  constructor(private firestore: Firestore, private firebaseService: FirebaseService) {}
+  constructor(private firestore: Firestore) {}
 
 
   getFirestore() {
@@ -42,7 +42,7 @@ export class AddProductService {
   }
 
   saveProduct(productData: any) {
-    const productsRef = collection(this.firestore, `productos/${productData.category}/${productData.subcategory}`);
+    const productsRef = collection(this.firestore, `productos/${productData.Categoria}/${productData.Subcategoria}`);
     return addDoc(productsRef, productData); // Usamos addDoc para agregar el producto
   }
 
@@ -68,11 +68,15 @@ export class AddProductService {
   }
 
 
-  editProduct(id: string, productData: any) {
+  editProduct(old_product: Product, productData: any) {
+    // FIXME: Los productos no se edtian??
+    // FIXME: FirebaseError: Missing or insufficient permissions.
+    let docRef;
     if (productData.subcategory !== undefined) {
-      this.firebaseService.updateDocOnCollection(`${productData.Categoria}/${productData.Subcategoria}`, id, productData);
+      docRef = doc(this.firestore, `${productData.Categoria}/${productData.Subcategoria}`, old_product.id as string);
     } else {
-      this.firebaseService.updateDocOnCollection(`${productData.Categoria}`, id, productData);
+      docRef = doc(this.firestore, `${productData.Categoria}`, old_product.id as string);
     }
+    updateDoc(docRef, productData);
   }
 }
