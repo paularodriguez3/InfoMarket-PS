@@ -145,6 +145,23 @@ input[type="number"]::-webkit-inner-spin-button {
   font-weight: 700;
 }
 
+#final-price {
+  font-weight: bold;
+}
+
+#discount {
+  font-family: 'SF Pro Display', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1D1D1F;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  width: 100%;
+  margin-bottom: 10px;
+  background-color: white;
+}
+
 #add-to-cart {
   display: flex;
   justify-content: center;

@@ -21,7 +21,8 @@ export class ProductInfoComponent {
       Descripcion:"",
       Color:'',
       Categoria:'',
-      Subcategoria:''},
+      Subcategoria:''
+    },
     quantity:0};
   @Input() showButtons: boolean = false;
   @Output() increaseQty: EventEmitter<any> = new EventEmitter();
