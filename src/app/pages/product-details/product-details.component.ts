@@ -23,7 +23,8 @@ export class ProductDetailsComponent implements OnInit {
     id: "",
     Color:'',
     Categoria: '',
-    Subcategoria: ''
+    Subcategoria: '',
+    Descuento: 0
   };
   cantidad: number = 1;
   precioTotal: number = this.product.Precio;
@@ -40,6 +41,7 @@ export class ProductDetailsComponent implements OnInit {
     this.product.Descripcion = history.state.product.Descripcion;
     this.product.Imagen = history.state.product.Imagen;
     this.product.Precio = history.state.product.Precio;
+    this.product.Descuento = history.state.product.Descuento;
     let caracteristicas: Feature[] = [];
     for (let caracteristica in history.state.product.Caracteristicas) {
       const feature: Feature = {
@@ -96,4 +98,11 @@ export class ProductDetailsComponent implements OnInit {
     }
   }
 
+  getPrecioConDescuento(): number {
+    const descuento = this.product.Descuento ?? 0;
+    if (descuento > 0 && descuento < 100) {
+      return Number((this.product.Precio * (1 - descuento / 100)).toFixed(2));
+    }
+    return this.product.Precio;
+  }
 }

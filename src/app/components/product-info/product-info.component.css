@@ -72,6 +72,13 @@
   text-align: right;
   margin-right: 10px;
   background-color: #D9D9D9;
+}
+
+.discounted {
+  color: #d32f2f;
+}
+
+.normal-price {
   color: #1D1D1F;
 }
 

@@ -39,6 +39,7 @@ main {
   align-items: center;
   justify-content: center;
   background-color: #FAFAFC;
+  font-family: 'SF Pro Display', sans-serif;
 }
 
 body {
@@ -74,7 +75,16 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 30px;
+  gap: 5%;
+}
+
+#price-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  width: 100%;
 }
 
 #total-price {
@@ -123,6 +133,31 @@ body {
   margin-top: -10px;
   margin-bottom: 10px;
   font-family: 'SF Pro Display', sans-serif;
+}
+
+#total-original {
+  font-size: 1.8em;
+  color: #333;
+  font-weight: bold;
+  margin-top: -20px;
+}
+
+#discount-applied {
+  color: red;
+  margin-top: -10px;
+  font-weight: 500;
+}
+
+.divider {
+  width: 60%;
+  margin: 10px auto;
+  border-color: #ccc;
+}
+
+#total-final {
+  color: red;
+  font-size: 2em;
+  font-weight: bold;
 }
 
 @media(max-width: 1200px) {

@@ -48,8 +48,19 @@ export class ShoppingCartService {
     this.saveCart(shoppingCart);
   }
 
+  private getPrecioConDescuento(product: Product): number {
+    const descuento = product.Descuento;
+    if (descuento && descuento > 0 && descuento < 100) {
+      return product.Precio * (1 - descuento / 100);
+    }
+    return product.Precio;
+  }
+
   getTotal(): number {
-    return this.getCart().reduce((total, item) => total + item.product.Precio * item.quantity, 0);
+    return this.getCart().reduce((total, item) => {
+      const precioConDescuento = this.getPrecioConDescuento(item.product);
+      return total + precioConDescuento * item.quantity;
+    }, 0);
   }
 
   getTotalObservable(): BehaviorSubject<number> {

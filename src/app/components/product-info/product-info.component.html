@@ -13,7 +13,7 @@
   <div id="button-plus" class="qty-button hidden-button" [ngClass]="{'hidden-button': !showButtons}" (click)="increase()">
     <button class="qty-button" ><i class='bx bxs-plus-circle' ></i></button>
   </div>
-  <div id="product-price-component">
-    {{getPrice()}}€
+  <div id="product-price-component" [ngClass]="{ 'discounted': hasDiscount(), 'normal-price': !hasDiscount() }">
+    {{ getPrice() }}€
   </div>
 </section>

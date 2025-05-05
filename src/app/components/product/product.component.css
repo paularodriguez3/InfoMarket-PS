@@ -13,6 +13,17 @@
   height: 380px;
 }
 
+.original-price {
+  text-decoration: line-through;
+  color: #888;
+  margin-right: 8px;
+}
+
+.discounted-price {
+  color: #d32f2f;
+  font-weight: bold;
+}
+
 #product-image {
   background-color: #ffffff;
   border-radius: 15px;

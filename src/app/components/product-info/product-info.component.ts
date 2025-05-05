@@ -35,7 +35,19 @@ export class ProductInfoComponent {
     this.decreaseQty.emit(this.item);
   }
 
-  getPrice() {
-    return Number((this.item.product.Precio * this.item.quantity).toFixed(2));
+  getPrice(): number {
+    const descuento = this.item.product.Descuento ?? 0;
+
+    const precioUnitario = descuento > 0 && descuento < 100
+      ? this.item.product.Precio * (1 - descuento / 100)
+      : this.item.product.Precio;
+
+    return Number((precioUnitario * this.item.quantity).toFixed(2));
+  }
+
+  hasDiscount(): boolean {
+    const descuento = this.item.product.Descuento;
+    console.log(typeof descuento === 'number' && descuento > 0 && descuento < 100);
+    return typeof descuento === 'number' && descuento > 0 && descuento < 100;
   }
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ShoppingCartService} from '../../services/shopping-cart.service';
 import {ShoppingCartItem} from '../../models/shopping-cart-item.model';
 import {ProductInfoComponent} from '../product-info/product-info.component';
@@ -14,7 +14,7 @@ import {NgForOf} from '@angular/common';
   ],
   styleUrl: './shopping-info.component.css'
 })
-export class ShoppingInfoComponent {
+export class ShoppingInfoComponent implements OnInit {
   shoppingCart: ShoppingCartItem[] = [];
 
   constructor(private shoppingCartService: ShoppingCartService) {}
@@ -24,10 +24,18 @@ export class ShoppingInfoComponent {
   }
 
   calculateTotalPrice(): number {
-    let total:number = 0;
+    let total = 0;
+
     for (let item of this.shoppingCart) {
-      total += item.product.Precio * item.quantity;
+      const descuento = item.product.Descuento ?? 0;
+
+      const precioFinal = descuento > 0 && descuento < 100
+        ? item.product.Precio * (1 - descuento / 100)
+        : item.product.Precio;
+
+      total += Number((precioFinal * item.quantity).toFixed(2));
     }
+
     return total;
   }
 }

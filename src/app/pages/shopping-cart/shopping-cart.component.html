@@ -12,7 +12,29 @@
       </div>
     </div>
     <section id="buy-panel">
-      <div id="total-price">{{calculateTotalPrice().toFixed(2)}}€</div>
+      <div id="price-section">
+        <ng-container *ngIf="hasAnyDiscount(); else noDiscount">
+          <div id="total-original">
+            {{ calculateOriginalTotal().toFixed(2) }}€
+          </div>
+
+          <div id="discount-applied">
+            -{{ calculateTotalDiscount().toFixed(2) }}€
+          </div>
+
+          <hr class="divider" />
+
+          <div id="total-final">
+            {{ calculateTotalPrice().toFixed(2) }}€
+          </div>
+        </ng-container>
+
+        <ng-template #noDiscount>
+          <div id="total-price">
+            {{ calculateTotalPrice().toFixed(2) }}€
+          </div>
+        </ng-template>
+      </div>
       <button id="buy-button" (click)="buy()">Procesar pedido</button>
       <button id="continue-shopping-button" (click)="continueShopping()">Seguir comprando</button>
     </section>

@@ -4,8 +4,13 @@
   </div>
   <p id="product-name">{{ product.Nombre }}</p>
   <p id="product-desc">{{ product.Descripcion }}</p>
-  <p class="price">
-    <span id="price" class="price">{{ product.Precio }}</span> €
+  <p class="price" *ngIf="product.Descuento && product.Descuento > 0 && product.Descuento < 100">
+    <span class="original-price">{{ product.Precio | number:'1.2-2' }}€</span>
+    <span class="discounted-price">{{ getPrecioConDescuento(product) | number:'1.2-2' }}€</span>
+  </p>
+
+  <p class="price" *ngIf="!product.Descuento || product.Descuento <= 0 || product.Descuento >= 100">
+    <span>{{ product.Precio | number:'1.2-2' }}€</span>
   </p>
   <div class="buttons">
     <button id="see" (click)="onSee()">Ver</button>

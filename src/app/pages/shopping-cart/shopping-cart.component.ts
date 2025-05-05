@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ShoppingCartService} from '../../services/shopping-cart.service';
 import {ShoppingCartItem} from '../../models/shopping-cart-item.model';
-import {NgFor} from '@angular/common';
+import {NgFor, NgIf} from '@angular/common';
 import {ProductInfoComponent} from '../../components/product-info/product-info.component';
 
 @Component({
@@ -10,7 +10,8 @@ import {ProductInfoComponent} from '../../components/product-info/product-info.c
   standalone: true,
   imports: [
     NgFor,
-    ProductInfoComponent
+    ProductInfoComponent,
+    NgIf
   ],
   templateUrl: './shopping-cart.component.html',
   styleUrl: './shopping-cart.component.css'
@@ -53,10 +54,45 @@ export class ShoppingCartComponent implements OnInit{
   }
 
   calculateTotalPrice(): number {
-    let total:number = 0;
+    let total = 0;
+
     for (let item of this.shoppingCart) {
-      total += Number((item.product.Precio * item.quantity).toFixed(2));
+      const descuento = item.product.Descuento ?? 0;
+
+      const precioFinal = descuento > 0 && descuento < 100
+        ? item.product.Precio * (1 - descuento / 100)
+        : item.product.Precio;
+
+      total += Number((precioFinal * item.quantity).toFixed(2));
     }
+
     return total;
+  }
+
+  hasAnyDiscount(): boolean {
+    return this.shoppingCart.some(
+      item => typeof item.product.Descuento === 'number' && item.product.Descuento > 0 && item.product.Descuento < 100
+    );
+  }
+
+  calculateOriginalTotal(): number {
+    return this.shoppingCart.reduce((total, item) => {
+      return total + item.product.Precio * item.quantity;
+    }, 0);
+  }
+
+  calculateTotalDiscount(): number {
+    let descuentoTotal = 0;
+
+    for (let item of this.shoppingCart) {
+      const descuento = item.product.Descuento ?? 0;
+
+      if (descuento > 0 && descuento < 100) {
+        const ahorroPorUnidad = item.product.Precio * (descuento / 100);
+        descuentoTotal += ahorroPorUnidad * item.quantity;
+      }
+    }
+
+    return descuentoTotal;
   }
 }

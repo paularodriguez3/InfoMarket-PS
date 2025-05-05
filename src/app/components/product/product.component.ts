@@ -2,11 +2,15 @@ import {Component, EventEmitter, inject, Input, Output} from '@angular/core';
 import {Product} from '../../models/product.model';
 import {Router} from '@angular/router';
 import {ShoppingCartService} from '../../services/shopping-cart.service';
+import {DecimalPipe, NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-product',
   standalone: true,
-  imports: [],
+  imports: [
+    DecimalPipe,
+    NgIf
+  ],
   templateUrl: './product.component.html',
   styleUrl: './product.component.css'
 })
@@ -26,5 +30,14 @@ export class ProductComponent {
 
   onAddToCart() {
     this.shoppingCart.addToCart(this.product, 1);
+  }
+
+  getPrecioConDescuento(product: Product): number {
+    if (product.Descuento &&
+      product.Descuento > 0 &&
+      product.Descuento < 100) {
+      return product.Precio * (1 - product.Descuento / 100);
+    }
+    return product.Precio;
   }
 }
