@@ -1,11 +1,12 @@
 // src/app/pages/order-review/order-review.component.ts
 
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 
 import { ShoppingInfoComponent } from '../../components/shopping-info/shopping-info.component';
 import { OrderReviewTemplateComponent } from '../../components/order-review-template/order-review-template.component';
 import { ShoppingProcessComponent } from '../../components/shopping-process/shopping-process.component';
+import {ShoppingCartService} from '../../services/shopping-cart.service';
 
 
 @Component({
@@ -19,9 +20,11 @@ import { ShoppingProcessComponent } from '../../components/shopping-process/shop
     OrderReviewTemplateComponent
   ]
 })
-export class OrderReviewComponent implements OnInit {
+export class OrderReviewComponent implements OnInit, OnDestroy {
   paymentMethod: string = '';
   arrivalDate!: string;
+
+  constructor(private shoppingCartService : ShoppingCartService) {}
 
   ngOnInit() {
     // Recuperar método de pago del state
@@ -39,5 +42,9 @@ export class OrderReviewComponent implements OnInit {
     const mm = String(arrival.getMonth() + 1).padStart(2, '0');
     const yyyy = arrival.getFullYear();
     this.arrivalDate = `${dd}/${mm}/${yyyy}`;
+  }
+
+  ngOnDestroy() {
+    this.shoppingCartService.clearCart();
   }
 }

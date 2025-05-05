@@ -12,6 +12,7 @@ body {
 
 main {
   background-color: #FAFAFC;
+  padding-top: 5%;
 }
 header {
   position: fixed;

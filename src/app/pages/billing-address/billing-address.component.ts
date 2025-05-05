@@ -1,4 +1,4 @@
-import {Component, OnInit, Renderer2} from '@angular/core';
+import {AfterViewInit, Component, OnInit, Renderer2} from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AddressService } from '../../services/address.service';
@@ -14,12 +14,13 @@ import {FirebaseService} from '../../services/firebase.service';
   styleUrls: ['./billing-address.component.css'],
   imports: [ShoppingProcessComponent, ShoppingInfoComponent, ReactiveFormsModule, FormsModule, CommonModule]
 })
-export class BillingAddressComponent implements OnInit {
+export class BillingAddressComponent implements OnInit, AfterViewInit {
   billingForm!: FormGroup;
   uid: string = JSON.parse(localStorage.getItem('user') || '{}')?.uid || '';
   addresses: any[] = [];
   selectedAddressId: string = '';
   tiendas: any[] = [];
+  pedido: any;
 
   constructor(
     private fb: FormBuilder,
@@ -30,6 +31,13 @@ export class BillingAddressComponent implements OnInit {
   ) {}
 
   async ngOnInit(): Promise<void> {
+    const stored = localStorage.getItem('pedido');
+    if (stored) {
+      this.pedido = JSON.parse(stored);
+    } else {
+      this.pedido = {};
+    }
+
     this.billingForm = this.fb.group({
       country: ['', Validators.required],
       address: ['', Validators.required],
@@ -37,8 +45,6 @@ export class BillingAddressComponent implements OnInit {
       province: ['', Validators.required],
       shop: ['', Validators.required]
     });
-
-
 
     if (this.uid) {
       this.addresses = await this.addressService.getAddresses(this.uid);
@@ -68,7 +74,28 @@ export class BillingAddressComponent implements OnInit {
         return;
       }
 
-      console.log(this.billingForm.value);
+      let direccionFinal = {};
+
+      if (hasAddress) {
+        direccionFinal = {
+          pais: this.billingForm.value.country,
+          direccion: this.billingForm.value.address,
+          codigoPostal: this.billingForm.value.zip,
+          provincia: this.billingForm.value.province,
+          tipo: 'envio'
+        };
+      } else if (hasShop) {
+        const tiendaSeleccionada = this.tiendas.find(t => t.direccion === this.billingForm.value.shop);
+        direccionFinal = {
+          direccion: this.tiendas[0],
+          tipo: 'recogida',
+        };
+      }
+
+      this.pedido.direccion = direccionFinal;
+      localStorage.setItem('pedido', JSON.stringify(this.pedido));
+
+      console.log(this.pedido);
       // si pasa validación, navegar normalmente
       this.router.navigate(['/payment-method']).then(ok => {
         if (!ok) console.warn('No se pudo navegar a /payment-method');

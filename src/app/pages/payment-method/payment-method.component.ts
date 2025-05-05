@@ -4,7 +4,8 @@ import { ShoppingInfoComponent } from '../../components/shopping-info/shopping-i
 import { FormsModule } from '@angular/forms';
 import { loadPayPalSDK } from '../../environments/environment.development'; // Importa la función que carga el SDK de PayPal
 import { Router } from '@angular/router';
-import {ShoppingProcessComponent} from '../../components/shopping-process/shopping-process.component';  // Importar el Router
+import {ShoppingProcessComponent} from '../../components/shopping-process/shopping-process.component';
+import {FirebaseService} from '../../services/firebase.service';  // Importar el Router
 
 @Component({
   selector: 'app-payment-method',
@@ -30,7 +31,7 @@ export class PaymentMethodComponent implements OnInit {
     "DESCUENTO33": { tipo: 'porcentaje', valor: 33 }
   };
 
-  constructor(private shoppingCartService: ShoppingCartService, private router: Router) {}  // Inyectar el Router
+  constructor(private shoppingCartService: ShoppingCartService, private router: Router, private firebaseService: FirebaseService) {}  // Inyectar el Router
 
   ngOnInit(): void {
     this.updateTotal();
@@ -96,7 +97,18 @@ export class PaymentMethodComponent implements OnInit {
           alert('Pago realizado con éxito por ' + details.payer.name.given_name);
 
           // Redirigir usando Angular Router
-          this.router.navigate(['/order-review']);  // Redirigir a la página order-review
+            const pedido = JSON.parse(localStorage.getItem('pedido') || '{}');
+            if (!pedido || Object.keys(pedido).length === 0) {
+              alert('No se encontró información del pedido.');
+              return;
+            }
+            try {
+              await this.firebaseService.createDocOnCollection('pedidos', pedido);
+              this.router.navigate(['/order-review'], { state: { paymentMethod: 'Tarjeta de crédito' } });
+            } catch (error) {
+              console.error('Error al guardar el pedido:', error);
+              alert('Hubo un problema al guardar el pedido. Intenta nuevamente.');
+            }
         });
       },
       onError: (err: any) => {
