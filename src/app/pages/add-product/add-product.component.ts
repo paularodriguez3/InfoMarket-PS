@@ -57,6 +57,7 @@ export class AddProductComponent implements OnInit {
       this.selectedImageUrl = this.product.Imagen;
       this.selectedImagePath = this.product.Imagen;
       this.selectedCategory = this.product.Categoria;
+      this.selectedDiscount = this.product.Descuento as number;
       this.onCategoryChange();
       this.selectedSubcategory = this.product.Subcategoria;
       this.onSubcategoryChange();
