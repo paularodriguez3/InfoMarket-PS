@@ -198,6 +198,7 @@ export class AddProductComponent implements OnInit {
         this.addProductService.editProduct(this.product, productData)
       }
     }
+    this.router.navigate(['/']);
   }
 
   addFeature() {
@@ -210,10 +211,9 @@ export class AddProductComponent implements OnInit {
 
   removeProduct() {
     if (this.product && 'id' in this.product) {
-      this.addProductService.deleteProduct(this.product.id, this.selectedCategory, this.selectedSubcategory).then(() => {
+      this.addProductService.deleteProduct(this.product.id, this.selectedCategory, this.selectedSubcategory)
         this.router.navigate(['/']);
         console.log("Producto eliminado.");
-      });
     } else {
       console.error("The product has no id");
     }

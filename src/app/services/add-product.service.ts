@@ -62,16 +62,17 @@ export class AddProductService {
 
 
   //===============================
-  async deleteProduct(id: string|undefined, category: string, subategory: string): Promise<any> {
+  deleteProduct(id: string|undefined, category: string, subategory: string) {
     const docRef = doc(this.firestore, `productos/${category}/${subategory}/${id}`);
     deleteDoc(docRef);
   }
 
 
-  editProduct(old_product: Product, productData: any) {
+  async editProduct(old_product: Product, productData: any) {
     // TODO: Si cambia la categoría/Subcategoria el documento no cambia de ruta
     if (old_product.Categoria !== productData.Categoria || old_product.Subcategoria !== productData.Subcategoria) {
-      // TODO
+      this.deleteProduct(old_product.id, old_product.Categoria, old_product.Subcategoria);
+      this.saveProduct(productData);
     } else {
       let docRef;
       if (productData.Subcategoria !== undefined) {
