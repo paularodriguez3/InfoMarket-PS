@@ -2,7 +2,7 @@
   <article id="nav-bottom">
     <ul id="nav-list">
       <a (click)="toggleDesktopMenu()"><li><i class="fi fi-rr-menu-burger"></i>Menú</li></a>
-      <a><li><i class="fi fi-rr-badge-percent"></i>Ofertas</li></a>
+      <a routerLink="/product-list" [queryParams]="{ ofertas: true }"><li><i class="fi fi-rr-badge-percent"></i>Ofertas</li></a>
       <a routerLink="/product-list/Informatica"><li><i class="fi fi-rr-computer"></i>Informática</li></a>
       <a routerLink="/product-list/Gaming"><li><i class="fi fi-rr-console-controller"></i>Gaming</li></a>
       <a routerLink="/product-list/Telefonia"><li><i class="fi fi-rr-mobile-button"></i>Telefonía</li></a>
@@ -77,12 +77,13 @@
 
   <section id="mobile-menu" [class.hidden]="!isMobileMenuVisible" class="mobile-menu">
     <ul>
-      <li><a href="./product-list.html?categoria=productos/Informatica"><i class="fi fi-rr-computer"></i>Informática</a></li>
-      <li><a href="./product-list.html?categoria=productos/Gaming"><i class="fi fi-rr-console-controller"></i>Gaming</a></li>
-      <li><a href="./product-list.html?categoria=productos/Telefonia"><i class="fi fi-rr-mobile-button"></i>Telefonía</a></li>
-      <li><a href="./product-list.html?categoria=productos/Televisores"><i class="fi fi-rr-screen"></i>Televisores</a></li>
-      <li><a href="./product-list.html?categoria=productos/Electrodomesticos"><i class="fi fi-rr-washer"></i>Electrodomésticos</a></li>
-      <li><a><i class="fi fi-rr-badge-percent"></i>Ofertas</a></li>
+
+      <li><a routerLink="/product-list/Informatica"><i class="fi fi-rr-computer"></i>Informática</a></li>
+      <li><a routerLink="/product-list/Gaming"><i class="fi fi-rr-console-controller"></i>Gaming</a></li>
+      <li><a routerLink="/product-list/Telefonia"><i class="fi fi-rr-mobile-button"></i>Telefonía</a></li>
+      <li><a routerLink="/product-list/Televisores"><i class="fi fi-rr-screen"></i>Televisores</a></li>
+      <li><a routerLink="/product-list/Electrodomesticos"><i class="fi fi-rr-washer"></i>Electrodomésticos</a></li>
+      <li><a routerLink="/product-list" [queryParams]="{ ofertas: true }"><i class="fi fi-rr-badge-percent"></i>Ofertas</a></li>
     </ul>
   </section>
 </div>

@@ -44,8 +44,8 @@ export class ShoppingCartComponent implements OnInit{
     localStorage.setItem("pedido", JSON.stringify({
       productos: this.shoppingCart,
       direccion: {},
-      metodoEnvio: null
     }));
+
     this.router.navigate(["../billing-address"]);
   }
 

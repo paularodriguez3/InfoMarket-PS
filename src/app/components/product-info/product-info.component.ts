@@ -48,7 +48,6 @@ export class ProductInfoComponent {
 
   hasDiscount(): boolean {
     const descuento = this.item.product.Descuento;
-    console.log(typeof descuento === 'number' && descuento > 0 && descuento < 100);
     return typeof descuento === 'number' && descuento > 0 && descuento < 100;
   }
 }

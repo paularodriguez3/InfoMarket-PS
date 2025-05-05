@@ -56,6 +56,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
       const search = queryParams.get('search');
       const categoriaParam = params.get('categoria');
       const subcategoriaParam = params.get('subcategoria');
+      const discounts = queryParams.get('ofertas') === 'true';
 
       if (search) {
         this.titulo = `Resultados de búsqueda: "${search}"`;
@@ -72,6 +73,17 @@ export class ProductListComponent implements OnInit, OnDestroy {
           }
         }
 
+      } else if (discounts) {
+        this.titulo = 'Productos en oferta';
+        const productos = await this.productService.getAllProducts();
+
+        for (const [id, productoData] of Object.entries(productos)) {
+          const data = productoData as Product;
+          if (data.Descuento && data.Descuento > 0 && data.Descuento < 100) {
+            const imageUrl = await this.productService.getImageUrl(data.Imagen);
+            this.products.push({ id, ...data, Imagen: imageUrl });
+          }
+        }
       } else if (categoriaParam) {
         this.categoria = categoriaParam;
 

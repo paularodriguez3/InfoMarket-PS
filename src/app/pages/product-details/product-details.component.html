@@ -25,7 +25,7 @@
         <span id="price" style="text-decoration: line-through; color: #888;">
     {{ (product.Precio * cantidad).toFixed(2) }} €
   </span>
-        <span style="color: #c00; font-weight: bold; font-size: 1.4em;">
+        <span style="color: red; font-weight: bold; font-size: 1.4em;">
     {{ (getPrecioConDescuento() * cantidad).toFixed(2) }} €
   </span>
       </p>
