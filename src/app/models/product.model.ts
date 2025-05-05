@@ -9,6 +9,7 @@ export interface Product {
   Caracteristicas: Feature[];
   Categoria: string;
   Subcategoria: string;
+  Descuento?: number;
 }
 
 export interface Feature {

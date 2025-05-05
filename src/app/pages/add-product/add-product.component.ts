@@ -27,6 +27,7 @@ export class AddProductComponent implements OnInit {
   selectedProductName = '';
   selectedDescription = '';
   selectedPrice: number = 0;
+  selectedDiscount: number = 0;
   selectedImageUrl: string = '';
   selectedImagePath: string = '';
   selectedFile: File | null = null;
@@ -182,7 +183,8 @@ export class AddProductComponent implements OnInit {
       Precio: this.selectedPrice,
       Cantidad: this.quantity,
       Caracteristicas: formattedFeatures,
-      Imagen: this.selectedImagePath
+      Imagen: this.selectedImagePath,
+      Descuento: this.selectedDiscount,
     };
 
     if (!this.isEditing) {
@@ -217,5 +219,9 @@ export class AddProductComponent implements OnInit {
     } else {
       console.error("The product has no id");
     }
+  }
+
+  getFinalPrice() {
+    return (this.selectedPrice - this.selectedPrice* this.selectedDiscount/100).toFixed(2)
   }
 }
