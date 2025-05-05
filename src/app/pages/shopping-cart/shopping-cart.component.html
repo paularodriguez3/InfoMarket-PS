@@ -36,6 +36,7 @@
         </ng-template>
       </div>
       <button id="buy-button" (click)="buy()">Procesar pedido</button>
+      <button id="clear-cart-button" *ngIf="!cartIsEmpty()" (click)="clearCart()">Vaciar carrito</button>
       <button id="continue-shopping-button" (click)="continueShopping()">Seguir comprando</button>
     </section>
   </article>

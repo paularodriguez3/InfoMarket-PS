@@ -70,12 +70,13 @@ body {
   border-radius: 15px;
   background: #D9D9D9;
   width: 400px;
-  height: 300px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 5%;
+  gap: 20px;
+  min-height: 150px;
 }
 
 #price-section {
@@ -83,7 +84,7 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  margin-bottom: 10px;
+  margin-top: 10px;
   width: 100%;
 }
 
@@ -100,7 +101,7 @@ body {
   padding: 10px 20px;
   font-size: 1rem;
   cursor: pointer;
-  height: 15%;
+  height: 40px;
   border-radius: 10px;
   width: 80%;
   text-align: center;
@@ -110,16 +111,32 @@ body {
   background-color: #000;
 }
 
+#clear-cart-button {
+  background-color: #1D1D1F;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  height: 40px;
+  border-radius: 10px;
+  width: 80%;
+  text-align: center;
+}
+
+#clear-cart-button:hover {
+  background-color: #000;
+}
+
 #continue-shopping-button {
   color: white;
   border: none;
   padding: 10px 20px;
   font-size: 1rem;
-  height: 15%;
+  height: 40px;
   cursor: pointer;
   border-radius: 10px;
   width: 80%;
-
   text-align: center;
   background-color: #555;
 }
@@ -139,7 +156,7 @@ body {
   font-size: 1.8em;
   color: #333;
   font-weight: bold;
-  margin-top: -20px;
+  margin-top: -5px;
 }
 
 #discount-applied {

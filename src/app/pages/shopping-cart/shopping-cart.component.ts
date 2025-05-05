@@ -95,4 +95,13 @@ export class ShoppingCartComponent implements OnInit{
 
     return descuentoTotal;
   }
+
+  clearCart(): void {
+    this.shoppingCartService.clearCart();
+    this.refreshShoppingCart();
+  }
+
+  cartIsEmpty(): boolean {
+    return this.shoppingCartService.isEmpty();
+  }
 }

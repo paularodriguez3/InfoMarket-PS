@@ -67,4 +67,13 @@ export class ShoppingCartService {
     const total = this.getTotal();
     return new BehaviorSubject<number>(total);
   }
+
+  clearCart() {
+    localStorage.removeItem("cart");
+    this.cartChanged.next([])
+  }
+
+  isEmpty(): boolean {
+    return this.getLength() === 0;
+  }
 }
