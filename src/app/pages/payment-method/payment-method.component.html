@@ -11,8 +11,10 @@
 
       <p>Total a pagar: <span id="total-amount">{{ totalAmount.toFixed(2) }}</span>€</p>
 
-      <p><strong>Total con IGIC (7%): <span id="total-with-tax">{{ getTotalWithTax().toFixed(2) }}</span>€</strong></p>
-
+      <p><strong>Total sin IGIC (7%): <span id="total-with-tax">{{ getTotalWithoutTax().toFixed(2) }}</span>€</strong></p>
+      @if (localStorage.getItem("user")) {
+          <app-card-manager-payment [uid]="userUID"></app-card-manager-payment>
+      }
       <div id="paypal-button-container"></div>
     </div>
   <app-shopping-info></app-shopping-info>

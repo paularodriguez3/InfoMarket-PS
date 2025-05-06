@@ -1,0 +1,21 @@
+<div class="card-manager">
+  <h3>Mis tarjetas</h3>
+
+  <div *ngIf="cards.length === 0" class="no-cards">
+    No has añadido tarjetas aún.
+  </div>
+
+  <ul>
+    <li *ngFor="let card of cards" class="card-item">
+      <div class="card-info">
+        <strong>{{ card.brand }}</strong> — {{ '**** **** **** ' + card.cardNumber.slice(-4) }}
+        <br>
+        <small>Vence: {{ card.expiry }}</small>
+      </div>
+      <button class="button-cancel-add" type="button" (click)="copyToClipboard(card)">{{card.copied ? '¡PAN copiado!' : 'Copiar PAN de la tarjeta'}}</button>
+    </li>
+  </ul>
+
+
+
+</div>
