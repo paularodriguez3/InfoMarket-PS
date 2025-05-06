@@ -15,7 +15,7 @@
         Stock:
         <span [ngClass]="{
       'stock-green': product.Stock > 10,
-      'stock-orange': product.Stock > 0 && product.Stock <= 10,
+      'stock-orange': product.Stock > 0 && product.Stock <= 7,
       'stock-red': product.Stock === 0
     }">
     {{ getStockMessage() }}

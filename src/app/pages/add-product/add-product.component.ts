@@ -57,6 +57,7 @@ export class AddProductComponent implements OnInit {
       this.selectedImageUrl = this.product.Imagen;
       this.selectedImagePath = this.product.Imagen;
       this.selectedCategory = this.product.Categoria;
+      this.quantity = this.product.Stock;
       this.selectedDiscount = this.product.Descuento as number;
       this.onCategoryChange();
       this.selectedSubcategory = this.product.Subcategoria;
@@ -182,7 +183,7 @@ export class AddProductComponent implements OnInit {
       Categoria: this.selectedCategory,
       Subcategoria: this.selectedSubcategory,
       Precio: this.selectedPrice,
-      Cantidad: this.quantity,
+      Stock: this.quantity,
       Caracteristicas: formattedFeatures,
       Imagen: this.selectedImagePath,
       Descuento: this.selectedDiscount,
