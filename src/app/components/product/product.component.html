@@ -1,4 +1,4 @@
-<article id="product" class="product-info-link">
+<article id="product" class="product-info-link" [ngClass]="{ 'no-stock': product.Stock === 0 }">
   <div id="product-image" class="product-info-link">
     <img id="image" [src]="imageUrl" [alt]="product.Nombre">
   </div>

@@ -11,7 +11,16 @@
         }
       </div>
       <hr class = "hr-features">
-      <p id="product-stock">Stock: <span>¡Últimas unidades!</span></p>
+      <p id="product-stock" *ngIf="product">
+        Stock:
+        <span [ngClass]="{
+      'stock-green': product.Stock > 10,
+      'stock-orange': product.Stock > 0 && product.Stock <= 10,
+      'stock-red': product.Stock === 0
+    }">
+    {{ getStockMessage() }}
+  </span>
+      </p>
       <div id="quantity-container">
         <div class="quantity-selector">
           <p id="product-quantity">Cantidad: </p>

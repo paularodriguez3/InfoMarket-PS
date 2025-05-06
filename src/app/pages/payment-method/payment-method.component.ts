@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { loadPayPalSDK } from '../../environments/environment.development'; // Importa la función que carga el SDK de PayPal
 import { Router } from '@angular/router';
 import {ShoppingProcessComponent} from '../../components/shopping-process/shopping-process.component';
-import {FirebaseService} from '../../services/firebase.service';
+import {ProductService} from '../../services/product.service';
 import {CardManagerComponent} from '../../components/card-manager/card-manager.component';
 import {CardManagerPaymentComponent} from '../../components/card-manager-payment/card-manager-payment.component';  // Importar el Router
 
@@ -35,7 +35,7 @@ export class PaymentMethodComponent implements OnInit {
   };
   protected userUID: string = "";
 
-  constructor(private shoppingCartService: ShoppingCartService, private router: Router, private firebaseService: FirebaseService) {}  // Inyectar el Router
+  constructor(private shoppingCartService: ShoppingCartService, private router: Router, private firebaseService: ProductService) {}  // Inyectar el Router
 
   ngOnInit(): void {
     this.updateTotal();
@@ -121,6 +121,8 @@ export class PaymentMethodComponent implements OnInit {
             }
             try {
               await this.firebaseService.createDocOnCollection('pedidos', pedido);
+              await this.firebaseService.updateStock(pedido.productos);
+
               this.router.navigate(['/order-review'], { state: { paymentMethod: 'Tarjeta de crédito' } });
             } catch (error) {
               console.error('Error al guardar el pedido:', error);

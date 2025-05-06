@@ -170,4 +170,24 @@ export class ProductService {
       map(docs => docs.find(d => d['id'] === docId))
     );
   }
+
+  async updateStock(productos: any[]): Promise<void> {
+    for (const item of productos) {
+      const ref = doc(
+        this.firestore,
+        `productos/${item.product.Categoria}/${item.product.Subcategoria}/${item.product.id}`
+      );
+
+      const snapshot = await getDoc(ref);
+      if (!snapshot.exists()) continue;
+
+      const data = snapshot.data();
+      const stockActual = data["Stock"] ?? 0;
+      const nuevoStock = stockActual - item.quantity;
+
+      await updateDoc(ref, {
+        Stock: nuevoStock
+      });
+    }
+  }
 }

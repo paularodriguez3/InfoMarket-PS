@@ -21,7 +21,8 @@ export class ProductInfoComponent {
       Descripcion:"",
       Color:'',
       Categoria:'',
-      Subcategoria:''
+      Subcategoria:'',
+      Stock: 0
     },
     quantity:0};
   @Input() showButtons: boolean = false;

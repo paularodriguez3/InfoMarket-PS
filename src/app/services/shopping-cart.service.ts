@@ -26,6 +26,15 @@ export class ShoppingCartService {
   addToCart(item: Product, quantity: number): void {
     const shoppingCart = this.getCart();
     const cartItem = shoppingCart.find(e => e.product.id === item.id);
+
+    const cantidadActual = cartItem ? cartItem.quantity : 0;
+    const cantidadTotal = cantidadActual + quantity;
+
+    if (item.Stock !== undefined && cantidadTotal > item.Stock) {
+      alert(`No hay suficiente stock disponible`);
+      return;
+    }
+
     if (!cartItem) {
       shoppingCart.push({product: item, quantity: quantity});
     } else {

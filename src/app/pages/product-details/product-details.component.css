@@ -91,9 +91,21 @@ body {
   margin:2% 0;
 }
 
-#product-stock span {
-  color: darkorange;
+.stock-green {
+  color: green;
+  font-weight: bold;
 }
+
+.stock-orange {
+  color: orange;
+  font-weight: bold;
+}
+
+.stock-red {
+  color: red;
+  font-weight: bold;
+}
+
 
 #quantity-container {
   display: flex;
