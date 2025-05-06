@@ -25,6 +25,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
   titulo = '';
   categoria: string = '';
   private routeSub!: Subscription;
+  private dataSub!: Subscription;
 
   isFilterMenuVisible = false;
 
@@ -40,67 +41,115 @@ export class ProductListComponent implements OnInit, OnDestroy {
     Ordenador: ['Memoria RAM', 'Tarjeta gráfica', 'Procesador', 'Tarjeta de red']
   };
 
+  subcategoriaNombres: { [key: string]: string } = {
+    'PC': 'PC sobremesa',
+    'Portatiles': 'Portátiles',
+    'Teclado': 'Teclados',
+    'Raton': 'Ratones',
+    'Cascos y auriculares': 'Cascos y auriculares'
+  };
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private productService: ProductService
   ) {}
 
-  async ngOnInit(): Promise<void> {
+  ngOnInit(): void {
     this.routeSub = combineLatest([
       this.route.paramMap,
       this.route.queryParamMap
-    ]).subscribe(async ([params, queryParams]) => {
-      this.products = [];
-
+    ]).subscribe(([params, queryParams]) => {
       const search = queryParams.get('search');
       const categoriaParam = params.get('categoria');
       const subcategoriaParam = params.get('subcategoria');
       const discounts = queryParams.get('ofertas') === 'true';
 
+      if (this.dataSub) this.dataSub.unsubscribe();
+      this.products = [];
+
       if (search) {
-        this.titulo = `Resultados de búsqueda: "${search}"`;
-        const productos = await this.productService.getAllProducts();
-        for (const [id, productoData] of Object.entries(productos)) {
-          const data = productoData as Product;
 
-          const nombreNormalizado = data.Nombre.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
-          const searchNormalizado = search.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+        this.dataSub = this.productService.getAllProductsRealtime().subscribe(async productos => {
+          const filtered: Product[] = [];
 
-          if (nombreNormalizado.includes(searchNormalizado)) {
-            const imageUrl = await this.productService.getImageUrl(data.Imagen);
-            this.products.push({ id, ...data, Imagen: imageUrl });
+          for (const [id, prodData] of Object.entries(productos)) {
+            const data = prodData as Product;
+            const nombreNormalizado = data.Nombre.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+            const searchNormalizado = search.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+
+            if (nombreNormalizado.includes(searchNormalizado)) {
+              const imageUrl = await this.productService.getImageUrl(data.Imagen);
+              filtered.push({ id, ...data, Imagen: imageUrl });
+            }
           }
-        }
+
+          this.products = filtered;
+          this.filteredProducts = [...this.products];
+          this.titulo = `Resultados de búsqueda: "${search}"`;
+        });
 
       } else if (discounts) {
-        this.titulo = 'Productos en oferta';
-        const productos = await this.productService.getAllProducts();
+        this.dataSub = this.productService.getAllProductsRealtime().subscribe(async productos => {
+          const filtered: Product[] = [];
 
-        for (const [id, productoData] of Object.entries(productos)) {
-          const data = productoData as Product;
-          if (data.Descuento && data.Descuento > 0 && data.Descuento < 100) {
-            const imageUrl = await this.productService.getImageUrl(data.Imagen);
-            this.products.push({ id, ...data, Imagen: imageUrl });
+          for (const [id, prodData] of Object.entries(productos)) {
+            const data = prodData as Product;
+
+            if (data.Descuento && data.Descuento > 0 && data.Descuento < 100) {
+              const imageUrl = await this.productService.getImageUrl(data.Imagen);
+              filtered.push({ id, ...data, Imagen: imageUrl });
+            }
           }
-        }
+
+          this.products = filtered;
+          this.filteredProducts = [...this.products];
+          this.titulo = 'Productos en oferta';
+        });
       } else if (categoriaParam) {
         this.categoria = categoriaParam;
 
-        const doc = await this.productService.readDoc('productos', this.categoria);
-        this.titulo = doc.Nombre;
+        if (subcategoriaParam) {
+          const path = `productos/${this.categoria}/${subcategoriaParam}`;
+          const nombreSub = this.subcategoriaNombres[subcategoriaParam] || subcategoriaParam;
 
-        const productos = subcategoriaParam
-          ? await this.productService.readCollection(`productos/${this.categoria}/${subcategoriaParam}`)
-          : await this.productService.getCategory(this.categoria);
+          this.productService.readDocRealtime('productos', this.categoria).subscribe(doc => {
+            if (doc?.Nombre) {
+              this.titulo = `${doc.Nombre} / ${nombreSub}`;
+            } else {
+              this.titulo = `${this.categoria} / ${nombreSub}`;
+            }
+          });
 
-        for (const [id, productoData] of Object.entries(productos)) {
-          const data = productoData as Product;
-          const imageUrl = await this.productService.getImageUrl(data.Imagen);
-          this.products.push({id, ...data, Imagen: imageUrl});
+          this.dataSub = this.productService.getSubcategoryRealtime(path).subscribe(async docs => {
+            const loaded: Product[] = [];
+
+            for (const data of docs) {
+              const imageUrl = await this.productService.getImageUrl(data.Imagen);
+              loaded.push({ id: data.id, ...data, Imagen: imageUrl });
+            }
+
+            this.products = loaded;
+            this.filteredProducts = [...this.products];
+          });
+        } else {
+          this.productService.readDocRealtime('productos', this.categoria).subscribe(doc => {
+            if (doc?.Nombre) this.titulo = doc.Nombre;
+          });
+
+          this.dataSub = this.productService.getCategoryRealtime(this.categoria).subscribe(async productos => {
+            const loaded: Product[] = [];
+
+            for (const [id, data] of Object.entries(productos)) {
+              const imageUrl = await this.productService.getImageUrl(data.Imagen);
+              loaded.push({ id, ...data, Imagen: imageUrl });
+            }
+
+            this.products = loaded;
+            this.filteredProducts = [...this.products];
+          });
         }
       }
-      this.filteredProducts = [...this.products];
     });
   }
 

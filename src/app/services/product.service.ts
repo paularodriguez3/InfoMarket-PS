@@ -1,11 +1,12 @@
 import {
   Firestore, addDoc, collection, query,
-  doc, deleteDoc, updateDoc, setDoc, getDocs, where, getDoc
+  doc, deleteDoc, updateDoc, setDoc, getDocs, where, getDoc, collectionData, docData
 } from '@angular/fire/firestore';
 
 import { inject, Injectable } from '@angular/core';
 import { getStorage, FirebaseStorage } from 'firebase/storage';
 import {getDownloadURL, ref} from '@angular/fire/storage';
+import {catchError, combineLatest, map, Observable, of, switchMap, tap} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -104,5 +105,69 @@ export class ProductService {
     }
 
     return all;
+  }
+
+  getCategoryRealtime(categoria: string): Observable<Record<string, any>> {
+    const ref = doc(this.firestore, 'productos', categoria);
+
+    return docData(ref).pipe(
+      switchMap(doc => {
+        if (!doc || !Array.isArray(doc['subcolecciones'])) {
+          return of({});
+        }
+
+        const subcolecciones = doc['subcolecciones'] as string[];
+        const observables = subcolecciones.map(sub => {
+          const path = `productos/${categoria}/${sub}`;
+          const colRef = collection(this.firestore, path);
+          return collectionData(colRef, { idField: 'id' }).pipe(
+            catchError(() => of([]))
+          );
+        });
+
+        return combineLatest(observables).pipe(
+          map(subarrays =>
+            Object.fromEntries(
+              subarrays.flat().map(item => [item.id, item])
+            )
+          )
+        );
+      }),
+      catchError(() => of({}))
+    );
+  }
+
+  getAllProductsRealtime(): Observable<Record<string, any>> {
+    const categorias = ['Informatica', 'Gaming', 'Telefonia', 'Televisores', 'Electrodomesticos'];
+
+    const observablesPorCategoria = categorias.map(cat =>
+      this.getCategoryRealtime(cat).pipe(
+        catchError(err => {
+          console.error('Error en getCategoryRealtime:', cat, err);
+          return of({});
+        })
+      )
+    );
+
+    return combineLatest(observablesPorCategoria).pipe(
+      tap(() => console.log('combineLatest emitido')),
+      map((resultadosPorCategoria: Record<string, any>[]) => {
+        const productosAplanados = Object.assign({}, ...resultadosPorCategoria);
+        console.log('Productos combinados:', productosAplanados);
+        return productosAplanados;
+      })
+    );
+  }
+
+  getSubcategoryRealtime(path: string): Observable<any[]> {
+    const colRef = collection(this.firestore, path);
+    return collectionData(colRef, { idField: 'id' });
+  }
+
+  readDocRealtime(collectionName: string, docId: string): Observable<any> {
+    const ref = doc(this.firestore, collectionName, docId);
+    return collectionData(ref.parent, { idField: 'id' }).pipe(
+      map(docs => docs.find(d => d['id'] === docId))
+    );
   }
 }
