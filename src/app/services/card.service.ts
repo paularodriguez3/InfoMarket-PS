@@ -20,12 +20,10 @@ export class CardService {
     cardNumber: string,
     expiry: string,
     brand: string
-  }): Promise<{ id: string, cardNumberMasked: string, brand: string, expiry: string, cardholderName: string }> {
-    const masked = '**** **** **** ' + card.cardNumber.slice(-4);
-
+  }): Promise<{ id: string, cardNumber: string, brand: string, expiry: string, cardholderName: string }> {
     const docRef = await addDoc(collection(this.firestore, `users/${uid}/cards`), {
       cardholderName: card.cardholderName,
-      cardNumberMasked: masked,
+      cardNumber: card.cardNumber,
       expiry: card.expiry,
       brand: card.brand,
       createdAt: new Date()
@@ -34,7 +32,7 @@ export class CardService {
     return {
       id: docRef.id,
       cardholderName: card.cardholderName,
-      cardNumberMasked: masked,
+      cardNumber: card.cardNumber,
       expiry: card.expiry,
       brand: card.brand
     };

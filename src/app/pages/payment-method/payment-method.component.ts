@@ -5,7 +5,9 @@ import { FormsModule } from '@angular/forms';
 import { loadPayPalSDK } from '../../environments/environment.development'; // Importa la función que carga el SDK de PayPal
 import { Router } from '@angular/router';
 import {ShoppingProcessComponent} from '../../components/shopping-process/shopping-process.component';
-import {FirebaseService} from '../../services/firebase.service';  // Importar el Router
+import {FirebaseService} from '../../services/firebase.service';
+import {CardManagerComponent} from '../../components/card-manager/card-manager.component';
+import {CardManagerPaymentComponent} from '../../components/card-manager-payment/card-manager-payment.component';  // Importar el Router
 
 @Component({
   selector: 'app-payment-method',
@@ -15,6 +17,7 @@ import {FirebaseService} from '../../services/firebase.service';  // Importar el
     ShoppingInfoComponent,
     FormsModule,
     ShoppingProcessComponent,
+    CardManagerPaymentComponent,
   ],
   styleUrls: ['./payment-method.component.css']
 })
@@ -30,6 +33,7 @@ export class PaymentMethodComponent implements OnInit {
     "DESCUENTO25": { tipo: 'porcentaje', valor: 25 },
     "DESCUENTO33": { tipo: 'porcentaje', valor: 33 }
   };
+  protected userUID: string = "";
 
   constructor(private shoppingCartService: ShoppingCartService, private router: Router, private firebaseService: FirebaseService) {}  // Inyectar el Router
 
@@ -41,9 +45,20 @@ export class PaymentMethodComponent implements OnInit {
 
     loadPayPalSDK().then(() => {
       this.renderPayPalButton(); // Llama a la función después de que el SDK se haya cargado
+      let prueba = document.getElementById("credit-card-number") as HTMLInputElement;
+      prueba.value = "hola";
     }).catch((error) => {
       console.error('Error al cargar el SDK de PayPal:', error);
     });
+
+    this.userUID = <string>JSON.parse(<string>localStorage.getItem("user")).uid;
+    const pedido = JSON.parse(<string>this.localStorage.getItem("pedido"));
+
+    const pedidoNuevo = {...pedido,
+      precioTotal: this.totalAmount.toFixed(2),
+      usuario: this.userUID}
+
+    localStorage.setItem("pedido", JSON.stringify(pedidoNuevo));
   }
 
   updateTotal(): void {
@@ -62,6 +77,12 @@ export class PaymentMethodComponent implements OnInit {
         const rebaja = this.totalOriginal * (descuento.valor / 100);
         this.totalAmount = Math.max(this.totalOriginal - rebaja, 0);
       }
+      const pedido = JSON.parse(<string>localStorage.getItem("pedido"));
+      const pedidoNuevo = {...pedido,
+        precioTotal: this.totalAmount.toFixed(2),
+        usuario: this.userUID}
+
+      localStorage.setItem("pedido", JSON.stringify(pedidoNuevo));
       alert(`Código aplicado. Nuevo total: ${this.totalAmount.toFixed(2)}€`);
     } else {
       this.totalAmount = this.totalOriginal;
@@ -69,12 +90,8 @@ export class PaymentMethodComponent implements OnInit {
     }
   }
 
-  getTaxAmount(): number {
-    return parseFloat((this.totalAmount * this.taxRate).toFixed(2));
-  }
-
-  getTotalWithTax(): number {
-    return parseFloat((this.totalAmount + this.getTaxAmount()).toFixed(2));
+  getTotalWithoutTax(): number {
+    return parseFloat((this.totalAmount / (this.taxRate+1)).toFixed(2));
   }
 
   renderPayPalButton(): void {
@@ -87,7 +104,7 @@ export class PaymentMethodComponent implements OnInit {
         return actions.order.create({
           purchase_units: [{
             amount: {
-              value: this.getTotalWithTax().toFixed(2)
+              value: this.totalAmount.toFixed(2)
             }
           }]
         });
@@ -116,4 +133,6 @@ export class PaymentMethodComponent implements OnInit {
       }
     }).render('#paypal-button-container'); // Asegúrate de que el contenedor del botón está bien definido en tu HTML
   }
+
+  protected readonly localStorage = localStorage;
 }
