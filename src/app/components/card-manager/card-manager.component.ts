@@ -21,6 +21,9 @@ export class CardManagerComponent implements OnInit {
   expiry = '';
   brand = '';
 
+  cardToDelete: any = null;
+  showConfirmPopup = false;
+
   constructor(private cardService: CardService) {}
 
   async ngOnInit() {
@@ -30,14 +33,23 @@ export class CardManagerComponent implements OnInit {
     }
   }
 
+  formatCardNumber() {
+    this.cardNumber = this.cardNumber
+      .replace(/\s+/g, '')
+      .replace(/[^0-9]/g, '')
+      .match(/.{1,4}/g)?.join(' ') || '';
+  }
+
   async addCard() {
-    if (!this.uid) return;
+    if (!this.uid || !this.cardNumber || !this.expiry || !this.cardholderName) return;
+
+    const cleanCardNumber = this.cardNumber.replace(/\s+/g, '');
 
     const newCard = await this.cardService.addCard(this.uid, {
-      cardholderName: this.cardholderName,
-      cardNumber: this.cardNumber,
-      expiry: this.expiry,
-      brand: this.brand
+      cardholderName: this.cardholderName.trim(),
+      cardNumber: cleanCardNumber,
+      expiry: this.expiry.trim(),
+      brand: this.brand.trim()
     });
 
     this.cards.push(newCard);
@@ -62,9 +74,6 @@ export class CardManagerComponent implements OnInit {
       console.error('Error al eliminar la tarjeta:', error);
     }
   }
-
-  cardToDelete: any = null;
-  showConfirmPopup = false;
 
   confirmDelete(card: any) {
     this.cardToDelete = card;

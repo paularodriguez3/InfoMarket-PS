@@ -9,37 +9,92 @@
     <li *ngFor="let card of cards" class="card-item">
       <div class="card-info">
         <strong>{{ card.brand }}</strong> — {{ '**** **** **** ' + card.cardNumber.slice(-4) }}
-        <br>
+        <br />
         <small>Vence: {{ card.expiry }}</small>
       </div>
-      <i class='bx bx-trash delete-icon' (click)="confirmDelete(card)"></i>
+      <i class="bx bx-trash delete-icon" (click)="confirmDelete(card)"></i>
     </li>
   </ul>
-
 
   <button class="button-cancel-add" type="button" (click)="showAddForm = !showAddForm">
     {{ showAddForm ? 'Cancelar' : 'Añadir tarjeta' }}
   </button>
 
-  <div class="add-form" *ngIf="showAddForm">
-    <div class="input-icon-cards">
-      <i class="bx bxs-user"></i>
-      <input type="text" placeholder="Nombre del titular" [(ngModel)]="cardholderName" required minlength="3" name="cardholderName">
+  <form *ngIf="showAddForm" class="add-form" #cardForm="ngForm" (ngSubmit)="addCard()" novalidate>
+
+    <!-- Nombre del titular -->
+    <div class="form-group">
+      <div class="input-icon-wrapper" [ngClass]="{ 'input-error': cardholderNameInput.invalid && cardholderNameInput.touched }">
+        <i class="bx bxs-user"></i>
+        <input
+          type="text"
+          name="cardholderName"
+          placeholder="Nombre del titular"
+          [(ngModel)]="cardholderName"
+          required
+          minlength="3"
+          #cardholderNameInput="ngModel"
+        />
+      </div>
+      <small *ngIf="cardholderNameInput.invalid && cardholderNameInput.touched" class="error-message">
+        El nombre debe tener al menos 3 caracteres.
+      </small>
     </div>
-    <div class="input-icon-cards">
-      <input [(ngModel)]="cardNumber" placeholder="Número de tarjeta">
-      <i class='bx bxs-credit-card-alt'></i>
+
+    <!-- Número de tarjeta con formato automático -->
+    <div class="form-group">
+      <div class="input-icon-wrapper" [ngClass]="{ 'input-error': cardNumberInput.invalid && cardNumberInput.touched }">
+        <i class="bx bxs-credit-card-alt"></i>
+        <input
+          type="text"
+          name="cardNumber"
+          placeholder="Número de tarjeta (16 dígitos)"
+          [(ngModel)]="cardNumber"
+          pattern="^([0-9]{4} ?){4}$"
+          required
+          #cardNumberInput="ngModel"
+          (input)="formatCardNumber()"
+        />
+      </div>
+      <small *ngIf="cardNumberInput.invalid && cardNumberInput.touched" class="error-message">
+        El número debe tener exactamente 16 dígitos (en grupos de 4).
+      </small>
     </div>
-    <div class="input-icon-cards">
-      <input [(ngModel)]="expiry" placeholder="MM/AA">
-      <i class='bx bxs-credit-card'></i>
+
+    <!-- Fecha de caducidad -->
+    <div class="form-group">
+      <div class="input-icon-wrapper" [ngClass]="{ 'input-error': expiryInput.invalid && expiryInput.touched }">
+        <i class="bx bxs-credit-card"></i>
+        <input
+          type="text"
+          name="expiry"
+          placeholder="Fecha de caducidad (MM/AA)"
+          [(ngModel)]="expiry"
+          pattern="^(0[1-9]|1[0-2])\/\d{2}$"
+          required
+          #expiryInput="ngModel"
+        />
+      </div>
+      <small *ngIf="expiryInput.invalid && expiryInput.touched" class="error-message">
+        Usa el formato MM/AA, por ejemplo 08/26.
+      </small>
     </div>
-    <div class="input-icon-cards">
-      <input [(ngModel)]="brand" placeholder="Marca (Visa, Mastercard...)">
-      <i class='bx bxs-bank'></i>
+
+    <!-- Marca (opcional) -->
+    <div class="form-group">
+      <div class="input-icon-wrapper">
+        <i class="bx bxs-bank"></i>
+        <input
+          type="text"
+          name="brand"
+          placeholder="Marca (Visa, Mastercard...)"
+          [(ngModel)]="brand"
+        />
+      </div>
     </div>
-    <button (click)="addCard()">Guardar tarjeta</button>
-  </div>
+
+    <button type="submit" [disabled]="cardForm.invalid">Guardar tarjeta</button>
+  </form>
 
   <div class="delete-confirmation" *ngIf="showConfirmPopup">
     <div class="popup-delete">
