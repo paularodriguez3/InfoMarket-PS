@@ -11,9 +11,12 @@
   </div>
   <div id="product-quantity-component">Qty: {{item.quantity}}</div>
   <div id="button-plus" class="qty-button hidden-button" [ngClass]="{'hidden-button': !showButtons}" (click)="increase()">
-    <button class="qty-button" ><i class='bx bxs-plus-circle' ></i></button>
+    <button class="qty-button"><i class='bx bxs-plus-circle'></i></button>
   </div>
   <div id="product-price-component" [ngClass]="{ 'discounted': hasDiscount(), 'normal-price': !hasDiscount() }">
     {{ getPrice() }}€
+  </div>
+  <div id="button-remove" class="qty-button" [ngClass]="{'hidden-button': !showButtons}" (click)="remove()">
+    <button class="qty-button"><i class='bx bxs-trash'></i></button>
   </div>
 </section>
