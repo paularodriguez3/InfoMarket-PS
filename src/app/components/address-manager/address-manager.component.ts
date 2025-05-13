@@ -4,13 +4,14 @@ import {FormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 
 @Component({
-  selector: 'app-address-manager',
-  imports: [
-    FormsModule,
-    CommonModule
-  ],
-  templateUrl: './address-manager.component.html',
-  styleUrl: './address-manager.component.css'
+    selector: 'app-address-manager',
+    imports: [
+        FormsModule,
+        CommonModule
+    ],
+    templateUrl: './address-manager.component.html',
+    standalone: true,
+    styleUrl: './address-manager.component.css'
 })
 export class AddressManagerComponent implements OnInit {
   @Input() uid: string = '';

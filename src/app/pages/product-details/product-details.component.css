@@ -229,6 +229,13 @@ button i {
   display: flex;
   justify-content: center;
   margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+#wish-list {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
 }
 
 #edit-product-button {
@@ -243,7 +250,23 @@ button i {
   width: 70%;
 }
 
+#wish-list-button {
+  background-color: #1D1D1F;
+  color: white;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  height: 60px;
+  text-align: center;
+  border-radius: 10px;
+  width: 70%;
+}
+
 #edit-product-button:hover {
+  background-color: #3D3D3D;
+}
+
+#wish-list-button:hover {
   background-color: #3D3D3D;
 }
 

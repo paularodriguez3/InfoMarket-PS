@@ -49,6 +49,10 @@ export class ProductListComponent implements OnInit, OnDestroy {
     'Cascos y auriculares': 'Cascos y auriculares'
   };
 
+  isLoading = false;
+  pageNumber = 1;
+  pageSize = 9;
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -68,87 +72,13 @@ export class ProductListComponent implements OnInit, OnDestroy {
       if (this.dataSub) this.dataSub.unsubscribe();
       this.products = [];
 
+      this.filteredProducts =  [];
       if (search) {
-
-        this.dataSub = this.productService.getAllProductsRealtime().subscribe(async productos => {
-          const filtered: Product[] = [];
-
-          for (const [id, prodData] of Object.entries(productos)) {
-            const data = prodData as Product;
-            const nombreNormalizado = data.Nombre.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
-            const searchNormalizado = search.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
-
-            if (nombreNormalizado.includes(searchNormalizado)) {
-              const imageUrl = await this.productService.getImageUrl(data.Imagen);
-              filtered.push({ id, ...data, Imagen: imageUrl });
-            }
-          }
-
-          this.products = filtered;
-          this.filteredProducts = [...this.products];
-          this.titulo = `Resultados de búsqueda: "${search}"`;
-        });
-
+        this.loadProductsBySearch(search);
       } else if (discounts) {
-        this.dataSub = this.productService.getAllProductsRealtime().subscribe(async productos => {
-          const filtered: Product[] = [];
-
-          for (const [id, prodData] of Object.entries(productos)) {
-            const data = prodData as Product;
-
-            if (data.Descuento && data.Descuento > 0 && data.Descuento < 100) {
-              const imageUrl = await this.productService.getImageUrl(data.Imagen);
-              filtered.push({ id, ...data, Imagen: imageUrl });
-            }
-          }
-
-          this.products = filtered;
-          this.filteredProducts = [...this.products];
-          this.titulo = 'Productos en oferta';
-        });
+        this.loadProductsByDiscounts();
       } else if (categoriaParam) {
-        this.categoria = categoriaParam;
-
-        if (subcategoriaParam) {
-          const path = `productos/${this.categoria}/${subcategoriaParam}`;
-          const nombreSub = this.subcategoriaNombres[subcategoriaParam] || subcategoriaParam;
-
-          this.productService.readDocRealtime('productos', this.categoria).subscribe(doc => {
-            if (doc?.Nombre) {
-              this.titulo = `${doc.Nombre} / ${nombreSub}`;
-            } else {
-              this.titulo = `${this.categoria} / ${nombreSub}`;
-            }
-          });
-
-          this.dataSub = this.productService.getSubcategoryRealtime(path).subscribe(async docs => {
-            const loaded: Product[] = [];
-
-            for (const data of docs) {
-              const imageUrl = await this.productService.getImageUrl(data.Imagen);
-              loaded.push({ id: data.id, ...data, Imagen: imageUrl });
-            }
-
-            this.products = loaded;
-            this.filteredProducts = [...this.products];
-          });
-        } else {
-          this.productService.readDocRealtime('productos', this.categoria).subscribe(doc => {
-            if (doc?.Nombre) this.titulo = doc.Nombre;
-          });
-
-          this.dataSub = this.productService.getCategoryRealtime(this.categoria).subscribe(async productos => {
-            const loaded: Product[] = [];
-
-            for (const [id, data] of Object.entries(productos)) {
-              const imageUrl = await this.productService.getImageUrl(data.Imagen);
-              loaded.push({ id, ...data, Imagen: imageUrl });
-            }
-
-            this.products = loaded;
-            this.filteredProducts = [...this.products];
-          });
-        }
+        this.loadProductsByCategory(categoriaParam, subcategoriaParam);
       }
     });
   }
@@ -221,5 +151,86 @@ export class ProductListComponent implements OnInit, OnDestroy {
         this.isFilterMenuVisible = false;
       }
     }, 0);
+  }
+
+  private loadProductsBySearch(search: string) {
+    this.titulo = `Resultados de búsqueda: "${search}"`;
+    this.isLoading = true;
+
+    this.dataSub = this.productService.getAllProductsRealtime().subscribe(async productos => {
+      const filtered: Product[] = [];
+
+      for (const [id, prodData] of Object.entries(productos)) {
+        const data = prodData as Product;
+        const nombreNormalizado = data.Nombre.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+        const searchNormalizado = search.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+
+        if (nombreNormalizado.includes(searchNormalizado)) {
+          const imageUrl = await this.productService.getImageUrl(data.Imagen);
+          this.filteredProducts.push({ id, ...data, Imagen: imageUrl });
+        }
+      }
+      this.isLoading = false;
+    });
+  }
+
+  private loadProductsByDiscounts() {
+    this.titulo = 'Productos en oferta';
+    this.isLoading = true;
+    this.dataSub = this.productService.getAllProductsRealtime().subscribe(async productos => {
+      const filtered: Product[] = [];
+
+      for (const [id, prodData] of Object.entries(productos)) {
+        const data = prodData as Product;
+
+        if (data.Descuento && data.Descuento > 0 && data.Descuento < 100) {
+          const imageUrl = await this.productService.getImageUrl(data.Imagen);
+          this.filteredProducts.push({ id, ...data, Imagen: imageUrl });
+        }
+      }
+      this.isLoading = false;
+    });
+  }
+
+  private loadProductsByCategory(categoriaParam: string, subcategoriaParam?: string | null) {
+    this.categoria = categoriaParam;
+    this.isLoading = true;
+
+    if (subcategoriaParam) {
+      const path = `productos/${this.categoria}/${subcategoriaParam}`;
+      const nombreSub = this.subcategoriaNombres[subcategoriaParam] || subcategoriaParam;
+
+      this.productService.readDocRealtime('productos', this.categoria).subscribe(doc => {
+        if (doc?.Nombre) {
+          this.titulo = `${doc.Nombre} / ${nombreSub}`;
+        } else {
+          this.titulo = `${this.categoria} / ${nombreSub}`;
+        }
+      });
+
+      this.dataSub = this.productService.getSubcategoryRealtime(path).subscribe(async docs => {
+        const loaded: Product[] = [];
+
+        for (const data of docs) {
+          const imageUrl = await this.productService.getImageUrl(data.Imagen);
+          this.filteredProducts.push({ id: data.id, ...data, Imagen: imageUrl });
+        }
+        this.isLoading = false;
+      });
+    } else {
+      this.productService.readDocRealtime('productos', this.categoria).subscribe(doc => {
+        if (doc?.Nombre) this.titulo = doc.Nombre;
+      });
+
+      this.dataSub = this.productService.getCategoryRealtime(this.categoria).subscribe(async productos => {
+        const loaded: Product[] = [];
+
+        for (const [id, data] of Object.entries(productos)) {
+          const imageUrl = await this.productService.getImageUrl(data.Imagen);
+          this.filteredProducts.push({ id, ...data, Imagen: imageUrl });
+        }
+        this.isLoading = false;
+      });
+    }
   }
 }

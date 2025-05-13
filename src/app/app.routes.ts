@@ -35,5 +35,5 @@ export const appRoutes: Routes = [
   { path: 'payment-method', component: PaymentMethodComponent },
   { path: 'shipping-method', component: ShippingMethodComponent },
   { path: 'order-review', component: OrderReviewComponent },
-  { path: 'add-product', component: AddProductComponent },
+  { path: 'add-product', component: AddProductComponent }
 ];

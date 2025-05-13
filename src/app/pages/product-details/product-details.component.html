@@ -52,6 +52,9 @@
       <div id="edit-product" *ngIf="isAdmin">
         <button id="edit-product-button" (click)="editProduct()">Editar</button>
       </div>
+      <div id="wish-list" *ngIf="isAdmin">
+        <button id="wish-list-button">Añadir a deseados</button>
+      </div>
     </section>
     <div id="product-image">
       <img id="image" alt="Producto" [src] = product.Imagen>
