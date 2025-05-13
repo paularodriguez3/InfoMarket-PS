@@ -13,7 +13,6 @@ import { CardService } from '../../services/card.service';
 export class CardManagerPaymentComponent implements OnInit {
   @Input() uid: string = '';
   cards: any[] = [];
-  cardNumber = '';
 
   constructor(private cardService: CardService) {}
 
@@ -24,9 +23,29 @@ export class CardManagerPaymentComponent implements OnInit {
     }
   }
 
-  copyToClipboard(card: any) {
-    navigator.clipboard.writeText(card.cardNumber);
-    card["copied"] = true;
+  copyToClipboard(card: any, field: 'pan' | 'expiry' | 'cardholderName') {
+    let textToCopy = '';
+    switch (field) {
+      case 'pan':
+        textToCopy = card.cardNumber;
+        card.copied = 'pan';
+        break;
+      case 'expiry':
+        textToCopy = card.expiry;
+        card.copied = 'expiry';
+        break;
+      case 'cardholderName':
+        textToCopy = card.cardholderName || 'Sin nombre';
+        card.copied = 'owner';
+        break;
+    }
 
+    navigator.clipboard.writeText(textToCopy);
+
+    setTimeout(() => {
+      card.copied = null;
+    }, 2000);
   }
+
 }
+

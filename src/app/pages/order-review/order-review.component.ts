@@ -1,13 +1,12 @@
 // src/app/pages/order-review/order-review.component.ts
 
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import { Router } from '@angular/router';
+import emailjs from 'emailjs-com';
 
 import { ShoppingInfoComponent } from '../../components/shopping-info/shopping-info.component';
 import { OrderReviewTemplateComponent } from '../../components/order-review-template/order-review-template.component';
 import { ShoppingProcessComponent } from '../../components/shopping-process/shopping-process.component';
 import {ShoppingCartService} from '../../services/shopping-cart.service';
-
 
 @Component({
   selector: 'app-order-review',
