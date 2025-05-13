@@ -52,8 +52,9 @@ export class PaymentMethodComponent implements OnInit {
     }).catch((error) => {
       console.error('Error al cargar el SDK de PayPal:', error);
     });
-
-    this.userUID = <string>JSON.parse(<string>localStorage.getItem("user")).uid;
+    if (localStorage.getItem("user")) {
+      this.userUID = <string>JSON.parse(<string>localStorage.getItem("user")).uid;
+    }
     const pedido = JSON.parse(<string>this.localStorage.getItem("pedido"));
 
     const pedidoNuevo = {...pedido,
@@ -83,7 +84,8 @@ export class PaymentMethodComponent implements OnInit {
       const pedido = JSON.parse(<string>localStorage.getItem("pedido"));
       const pedidoNuevo = {...pedido,
         precioTotal: this.totalAmount.toFixed(2),
-        usuario: this.userUID}
+        usuario: this.userUID
+      }
 
       localStorage.setItem("pedido", JSON.stringify(pedidoNuevo));
       alert(`Código aplicado. Nuevo total: ${this.totalAmount.toFixed(2)}€`);
@@ -125,7 +127,9 @@ export class PaymentMethodComponent implements OnInit {
             try {
               await this.firebaseService.createDocOnCollection('pedidos', pedido);
               await this.firebaseService.updateStock(pedido.productos);
-              this.firebaseService.updateOrders(pedido, this.userUID);
+              if (this.userUID !== "") {
+                this.firebaseService.updateOrders(pedido, this.userUID);
+              }
 
 
               this.router.navigate(['/order-review'], { state: { paymentMethod: 'Tarjeta de crédito' } });
