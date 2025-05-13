@@ -19,14 +19,14 @@
   </button>
 
   <div class="add-form" *ngIf="showAddForm">
-    <div class="input-icon-cards"><i class="bx bxs-flag"></i><input type="text" placeholder="País" [(ngModel)]="pais"></div>
-    <div class="input-icon-cards"><i class="bx bxs-map"></i><input type="text" placeholder="Provincia" [(ngModel)]="provincia"></div>
-    <div class="input-icon-cards"><i class="bx bxs-home"></i><input type="text" placeholder="Calle, Número y Localidad o municipio" [(ngModel)]="calle"></div>
+    <div class="input-icon-cards"><i class="bx bxs-flag"></i><input type="text" placeholder="País" [(ngModel)]="pais" required></div>
+    <div class="input-icon-cards"><i class="bx bxs-map"></i><input type="text" placeholder="Provincia" [(ngModel)]="provincia" required></div>
+    <div class="input-icon-cards"><i class="bx bxs-home"></i><input type="text" placeholder="Calle, Número y Localidad o municipio" [(ngModel)]="calle" required></div>
     <div class="input-icon-cards"><i class="bx bxs-building"></i><input type="text" placeholder="Piso" [(ngModel)]="piso"></div>
     <div class="input-icon-cards"><i class="bx bx-font"></i><input type="text" placeholder="Letra" [(ngModel)]="letra"></div>
-    <div class="input-icon-cards"><i class="bx bxs-envelope"></i><input type="text" placeholder="Código postal" [(ngModel)]="codigoPostal"></div>
+    <div class="input-icon-cards"><i class="bx bxs-envelope"></i><input type="text" placeholder="Código postal" [(ngModel)]="codigoPostal" required></div>
 
-    <button (click)="addAddress()">Guardar dirección</button>
+    <button type="button" (click)="addAddress()">Guardar dirección</button>
   </div>
 
   <div class="delete-confirmation" *ngIf="showConfirmPopup">
@@ -38,4 +38,8 @@
       </div>
     </div>
   </div>
+  <div *ngIf="floatingMessage" class="floating-message" [ngClass]="{'success': floatingSuccess, 'error': !floatingSuccess}">
+    {{ floatingMessage }}
+  </div>
+
 </div>
