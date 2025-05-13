@@ -35,6 +35,7 @@ export class ProductDetailsComponent implements OnInit {
   category:string = "";
 
   isAdmin: boolean = false;
+  isLoggedIn: boolean = false;
 
   constructor(private router:Router) {}
 
@@ -96,8 +97,10 @@ export class ProductDetailsComponent implements OnInit {
     if (userData) {
       const user = JSON.parse(userData);
       this.isAdmin = user.rol === 'Administrador';
+      this.isLoggedIn = true;
     } else {
-      this.isAdmin = false; // Si no hay usuario en localStorage, no es admin
+      this.isAdmin = false;
+      this.isLoggedIn = false;
     }
   }
 

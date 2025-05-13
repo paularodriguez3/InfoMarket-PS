@@ -24,6 +24,7 @@ export class HeaderComponent implements OnInit, DoCheck {
   cartItemCount = 0;
   terminoBusqueda = '';
   isAdmin = false;
+  isLoggedIn = false;
   shoppingCart: ShoppingCartItem[] = [];
 
   constructor(
@@ -53,8 +54,10 @@ export class HeaderComponent implements OnInit, DoCheck {
     if (userData) {
       const user = JSON.parse(userData);
       this.isAdmin = user.rol === 'Administrador';
+      this.isLoggedIn = true;
     } else {
       this.isAdmin = false;
+      this.isLoggedIn = false;
     }
   }
 
