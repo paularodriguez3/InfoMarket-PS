@@ -40,20 +40,44 @@ export class AddressManagerComponent implements OnInit {
   async addAddress() {
     if (!this.uid) return;
 
-    const fullAddress = `${this.pais}, ${this.provincia}, ${this.calle}, Piso ${this.piso}${this.letra ? ' ' + this.letra : ''}, CP ${this.codigoPostal}`;
+    // Validación de campos obligatorios
+    if (!this.pais.trim() || !this.provincia.trim() || !this.calle.trim() || !this.codigoPostal.trim()) {
+      this.showFloatingMessage('Por favor, completa todos los campos obligatorios.', false);
+      return;
+    }
 
-    const newAddress = await this.addressService.addAddress(this.uid, { fullAddress });
+    const fullAddress = `${this.pais}, ${this.provincia}, ${this.calle}, Piso ${this.piso || '-'}${this.letra ? ' ' + this.letra : ''}, CP ${this.codigoPostal}`;
 
-    this.addresses.push(newAddress);
+    try {
+      const newAddress = await this.addressService.addAddress(this.uid, { fullAddress });
+      this.addresses.push(newAddress);
 
-    this.pais = '';
-    this.provincia = '';
-    this.calle = '';
-    this.piso = '';
-    this.letra = '';
-    this.codigoPostal = '';
-    this.showAddForm = false;
+      this.pais = '';
+      this.provincia = '';
+      this.calle = '';
+      this.piso = '';
+      this.letra = '';
+      this.codigoPostal = '';
+      this.showAddForm = false;
+
+      this.showFloatingMessage('Dirección guardada con éxito.', true);
+    } catch (error) {
+      console.error('Error al guardar la dirección:', error);
+      this.showFloatingMessage('Error al guardar la dirección. Inténtalo de nuevo.', false);
+    }
   }
+  floatingMessage = '';
+  floatingSuccess = false;
+
+  showFloatingMessage(message: string, success: boolean) {
+    this.floatingMessage = message;
+    this.floatingSuccess = success;
+
+    setTimeout(() => {
+      this.floatingMessage = '';
+    }, 3000);
+  }
+
 
 
   confirmDelete(address: any) {
