@@ -1,6 +1,7 @@
 import {
   Firestore, addDoc, collection, query,
-  doc, deleteDoc, updateDoc, setDoc, getDocs, where, getDoc, collectionData, docData
+  doc, deleteDoc, updateDoc, setDoc, getDocs, where, getDoc, collectionData, docData,
+  arrayUnion
 } from '@angular/fire/firestore';
 
 import { inject, Injectable } from '@angular/core';
@@ -189,5 +190,12 @@ export class ProductService {
         Stock: nuevoStock
       });
     }
+  }
+
+  updateOrders(pedido: any, userUID: string) {
+    const docRef = doc(this.firestore, 'users', userUID);
+    updateDoc(docRef, {
+      pedidos: arrayUnion(pedido)
+    });
   }
 }
