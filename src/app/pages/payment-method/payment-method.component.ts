@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import { ShoppingCartService } from '../../services/shopping-cart.service';
 import { ShoppingInfoComponent } from '../../components/shopping-info/shopping-info.component';
 import { FormsModule } from '@angular/forms';
@@ -7,7 +7,8 @@ import { Router } from '@angular/router';
 import {ShoppingProcessComponent} from '../../components/shopping-process/shopping-process.component';
 import {ProductService} from '../../services/product.service';
 import {CardManagerComponent} from '../../components/card-manager/card-manager.component';
-import {CardManagerPaymentComponent} from '../../components/card-manager-payment/card-manager-payment.component';  // Importar el Router
+import {CardManagerPaymentComponent} from '../../components/card-manager-payment/card-manager-payment.component';
+import {Firestore} from '@angular/fire/firestore';  // Importar el Router
 
 @Component({
   selector: 'app-payment-method',
@@ -34,6 +35,7 @@ export class PaymentMethodComponent implements OnInit {
     "DESCUENTO33": { tipo: 'porcentaje', valor: 33 }
   };
   protected userUID: string = "";
+  private firestore: Firestore = inject(Firestore);
 
   constructor(private shoppingCartService: ShoppingCartService, private router: Router, private firebaseService: ProductService) {}  // Inyectar el Router
 
@@ -59,6 +61,7 @@ export class PaymentMethodComponent implements OnInit {
       usuario: this.userUID}
 
     localStorage.setItem("pedido", JSON.stringify(pedidoNuevo));
+
   }
 
   updateTotal(): void {
@@ -122,6 +125,8 @@ export class PaymentMethodComponent implements OnInit {
             try {
               await this.firebaseService.createDocOnCollection('pedidos', pedido);
               await this.firebaseService.updateStock(pedido.productos);
+              this.firebaseService.updateOrders(pedido, this.userUID);
+
 
               this.router.navigate(['/order-review'], { state: { paymentMethod: 'Tarjeta de crédito' } });
             } catch (error) {
