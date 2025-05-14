@@ -38,7 +38,6 @@ main {
   margin-top: 4%;
   align-items: center;
   justify-content: center;
-  background-color: #FAFAFC;
   font-family: 'SF Pro Display', sans-serif;
 }
 
@@ -46,7 +45,6 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: #FAFAFC;
 }
 
 #shopping-info {
