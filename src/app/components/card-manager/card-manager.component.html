@@ -17,11 +17,14 @@
         <br />
         <small>Vence: {{ card.expiry }}</small>
       </div>
-      <i class="bx bx-trash delete-icon" (click)="confirmDelete(card)"></i>
+      <div class="card-actions">
+        <i class="fi fi-rr-edit edit-icon" (click)="startEditingCard(card)"></i>
+        <i class="bx bx-trash delete-icon" (click)="confirmDelete(card)"></i>
+      </div>
     </li>
   </ul>
 
-  <button class="button-cancel-add" type="button" (click)="showAddForm = !showAddForm">
+  <button class="button-cancel-add" type="button" (click)="toggleAddForm()">
     {{ showAddForm ? 'Cancelar' : 'Añadir tarjeta' }}
   </button>
 

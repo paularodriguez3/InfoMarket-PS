@@ -10,11 +10,12 @@
       <div class="card-info">
         {{ address.fullAddress }}
       </div>
+      <i class='fi fi-rr-edit edit-icon' (click)="startEditingAddress(address)"></i>
       <i class='bx bx-trash delete-icon' (click)="confirmDelete(address)"></i>
     </li>
   </ul>
 
-  <button class="button-cancel-add" type="button" (click)="showAddForm = !showAddForm">
+  <button class="button-cancel-add" type="button" (click)="toggleAddForm()">
     {{ showAddForm ? 'Cancelar' : 'Añadir dirección' }}
   </button>
 

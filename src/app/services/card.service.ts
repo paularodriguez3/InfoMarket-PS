@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import {Firestore, collection, addDoc, getDocs, doc, deleteDoc} from '@angular/fire/firestore';
+import {Firestore, collection, addDoc, getDocs, doc, deleteDoc, updateDoc} from '@angular/fire/firestore';
 
 @Injectable({ providedIn: 'root' })
 export class CardService {
@@ -41,4 +41,14 @@ export class CardService {
     const cardRef = doc(this.firestore, `users/${uid}/cards/${cardId}`);
     await deleteDoc(cardRef);
   }
+  async editCardById(uid: string, cardId: string, updatedData: {
+    cardholderName: string,
+    cardNumber: string,
+    expiry: string,
+    brand: string
+  }): Promise<void> {
+    const cardRef = doc(this.firestore, `users/${uid}/cards/${cardId}`);
+    await updateDoc(cardRef, updatedData);
+  }
+
 }

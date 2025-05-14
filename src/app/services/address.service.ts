@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { Firestore, collection, addDoc, getDocs, doc, deleteDoc } from '@angular/fire/firestore';
+import {Firestore, collection, addDoc, getDocs, doc, deleteDoc, updateDoc} from '@angular/fire/firestore';
 
 @Injectable({ providedIn: 'root' })
 export class AddressService {
@@ -30,5 +30,10 @@ export class AddressService {
   async deleteAddressById(uid: string, addressId: string): Promise<void> {
     const addressRef = doc(this.firestore, `users/${uid}/addresses/${addressId}`);
     await deleteDoc(addressRef);
+  }
+
+  async editAddressById(uid: string, addressId: string, updatedData: { fullAddress: string }): Promise<void> {
+    const addressRef = doc(this.firestore, `users/${uid}/addresses/${addressId}`);
+    await updateDoc(addressRef, updatedData);
   }
 }

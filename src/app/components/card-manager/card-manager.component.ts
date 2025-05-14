@@ -27,6 +27,10 @@ export class CardManagerComponent implements OnInit {
   floatingMessage='';
   floatingSuccess= false;
 
+  editMode = false;
+  editingCard: any = null;
+
+
   constructor(private cardService: CardService) {}
 
   async ngOnInit() {
@@ -55,12 +59,7 @@ export class CardManagerComponent implements OnInit {
   async addCard() {
     if (!this.uid) return;
 
-    // Validación manual como en AddressManager
-    if (
-      !this.cardholderName.trim() ||
-      !this.cardNumber.trim() ||
-      !this.expiry.trim()
-    ) {
+    if (!this.cardholderName.trim() || !this.cardNumber.trim() || !this.expiry.trim()) {
       this.showFloatingMessage('Por favor, completa todos los campos obligatorios.', false);
       return;
     }
@@ -68,27 +67,52 @@ export class CardManagerComponent implements OnInit {
     const cleanCardNumber = this.cardNumber.replace(/\s+/g, '');
 
     try {
-      const newCard = await this.cardService.addCard(this.uid, {
-        cardholderName: this.cardholderName.trim(),
-        cardNumber: cleanCardNumber,
-        expiry: this.expiry.trim(),
-        brand: this.brand.trim()
-      });
+      if (this.editMode && this.editingCard?.id) {
+        await this.cardService.editCardById(this.uid, this.editingCard.id, {
+          cardholderName: this.cardholderName.trim(),
+          cardNumber: cleanCardNumber,
+          expiry: this.expiry.trim(),
+          brand: this.brand.trim()
+        });
 
-      this.cards.push(newCard);
+        const index = this.cards.findIndex(c => c.id === this.editingCard.id);
+        if (index !== -1) {
+          this.cards[index] = {
+            ...this.cards[index],
+            cardholderName: this.cardholderName.trim(),
+            cardNumber: cleanCardNumber,
+            expiry: this.expiry.trim(),
+            brand: this.brand.trim()
+          };
+        }
+
+        this.showFloatingMessage('Tarjeta actualizada con éxito.', true);
+      } else {
+        const newCard = await this.cardService.addCard(this.uid, {
+          cardholderName: this.cardholderName.trim(),
+          cardNumber: cleanCardNumber,
+          expiry: this.expiry.trim(),
+          brand: this.brand.trim()
+        });
+
+        this.cards.push(newCard);
+        this.showFloatingMessage('Tarjeta guardada con éxito.', true);
+      }
 
       this.cardholderName = '';
       this.cardNumber = '';
       this.expiry = '';
       this.brand = '';
+      this.editMode = false;
+      this.editingCard = null;
       this.showAddForm = false;
 
-      this.showFloatingMessage('Tarjeta guardada con éxito.', true);
     } catch (error) {
       console.error('Error al guardar la tarjeta:', error);
       this.showFloatingMessage('Error al guardar la tarjeta. Inténtalo de nuevo.', false);
     }
   }
+
 
 
   confirmDelete(card: any) {
@@ -113,6 +137,29 @@ export class CardManagerComponent implements OnInit {
 
     this.cancelDelete();
   }
+  startEditingCard(card: any) {
+    this.editMode = true;
+    this.editingCard = card;
 
-
+    this.cardholderName = card.cardholderName;
+    this.cardNumber = card.cardNumber.replace(/\s+/g, '').match(/.{1,4}/g)?.join(' ') || '';
+    this.expiry = card.expiry;
+    this.brand = card.brand;
+    this.showAddForm = true;
+  }
+  resetForm() {
+    this.cardholderName = '';
+    this.cardNumber = '';
+    this.expiry = '';
+    this.brand = '';
+    this.editMode = false;
+    this.editingCard = null;
+    this.showAddForm = false;
+  }
+  toggleAddForm() {
+    this.showAddForm = !this.showAddForm;
+    if (!this.showAddForm) {
+      this.resetForm();
+    }
+  }
 }
