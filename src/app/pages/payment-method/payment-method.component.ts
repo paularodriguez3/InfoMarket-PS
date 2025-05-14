@@ -125,14 +125,18 @@ export class PaymentMethodComponent implements OnInit {
               return;
             }
             try {
-              await this.firebaseService.createDocOnCollection('pedidos', pedido);
+              const pedidoId = await this.firebaseService.createDocOnCollection('pedidos', pedido);
               await this.firebaseService.updateStock(pedido.productos);
               if (this.userUID !== "") {
                 this.firebaseService.updateOrders(pedido, this.userUID);
               }
 
-
-              this.router.navigate(['/order-review'], { state: { paymentMethod: 'Tarjeta de crédito' } });
+              this.router.navigate(['/order-review'], {
+                state: {
+                  paymentMethod: 'Tarjeta de crédito',
+                  orderId: pedidoId,
+                }
+              });
             } catch (error) {
               console.error('Error al guardar el pedido:', error);
               alert('Hubo un problema al guardar el pedido. Intenta nuevamente.');

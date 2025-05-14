@@ -51,6 +51,10 @@ export class ShoppingCartComponent implements OnInit{
       direccion: {},
     }));
 
+    if (this.cartIsEmpty()) {
+      alert("No hay productos en el carrito");
+      return;
+    }
     this.router.navigate(["../billing-address"]);
   }
 
