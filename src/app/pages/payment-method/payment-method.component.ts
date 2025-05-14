@@ -1,13 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import { ShoppingCartService } from '../../services/shopping-cart.service';
 import { ShoppingInfoComponent } from '../../components/shopping-info/shopping-info.component';
 import { FormsModule } from '@angular/forms';
 import { loadPayPalSDK } from '../../environments/environment.development'; // Importa la función que carga el SDK de PayPal
 import { Router } from '@angular/router';
 import {ShoppingProcessComponent} from '../../components/shopping-process/shopping-process.component';
-import {FirebaseService} from '../../services/firebase.service';
+import {ProductService} from '../../services/product.service';
 import {CardManagerComponent} from '../../components/card-manager/card-manager.component';
-import {CardManagerPaymentComponent} from '../../components/card-manager-payment/card-manager-payment.component';  // Importar el Router
+import {CardManagerPaymentComponent} from '../../components/card-manager-payment/card-manager-payment.component';
+import {Firestore} from '@angular/fire/firestore';  // Importar el Router
 
 @Component({
   selector: 'app-payment-method',
@@ -34,8 +35,9 @@ export class PaymentMethodComponent implements OnInit {
     "DESCUENTO33": { tipo: 'porcentaje', valor: 33 }
   };
   protected userUID: string = "";
+  private firestore: Firestore = inject(Firestore);
 
-  constructor(private shoppingCartService: ShoppingCartService, private router: Router, private firebaseService: FirebaseService) {}  // Inyectar el Router
+  constructor(private shoppingCartService: ShoppingCartService, private router: Router, private firebaseService: ProductService) {}  // Inyectar el Router
 
   ngOnInit(): void {
     this.updateTotal();
@@ -50,8 +52,9 @@ export class PaymentMethodComponent implements OnInit {
     }).catch((error) => {
       console.error('Error al cargar el SDK de PayPal:', error);
     });
-
-    this.userUID = <string>JSON.parse(<string>localStorage.getItem("user")).uid;
+    if (localStorage.getItem("user")) {
+      this.userUID = <string>JSON.parse(<string>localStorage.getItem("user")).uid;
+    }
     const pedido = JSON.parse(<string>this.localStorage.getItem("pedido"));
 
     const pedidoNuevo = {...pedido,
@@ -59,6 +62,7 @@ export class PaymentMethodComponent implements OnInit {
       usuario: this.userUID}
 
     localStorage.setItem("pedido", JSON.stringify(pedidoNuevo));
+
   }
 
   updateTotal(): void {
@@ -80,7 +84,8 @@ export class PaymentMethodComponent implements OnInit {
       const pedido = JSON.parse(<string>localStorage.getItem("pedido"));
       const pedidoNuevo = {...pedido,
         precioTotal: this.totalAmount.toFixed(2),
-        usuario: this.userUID}
+        usuario: this.userUID
+      }
 
       localStorage.setItem("pedido", JSON.stringify(pedidoNuevo));
       alert(`Código aplicado. Nuevo total: ${this.totalAmount.toFixed(2)}€`);
@@ -121,6 +126,12 @@ export class PaymentMethodComponent implements OnInit {
             }
             try {
               await this.firebaseService.createDocOnCollection('pedidos', pedido);
+              await this.firebaseService.updateStock(pedido.productos);
+              if (this.userUID !== "") {
+                this.firebaseService.updateOrders(pedido, this.userUID);
+              }
+
+
               this.router.navigate(['/order-review'], { state: { paymentMethod: 'Tarjeta de crédito' } });
             } catch (error) {
               console.error('Error al guardar el pedido:', error);

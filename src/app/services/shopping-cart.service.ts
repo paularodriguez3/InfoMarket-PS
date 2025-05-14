@@ -14,6 +14,12 @@ export class ShoppingCartService {
     return json ? JSON.parse(json) : [];
   }
 
+  removeCompletelyFromCart(product: Product): void {
+    const cart = this.getCart().filter(item => item.product.id !== product.id);
+    this.saveCart(cart);
+  }
+
+
   getLength(): number {
     return this.getCart().length;
   }
@@ -26,6 +32,15 @@ export class ShoppingCartService {
   addToCart(item: Product, quantity: number): void {
     const shoppingCart = this.getCart();
     const cartItem = shoppingCart.find(e => e.product.id === item.id);
+
+    const cantidadActual = cartItem ? cartItem.quantity : 0;
+    const cantidadTotal = cantidadActual + quantity;
+
+    if (item.Stock !== undefined && cantidadTotal > item.Stock) {
+      alert(`No hay suficiente stock disponible`);
+      return;
+    }
+
     if (!cartItem) {
       shoppingCart.push({product: item, quantity: quantity});
     } else {

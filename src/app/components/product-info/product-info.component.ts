@@ -14,19 +14,22 @@ import {NgClass} from '@angular/common';
 export class ProductInfoComponent {
   @Input() item: ShoppingCartItem = {
     product: {
-      Nombre:"",
-      Precio:0,
-      Caracteristicas:[] ,
-      Imagen:"",
-      Descripcion:"",
-      Color:'',
-      Categoria:'',
-      Subcategoria:''
+      Nombre: "",
+      Precio: 0,
+      Caracteristicas: [],
+      Imagen: "",
+      Descripcion: "",
+      Color: '',
+      Categoria: '',
+      Subcategoria: '',
+      Stock: 0
     },
-    quantity:0};
+    quantity: 0
+  };
   @Input() showButtons: boolean = false;
   @Output() increaseQty: EventEmitter<any> = new EventEmitter();
   @Output() decreaseQty: EventEmitter<any> = new EventEmitter();
+  @Output() removeItem: EventEmitter<any> = new EventEmitter();
 
   increase() {
     this.increaseQty.emit(this.item);
@@ -34,6 +37,10 @@ export class ProductInfoComponent {
 
   decrease() {
     this.decreaseQty.emit(this.item);
+  }
+
+  remove() {
+    this.removeItem.emit(this.item);
   }
 
   getPrice(): number {

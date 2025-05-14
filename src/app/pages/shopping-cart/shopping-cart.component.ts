@@ -40,6 +40,11 @@ export class ShoppingCartComponent implements OnInit{
     this.calculateTotalPrice();
   }
 
+  removeItem(item: ShoppingCartItem): void {
+    this.shoppingCartService.removeCompletelyFromCart(item.product);
+    this.refreshShoppingCart();
+  }
+
   buy(): void {
     localStorage.setItem("pedido", JSON.stringify({
       productos: this.shoppingCart,

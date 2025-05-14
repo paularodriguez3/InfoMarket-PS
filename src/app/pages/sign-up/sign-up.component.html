@@ -56,6 +56,19 @@
         <i class='bx bxs-lock-alt'></i>
       </div>
 
+      <div class="input-group">
+        <input
+          id="confirm-password-register"
+          type="password"
+          placeholder="Confirmar contraseña"
+          required
+          [(ngModel)]="confirmPassword"
+          name="confirmPassword"
+        />
+        <i class='bx bxs-lock-alt'></i>
+      </div>
+
+
       <div id="password-requirements" #passwordRequirements class="requirements" style="display: none;">
         <p id="password-length" class="requirement">Debe tener al menos 8 caracteres <span style="display: none;">✔</span></p>
         <p id="password-uppercase" class="requirement">Debe tener una mayúscula <span style="display: none;">✔</span></p>

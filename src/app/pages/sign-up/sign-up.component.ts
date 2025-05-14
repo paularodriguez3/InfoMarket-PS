@@ -22,6 +22,8 @@ export class SignUpComponent implements AfterViewInit {
   email = '';
   password = '';
   username = '';
+  confirmPassword = '';
+
 
   @ViewChild('usernameRequirements') usernameReq?: ElementRef;
   @ViewChild('passwordRequirements') passwordReq?: ElementRef;
@@ -146,6 +148,11 @@ export class SignUpComponent implements AfterViewInit {
 
     if (!isUsernameValid || !isPasswordValid) {
       alert('Corrige los errores antes de continuar.');
+      return;
+    }
+
+    if (this.password !== this.confirmPassword) {
+      alert('Las contraseñas no coinciden.');
       return;
     }
 

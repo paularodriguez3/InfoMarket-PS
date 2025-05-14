@@ -10,6 +10,7 @@ export interface Product {
   Categoria: string;
   Subcategoria: string;
   Descuento?: number;
+  Stock: number;
 }
 
 export interface Feature {

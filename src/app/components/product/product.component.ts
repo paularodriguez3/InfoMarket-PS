@@ -2,14 +2,15 @@ import {Component, EventEmitter, inject, Input, Output} from '@angular/core';
 import {Product} from '../../models/product.model';
 import {Router} from '@angular/router';
 import {ShoppingCartService} from '../../services/shopping-cart.service';
-import {DecimalPipe, NgIf} from '@angular/common';
+import {DecimalPipe, NgClass, NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-product',
   standalone: true,
   imports: [
     DecimalPipe,
-    NgIf
+    NgIf,
+    NgClass
   ],
   templateUrl: './product.component.html',
   styleUrl: './product.component.css'

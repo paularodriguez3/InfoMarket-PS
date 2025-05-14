@@ -1,6 +1,7 @@
 import {
   Firestore, addDoc, collection, query,
-  doc, deleteDoc, updateDoc, setDoc, getDocs, where, getDoc, collectionData, docData
+  doc, deleteDoc, updateDoc, setDoc, getDocs, where, getDoc, collectionData, docData,
+  arrayUnion
 } from '@angular/fire/firestore';
 
 import { inject, Injectable } from '@angular/core';
@@ -169,5 +170,32 @@ export class ProductService {
     return collectionData(ref.parent, { idField: 'id' }).pipe(
       map(docs => docs.find(d => d['id'] === docId))
     );
+  }
+
+  async updateStock(productos: any[]): Promise<void> {
+    for (const item of productos) {
+      const ref = doc(
+        this.firestore,
+        `productos/${item.product.Categoria}/${item.product.Subcategoria}/${item.product.id}`
+      );
+
+      const snapshot = await getDoc(ref);
+      if (!snapshot.exists()) continue;
+
+      const data = snapshot.data();
+      const stockActual = data["Stock"] ?? 0;
+      const nuevoStock = stockActual - item.quantity;
+
+      await updateDoc(ref, {
+        Stock: nuevoStock
+      });
+    }
+  }
+
+  updateOrders(pedido: any, userUID: string) {
+    const docRef = doc(this.firestore, 'users', userUID);
+    updateDoc(docRef, {
+      pedidos: arrayUnion(pedido)
+    });
   }
 }
