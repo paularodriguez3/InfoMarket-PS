@@ -1,4 +1,9 @@
 <div class="card-manager">
+
+  <div *ngIf="floatingMessage" [ngClass]="{ 'floating-success': floatingSuccess, 'floating-error': !floatingSuccess }" class="floating-message">
+    {{ floatingMessage }}
+  </div>
+
   <h3>Mis tarjetas</h3>
 
   <div *ngIf="cards.length === 0" class="no-cards">
@@ -22,7 +27,6 @@
 
   <form *ngIf="showAddForm" class="add-form" #cardForm="ngForm" (ngSubmit)="addCard()" novalidate>
 
-    <!-- Nombre del titular -->
     <div class="form-group">
       <div class="input-icon-wrapper" [ngClass]="{ 'input-error': cardholderNameInput.invalid && cardholderNameInput.touched }">
         <i class="bx bxs-user"></i>
@@ -41,7 +45,6 @@
       </small>
     </div>
 
-    <!-- Número de tarjeta con formato automático -->
     <div class="form-group">
       <div class="input-icon-wrapper" [ngClass]="{ 'input-error': cardNumberInput.invalid && cardNumberInput.touched }">
         <i class="bx bxs-credit-card-alt"></i>
@@ -61,7 +64,6 @@
       </small>
     </div>
 
-    <!-- Fecha de caducidad -->
     <div class="form-group">
       <div class="input-icon-wrapper" [ngClass]="{ 'input-error': expiryInput.invalid && expiryInput.touched }">
         <i class="bx bxs-credit-card"></i>
@@ -80,7 +82,6 @@
       </small>
     </div>
 
-    <!-- Marca (opcional) -->
     <div class="form-group">
       <div class="input-icon-wrapper">
         <i class="bx bxs-bank"></i>
@@ -92,17 +93,19 @@
         />
       </div>
     </div>
-
-    <button type="submit" [disabled]="cardForm.invalid">Guardar tarjeta</button>
+    <button type="button" (click)="addCard()">Guardar tarjeta</button>
   </form>
 
   <div class="delete-confirmation" *ngIf="showConfirmPopup">
     <div class="popup-delete">
       <p>¿Estás seguro de que deseas eliminar esta tarjeta?</p>
       <div class="popup-buttons">
-        <button (click)="confirmDeleteCard()">Sí, eliminar mi tarjeta</button>
-        <button class="button-confirm" (click)="cancelDelete()">Cancelar</button>
+        <button type="button" (click)="confirmDeleteCard()">Sí, eliminar mi tarjeta</button>
+        <button type="button" class="button-confirm" (click)="cancelDelete()">Cancelar</button>
       </div>
     </div>
+  </div>
+  <div *ngIf="floatingMessage" class="floating-message" [ngClass]="{'success': floatingSuccess, 'error': !floatingSuccess}">
+    {{ floatingMessage }}
   </div>
 </div>
