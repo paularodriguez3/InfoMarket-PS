@@ -100,10 +100,10 @@ export class HomeComponent implements AfterViewInit {
 
   setupAutoAdvance(): void {
     const next = document.getElementById('next')!;
+    if (!next) return;
+
     this.refreshInterval = setInterval(() => next.click(), 3000);
   }
-
-
 }
 
 
