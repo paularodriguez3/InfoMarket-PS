@@ -1,7 +1,7 @@
 // src/app/pages/order-review/order-review.component.ts
 
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import { Router } from '@angular/router';
+import emailjs from 'emailjs-com';
 
 import { ShoppingInfoComponent } from '../../components/shopping-info/shopping-info.component';
 import { OrderReviewTemplateComponent } from '../../components/order-review-template/order-review-template.component';
@@ -10,7 +10,6 @@ import {ShoppingCartService} from '../../services/shopping-cart.service';
 import {NgClass, NgForOf, NgIf} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {FirebaseService} from '../../services/firebase.service';
-
 
 @Component({
   selector: 'app-order-review',

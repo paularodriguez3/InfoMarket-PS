@@ -121,3 +121,15 @@
     margin: -2%;
   }
 }
+
+#button-remove {
+  margin-right: 10px;
+}
+
+.bxs-trash {
+  color: #b00020;
+}
+
+.bxs-trash:hover {
+  color: #ff0000;
+}

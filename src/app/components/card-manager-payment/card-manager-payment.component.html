@@ -12,10 +12,22 @@
         <br>
         <small>Vence: {{ card.expiry }}</small>
       </div>
-      <button class="button-cancel-add" type="button" (click)="copyToClipboard(card)">{{card.copied ? '¡PAN copiado!' : 'Copiar PAN de la tarjeta'}}</button>
+      <div class="card-actions">
+        <div class="card-actions">
+          <button class="button-cancel-add" type="button" (click)="copyToClipboard(card, 'pan')">
+            {{ card.copied === 'pan' ? '¡PAN copiado!' : 'Copiar PAN' }}
+          </button>
+
+          <button class="button-cancel-add" type="button" (click)="copyToClipboard(card, 'expiry')">
+            {{ card.copied === 'expiry' ? '¡Vencimiento copiado!' : 'Copiar vencimiento' }}
+          </button>
+
+          <button class="button-cancel-add" type="button" (click)="copyToClipboard(card, 'cardholderName')">
+            {{ card.copied === 'owner' ? '¡Nombre copiado!' : 'Copiar titular' }}
+          </button>
+        </div>
+
+      </div>
     </li>
   </ul>
-
-
-
 </div>

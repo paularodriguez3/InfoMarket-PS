@@ -65,21 +65,27 @@
   transition: all 0.3s ease;
 }
 
-/* Inputs con icono */
-.input-icon-cards {
-  position: relative;
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
-.input-icon-cards i {
+.input-icon-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon-wrapper i {
   position: absolute;
-  top: 50%;
   left: 10px;
-  transform: translateY(-50%);
   font-size: 16px;
   color: #666;
+  pointer-events: none;
 }
 
-.input-icon-cards input {
+.input-icon-wrapper input {
   padding-left: 35px;
   height: 40px;
   width: 100%;
@@ -92,9 +98,20 @@
   transition: border 0.2s ease;
 }
 
-.input-icon-cards input:focus {
+.input-icon-wrapper input:focus {
   border-color: #999;
   background-color: #fff;
+}
+
+.input-icon-wrapper.input-error input {
+  border: 1px solid red !important;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.85rem;
+  margin-left: 4px;
+  display: block;
 }
 
 .add-form button {
@@ -111,38 +128,6 @@
 
 .add-form button:hover {
   background-color: #999999;
-}
-
-.autocomplete-group {
-  position: relative;
-}
-
-.suggestions {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  max-height: 160px;
-  overflow-y: auto;
-  background: #fff;
-  border: 1px solid #ccc;
-  border-top: none;
-  border-radius: 0 0 8px 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  z-index: 10;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.suggestions li {
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  font-size: 0.95rem;
-}
-
-.suggestions li:hover {
-  background-color: #f0f0f0;
 }
 
 .delete-icon {
@@ -188,4 +173,28 @@
 
 .button-confirm {
   margin-left: auto;
+}
+
+.floating-message {
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: bold;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  transition: opacity 0.3s ease-in-out;
+  opacity: 0.95;
+}
+
+.floating-message.success {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.floating-message.error {
+  background-color: #f44336;
+  color: white;
 }

@@ -21,6 +21,12 @@ export class CardManagerComponent implements OnInit {
   expiry = '';
   brand = '';
 
+  cardToDelete: any = null;
+  showConfirmPopup = false;
+
+  floatingMessage='';
+  floatingSuccess= false;
+
   constructor(private cardService: CardService) {}
 
   async ngOnInit() {
@@ -30,41 +36,60 @@ export class CardManagerComponent implements OnInit {
     }
   }
 
+  formatCardNumber() {
+    this.cardNumber = this.cardNumber
+      .replace(/\s+/g, '')
+      .replace(/[^0-9]/g, '')
+      .match(/.{1,4}/g)?.join(' ') || '';
+  }
+
+
+  showFloatingMessage(message: string, success: boolean) {
+    this.floatingMessage = message;
+    this.floatingSuccess = success;
+    setTimeout(() => {
+      this.floatingMessage = '';
+    }, 3000);
+  }
+
   async addCard() {
     if (!this.uid) return;
 
-    const newCard = await this.cardService.addCard(this.uid, {
-      cardholderName: this.cardholderName,
-      cardNumber: this.cardNumber,
-      expiry: this.expiry,
-      brand: this.brand
-    });
-
-    this.cards.push(newCard);
-
-    this.cardholderName = '';
-    this.cardNumber = '';
-    this.expiry = '';
-    this.brand = '';
-    this.showAddForm = false;
-  }
-
-  async deleteCard(card: any) {
-    if (!this.uid || !card.id) {
-      console.warn('No se puede eliminar: UID o ID no disponible');
+    // Validación manual como en AddressManager
+    if (
+      !this.cardholderName.trim() ||
+      !this.cardNumber.trim() ||
+      !this.expiry.trim()
+    ) {
+      this.showFloatingMessage('Por favor, completa todos los campos obligatorios.', false);
       return;
     }
 
+    const cleanCardNumber = this.cardNumber.replace(/\s+/g, '');
+
     try {
-      await this.cardService.deleteCardById(this.uid, card.id);
-      this.cards = this.cards.filter(c => c.id !== card.id);
+      const newCard = await this.cardService.addCard(this.uid, {
+        cardholderName: this.cardholderName.trim(),
+        cardNumber: cleanCardNumber,
+        expiry: this.expiry.trim(),
+        brand: this.brand.trim()
+      });
+
+      this.cards.push(newCard);
+
+      this.cardholderName = '';
+      this.cardNumber = '';
+      this.expiry = '';
+      this.brand = '';
+      this.showAddForm = false;
+
+      this.showFloatingMessage('Tarjeta guardada con éxito.', true);
     } catch (error) {
-      console.error('Error al eliminar la tarjeta:', error);
+      console.error('Error al guardar la tarjeta:', error);
+      this.showFloatingMessage('Error al guardar la tarjeta. Inténtalo de nuevo.', false);
     }
   }
 
-  cardToDelete: any = null;
-  showConfirmPopup = false;
 
   confirmDelete(card: any) {
     this.cardToDelete = card;
@@ -88,4 +113,6 @@ export class CardManagerComponent implements OnInit {
 
     this.cancelDelete();
   }
+
+
 }

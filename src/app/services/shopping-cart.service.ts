@@ -14,6 +14,12 @@ export class ShoppingCartService {
     return json ? JSON.parse(json) : [];
   }
 
+  removeCompletelyFromCart(product: Product): void {
+    const cart = this.getCart().filter(item => item.product.id !== product.id);
+    this.saveCart(cart);
+  }
+
+
   getLength(): number {
     return this.getCart().length;
   }

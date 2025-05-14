@@ -18,6 +18,10 @@
           <i class="fi fi-rr-plus"></i>
         </a>
 
+        <a *ngIf="isLoggedIn" id="wish-list" routerLink="/wish-list" title="Lista de deseos">
+          <i class='bx bx-star'></i>
+        </a>
+
         <a id="user" routerLink="/personal-profile"><i class="fi fi-rr-user"></i></a>
         <a id="cart" routerLink="/shopping-cart">
           <i class="fi fi-rr-briefcase-blank"></i>
