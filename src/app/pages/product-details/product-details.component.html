@@ -52,8 +52,10 @@
       <div id="edit-product" *ngIf="isAdmin">
         <button id="edit-product-button" (click)="editProduct()">Editar</button>
       </div>
-      <div id="wish-list" *ngIf="isAdmin">
-        <button id="wish-list-button">Añadir a deseados</button>
+      <div id="wish-list" *ngIf="isLoggedIn">
+        <button id="wish-list-button" (click)="addToWishList()">
+          <i class='bx bx-star'></i> Añadir a deseados
+        </button>
       </div>
     </section>
     <div id="product-image">

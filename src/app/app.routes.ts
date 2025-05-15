@@ -16,6 +16,7 @@ import {PaymentMethodComponent} from './pages/payment-method/payment-method.comp
 import {ShippingMethodComponent} from './pages/shipping-method/shipping-method.component';
 import {OrderReviewComponent} from './pages/order-review/order-review.component';
 import {AddProductComponent} from './pages/add-product/add-product.component';
+import {WishListComponent} from './pages/wish-list/wish-list.component';
 
 export const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -35,5 +36,6 @@ export const appRoutes: Routes = [
   { path: 'payment-method', component: PaymentMethodComponent },
   { path: 'shipping-method', component: ShippingMethodComponent },
   { path: 'order-review', component: OrderReviewComponent },
-  { path: 'add-product', component: AddProductComponent }
+  { path: 'add-product', component: AddProductComponent },
+  { path: 'wish-list', component: WishListComponent },
 ];

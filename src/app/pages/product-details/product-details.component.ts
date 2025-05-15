@@ -3,6 +3,7 @@ import {Feature, Product} from '../../models/product.model';
 import {ShoppingCartService} from '../../services/shopping-cart.service';
 import {Router} from '@angular/router';
 import {NgClass, NgIf} from '@angular/common';
+import {WishListService} from '../../services/wish-list.service';
 
 @Component({
   selector: 'app-product-details',
@@ -37,7 +38,7 @@ export class ProductDetailsComponent implements OnInit {
   isAdmin: boolean = false;
   isLoggedIn: boolean = false;
 
-  constructor(private router:Router) {}
+  constructor(private router:Router, private wishListService: WishListService) {}
 
   ngOnInit() {
     this.product.Nombre = history.state.product.Nombre;
@@ -116,5 +117,10 @@ export class ProductDetailsComponent implements OnInit {
     if (this.product.Stock > 10) return 'Con existencias';
     if (this.product.Stock > 0) return 'Últimas unidades';
     return 'Sin stock';
+  }
+
+  addToWishList() {
+    this.wishListService.addToWishList(this.product);
+    alert("Producto añadido a la lista de deseos");
   }
 }

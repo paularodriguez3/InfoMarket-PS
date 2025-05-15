@@ -1,10 +1,12 @@
 <main>
-  <h1 id="shopping-cart-title"><i class='bx bx-star'></i>Lista de Deseos</h1>
+  <h1 id="shopping-cart-title"><i class='bx bx-star'></i> Lista de Deseos</h1>
   <article id="shopping-info">
     <div id="shopping-cart-list">
-      <div>
-        <app-product-info>
-        </app-product-info>
+      <div *ngFor="let product of wishlistItems">
+        <app-wish-product-info
+          [product]="product"
+          (removeProduct)="removeFromWishList($event)">
+        </app-wish-product-info>
       </div>
     </div>
   </article>
