@@ -71,5 +71,13 @@
     "HELP_TEXT": "Need help? We’re here for you.",
     "CONTACT_LINK": "Contact support",
     "COPY_EMAIL_TEXT": "Or copy our email address:"
+  },
+  "RECOVERY": {
+    "TITLE": "Password Recovery",
+    "SUBTITLE": "Enter your email address to reset your account or change your password",
+    "EMAIL_PLACEHOLDER": "Email address",
+    "WAIT": "Wait",
+    "CONTINUE": "Continue",
+    "BACK_TO_LOGIN": "Back to login"
   }
 }

@@ -71,6 +71,14 @@
     "HELP_TEXT": "需要帮助？我们在这里为您服务。",
     "CONTACT_LINK": "联系支持",
     "COPY_EMAIL_TEXT": "或复制我们的电子邮件地址："
+  },
+  "RECOVERY": {
+    "TITLE": "密码找回",
+    "SUBTITLE": "请输入您的电子邮箱以重设账户或更改密码",
+    "EMAIL_PLACEHOLDER": "电子邮箱地址",
+    "WAIT": "请稍候",
+    "CONTINUE": "继续",
+    "BACK_TO_LOGIN": "返回登录"
   }
 
 }

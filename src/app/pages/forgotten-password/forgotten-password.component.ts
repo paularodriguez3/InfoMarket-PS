@@ -3,13 +3,14 @@ import { AuthService } from '../../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {RouterLink} from '@angular/router';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-forgotten-password',
   standalone: true,
   templateUrl: './forgotten-password.component.html',
   styleUrls: ['./forgotten-password.component.css'],
-  imports: [CommonModule, FormsModule, RouterLink]
+  imports: [CommonModule, FormsModule, RouterLink, TranslatePipe]
 })
 export class ForgottenPasswordComponent {
   email: string = '';

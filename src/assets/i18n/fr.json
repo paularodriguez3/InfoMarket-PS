@@ -70,6 +70,14 @@
     "HELP_TEXT": "Besoin d’aide ? Nous sommes là pour vous.",
     "CONTACT_LINK": "Contacter le support",
     "COPY_EMAIL_TEXT": "Ou copiez notre adresse e-mail :"
+  },
+  "RECOVERY": {
+    "TITLE": "Récupération de mot de passe",
+    "SUBTITLE": "Saisissez votre adresse e-mail pour réinitialiser votre compte ou changer votre mot de passe",
+    "EMAIL_PLACEHOLDER": "Adresse e-mail",
+    "WAIT": "Veuillez patienter",
+    "CONTINUE": "Continuer",
+    "BACK_TO_LOGIN": "Retour à la connexion"
   }
 
 }

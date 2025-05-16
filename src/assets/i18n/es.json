@@ -71,5 +71,13 @@
     "HELP_TEXT": "¿Necesitas ayuda? Estamos aquí para ti.",
     "CONTACT_LINK": "Contactar con soporte",
     "COPY_EMAIL_TEXT": "O copia nuestra dirección de correo:"
+  },
+  "RECOVERY": {
+    "TITLE": "Recuperación de contraseña",
+    "SUBTITLE": "Introduce tu correo electrónico para establecer una recuperación de cuenta o cambio de contraseña",
+    "EMAIL_PLACEHOLDER": "Correo electrónico",
+    "WAIT": "Espera",
+    "CONTINUE": "Continuar",
+    "BACK_TO_LOGIN": "Volver al inicio de sesión"
   }
 }
