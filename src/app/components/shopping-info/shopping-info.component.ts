@@ -3,6 +3,7 @@ import {ShoppingCartService} from '../../services/shopping-cart.service';
 import {ShoppingCartItem} from '../../models/shopping-cart-item.model';
 import {ProductInfoComponent} from '../product-info/product-info.component';
 import {NgForOf} from '@angular/common';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-shopping-info',
@@ -10,7 +11,8 @@ import {NgForOf} from '@angular/common';
   templateUrl: './shopping-info.component.html',
   imports: [
     ProductInfoComponent,
-    NgForOf
+    NgForOf,
+    TranslatePipe
   ],
   styleUrl: './shopping-info.component.css'
 })

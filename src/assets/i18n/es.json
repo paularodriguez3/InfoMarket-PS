@@ -338,6 +338,24 @@
     "METHOD": "Método de pago",
     "ARRIVAL": "Su fecha de llegada es",
     "DELIVERY": "Entrega del paquete"
+  },
+  "PRODUCT_CARD": {
+    "SEE": "Ver",
+    "ADD_TO_CART": "Añadir al carrito"
+  },
+  "PRODUCT_INFO_COMPONENT": {
+    "QUANTITY": "Cantidad"
+  },
+  "SHOPPING_INFO": {
+    "TOTAL": "Total"
+  },
+  "SHOPPING_PROCESS": {
+    "BILLING": "Facturación",
+    "PAYMENT": "Pago",
+    "SUMMARY": "Resumen"
+  },
+  "WISHLIST_PRODUCT": {
+    "STOCK": "Cantidad"
   }
 
 }

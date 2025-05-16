@@ -338,5 +338,23 @@
     "METHOD": "付款方式",
     "ARRIVAL": "您的到达日期是",
     "DELIVERY": "包裹配送"
+  },
+  "PRODUCT_CARD": {
+    "SEE": "查看",
+    "ADD_TO_CART": "加入购物车"
+  },
+  "PRODUCT_INFO_COMPONENT": {
+    "QUANTITY": "数量"
+  },
+  "SHOPPING_INFO": {
+    "TOTAL": "总计"
+  },
+  "SHOPPING_PROCESS": {
+    "BILLING": "账单信息",
+    "PAYMENT": "支付",
+    "SUMMARY": "摘要"
+  },
+  "WISHLIST_PRODUCT": {
+    "STOCK": "库存"
   }
 }

@@ -1,11 +1,13 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {ShoppingCartItem} from '../../models/shopping-cart-item.model';
 import {NgClass} from '@angular/common';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-product-info',
   imports: [
-    NgClass
+    NgClass,
+    TranslatePipe
   ],
   templateUrl: './product-info.component.html',
   standalone: true,

@@ -338,6 +338,24 @@
     "METHOD": "Payment method",
     "ARRIVAL": "Your arrival date is",
     "DELIVERY": "Package delivery"
+  },
+  "PRODUCT_CARD": {
+    "SEE": "View",
+    "ADD_TO_CART": "Add to cart"
+  },
+  "PRODUCT_INFO_COMPONENT": {
+    "QUANTITY": "Qty"
+  },
+  "SHOPPING_INFO": {
+    "TOTAL": "Total"
+  },
+  "SHOPPING_PROCESS": {
+    "BILLING": "Billing",
+    "PAYMENT": "Payment",
+    "SUMMARY": "Summary"
+  },
+  "WISHLIST_PRODUCT": {
+    "STOCK": "Stock"
   }
 
 }

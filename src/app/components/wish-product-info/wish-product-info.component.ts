@@ -3,6 +3,7 @@ import {Product} from '../../models/product.model';
 import { NgClass } from '@angular/common';
 import {ShoppingCartService} from '../../services/shopping-cart.service';
 import {Router} from '@angular/router';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-wish-product-info',
@@ -10,7 +11,8 @@ import {Router} from '@angular/router';
   templateUrl: './wish-product-info.component.html',
   styleUrls: ['./wish-product-info.component.css'],
   imports: [
-    NgClass
+    NgClass,
+    TranslatePipe
   ]
 })
 export class WishProductInfoComponent {
