@@ -1,6 +1,7 @@
 import { Component, HostListener } from '@angular/core';
 import {NgClass, NgIf} from '@angular/common';
 import {NavigationEnd, Router, RouterLink} from '@angular/router';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-nav-bar',
@@ -8,7 +9,8 @@ import {NavigationEnd, Router, RouterLink} from '@angular/router';
   imports: [
     NgClass,
     RouterLink,
-    NgIf
+    NgIf,
+    TranslatePipe
   ],
   templateUrl: './nav-bar.component.html',
   styleUrl: './nav-bar.component.css'

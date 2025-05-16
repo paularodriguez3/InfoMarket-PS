@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
 import { ShoppingCartItem } from '../../models/shopping-cart-item.model';
 import { AuthService } from '../../services/auth.service';
-import { TranslateService } from '@ngx-translate/core';
+import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-header',
@@ -21,7 +21,8 @@ import { TranslateService } from '@ngx-translate/core';
   imports: [
     RouterLink,
     FormsModule,
-    NgIf
+    NgIf,
+    TranslatePipe
   ],
   styleUrls: ['./header.component.css']
 })

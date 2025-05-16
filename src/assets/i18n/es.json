@@ -255,6 +255,89 @@
     "CONFIRM": "Sí, eliminar cuenta",
     "CANCEL": "Cancelar",
     "DELETE": "Eliminar mi cuenta"
+  },
+  "FOOTER": {
+    "ABOUT_US": {
+      "TITLE": "Sobre nosotros",
+      "WHO": "¿Quiénes somos?",
+      "WORK": "Trabaja con nosotros",
+      "COOKIES": "Política de cookies",
+      "PRIVACY": "Política de privacidad"
+    },
+    "SUPPORT": {
+      "TITLE": "Apoyo al cliente",
+      "HELP_CENTER": "Ayuda / Centro de soporte",
+      "ACCOUNT": "Gestionar cuenta",
+      "SHIPPING": "Información sobre envío",
+      "GIFTS": "Tarjetas de regalo"
+    },
+    "CONNECT": {
+      "TITLE": "Conecta con nosotros"
+    },
+    "COPYRIGHT": "Copyright © 2025 Infomarket Inc. Todos los derechos reservados.",
+    "POLICIES": {
+      "PRIVACY": "Política de privacidad",
+      "COOKIES": "Uso de cookies",
+      "TERMS": "Condiciones de uso",
+      "REFUNDS": "Ventas y reembolsos",
+      "LEGAL": "Avisos legales"
+    }
+  },
+  "HEADER": {
+    "SEARCH_PLACEHOLDER": "¿Qué estás buscando?...",
+    "ADD_PRODUCT": "Añadir producto",
+    "WISHLIST": "Lista de deseos"
+  },
+  "NAVIGATION": {
+    "MENU": "Menú",
+    "OFFERS": "Ofertas",
+    "COMPUTING": "Informática",
+    "GAMING": "Gaming",
+    "PHONES": "Telefonía",
+    "TV": "Televisores",
+    "APPLIANCES": "Electrodomésticos",
+
+    "HEADPHONES": "Cascos y auriculares",
+    "DESKTOP": "PC sobremesa",
+    "LAPTOPS": "Portátiles",
+    "MOUSE": "Ratones",
+    "KEYBOARD": "Teclados",
+
+    "CONSOLES": "Consolas",
+    "MICROPHONES": "Micrófonos",
+    "GAMING_LAPTOPS": "Portátiles gaming",
+    "GAMING_ACCESSORIES": "Accesorios gaming",
+    "PC_GAMES": "Juegos PC",
+
+    "SMARTPHONES": "Smartphones",
+    "CASES": "Fundas y protectores",
+    "MOBILE_ACCESSORIES": "Accesorios para móviles",
+    "LANDLINE": "Telefonía doméstica",
+
+    "TV_FULLHD": "TV Full HD",
+    "TV_4K": "TV 4K UHD",
+    "TV_8K": "TV 8K UHD",
+    "DVD_PLAYERS": "Reproductores DVD / Blu-ray",
+    "TV_ACCESSORIES": "Accesorios TV",
+
+    "FRIDGES": "Frigoríficos",
+    "DISHWASHERS": "Lavavajillas",
+    "WASHERS": "Lavadoras",
+    "OVENS": "Hornos",
+    "MICROWAVES": "Microondas"
+  },
+  "ORDER_MANAGER": {
+    "TITLE": "Mis compras",
+    "NO_ORDERS": "No tienes compras aún.",
+    "ARRIVAL": "Fecha de llegada",
+    "TOTAL": "Precio total"
+  },
+  "PAYMENT_SUMMARY": {
+    "TITLE": "Resumen de pago",
+    "CONFIRMED": "Su pago ha sido confirmado",
+    "METHOD": "Método de pago",
+    "ARRIVAL": "Su fecha de llegada es",
+    "DELIVERY": "Entrega del paquete"
   }
 
 }

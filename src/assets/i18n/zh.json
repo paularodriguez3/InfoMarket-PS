@@ -255,5 +255,88 @@
     "CONFIRM": "是的，删除账户",
     "CANCEL": "取消",
     "DELETE": "删除我的账户"
+  },
+  "FOOTER": {
+    "ABOUT_US": {
+      "TITLE": "关于我们",
+      "WHO": "我们是谁",
+      "WORK": "加入我们",
+      "COOKIES": "Cookie 政策",
+      "PRIVACY": "隐私政策"
+    },
+    "SUPPORT": {
+      "TITLE": "客户支持",
+      "HELP_CENTER": "帮助 / 支持中心",
+      "ACCOUNT": "管理账户",
+      "SHIPPING": "配送信息",
+      "GIFTS": "礼品卡"
+    },
+    "CONNECT": {
+      "TITLE": "关注我们"
+    },
+    "COPYRIGHT": "Copyright © 2025 Infomarket Inc. 保留所有权利。",
+    "POLICIES": {
+      "PRIVACY": "隐私政策",
+      "COOKIES": "Cookie 使用",
+      "TERMS": "使用条款",
+      "REFUNDS": "销售与退款",
+      "LEGAL": "法律声明"
+    }
+  },
+  "HEADER": {
+    "SEARCH_PLACEHOLDER": "你在找什么？...",
+    "ADD_PRODUCT": "添加产品",
+    "WISHLIST": "愿望清单"
+  },
+  "NAVIGATION": {
+    "MENU": "菜单",
+    "OFFERS": "优惠",
+    "COMPUTING": "计算机",
+    "GAMING": "游戏",
+    "PHONES": "电话",
+    "TV": "电视",
+    "APPLIANCES": "家电",
+
+    "HEADPHONES": "耳机",
+    "DESKTOP": "台式电脑",
+    "LAPTOPS": "笔记本电脑",
+    "MOUSE": "鼠标",
+    "KEYBOARD": "键盘",
+
+    "CONSOLES": "游戏机",
+    "MICROPHONES": "麦克风",
+    "GAMING_LAPTOPS": "游戏笔记本",
+    "GAMING_ACCESSORIES": "游戏配件",
+    "PC_GAMES": "电脑游戏",
+
+    "SMARTPHONES": "智能手机",
+    "CASES": "保护壳和贴膜",
+    "MOBILE_ACCESSORIES": "手机配件",
+    "LANDLINE": "固定电话",
+
+    "TV_FULLHD": "全高清电视",
+    "TV_4K": "4K 超高清电视",
+    "TV_8K": "8K 超高清电视",
+    "DVD_PLAYERS": "DVD / 蓝光播放器",
+    "TV_ACCESSORIES": "电视配件",
+
+    "FRIDGES": "冰箱",
+    "DISHWASHERS": "洗碗机",
+    "WASHERS": "洗衣机",
+    "OVENS": "烤箱",
+    "MICROWAVES": "微波炉"
+  },
+  "ORDER_MANAGER": {
+    "TITLE": "我的订单",
+    "NO_ORDERS": "你还没有任何订单。",
+    "ARRIVAL": "到达日期",
+    "TOTAL": "总价"
+  },
+  "PAYMENT_SUMMARY": {
+    "TITLE": "付款摘要",
+    "CONFIRMED": "您的付款已确认",
+    "METHOD": "付款方式",
+    "ARRIVAL": "您的到达日期是",
+    "DELIVERY": "包裹配送"
   }
 }

@@ -255,6 +255,89 @@
     "CONFIRM": "Yes, delete account",
     "CANCEL": "Cancel",
     "DELETE": "Delete my account"
+  },
+  "FOOTER": {
+    "ABOUT_US": {
+      "TITLE": "About us",
+      "WHO": "Who we are",
+      "WORK": "Work with us",
+      "COOKIES": "Cookie policy",
+      "PRIVACY": "Privacy policy"
+    },
+    "SUPPORT": {
+      "TITLE": "Customer support",
+      "HELP_CENTER": "Help / Support center",
+      "ACCOUNT": "Manage account",
+      "SHIPPING": "Shipping information",
+      "GIFTS": "Gift cards"
+    },
+    "CONNECT": {
+      "TITLE": "Connect with us"
+    },
+    "COPYRIGHT": "Copyright © 2025 Infomarket Inc. All rights reserved.",
+    "POLICIES": {
+      "PRIVACY": "Privacy policy",
+      "COOKIES": "Cookie usage",
+      "TERMS": "Terms of use",
+      "REFUNDS": "Sales and refunds",
+      "LEGAL": "Legal notices"
+    }
+  },
+  "HEADER": {
+    "SEARCH_PLACEHOLDER": "What are you looking for?...",
+    "ADD_PRODUCT": "Add product",
+    "WISHLIST": "Wishlist"
+  },
+  "NAVIGATION": {
+    "MENU": "Menu",
+    "OFFERS": "Offers",
+    "COMPUTING": "Computing",
+    "GAMING": "Gaming",
+    "PHONES": "Phones",
+    "TV": "Televisions",
+    "APPLIANCES": "Home Appliances",
+
+    "HEADPHONES": "Headphones",
+    "DESKTOP": "Desktop PCs",
+    "LAPTOPS": "Laptops",
+    "MOUSE": "Mice",
+    "KEYBOARD": "Keyboards",
+
+    "CONSOLES": "Consoles",
+    "MICROPHONES": "Microphones",
+    "GAMING_LAPTOPS": "Gaming Laptops",
+    "GAMING_ACCESSORIES": "Gaming Accessories",
+    "PC_GAMES": "PC Games",
+
+    "SMARTPHONES": "Smartphones",
+    "CASES": "Cases and Screen Protectors",
+    "MOBILE_ACCESSORIES": "Mobile Accessories",
+    "LANDLINE": "Landline Phones",
+
+    "TV_FULLHD": "Full HD TVs",
+    "TV_4K": "4K UHD TVs",
+    "TV_8K": "8K UHD TVs",
+    "DVD_PLAYERS": "DVD / Blu-ray Players",
+    "TV_ACCESSORIES": "TV Accessories",
+
+    "FRIDGES": "Fridges",
+    "DISHWASHERS": "Dishwashers",
+    "WASHERS": "Washing Machines",
+    "OVENS": "Ovens",
+    "MICROWAVES": "Microwaves"
+  },
+  "ORDER_MANAGER": {
+    "TITLE": "My Purchases",
+    "NO_ORDERS": "You don't have any purchases yet.",
+    "ARRIVAL": "Arrival date",
+    "TOTAL": "Total price"
+  },
+  "PAYMENT_SUMMARY": {
+    "TITLE": "Payment Summary",
+    "CONFIRMED": "Your payment has been confirmed",
+    "METHOD": "Payment method",
+    "ARRIVAL": "Your arrival date is",
+    "DELIVERY": "Package delivery"
   }
 
 }

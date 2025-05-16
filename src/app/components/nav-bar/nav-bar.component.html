@@ -1,90 +1,102 @@
 <section id="header-navigation">
   <article id="nav-bottom">
     <ul id="nav-list">
-      <a (click)="toggleDesktopMenu()"><li><i class="fi fi-rr-menu-burger"></i>Menú</li></a>
-      <a routerLink="/product-list" [queryParams]="{ ofertas: true }"><li><i class="fi fi-rr-badge-percent"></i>Ofertas</li></a>
-      <a routerLink="/product-list/Informatica"><li><i class="fi fi-rr-computer"></i>Informática</li></a>
-      <a routerLink="/product-list/Gaming"><li><i class="fi fi-rr-console-controller"></i>Gaming</li></a>
-      <a routerLink="/product-list/Telefonia"><li><i class="fi fi-rr-mobile-button"></i>Telefonía</li></a>
-      <a routerLink="/product-list/Televisores"><li><i class="fi fi-rr-screen"></i>Televisores</li></a>
-      <a routerLink="/product-list/Electrodomesticos"><li><i class="fi fi-rr-washer"></i>Electrodomésticos</li></a>
+      <a (click)="toggleDesktopMenu()">
+        <li><i class="fi fi-rr-menu-burger"></i>{{ 'NAVIGATION.MENU' | translate }}</li>
+      </a>
+      <a routerLink="/product-list" [queryParams]="{ ofertas: true }">
+        <li><i class="fi fi-rr-badge-percent"></i>{{ 'NAVIGATION.OFFERS' | translate }}</li>
+      </a>
+      <a routerLink="/product-list/Informatica">
+        <li><i class="fi fi-rr-computer"></i>{{ 'NAVIGATION.COMPUTING' | translate }}</li>
+      </a>
+      <a routerLink="/product-list/Gaming">
+        <li><i class="fi fi-rr-console-controller"></i>{{ 'NAVIGATION.GAMING' | translate }}</li>
+      </a>
+      <a routerLink="/product-list/Telefonia">
+        <li><i class="fi fi-rr-mobile-button"></i>{{ 'NAVIGATION.PHONES' | translate }}</li>
+      </a>
+      <a routerLink="/product-list/Televisores">
+        <li><i class="fi fi-rr-screen"></i>{{ 'NAVIGATION.TV' | translate }}</li>
+      </a>
+      <a routerLink="/product-list/Electrodomesticos">
+        <li><i class="fi fi-rr-washer"></i>{{ 'NAVIGATION.APPLIANCES' | translate }}</li>
+      </a>
     </ul>
   </article>
 </section>
+
 <section id="header-menu">
-  <article id="menu-wrapper" [ngClass]="{'show-menu': isDesktopMenuVisible, 'hidden-menu': !isDesktopMenuVisible}">
+  <article id="menu-wrapper" [ngClass]="{ 'show-menu': isDesktopMenuVisible, 'hidden-menu': !isDesktopMenuVisible }">
     <div class="menu-item">
-      <h1>Informática</h1>
+      <h1>{{ 'NAVIGATION.COMPUTING' | translate }}</h1>
       <ul class="menu-list">
-        <li><a routerLink="/product-list/Informatica/Cascos y auriculares">Cascos y auriculares</a></li>
-        <li><a routerLink="/product-list/Informatica/PC">PC sobremesa</a></li>
-        <li><a routerLink="/product-list/Informatica/Portatiles">Portátiles</a></li>
-        <li><a routerLink="/product-list/Informatica/Raton">Ratones</a></li>
-        <li><a routerLink="/product-list/Informatica/Teclado">Teclados</a></li>
+        <li><a routerLink="/product-list/Informatica/Cascos y auriculares">{{ 'NAVIGATION.HEADPHONES' | translate }}</a></li>
+        <li><a routerLink="/product-list/Informatica/PC">{{ 'NAVIGATION.DESKTOP' | translate }}</a></li>
+        <li><a routerLink="/product-list/Informatica/Portatiles">{{ 'NAVIGATION.LAPTOPS' | translate }}</a></li>
+        <li><a routerLink="/product-list/Informatica/Raton">{{ 'NAVIGATION.MOUSE' | translate }}</a></li>
+        <li><a routerLink="/product-list/Informatica/Teclado">{{ 'NAVIGATION.KEYBOARD' | translate }}</a></li>
       </ul>
     </div>
+
     <div class="menu-item">
-      <h1>Gaming</h1>
+      <h1>{{ 'NAVIGATION.GAMING' | translate }}</h1>
       <ul class="menu-list">
-        <li><a routerLink="/product-list/Gaming/Consolas">Consolas</a></li>
-        <li><a routerLink="/product-list/Gaming/Microfono">Micrófonos</a></li>
-        <li><a routerLink="/product-list/Gaming/Portatil gaming">Portátiles gaming</a></li>
-        <li><a>Accesorios gaming</a></li>
-        <li><a>Juegos PC</a></li>
+        <li><a routerLink="/product-list/Gaming/Consolas">{{ 'NAVIGATION.CONSOLES' | translate }}</a></li>
+        <li><a routerLink="/product-list/Gaming/Microfono">{{ 'NAVIGATION.MICROPHONES' | translate }}</a></li>
+        <li><a routerLink="/product-list/Gaming/Portatil gaming">{{ 'NAVIGATION.GAMING_LAPTOPS' | translate }}</a></li>
+        <li><a>{{ 'NAVIGATION.GAMING_ACCESSORIES' | translate }}</a></li>
+        <li><a>{{ 'NAVIGATION.PC_GAMES' | translate }}</a></li>
       </ul>
     </div>
+
     <div class="menu-item">
-      <h1>Telefonía</h1>
+      <h1>{{ 'NAVIGATION.PHONES' | translate }}</h1>
       <ul class="menu-list">
-        <li><a>Smartphones</a></li>
-        <li><a>Fundas y protectores</a></li>
-        <li><a>Accesorios para móviles</a></li>
-        <li><a>Telefonía doméstica</a></li>
+        <li><a>{{ 'NAVIGATION.SMARTPHONES' | translate }}</a></li>
+        <li><a>{{ 'NAVIGATION.CASES' | translate }}</a></li>
+        <li><a>{{ 'NAVIGATION.MOBILE_ACCESSORIES' | translate }}</a></li>
+        <li><a>{{ 'NAVIGATION.LANDLINE' | translate }}</a></li>
       </ul>
     </div>
+
     <div class="menu-item">
-      <h1>Televisores</h1>
+      <h1>{{ 'NAVIGATION.TV' | translate }}</h1>
       <ul class="menu-list">
-        <li><a>TV Full HD</a></li>
-        <li><a>TV 4K UHD</a></li>
-        <li><a>TV 8K UHD</a></li>
-        <li><a>Reproductores DVD / Blu-ray</a></li>
-        <li><a>Accesorios TV</a></li>
+        <li><a>{{ 'NAVIGATION.TV_FULLHD' | translate }}</a></li>
+        <li><a>{{ 'NAVIGATION.TV_4K' | translate }}</a></li>
+        <li><a>{{ 'NAVIGATION.TV_8K' | translate }}</a></li>
+        <li><a>{{ 'NAVIGATION.DVD_PLAYERS' | translate }}</a></li>
+        <li><a>{{ 'NAVIGATION.TV_ACCESSORIES' | translate }}</a></li>
       </ul>
     </div>
+
     <div class="menu-item">
-      <h1>Electrodomésticos</h1>
+      <h1>{{ 'NAVIGATION.APPLIANCES' | translate }}</h1>
       <ul class="menu-list">
-        <li><a>Frigoríficos</a></li>
-        <li><a>Lavavajillas</a></li>
-        <li><a>Lavadoras</a></li>
-        <li><a>Hornos</a></li>
-        <li><a>Microondas</a></li>
+        <li><a>{{ 'NAVIGATION.FRIDGES' | translate }}</a></li>
+        <li><a>{{ 'NAVIGATION.DISHWASHERS' | translate }}</a></li>
+        <li><a>{{ 'NAVIGATION.WASHERS' | translate }}</a></li>
+        <li><a>{{ 'NAVIGATION.OVENS' | translate }}</a></li>
+        <li><a>{{ 'NAVIGATION.MICROWAVES' | translate }}</a></li>
       </ul>
     </div>
   </article>
 </section>
 
 <div id="mobile-nav-container">
-  <button
-    *ngIf="!isScrolling"
-    id="mobile-menu-btn"
-    class="mobile-only"
-    (click)="toggleMobileMenu()"
-  >
+  <button *ngIf="!isScrolling" id="mobile-menu-btn" class="mobile-only" (click)="toggleMobileMenu()">
     <i class="fi fi-rr-menu-burger"></i>
   </button>
 
   <section id="mobile-menu" [class.hidden]="!isMobileMenuVisible" class="mobile-menu">
     <ul>
-
-      <li><a routerLink="/product-list/Informatica"><i class="fi fi-rr-computer"></i>Informática</a></li>
-      <li><a routerLink="/product-list/Gaming"><i class="fi fi-rr-console-controller"></i>Gaming</a></li>
-      <li><a routerLink="/product-list/Telefonia"><i class="fi fi-rr-mobile-button"></i>Telefonía</a></li>
-      <li><a routerLink="/product-list/Televisores"><i class="fi fi-rr-screen"></i>Televisores</a></li>
-      <li><a routerLink="/product-list/Electrodomesticos"><i class="fi fi-rr-washer"></i>Electrodomésticos</a></li>
-      <li><a routerLink="/product-list" [queryParams]="{ ofertas: true }"><i class="fi fi-rr-badge-percent"></i>Ofertas</a></li>
+      <li><a routerLink="/product-list/Informatica"><i class="fi fi-rr-computer"></i>{{ 'NAVIGATION.COMPUTING' | translate }}</a></li>
+      <li><a routerLink="/product-list/Gaming"><i class="fi fi-rr-console-controller"></i>{{ 'NAVIGATION.GAMING' | translate }}</a></li>
+      <li><a routerLink="/product-list/Telefonia"><i class="fi fi-rr-mobile-button"></i>{{ 'NAVIGATION.PHONES' | translate }}</a></li>
+      <li><a routerLink="/product-list/Televisores"><i class="fi fi-rr-screen"></i>{{ 'NAVIGATION.TV' | translate }}</a></li>
+      <li><a routerLink="/product-list/Electrodomesticos"><i class="fi fi-rr-washer"></i>{{ 'NAVIGATION.APPLIANCES' | translate }}</a></li>
+      <li><a routerLink="/product-list" [queryParams]="{ ofertas: true }"><i class="fi fi-rr-badge-percent"></i>{{ 'NAVIGATION.OFFERS' | translate }}</a></li>
     </ul>
   </section>
 </div>
-

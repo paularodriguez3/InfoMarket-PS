@@ -254,6 +254,89 @@
     "CONFIRM": "Oui, supprimer le compte",
     "CANCEL": "Annuler",
     "DELETE": "Supprimer mon compte"
+  },
+  "FOOTER": {
+    "ABOUT_US": {
+      "TITLE": "À propos",
+      "WHO": "Qui sommes-nous ?",
+      "WORK": "Travailler avec nous",
+      "COOKIES": "Politique des cookies",
+      "PRIVACY": "Politique de confidentialité"
+    },
+    "SUPPORT": {
+      "TITLE": "Support client",
+      "HELP_CENTER": "Aide / Centre d'assistance",
+      "ACCOUNT": "Gérer le compte",
+      "SHIPPING": "Informations sur la livraison",
+      "GIFTS": "Cartes cadeaux"
+    },
+    "CONNECT": {
+      "TITLE": "Connectez-vous avec nous"
+    },
+    "COPYRIGHT": "Copyright © 2025 Infomarket Inc. Tous droits réservés.",
+    "POLICIES": {
+      "PRIVACY": "Politique de confidentialité",
+      "COOKIES": "Utilisation des cookies",
+      "TERMS": "Conditions d'utilisation",
+      "REFUNDS": "Ventes et remboursements",
+      "LEGAL": "Mentions légales"
+    }
+  },
+  "HEADER": {
+    "SEARCH_PLACEHOLDER": "Que cherchez-vous ?...",
+    "ADD_PRODUCT": "Ajouter un produit",
+    "WISHLIST": "Liste de souhaits"
+  },
+  "NAVIGATION": {
+    "MENU": "Menu",
+    "OFFERS": "Promotions",
+    "COMPUTING": "Informatique",
+    "GAMING": "Jeux vidéo",
+    "PHONES": "Téléphonie",
+    "TV": "Téléviseurs",
+    "APPLIANCES": "Électroménagers",
+
+    "HEADPHONES": "Casques et écouteurs",
+    "DESKTOP": "Ordinateurs de bureau",
+    "LAPTOPS": "Ordinateurs portables",
+    "MOUSE": "Souris",
+    "KEYBOARD": "Claviers",
+
+    "CONSOLES": "Consoles",
+    "MICROPHONES": "Micros",
+    "GAMING_LAPTOPS": "Portables gaming",
+    "GAMING_ACCESSORIES": "Accessoires gaming",
+    "PC_GAMES": "Jeux PC",
+
+    "SMARTPHONES": "Smartphones",
+    "CASES": "Coques et protections",
+    "MOBILE_ACCESSORIES": "Accessoires mobiles",
+    "LANDLINE": "Téléphones fixes",
+
+    "TV_FULLHD": "TV Full HD",
+    "TV_4K": "TV 4K UHD",
+    "TV_8K": "TV 8K UHD",
+    "DVD_PLAYERS": "Lecteurs DVD / Blu-ray",
+    "TV_ACCESSORIES": "Accessoires TV",
+
+    "FRIDGES": "Réfrigérateurs",
+    "DISHWASHERS": "Lave-vaisselle",
+    "WASHERS": "Machines à laver",
+    "OVENS": "Fours",
+    "MICROWAVES": "Micro-ondes"
+  },
+  "ORDER_MANAGER": {
+    "TITLE": "Mes achats",
+    "NO_ORDERS": "Vous n'avez encore aucun achat.",
+    "ARRIVAL": "Date d'arrivée",
+    "TOTAL": "Prix total"
+  },
+  "PAYMENT_SUMMARY": {
+    "TITLE": "Résumé du paiement",
+    "CONFIRMED": "Votre paiement a été confirmé",
+    "METHOD": "Mode de paiement",
+    "ARRIVAL": "Votre date d'arrivée est",
+    "DELIVERY": "Livraison du colis"
   }
 
 }
