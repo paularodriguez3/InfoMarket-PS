@@ -1,8 +1,10 @@
 import {Component, inject, OnInit} from '@angular/core';
-import {Feature, Product} from '../../models/product.model';
+import {Feature, Product, Valoracion} from '../../models/product.model';
 import {ShoppingCartService} from '../../services/shopping-cart.service';
 import {Router} from '@angular/router';
-import {NgClass, NgIf} from '@angular/common';
+import {DatePipe, NgClass, NgForOf, NgIf} from '@angular/common';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {ProductService} from '../../services/product.service';
 import {WishListService} from '../../services/wish-list.service';
 
 @Component({
@@ -11,7 +13,11 @@ import {WishListService} from '../../services/wish-list.service';
   templateUrl: './product-details.component.html',
   imports: [
     NgIf,
-    NgClass
+    NgClass,
+    NgForOf,
+    ReactiveFormsModule,
+    FormsModule,
+    DatePipe
   ],
   styleUrl: './product-details.component.css'
 })
@@ -27,7 +33,8 @@ export class ProductDetailsComponent implements OnInit {
     Categoria: '',
     Subcategoria: '',
     Descuento: 0,
-    Stock: 0
+    Stock: 0,
+    Valoraciones: []
   };
   cantidad: number = 1;
   precioTotal: number = this.product.Precio;
@@ -38,7 +45,12 @@ export class ProductDetailsComponent implements OnInit {
   isAdmin: boolean = false;
   isLoggedIn: boolean = false;
 
-  constructor(private router:Router, private wishListService: WishListService) {}
+  mostrarModal = false;
+  valoracion = 1;
+  comentario: string = '';
+  puntuacionMedia: number = 0;
+
+  constructor(private router:Router, private firebaseService: ProductService, private wishListService: WishListService) {}
 
   ngOnInit() {
     this.product.Nombre = history.state.product.Nombre;
@@ -60,8 +72,27 @@ export class ProductDetailsComponent implements OnInit {
     this.product.Categoria = history.state.product.Categoria;
     this.product.Subcategoria = history.state.product.Subcategoria;
     this.product.Stock = history.state.product.Stock;
+    this.product.Valoraciones = history.state.product.Valoraciones || [];
+
+    console.log('Valoraciones antes1 del mapeo:', this.product.Valoraciones);
+
+    this.product.Valoraciones = (this.product.Valoraciones ?? []).map(val => {
+      return {
+        ...val,
+        Fecha: val.Fecha && 'toDate' in val.Fecha
+          ? (val.Fecha as any).toDate()
+          : new Date((val.Fecha as any).seconds * 1000)
+      };
+    }).sort((a, b) => {
+      const fechaA = a.Fecha ? new Date(a.Fecha).getTime() : 0;
+      const fechaB = b.Fecha ? new Date(b.Fecha).getTime() : 0;
+      return fechaB - fechaA;
+    });
+
+    console.log('Valoraciones después del mapeo:', this.product.Valoraciones);
 
     this.checkUserRole();
+    this.calcularPuntuacionMedia();
     console.log(this.isAdmin);
   }
 
@@ -73,7 +104,9 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   incrementQty() {
-    this.cantidad++;
+    if (this.product && this.cantidad < this.product.Stock) {
+      this.cantidad++;
+    }
     this.precioTotal = Number((this.product.Precio * this.cantidad).toFixed(2));
   }
 
@@ -122,5 +155,96 @@ export class ProductDetailsComponent implements OnInit {
   addToWishList() {
     this.wishListService.addToWishList(this.product);
     alert("Producto añadido a la lista de deseos");
+  }
+
+  trackByIndex(index: number, item: any): number {
+    return index;
+  }
+
+  mostrarModalValoracion() {
+    this.mostrarModal = true;
+    this.valoracion = 1;
+    this.comentario = '';
+  }
+
+  async valorar() {
+    if (!this.valoracion) return;
+
+    const nuevaValoracion = {
+      Puntuacion: this.valoracion,
+      Comentario: this.comentario,
+      Fecha: new Date(),
+      Usuario: this.obtenerNombreUsuario()
+    };
+
+    try {
+      console.log(this.product.id);
+      if (this.product.id) {
+        await this.firebaseService.valorarProducto(
+          this.product.id,
+          nuevaValoracion,
+          this.product.Categoria,
+          this.product.Subcategoria
+        );
+      }
+
+      console.log('Valoraciones antess del mapeo:', this.product.Valoraciones);
+
+      this.firebaseService.getProductById(this.product.Categoria || '', this.product.Subcategoria || '', this.product.id || '')
+        .subscribe((updatedProduct) => {
+          console.log('Valoraciones antes33 del mapeo:', this.product);
+          const caracteristicasUpdated: Feature[] = updatedProduct.Caracteristicas
+            ? Object.entries(updatedProduct.Caracteristicas).map(([key, value]) => ({
+              name: key,
+              value: String(value),
+            }))
+            : [];
+
+          this.product = {
+            ...updatedProduct,
+            Caracteristicas: caracteristicasUpdated,
+            Valoraciones: (updatedProduct.Valoraciones ?? []).map((val: Valoracion) => ({
+              ...val,
+              Fecha: val.Fecha instanceof Date
+                ? val.Fecha
+                : typeof (val.Fecha as any)?.toDate === 'function'
+                  ? (val.Fecha as any).toDate()
+                  : new Date((val.Fecha as any)?.seconds * 1000)
+            })).sort((a, b) => {
+              const fechaA = a.Fecha ? new Date(a.Fecha).getTime() : 0;
+              const fechaB = b.Fecha ? new Date(b.Fecha).getTime() : 0;
+              return fechaB - fechaA;
+            }),
+          };
+          console.log('Valoraciones despuésss33 del mapeo:', this.product);
+          this.calcularPuntuacionMedia();
+        });
+
+      this.cerrarModal();
+    } catch (error) {
+      console.error('Error al guardar la valoración:', error);
+    }
+  }
+
+  cerrarModal() {
+    this.mostrarModal = false;
+  }
+
+  seleccionarEstrella(index: number) {
+    this.valoracion = index + 1;
+  }
+
+  obtenerNombreUsuario(): string {
+    const user = localStorage.getItem('currentUser');
+    return user ? JSON.parse(user).name || 'Anónimo' : 'Anónimo';
+  }
+
+  calcularPuntuacionMedia() {
+    if (this.product.Valoraciones && this.product.Valoraciones.length > 0) {
+      const total = this.product.Valoraciones.reduce((acc, val) => acc + val.Puntuacion, 0);
+      this.puntuacionMedia = total / this.product.Valoraciones.length;
+    } else {
+      this.puntuacionMedia = 0;
+    }
   }
 }

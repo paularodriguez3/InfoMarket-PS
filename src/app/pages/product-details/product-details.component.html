@@ -6,9 +6,9 @@
       <p id="features">Características del producto: </p>
       <hr class = "hr-features">
       <div id="product-features">
-        @for (caracteristica of product.Caracteristicas; track product.id) {
-          <p>{{caracteristica.name + ": " + caracteristica.value }}</p>
-        }
+        <div *ngFor="let caracteristica of product.Caracteristicas; let i = index; trackBy: trackByIndex">
+          <p>{{ caracteristica.name }}: {{ caracteristica.value }}</p>
+        </div>
       </div>
       <hr class = "hr-features">
       <p id="product-stock" *ngIf="product">
@@ -26,7 +26,14 @@
           <p id="product-quantity">Cantidad: </p>
           <button class="qty-button" id="minus" (click)="decrementQty()"><i class='bx bxs-minus-circle' ></i></button>
           <p id="qty-value">{{cantidad}}</p>
-          <button class="qty-button" id="plus" (click)="incrementQty()"><i class='bx bxs-plus-circle' ></i></button>
+          <button
+            class="qty-button"
+            id="plus"
+            (click)="incrementQty()"
+            [disabled]="cantidad >= product.Stock"
+            [ngClass]="{ 'disabled-button': cantidad >= product.Stock }">
+            <i class='bx bxs-plus-circle'></i>
+          </button>
         </div>
       </div>
       <p id="final-price" *ngIf="product.Descuento && product.Descuento > 0 && product.Descuento < 100">
@@ -66,4 +73,64 @@
       </div>
     </div>
   </article>
+  <section id="product-reviews">
+    <h2>Valoraciones</h2>
+
+    <div class="reviews-container">
+      <div class="media-box">
+        <p class="media-label">Puntuación media</p>
+        <div class="media-stars">
+          <i *ngFor="let star of [1,2,3,4,5]" class="bi bi-star-fill" [ngClass]="{ 'checked': star <= puntuacionMedia }"></i>
+        </div>
+        <p class="media-number">{{ puntuacionMedia.toFixed(1) }}/5</p>
+        <p class="media-count">
+          Basado en {{ product.Valoraciones?.length || 0 }} valoraciones
+        </p>
+        <button *ngIf="isLoggedIn" class="add-review-btn" (click)="mostrarModalValoracion()">
+          <i class="bi bi-plus-lg"></i>
+        </button>
+      </div>
+
+      <div *ngIf="product.Valoraciones && product.Valoraciones.length > 0; else noReviews" class="reviews-grid">
+        <div class="review-card" *ngFor="let val of product.Valoraciones">
+          <div class="review-user">De: {{ val.Usuario || 'Anónimo' }}</div>
+          <div class="review-stars">
+            <i *ngFor="let star of [1,2,3,4,5]" class="bi bi-star-fill" [ngClass]="{ 'checked': star <= val.Puntuacion }"></i>
+          </div>
+          <p class="review-comment">“{{ val.Comentario || 'Sin comentario' }}”</p>
+          <p class="review-date">{{ val.Fecha | date:'dd/MM/yyyy' }}</p>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #noReviews>
+      <p>No hay valoraciones</p>
+    </ng-template>
+  </section>
+  <div class="modal-overlay" *ngIf="mostrarModal">
+    <div class="modal">
+      <h2>Valora tu experiencia de compra</h2>
+      <div class="rating">
+        <i
+          *ngFor="let star of [0,1,2,3,4]; let i = index"
+          class="bi bi-star-fill star"
+          [ngClass]="{ 'checked': i < valoracion }"
+          (click)="seleccionarEstrella(i)">
+        </i>
+      </div>
+      <textarea
+        [(ngModel)]="comentario"
+        maxlength="200"
+        rows="3"
+        placeholder="Añade un comentario..."
+        class="comentario-textarea">
+      </textarea>
+      <div class="char-counter">{{ comentario.length }}/200</div>
+      <div id="buttons">
+        <button id="send" (click)="valorar()">Enviar</button>
+        <button id="close" (click)="cerrarModal()">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
 </main>

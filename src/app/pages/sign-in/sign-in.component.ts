@@ -46,6 +46,7 @@ export class SignInComponent implements OnInit {
 
       localStorage.setItem('currentUser', JSON.stringify({
         uid: user.uid,
+        name: user.displayName,
         email: user.email,
         emailVerified: user.emailVerified
       }));
