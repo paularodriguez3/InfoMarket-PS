@@ -3,6 +3,7 @@ import {Product} from '../../models/product.model';
 import {Router} from '@angular/router';
 import {ShoppingCartService} from '../../services/shopping-cart.service';
 import {DecimalPipe, NgClass, NgIf} from '@angular/common';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-product',
@@ -10,7 +11,8 @@ import {DecimalPipe, NgClass, NgIf} from '@angular/common';
   imports: [
     DecimalPipe,
     NgIf,
-    NgClass
+    NgClass,
+    TranslatePipe
   ],
   templateUrl: './product.component.html',
   styleUrl: './product.component.css'

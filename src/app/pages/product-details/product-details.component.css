@@ -30,7 +30,6 @@ body {
   justify-self: center;
   justify-content: space-between;
   overflow: hidden;
-  padding-bottom: 5%;
   align-items: flex-start;
   min-height: 500px;
 }
@@ -268,6 +267,265 @@ button i {
 
 #wish-list-button:hover {
   background-color: #3D3D3D;
+}
+
+#product-reviews {
+  margin-top: 2rem;
+  padding: 1rem;
+  border-top: 2px solid #ccc;
+  font-family: 'SF Pro Display', sans-serif;
+}
+
+.review {
+  margin-bottom: 1rem;
+}
+
+.review-stars i {
+  color: #bbb;
+  font-size: 20px;
+  margin-right: 2px;
+}
+
+.review-stars i.checked {
+  color: gold;
+}
+
+.review-comment {
+  margin: 0.5rem 0;
+  font-style: italic;
+}
+
+.review-date {
+  font-size: 0.9em;
+  color: #666;
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.2rem;
+  margin-top: 1rem;
+}
+
+.review-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e2e2;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  padding: 1rem;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: box-shadow 0.3s ease;
+}
+
+.review-card:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.review-stars {
+  margin-bottom: 0.5rem;
+}
+
+.review-stars i {
+  color: #bbb;
+  font-size: 20px;
+  margin-right: 2px;
+}
+
+.review-stars i.checked {
+  color: gold;
+}
+
+.review-comment {
+  font-style: italic;
+  color: #333;
+  flex-grow: 1;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+.review-date {
+  font-size: 0.8rem;
+  color: #666;
+  text-align: right;
+}
+
+.review-user {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.add-review-btn {
+  background-color: #FAFAFC;
+  color: #1D1D1F;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #1D1D1F;
+  border-radius: 50%;
+  font-size: 24px;
+  width: 55px;
+  height: 55px;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  transition: background-color 0.2s;
+}
+
+.add-review-btn:hover {
+  background-color: darkgray;
+}
+
+
+.modal-overlay {
+  font-family: 'SF Pro Display', sans-serif;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 90%;
+  height: 30%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.star {
+  color: #bbb;
+  font-size: 30px;
+  margin: 10px 5px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.star.checked {
+  color: gold;
+}
+
+.comentario-textarea {
+  width: 90%;
+  resize: none;
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-family: 'SF Pro Display', sans-serif;
+  font-size: 14px;
+}
+
+.char-counter {
+  font-size: 12px;
+  color: #666;
+  margin-top: -4%;
+}
+
+#buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  font-family: 'SF Pro Display', sans-serif;
+}
+
+#close {
+  background-color: #FAFAFC;
+  border-radius: 15px;
+  width: 40%;
+  height: auto;
+  color: #000;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#send {
+  font-family: 'SF Pro Display', sans-serif;
+  background-color: #FAFAFC;
+  border-radius: 15px;
+  width: 40%;
+  height: auto;
+  color: #000;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.qty-button:disabled,
+.disabled-button {
+  background-color: #ddd;
+  color: #999;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.2rem;
+  flex: 1;
+}
+
+.media-box {
+  background-color: #ffffff;
+  border: 1px solid #e2e2e2;
+  border-radius: 10px;
+  padding: 1.5rem;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.media-label {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.media-stars {
+  margin-bottom: 0.5rem;
+}
+
+.media-stars i {
+  font-size: 22px;
+  margin-right: 4px;
+  color: #ccc;
+}
+
+.media-stars i.checked {
+  color: gold;
+}
+
+.media-number {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.media-count {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.reviews-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 2rem;
 }
 
 @media(max-width: 991px) {

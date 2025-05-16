@@ -135,6 +135,13 @@ body {
   font-family: inherit;
 }
 
+#social-network-wrapper {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  width: 100%;
+}
+
 @media (max-width: 1024px) {
   #footer-wrapper {
     flex-direction: column;
@@ -166,8 +173,9 @@ body {
 
   #social-network-wrapper {
     display: flex;
-    gap: 15px;
+    gap: 1rem;
     justify-content: center;
+    width: 100%;
   }
 
   #copyright-wrapper {

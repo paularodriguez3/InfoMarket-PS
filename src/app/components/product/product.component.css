@@ -117,6 +117,13 @@
   outline: 1px solid #746F6F;
 }
 
+#add-to-cart:disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+  border: none;
+}
+
 #see {
   font-family: 'SF Pro Display', sans-serif;
   width: 100px;

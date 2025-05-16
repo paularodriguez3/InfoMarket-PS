@@ -1,9 +1,10 @@
 <article id="product" class="product-info-link" [ngClass]="{ 'no-stock': product.Stock === 0 }">
   <div id="product-image" class="product-info-link">
-    <img id="image" [src]="imageUrl" [alt]="product.Nombre">
+    <img id="image" [src]="imageUrl" [alt]="product.Nombre" />
   </div>
   <p id="product-name">{{ product.Nombre }}</p>
   <p id="product-desc">{{ product.Descripcion }}</p>
+
   <p class="price" *ngIf="product.Descuento && product.Descuento > 0 && product.Descuento < 100">
     <span class="original-price">{{ product.Precio | number:'1.2-2' }}€</span>
     <span class="discounted-price">{{ getPrecioConDescuento(product) | number:'1.2-2' }}€</span>
@@ -12,8 +13,11 @@
   <p class="price" *ngIf="!product.Descuento || product.Descuento <= 0 || product.Descuento >= 100">
     <span>{{ product.Precio | number:'1.2-2' }}€</span>
   </p>
+
   <div class="buttons">
-    <button id="see" (click)="onSee()">Ver</button>
-    <button id="add-to-cart" (click)="onAddToCart()">Añadir al carrito</button>
+    <button id="see" (click)="onSee()">{{ 'PRODUCT_CARD.SEE' | translate }}</button>
+    <button id="add-to-cart" (click)="onAddToCart()" [disabled]="product.Stock === 0">
+      {{ 'PRODUCT_CARD.ADD_TO_CART' | translate }}
+    </button>
   </div>
 </article>

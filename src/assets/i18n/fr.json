@@ -1,0 +1,360 @@
+{
+  "ABOUT_US": {
+    "HERO_TITLE": "Votre partenaire en technologie",
+    "HERO_TEXT": "Chez Infomarket, nous sommes spécialisés dans la fourniture des meilleurs produits informatiques, du matériel au logiciel, pour que vous soyez toujours à la pointe.",
+
+    "FEATURE_HARDWARE_ALT": "Icône Matériel",
+    "FEATURE_HARDWARE_TITLE": "Matériel haute performance",
+    "FEATURE_HARDWARE_TEXT": "Nous proposons des composants et des équipements de dernière génération pour les gamers, les professionnels et les passionnés.",
+
+    "FEATURE_SOFTWARE_ALT": "Icône Logiciel",
+    "FEATURE_SOFTWARE_TITLE": "Logiciels spécialisés",
+    "FEATURE_SOFTWARE_TEXT": "Des systèmes d’exploitation aux outils de productivité, nous avons tout ce dont vous avez besoin.",
+
+    "FEATURE_SUPPORT_ALT": "Icône Support",
+    "FEATURE_SUPPORT_TITLE": "Support technique",
+    "FEATURE_SUPPORT_TEXT": "Notre équipe d’experts est toujours disponible pour vous aider en cas de question ou de problème.",
+
+    "HISTORY_TITLE": "Notre histoire",
+    "HISTORY_TEXT": "Fondé en 2025, Infomarket est né avec la mission de devenir la référence en technologie informatique. Nous grandissons grâce à notre passion pour l’innovation et notre engagement envers la qualité.",
+    "HISTORY_IMAGE_ALT": "Notre Histoire",
+
+    "VALUES_TITLE": "Nos valeurs",
+
+    "VALUE_INNOVATION_TITLE": "Innovation",
+    "VALUE_INNOVATION_TEXT": "Nous restons à la pointe en proposant les dernières tendances technologiques.",
+
+    "VALUE_QUALITY_TITLE": "Qualité",
+    "VALUE_QUALITY_TEXT": "Nous travaillons avec les meilleures marques pour garantir des produits durables et fiables.",
+
+    "VALUE_COMMITMENT_TITLE": "Engagement",
+    "VALUE_COMMITMENT_TEXT": "Nous nous efforçons de dépasser les attentes de nos clients à chaque achat."
+  },
+  "PRODUCT": {
+    "NAME_LABEL": "Nom du produit :",
+    "NAME_PLACEHOLDER": "Entrez le nom du produit",
+    "DESC_LABEL": "Description du produit :",
+    "DESC_PLACEHOLDER": "Entrez la description du produit",
+    "CATEGORY_LABEL": "Catégorie :",
+    "CATEGORY_PLACEHOLDER": "Sélectionnez une catégorie",
+    "SUBCATEGORY_LABEL": "Sous-catégorie :",
+    "SUBCATEGORY_PLACEHOLDER": "Sélectionnez une sous-catégorie",
+    "FEATURES_LABEL": "Caractéristiques :",
+    "FEATURE_NAME_PLACEHOLDER": "Nom de la caractéristique",
+    "FEATURE_VALUE_PLACEHOLDER": "Valeur de la caractéristique",
+    "REMOVE_FEATURE": "Supprimer",
+    "ADD_FEATURE": "Ajouter une caractéristique",
+    "QUANTITY_LABEL": "Quantité :",
+    "PRICE_LABEL": "Prix par unité (€) :",
+    "DISCOUNT_LABEL": "Remise (%) :",
+    "FINAL_PRICE_LABEL": "Prix final :",
+    "IMAGE_LABEL": "Sélectionnez une image du produit :",
+    "SAVE_CHANGES": "Enregistrer les modifications",
+    "ADD_PRODUCT": "Ajouter le produit",
+    "DELETE_PRODUCT": "Supprimer le produit",
+    "IMAGE_ALT": "Produit"
+  },
+  "CHECKOUT": {
+    "BILLING_TITLE": "ADRESSE DE FACTURATION",
+    "COUNTRY_LABEL": "Pays",
+    "ADDRESS_LABEL": "Adresse",
+    "SHOP_LABEL": "Magasin physique",
+    "SHOP_PLACEHOLDER": "Sélectionnez un magasin",
+    "ZIP_LABEL": "Code postal",
+    "PROVINCE_LABEL": "Province",
+    "MY_ADDRESSES": "Mes adresses",
+    "CONTINUE": "Continuer"
+  },
+  "SUPPORT": {
+    "TITLE": "Support technique",
+    "HELP_TEXT": "Besoin d’aide ? Nous sommes là pour vous.",
+    "CONTACT_LINK": "Contacter le support",
+    "COPY_EMAIL_TEXT": "Ou copiez notre adresse e-mail :"
+  },
+  "RECOVERY": {
+    "TITLE": "Récupération de mot de passe",
+    "SUBTITLE": "Saisissez votre adresse e-mail pour réinitialiser votre compte ou changer votre mot de passe",
+    "EMAIL_PLACEHOLDER": "Adresse e-mail",
+    "WAIT": "Veuillez patienter",
+    "CONTINUE": "Continuer",
+    "BACK_TO_LOGIN": "Retour à la connexion"
+  },
+  "HOME": {
+    "MAIN_TITLE": "Infomarket",
+    "MAIN_DESCRIPTION": "L’innovation à portée de main.",
+    "OFFERS_TITLE": "Offres",
+    "OFFERS_DESCRIPTION": "Mettez à jour votre univers numérique.",
+    "SECTION_COMPUTING": "INFORMATIQUE",
+    "SECTION_GAMING": "JEUX VIDÉO",
+    "SECTION_PHONES": "TÉLÉPHONIE",
+    "SECTION_TVS": "TÉLÉVISEURS",
+    "SECTION_APPLIANCES": "ÉLECTROMÉNAGER"
+  },
+  "CONFIRMATION": {
+    "RATE_TITLE": "Évaluez votre expérience d'achat",
+    "COMMENT_PLACEHOLDER": "Ajoutez un commentaire...",
+    "SEND": "Envoyer",
+    "CLOSE": "Fermer"
+  },
+  "PAYMENT": {
+    "TITLE": "Paiement",
+    "INSTRUCTION": "Cliquez sur l’option de paiement souhaitée",
+    "DISCOUNT_LABEL": "Code de réduction :",
+    "DISCOUNT_PLACEHOLDER": "Entrez votre code",
+    "APPLY_DISCOUNT": "Appliquer la réduction",
+    "TOTAL_PAY": "Total à payer",
+    "TOTAL_WITHOUT_TAX": "Total hors IGIC (7%)"
+  },
+  "PROFILE": {
+    "TITLE": "Mon Profil",
+    "SUBTITLE": "Gérez vos informations personnelles",
+    "USERNAME_LABEL": "Nom d'utilisateur",
+    "USERNAME_PLACEHOLDER": "Ex : Utilisateur",
+    "FIRSTNAME_LABEL": "Prénom",
+    "FIRSTNAME_PLACEHOLDER": "Ex : Paula Rosa",
+    "LASTNAME_LABEL": "Nom",
+    "LASTNAME_PLACEHOLDER": "Ex : Rodríguez Morales",
+    "EMAIL_LABEL": "E-mail",
+    "EMAIL_PLACEHOLDER": "Ex : exemple@gmail.com",
+    "PHONE_LABEL": "Téléphone",
+    "PHONE_PLACEHOLDER": "Ex : 0600000000",
+    "SAVE_CHANGES": "Enregistrer les modifications",
+    "MANAGE_CARDS": "Gérer les cartes",
+    "MANAGE_ADDRESSES": "Gérer les adresses",
+    "DELETE_ACCOUNT": "Supprimer le compte",
+    "LOGOUT": "Se déconnecter"
+  },
+  "PRODUCT_DETAIL": {
+    "FEATURES_TITLE": "Caractéristiques du produit :",
+    "STOCK": "Stock",
+    "QUANTITY": "Quantité",
+    "TOTAL_PRICE": "Prix total",
+    "ADD_TO_CART": "Ajouter au panier",
+    "EDIT": "Modifier",
+    "ADD_TO_WISHLIST": "Ajouter à la liste de souhaits",
+    "IMAGE_ALT": "Produit",
+    "REVIEWS_TITLE": "Avis",
+    "AVG_SCORE": "Note moyenne",
+    "BASED_ON": "Basé sur {{ count }} avis",
+    "REVIEW_FROM": "De :",
+    "NO_COMMENT": "Pas de commentaire",
+    "NO_REVIEWS": "Aucun avis",
+    "RATE_TITLE": "Évaluez votre expérience d'achat",
+    "COMMENT_PLACEHOLDER": "Ajoutez un commentaire...",
+    "SEND": "Envoyer",
+    "CLOSE": "Fermer"
+  },
+  "PRODUCT_LIST": {
+    "SORT_FILTER": "Trier et filtrer",
+    "SORT_BY": "Trier par :",
+    "NO_SORT": "Aucun tri",
+    "PRICE_ASC": "Prix : du plus bas au plus élevé",
+    "PRICE_DESC": "Prix : du plus élevé au plus bas",
+    "NAME_ASC": "Nom : A-Z",
+    "NAME_DESC": "Nom : Z-A",
+    "MIN_PRICE": "Prix minimum :",
+    "MAX_PRICE": "Prix maximum :",
+    "BRAND": "Marque :",
+    "COLOR": "Couleur :",
+    "APPLY": "Appliquer"
+  },
+  "SHIPPING": {
+    "TITLE": "MÉTHODE D'EXPÉDITION",
+    "NEXT": "Suivant"
+  },
+  "CART": {
+    "TITLE": "Panier d'achat",
+    "CHECKOUT": "Passer la commande",
+    "CLEAR": "Vider le panier",
+    "CONTINUE": "Continuer les achats"
+  },
+  "LOGIN": {
+    "TITLE": "Connexion",
+    "SUBTITLE": "Entrez vos identifiants pour accéder à votre compte",
+    "EMAIL_PLACEHOLDER": "Adresse e-mail",
+    "PASSWORD_PLACEHOLDER": "Mot de passe",
+    "REMEMBER_ME": "Se souvenir de moi",
+    "FORGOT_PASSWORD": "Mot de passe oublié ?",
+    "SIGN_IN": "Se connecter",
+    "OR": "ou",
+    "CREATE_ACCOUNT": "Créer un nouveau compte"
+  },
+  "SIGNUP": {
+    "TITLE": "Créer un compte",
+    "SUBTITLE": "Entrez vos informations pour créer un compte",
+    "USERNAME_PLACEHOLDER": "Nom d'utilisateur",
+    "EMAIL_PLACEHOLDER": "Email",
+    "PASSWORD_PLACEHOLDER": "Mot de passe",
+    "CONFIRM_PASSWORD_PLACEHOLDER": "Confirmer le mot de passe",
+    "CREATE_ACCOUNT": "Créer un compte",
+    "OR": "ou",
+    "SIGN_IN": "Se connecter",
+    "REQUIREMENTS": {
+      "USER_FIRST_LETTER": "Doit commencer par une lettre",
+      "USER_ALPHANUMERIC": "Seules les lettres et les chiffres sont autorisés",
+      "USER_MIN_LENGTH": "Doit comporter au moins 5 caractères",
+      "PASS_MIN_LENGTH": "Doit comporter au moins 8 caractères",
+      "PASS_UPPERCASE": "Doit contenir une majuscule",
+      "PASS_NUMBER": "Doit contenir un chiffre",
+      "PASS_LOWERCASE": "Doit contenir une minuscule",
+      "PASS_SPECIAL": "Doit contenir un caractère spécial"
+    }
+  },
+  "WISHLIST": {
+    "TITLE": "Liste de souhaits"
+  },
+  "ADDRESS_MANAGER": {
+    "TITLE": "Mes adresses",
+    "NO_ADDRESSES": "Vous n'avez encore ajouté aucune adresse.",
+    "ADD_ADDRESS": "Ajouter une adresse",
+    "CANCEL": "Annuler",
+    "COUNTRY": "Pays *",
+    "PROVINCE": "Province *",
+    "STREET": "Rue, numéro et ville *",
+    "FLOOR": "Étage",
+    "LETTER": "Lettre",
+    "POSTAL_CODE": "Code postal *",
+    "SAVE_ADDRESS": "Enregistrer l'adresse",
+    "CONFIRM_DELETE": "Êtes-vous sûr de vouloir supprimer cette adresse ?",
+    "YES_DELETE": "Oui, supprimer l'adresse"
+  },
+  "CARD_MANAGER": {
+    "TITLE": "Mes cartes",
+    "NO_CARDS": "Vous n'avez ajouté aucune carte.",
+    "ADD_CARD": "Ajouter une carte",
+    "CANCEL": "Annuler",
+    "HOLDER": "Nom du titulaire",
+    "HOLDER_ERROR": "Le nom doit comporter au moins 3 caractères.",
+    "NUMBER": "Numéro de carte (16 chiffres)",
+    "NUMBER_ERROR": "Le numéro doit comporter exactement 16 chiffres (par groupes de 4).",
+    "EXPIRY": "Date d'expiration (MM/AA)",
+    "EXPIRY_ERROR": "Utilisez le format MM/AA, par exemple 08/26.",
+    "BRAND": "Marque (Visa, Mastercard...)",
+    "SAVE": "Enregistrer la carte",
+    "EXPIRES": "Expire",
+    "CONFIRM_DELETE": "Êtes-vous sûr de vouloir supprimer cette carte ?",
+    "YES_DELETE": "Oui, supprimer ma carte"
+  },
+  "CARD_DISPLAY": {
+    "TITLE": "Mes cartes",
+    "NO_CARDS": "Vous n'avez encore ajouté aucune carte.",
+    "EXPIRES": "Expire",
+    "COPY_PAN": "Copier le PAN",
+    "COPY_EXPIRY": "Copier l'expiration",
+    "COPY_OWNER": "Copier le titulaire",
+    "COPIED_PAN": "PAN copié !",
+    "COPIED_EXPIRY": "Expiration copiée !",
+    "COPIED_OWNER": "Nom copié !"
+  },
+  "ACCOUNT_DELETE": {
+    "TITLE": "Supprimer le compte",
+    "WARNING": "Cette action est <strong>irréversible</strong>. Toutes vos données personnelles, cartes et adresses seront supprimées définitivement.",
+    "EMAIL": "Adresse e-mail",
+    "PASSWORD": "Mot de passe",
+    "CONFIRM": "Oui, supprimer le compte",
+    "CANCEL": "Annuler",
+    "DELETE": "Supprimer mon compte"
+  },
+  "FOOTER": {
+    "ABOUT_US": {
+      "TITLE": "À propos",
+      "WHO": "Qui sommes-nous ?",
+      "WORK": "Travailler avec nous",
+      "COOKIES": "Politique des cookies",
+      "PRIVACY": "Politique de confidentialité"
+    },
+    "SUPPORT": {
+      "TITLE": "Support client",
+      "HELP_CENTER": "Aide / Centre d'assistance",
+      "ACCOUNT": "Gérer le compte",
+      "SHIPPING": "Informations sur la livraison",
+      "GIFTS": "Cartes cadeaux"
+    },
+    "CONNECT": {
+      "TITLE": "Connectez-vous avec nous"
+    },
+    "COPYRIGHT": "Copyright © 2025 Infomarket Inc. Tous droits réservés.",
+    "POLICIES": {
+      "PRIVACY": "Politique de confidentialité",
+      "COOKIES": "Utilisation des cookies",
+      "TERMS": "Conditions d'utilisation",
+      "REFUNDS": "Ventes et remboursements",
+      "LEGAL": "Mentions légales"
+    }
+  },
+  "HEADER": {
+    "SEARCH_PLACEHOLDER": "Que cherchez-vous ?...",
+    "ADD_PRODUCT": "Ajouter un produit",
+    "WISHLIST": "Liste de souhaits"
+  },
+  "NAVIGATION": {
+    "MENU": "Menu",
+    "OFFERS": "Promotions",
+    "COMPUTING": "Informatique",
+    "GAMING": "Jeux vidéo",
+    "PHONES": "Téléphonie",
+    "TV": "Téléviseurs",
+    "APPLIANCES": "Électroménagers",
+
+    "HEADPHONES": "Casques et écouteurs",
+    "DESKTOP": "Ordinateurs de bureau",
+    "LAPTOPS": "Ordinateurs portables",
+    "MOUSE": "Souris",
+    "KEYBOARD": "Claviers",
+
+    "CONSOLES": "Consoles",
+    "MICROPHONES": "Micros",
+    "GAMING_LAPTOPS": "Portables gaming",
+    "GAMING_ACCESSORIES": "Accessoires gaming",
+    "PC_GAMES": "Jeux PC",
+
+    "SMARTPHONES": "Smartphones",
+    "CASES": "Coques et protections",
+    "MOBILE_ACCESSORIES": "Accessoires mobiles",
+    "LANDLINE": "Téléphones fixes",
+
+    "TV_FULLHD": "TV Full HD",
+    "TV_4K": "TV 4K UHD",
+    "TV_8K": "TV 8K UHD",
+    "DVD_PLAYERS": "Lecteurs DVD / Blu-ray",
+    "TV_ACCESSORIES": "Accessoires TV",
+
+    "FRIDGES": "Réfrigérateurs",
+    "DISHWASHERS": "Lave-vaisselle",
+    "WASHERS": "Machines à laver",
+    "OVENS": "Fours",
+    "MICROWAVES": "Micro-ondes"
+  },
+  "ORDER_MANAGER": {
+    "TITLE": "Mes achats",
+    "NO_ORDERS": "Vous n'avez encore aucun achat.",
+    "ARRIVAL": "Date d'arrivée",
+    "TOTAL": "Prix total"
+  },
+  "PAYMENT_SUMMARY": {
+    "TITLE": "Résumé du paiement",
+    "CONFIRMED": "Votre paiement a été confirmé",
+    "METHOD": "Mode de paiement",
+    "ARRIVAL": "Votre date d'arrivée est",
+    "DELIVERY": "Livraison du colis"
+  },
+  "PRODUCT_CARD": {
+    "SEE": "Voir",
+    "ADD_TO_CART": "Ajouter au panier"
+  },
+  "PRODUCT_INFO_COMPONENT": {
+    "QUANTITY": "Quantité"
+  },
+  "SHOPPING_INFO": {
+    "TOTAL": "Total"
+  },
+  "SHOPPING_PROCESS": {
+    "BILLING": "Facturation",
+    "PAYMENT": "Paiement",
+    "SUMMARY": "Résumé"
+  },
+  "WISHLIST_PRODUCT": {
+    "STOCK": "Quantité"
+  }
+
+}

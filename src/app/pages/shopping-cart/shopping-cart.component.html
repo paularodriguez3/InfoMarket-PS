@@ -1,5 +1,8 @@
 <main>
-  <h1 id="shopping-cart-title"><i class='bx bx-cart'></i> Carrito de compra</h1>
+  <h1 id="shopping-cart-title">
+    <i class='bx bx-cart'></i> {{ 'CART.TITLE' | translate }}
+  </h1>
+
   <article id="shopping-info">
     <div id="shopping-cart-list">
       <div *ngFor="let item of shoppingCart">
@@ -12,6 +15,7 @@
         </app-product-info>
       </div>
     </div>
+
     <section id="buy-panel">
       <div id="price-section">
         <ng-container *ngIf="hasAnyDiscount(); else noDiscount">
@@ -36,9 +40,18 @@
           </div>
         </ng-template>
       </div>
-      <button id="buy-button" (click)="buy()">Procesar pedido</button>
-      <button id="clear-cart-button" *ngIf="!cartIsEmpty()" (click)="clearCart()">Vaciar carrito</button>
-      <button id="continue-shopping-button" (click)="continueShopping()">Seguir comprando</button>
+
+      <button id="buy-button" (click)="buy()">
+        {{ 'CART.CHECKOUT' | translate }}
+      </button>
+
+      <button id="clear-cart-button" *ngIf="!cartIsEmpty()" (click)="clearCart()">
+        {{ 'CART.CLEAR' | translate }}
+      </button>
+
+      <button id="continue-shopping-button" (click)="continueShopping()">
+        {{ 'CART.CONTINUE' | translate }}
+      </button>
     </section>
   </article>
 </main>

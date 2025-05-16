@@ -21,44 +21,35 @@ export class AuthService {
 
   async signIn(email: string, password: string): Promise<any> {
     if (!this.auth) {
-      throw new Error('InfoMarket informa de que el servicio de inicio de sesión no se encuentra disponible en este momento.');
+      throw new Error('InfoMarket informa de que el servicio de inicio de sesión no está disponible en este momento.');
     }
 
     const userCredential = await signInWithEmailAndPassword(this.auth, email, password);
     const user = userCredential.user;
 
-    try {
-      const userDocRef = doc(this.firestore, `users/${user.uid}`);
-      const userSnap = await getDoc(userDocRef);
-
-      let rol = 'Desconocido';
-
-      if (userSnap.exists()) {
-        const userData = userSnap.data() as { rol?: string };
-        rol = userData.rol || 'Sin rol';
-      }
-
-      const userInfo = {
-        uid: user.uid,
-        email: user.email,
-        rol: rol
-      };
-
-      console.log('Usuario logueado:', userInfo);
-      localStorage.setItem('user', JSON.stringify(userInfo));
-
-    } catch (e) {
-      console.error('Error al obtener el rol del usuario:', e);
-      const fallbackUser = {
-        uid: user.uid,
-        email: user.email,
-        rol: 'Error'
-      };
-      localStorage.setItem('user', JSON.stringify(fallbackUser));
+    if (!user.emailVerified) {
+      throw new Error('Debes verificar tu correo electrónico antes de poder acceder.');
     }
 
+    const userDocRef = doc(this.firestore, `users/${user.uid}`);
+    const userSnap = await getDoc(userDocRef);
+
+    let rol = 'Desconocido';
+    if (userSnap.exists()) {
+      const userData = userSnap.data() as { rol?: string };
+      rol = userData.rol || 'Sin rol';
+    }
+
+    const userInfo = {
+      uid: user.uid,
+      email: user.email,
+      rol: rol
+    };
+
+    localStorage.setItem('user', JSON.stringify(userInfo));
     return user;
   }
+
 
   async registerUser(email: string, password: string, displayName: string): Promise<User> {
     if (!this.auth) {
@@ -83,6 +74,10 @@ export class AuthService {
     localStorage.setItem('user', JSON.stringify(userInfo));
 
     return user;
+  }
+
+  getCurrentUser(): User | null {
+    return this.auth?.currentUser || null;
   }
 
   async sendVerificationEmail(user: User): Promise<void> {

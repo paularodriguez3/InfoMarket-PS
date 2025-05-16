@@ -1,28 +1,28 @@
 <div class="card-manager">
-  <h3>Eliminar cuenta</h3>
+  <h3>{{ 'ACCOUNT_DELETE.TITLE' | translate }}</h3>
 
   <p class="no-cards">
-    Esta acción es <strong>irreversible</strong>. Todos tus datos personales, tarjetas y direcciones se eliminarán permanentemente.
+    {{ 'ACCOUNT_DELETE.WARNING' | translate }}
   </p>
 
   <button class="button-cancel-add" type="button" (click)="toggleForm()">
-    {{ showConfirmPopup ? 'Cancelar' : 'Eliminar mi cuenta' }}
+    {{ showConfirmPopup ? ('ACCOUNT_DELETE.CANCEL' | translate) : ('ACCOUNT_DELETE.DELETE' | translate) }}
   </button>
 
   <div class="add-form" *ngIf="showConfirmPopup">
     <div class="input-icon-cards">
       <i class="bx bxs-envelope"></i>
-      <input type="email" placeholder="Correo electrónico" [(ngModel)]="email" />
+      <input type="email" [placeholder]="'ACCOUNT_DELETE.EMAIL' | translate" [(ngModel)]="email" />
     </div>
 
     <div class="input-icon-cards">
       <i class="bx bxs-lock"></i>
-      <input type="password" placeholder="Contraseña" [(ngModel)]="password" />
+      <input type="password" [placeholder]="'ACCOUNT_DELETE.PASSWORD' | translate" [(ngModel)]="password" />
     </div>
 
     <div class="popup-buttons">
-      <button type="button" (click)="confirmAndDelete()">Sí, eliminar cuenta</button>
-      <button type="button" class="button-confirm" (click)="toggleForm()">Cancelar</button>
+      <button type="button" (click)="confirmAndDelete()">{{ 'ACCOUNT_DELETE.CONFIRM' | translate }}</button>
+      <button type="button" class="button-confirm" (click)="toggleForm()">{{ 'ACCOUNT_DELETE.CANCEL' | translate }}</button>
     </div>
   </div>
 </div>

@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {NgClass} from '@angular/common';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-shopping-process',
   standalone: true,
   templateUrl: './shopping-process.component.html',
   imports: [
-    NgClass
+    NgClass,
+    TranslatePipe
   ],
   styleUrls: ['./shopping-process.component.css']
 })

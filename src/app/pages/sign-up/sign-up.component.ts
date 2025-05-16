@@ -10,11 +10,12 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { UserService } from '../../services/user.service';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-sign-up',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, TranslatePipe],
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css']
 })

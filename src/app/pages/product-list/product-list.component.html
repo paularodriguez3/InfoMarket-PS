@@ -2,42 +2,42 @@
   <section id="main-title-wrapper">
     <h1 id="main-title">{{ titulo }}</h1>
     <button id="filter-button" (click)="toggleFilterMenu()">
-      <i class='bx bx-filter-alt'></i> Ordenar y filtrar
+      <i class='bx bx-filter-alt'></i> {{ 'PRODUCT_LIST.SORT_FILTER' | translate }}
     </button>
   </section>
 
   <section
     id="filter-menu-wrapper"
     [ngClass]="{
-    'visible-filter': isFilterMenuVisible,
-    'hidden-filter': !isFilterMenuVisible
-  }"
+      'visible-filter': isFilterMenuVisible,
+      'hidden-filter': !isFilterMenuVisible
+    }"
   >
     <ul id="filter-menu">
       <li>
-        <label>Ordenar por:</label>
+        <label>{{ 'PRODUCT_LIST.SORT_BY' | translate }}</label>
         <select [(ngModel)]="ordenSeleccionado">
-          <option value="">Sin orden</option>
-          <option value="precioAsc">Precio: Menor a Mayor</option>
-          <option value="precioDesc">Precio: Mayor a Menor</option>
-          <option value="nombreAsc">Nombre: A-Z</option>
-          <option value="nombreDesc">Nombre: Z-A</option>
+          <option value="">{{ 'PRODUCT_LIST.NO_SORT' | translate }}</option>
+          <option value="precioAsc">{{ 'PRODUCT_LIST.PRICE_ASC' | translate }}</option>
+          <option value="precioDesc">{{ 'PRODUCT_LIST.PRICE_DESC' | translate }}</option>
+          <option value="nombreAsc">{{ 'PRODUCT_LIST.NAME_ASC' | translate }}</option>
+          <option value="nombreDesc">{{ 'PRODUCT_LIST.NAME_DESC' | translate }}</option>
         </select>
       </li>
       <li>
-        <label>Precio mínimo:</label>
+        <label>{{ 'PRODUCT_LIST.MIN_PRICE' | translate }}</label>
         <input type="number" [(ngModel)]="precioMin">
       </li>
       <li>
-        <label>Precio máximo:</label>
+        <label>{{ 'PRODUCT_LIST.MAX_PRICE' | translate }}</label>
         <input type="number" [(ngModel)]="precioMax">
       </li>
       <li>
-        <label>Marca:</label>
+        <label>{{ 'PRODUCT_LIST.BRAND' | translate }}</label>
         <input type="text" [(ngModel)]="marca">
       </li>
       <li>
-        <label>Color:</label>
+        <label>{{ 'PRODUCT_LIST.COLOR' | translate }}</label>
         <input type="text" [(ngModel)]="color">
       </li>
       <ng-container *ngFor="let filtro of filtrosCategoria[categoria] || []">
@@ -48,7 +48,7 @@
       </ng-container>
     </ul>
     <button id="apply-button" (click)="aplicarFiltros()">
-      <i class='bx bx-filter-alt'></i> Aplicar
+      <i class='bx bx-filter-alt'></i> {{ 'PRODUCT_LIST.APPLY' | translate }}
     </button>
   </section>
 

@@ -6,13 +6,14 @@ import { ShoppingInfoComponent } from '../../components/shopping-info/shopping-i
 import { ShoppingProcessComponent } from '../../components/shopping-process/shopping-process.component';
 import {CommonModule} from '@angular/common';
 import {FirebaseService} from '../../services/firebase.service';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-billing-address',
   standalone: true,
   templateUrl: './billing-address.component.html',
   styleUrls: ['./billing-address.component.css'],
-  imports: [ShoppingProcessComponent, ShoppingInfoComponent, ReactiveFormsModule, FormsModule, CommonModule]
+  imports: [ShoppingProcessComponent, ShoppingInfoComponent, ReactiveFormsModule, FormsModule, CommonModule, TranslatePipe]
 })
 export class BillingAddressComponent implements OnInit, AfterViewInit {
   billingForm!: FormGroup;
@@ -135,6 +136,7 @@ export class BillingAddressComponent implements OnInit, AfterViewInit {
         address: parts[2]?.trim() || '',
         zip: cpMatch ? cpMatch[1] : ''
       });
+
     }
   }
 
@@ -151,11 +153,24 @@ export class BillingAddressComponent implements OnInit, AfterViewInit {
     }
   }
   selectAddress(addressId: string): void {
+    const addressInput    = document.getElementById('address') as HTMLInputElement;
+    const shopSelect      = document.getElementById('shop')    as HTMLSelectElement;
     if (this.selectedAddressId === addressId) {
       this.selectedAddressId = '';
-      this.billingForm.reset();
+      addressInput.disabled = false;
+      shopSelect.disabled = false;
+      this.billingForm = this.fb.group({
+        country: ['', Validators.required],
+        address: ['', Validators.required],
+        zip: ['', Validators.required],
+        province: ['', Validators.required],
+        shop: ['', Validators.required]
+      });
+      shopSelect.selectedIndex = 0;
     } else {
       this.selectedAddressId = addressId;
+      addressInput.disabled = true;
+      shopSelect.disabled = true;
       this.onAddressSelect();
     }
   }

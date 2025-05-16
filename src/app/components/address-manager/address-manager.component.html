@@ -1,8 +1,8 @@
 <div class="card-manager">
-  <h3>Mis direcciones</h3>
+  <h3>{{ 'ADDRESS_MANAGER.TITLE' | translate }}</h3>
 
   <div *ngIf="addresses?.length === 0" class="no-cards">
-    No has añadido direcciones aún.
+    {{ 'ADDRESS_MANAGER.NO_ADDRESSES' | translate }}
   </div>
 
   <ul>
@@ -10,36 +10,55 @@
       <div class="card-info">
         {{ address.fullAddress }}
       </div>
+      <i class='fi fi-rr-edit edit-icon' (click)="startEditingAddress(address)"></i>
       <i class='bx bx-trash delete-icon' (click)="confirmDelete(address)"></i>
     </li>
   </ul>
 
-  <button class="button-cancel-add" type="button" (click)="showAddForm = !showAddForm">
-    {{ showAddForm ? 'Cancelar' : 'Añadir dirección' }}
+  <button class="button-cancel-add" type="button" (click)="toggleAddForm()">
+    {{ showAddForm ? ('ADDRESS_MANAGER.CANCEL' | translate) : ('ADDRESS_MANAGER.ADD_ADDRESS' | translate) }}
   </button>
 
   <div class="add-form" *ngIf="showAddForm">
-    <div class="input-icon-cards"><i class="bx bxs-flag"></i><input type="text" placeholder="País *" [(ngModel)]="pais" required></div>
-    <div class="input-icon-cards"><i class="bx bxs-map"></i><input type="text" placeholder="Provincia *" [(ngModel)]="provincia" required></div>
-    <div class="input-icon-cards"><i class="bx bxs-home"></i><input type="text" placeholder="Calle, Número y Localidad o municipio *" [(ngModel)]="calle" required></div>
-    <div class="input-icon-cards"><i class="bx bxs-building"></i><input type="text" placeholder="Piso" [(ngModel)]="piso"></div>
-    <div class="input-icon-cards"><i class="bx bx-font"></i><input type="text" placeholder="Letra" [(ngModel)]="letra"></div>
-    <div class="input-icon-cards"><i class="bx bxs-envelope"></i><input type="text" placeholder="Código postal *" [(ngModel)]="codigoPostal" required></div>
+    <div class="input-icon-cards">
+      <i class="bx bxs-flag"></i>
+      <input type="text" [placeholder]="'ADDRESS_MANAGER.COUNTRY' | translate" [(ngModel)]="pais" required>
+    </div>
+    <div class="input-icon-cards">
+      <i class="bx bxs-map"></i>
+      <input type="text" [placeholder]="'ADDRESS_MANAGER.PROVINCE' | translate" [(ngModel)]="provincia" required>
+    </div>
+    <div class="input-icon-cards">
+      <i class="bx bxs-home"></i>
+      <input type="text" [placeholder]="'ADDRESS_MANAGER.STREET' | translate" [(ngModel)]="calle" required>
+    </div>
+    <div class="input-icon-cards">
+      <i class="bx bxs-building"></i>
+      <input type="text" [placeholder]="'ADDRESS_MANAGER.FLOOR' | translate" [(ngModel)]="piso">
+    </div>
+    <div class="input-icon-cards">
+      <i class="bx bx-font"></i>
+      <input type="text" [placeholder]="'ADDRESS_MANAGER.LETTER' | translate" [(ngModel)]="letra">
+    </div>
+    <div class="input-icon-cards">
+      <i class="bx bxs-envelope"></i>
+      <input type="text" [placeholder]="'ADDRESS_MANAGER.POSTAL_CODE' | translate" [(ngModel)]="codigoPostal" required>
+    </div>
 
-    <button type="button" (click)="addAddress()">Guardar dirección</button>
+    <button type="button" (click)="addAddress()">{{ 'ADDRESS_MANAGER.SAVE_ADDRESS' | translate }}</button>
   </div>
 
   <div class="delete-confirmation" *ngIf="showConfirmPopup">
     <div class="popup-delete">
-      <p>¿Estás seguro de que deseas eliminar esta dirección?</p>
+      <p>{{ 'ADDRESS_MANAGER.CONFIRM_DELETE' | translate }}</p>
       <div class="popup-buttons">
-        <button (click)="confirmDeleteAddress()">Sí, eliminar dirección</button>
-        <button class="button-confirm" (click)="cancelDelete()">Cancelar</button>
+        <button (click)="confirmDeleteAddress()">{{ 'ADDRESS_MANAGER.YES_DELETE' | translate }}</button>
+        <button class="button-confirm" (click)="cancelDelete()">{{ 'ADDRESS_MANAGER.CANCEL' | translate }}</button>
       </div>
     </div>
   </div>
+
   <div *ngIf="floatingMessage" class="floating-message" [ngClass]="{'success': floatingSuccess, 'error': !floatingSuccess}">
     {{ floatingMessage }}
   </div>
-
 </div>
