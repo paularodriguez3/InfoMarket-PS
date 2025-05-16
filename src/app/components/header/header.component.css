@@ -322,6 +322,12 @@ body {
   margin-top: -10px;
 }
 
+#header-icons {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 1.5rem;
+}
 .lang-switch {
   display: flex;
   align-items: center;

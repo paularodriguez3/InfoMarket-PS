@@ -37,6 +37,10 @@
 
         <button type="button" class="toggle-cards" (click)="toggleAddressManager()">{{ 'PROFILE.MANAGE_ADDRESSES' | translate }}</button>
         <app-address-manager *ngIf="showAddressManager" [uid]="uid"></app-address-manager>
+        <button type="button" class="toggle-cards" (click)="toggleOrderHistory()">
+          Historial de compras
+        </button>
+        <app-order-history *ngIf="showOrderHistory" [orders]="orders"></app-order-history>
 
         <button type="button" class="toggle-cards" (click)="toggleDeleteManager()">{{ 'PROFILE.DELETE_ACCOUNT' | translate }}</button>
         <app-delete-account *ngIf="showDeleteManager" [uid]="uid"></app-delete-account>

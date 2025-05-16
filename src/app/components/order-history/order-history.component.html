@@ -1,0 +1,21 @@
+<div class="order-manager">
+  <h3>Mis compras</h3>
+
+  <div *ngIf="orders.length === 0" class="no-orders">
+    No tienes compras aún.
+  </div>
+
+  <ul id="order-list">
+      <li *ngFor="let order of orders" class="order-item">
+        <div class="card-item">
+          <strong>Fecha de llegada: {{order.fechaLlegada}} Precio total: {{ order.precioTotal }}</strong>
+          <ul>
+            @for (prod of order.productos; track $index;) {
+              @let product = prod.product;
+              <li class="order-product">{{product.Nombre}} : {{product.Descuento ? (product.Precio * (1 - product.Descuento/100)).toFixed(2): product.Precio}}€ x {{prod.quantity}}</li>
+            }
+          </ul>
+        </div>
+      </li>
+  </ul>
+</div>

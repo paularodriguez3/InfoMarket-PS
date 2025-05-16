@@ -7,6 +7,16 @@
         </a>
       </div>
       <div id="user-cart">
+        <div id="header-icons">
+          <div class="search" #searchBar>
+            <input #inputBar class="input" type="text" placeholder="¿Qué estás buscando?..." [(ngModel)]="terminoBusqueda" (keyup.enter)="buscarProducto()" />
+            <button class="btn" (click)="toggleSearch()">
+              <i class="fi fi-rr-search"></i>
+            </button>
+          </div>
+          <a *ngIf="isAdmin" id="add-product" routerLink="/add-product" title="Añadir producto">
+            <i class="fi fi-rr-plus"></i>
+          </a>
         <div class="search" #searchBar>
           <input #inputBar class="input" type="text" placeholder="¿Qué estás buscando?..." [(ngModel)]="terminoBusqueda" (keyup.enter)="buscarProducto()" />
           <button class="btn" (click)="toggleSearch()">
@@ -25,15 +35,16 @@
           <i class="fi fi-rr-plus"></i>
         </a>
 
-        <a *ngIf="isLoggedIn" id="wish-list" routerLink="/wish-list" title="Lista de deseos">
-          <i class="bi bi-star"></i>
-        </a>
+          <a *ngIf="isLoggedIn" id="wish-list" routerLink="/wish-list" title="Lista de deseos">
+            <i class="fi fi-rr-star"></i>
+          </a>
 
-        <a id="user" (click)="irAlPerfil()"><i class="fi fi-rr-user"></i></a>
-        <a id="cart" routerLink="/shopping-cart">
-          <i class="fi fi-rr-briefcase-blank"></i>
-          <span class="cart-notification" *ngIf="cartItemCount > 0"> {{cartItemCount}}</span>
-        </a>
+          <a id="user" (click)="irAlPerfil()"><i class="fi fi-rr-user"></i></a>
+          <a id="cart" routerLink="/shopping-cart">
+            <i class="fi fi-rr-briefcase-blank"></i>
+            <span class="cart-notification" *ngIf="cartItemCount > 0"> {{cartItemCount}}</span>
+          </a>
+        </div>
       </div>
     </article>
   </section>
