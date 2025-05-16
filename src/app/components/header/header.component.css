@@ -350,3 +350,45 @@ body {
 .lang-switch img:hover {
   transform: scale(1.2);
 }
+
+.lang-dropdown {
+  position: relative;
+  display: inline-block;
+  font-family: 'SF Pro Display', sans-serif;
+}
+
+.dropdown-toggle {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  right: 0;
+  top: 110%;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 6px 0;
+  margin: 0;
+  list-style: none;
+  z-index: 999;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  width: 160px;
+  min-width: max-content;
+}
+
+.dropdown-menu li {
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s ease;
+}
+
+.dropdown-menu li:hover {
+  background-color: #f0f0f0;
+}
+

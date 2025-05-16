@@ -12,19 +12,19 @@ import { FormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
 import { ShoppingCartItem } from '../../models/shopping-cart-item.model';
 import { AuthService } from '../../services/auth.service';
-import {TranslatePipe, TranslateService} from '@ngx-translate/core';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-header',
   standalone: true,
   templateUrl: './header.component.html',
+  styleUrls: ['./header.component.css'],
   imports: [
     RouterLink,
     FormsModule,
     NgIf,
     TranslatePipe
-  ],
-  styleUrls: ['./header.component.css']
+  ]
 })
 export class HeaderComponent implements OnInit, DoCheck {
   @ViewChild('searchBar') searchRef!: ElementRef;
@@ -36,6 +36,7 @@ export class HeaderComponent implements OnInit, DoCheck {
   isAdmin = false;
   isLoggedIn = false;
   shoppingCart: ShoppingCartItem[] = [];
+  langDropdownOpen = false;
 
   constructor(
     private cartService: ShoppingCartService,
@@ -49,7 +50,6 @@ export class HeaderComponent implements OnInit, DoCheck {
     this.cartItemCount = this.shoppingCart.reduce((acc, item) => acc + item.quantity, 0);
     this.checkUserRole();
 
-    // cargar idioma guardado
     const savedLang = localStorage.getItem('lang');
     if (savedLang) {
       this.translate.use(savedLang);
@@ -116,16 +116,27 @@ export class HeaderComponent implements OnInit, DoCheck {
   switchLanguage(lang: string) {
     this.translate.use(lang);
     localStorage.setItem('lang', lang);
+    this.langDropdownOpen = false;
+  }
+
+  toggleLangDropdown() {
+    this.langDropdownOpen = !this.langDropdownOpen;
   }
 
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: MouseEvent): void {
-    const searchEl = this.searchRef.nativeElement as HTMLElement;
     const target = event.target as Node;
 
-    if (!searchEl.contains(target) && this.isSearchActive) {
-      searchEl.classList.remove('active');
+    // Cerrar búsqueda si hace clic fuera
+    if (this.searchRef && !this.searchRef.nativeElement.contains(target) && this.isSearchActive) {
+      this.searchRef.nativeElement.classList.remove('active');
       this.isSearchActive = false;
+    }
+
+    // Cerrar selector de idioma si hace clic fuera
+    const dropdownEl = document.querySelector('.lang-dropdown');
+    if (dropdownEl && !dropdownEl.contains(event.target as Node)) {
+      this.langDropdownOpen = false;
     }
   }
 }
