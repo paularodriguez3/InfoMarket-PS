@@ -81,6 +81,9 @@ export class ProductListComponent implements OnInit, OnDestroy {
         this.loadProductsByCategory(categoriaParam, subcategoriaParam);
       }
     });
+
+    // TEMPORAL:
+    // this.productService.copiarProductos()
   }
 
   toggleFilterMenu() {
@@ -167,9 +170,10 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
         if (nombreNormalizado.includes(searchNormalizado)) {
           const imageUrl = await this.productService.getImageUrl(data.Imagen);
-          this.filteredProducts.push({ id, ...data, Imagen: imageUrl });
+          filtered.push({ id, ...data, Imagen: imageUrl });
         }
       }
+      this.filteredProducts = filtered;
       this.isLoading = false;
     });
   }
@@ -185,9 +189,10 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
         if (data.Descuento && data.Descuento > 0 && data.Descuento < 100) {
           const imageUrl = await this.productService.getImageUrl(data.Imagen);
-          this.filteredProducts.push({ id, ...data, Imagen: imageUrl });
+          filtered.push({ id, ...data, Imagen: imageUrl });
         }
       }
+      this.filteredProducts = filtered;
       this.isLoading = false;
     });
   }
@@ -213,8 +218,9 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
         for (const data of docs) {
           const imageUrl = await this.productService.getImageUrl(data.Imagen);
-          this.filteredProducts.push({ id: data.id, ...data, Imagen: imageUrl });
+          loaded.push({ id: data.id, ...data, Imagen: imageUrl });
         }
+        this.filteredProducts = loaded;
         this.isLoading = false;
       });
     } else {
@@ -227,8 +233,9 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
         for (const [id, data] of Object.entries(productos)) {
           const imageUrl = await this.productService.getImageUrl(data.Imagen);
-          this.filteredProducts.push({ id, ...data, Imagen: imageUrl });
+          loaded.push({ id, ...data, Imagen: imageUrl });
         }
+        this.filteredProducts = loaded;
         this.isLoading = false;
       });
     }

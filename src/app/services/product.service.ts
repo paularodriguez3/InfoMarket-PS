@@ -198,4 +198,32 @@ export class ProductService {
       pedidos: arrayUnion(pedido)
     });
   }
+
+  async copiarProductos() {
+    const estructura = [
+      { categoria: 'Informatica', subcategorias: ['Cascos y auriculares', 'PC', 'Portatiles', 'Raton', 'Teclado'] },
+    ];
+
+    for (const { categoria, subcategorias } of estructura) {
+      for (const subcategoria of subcategorias) {
+        const subcatRef = collection(this.firestore, `productos/${categoria}/${subcategoria}`);
+        const productosSnap = await getDocs(subcatRef);
+
+        for (const productoDoc of productosSnap.docs) {
+          const productoData = productoDoc.data();
+
+          const nuevoDoc = {
+            ...productoData,
+            categoria,
+            subcategoria
+          };
+
+          await setDoc(doc(this.firestore, 'productos', productoDoc.id), nuevoDoc);
+          console.log(`Copiado ${productoDoc.id} desde ${categoria}/${subcategoria}`);
+        }
+      }
+    }
+
+    console.log('✅ Copia completa');
+  }
 }
