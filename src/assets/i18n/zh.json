@@ -29,5 +29,30 @@
 
     "VALUE_COMMITMENT_TITLE": "承诺",
     "VALUE_COMMITMENT_TEXT": "我们努力在每一次购物中超越客户的期望。"
+  },
+
+  "PRODUCT": {
+    "NAME_LABEL": "产品名称：",
+    "NAME_PLACEHOLDER": "请输入产品名称",
+    "DESC_LABEL": "产品描述：",
+    "DESC_PLACEHOLDER": "请输入产品描述",
+    "CATEGORY_LABEL": "类别：",
+    "CATEGORY_PLACEHOLDER": "请选择类别",
+    "SUBCATEGORY_LABEL": "子类别：",
+    "SUBCATEGORY_PLACEHOLDER": "请选择子类别",
+    "FEATURES_LABEL": "产品特性：",
+    "FEATURE_NAME_PLACEHOLDER": "特性名称",
+    "FEATURE_VALUE_PLACEHOLDER": "特性值",
+    "REMOVE_FEATURE": "删除",
+    "ADD_FEATURE": "添加特性",
+    "QUANTITY_LABEL": "数量：",
+    "PRICE_LABEL": "单价 (€)：",
+    "DISCOUNT_LABEL": "折扣 (%)：",
+    "FINAL_PRICE_LABEL": "最终价格：",
+    "IMAGE_LABEL": "选择产品图片：",
+    "SAVE_CHANGES": "保存更改",
+    "ADD_PRODUCT": "添加产品",
+    "DELETE_PRODUCT": "删除产品",
+    "IMAGE_ALT": "产品"
   }
 }

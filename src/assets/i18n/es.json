@@ -29,5 +29,30 @@
 
     "VALUE_COMMITMENT_TITLE": "Compromiso",
     "VALUE_COMMITMENT_TEXT": "Nos esforzamos por superar las expectativas de nuestros clientes en cada compra."
+  },
+
+  "PRODUCT": {
+    "NAME_LABEL": "Nombre del producto:",
+    "NAME_PLACEHOLDER": "Introduce el nombre del producto",
+    "DESC_LABEL": "Descripción del producto:",
+    "DESC_PLACEHOLDER": "Introduce la descripción del producto",
+    "CATEGORY_LABEL": "Categoría:",
+    "CATEGORY_PLACEHOLDER": "Selecciona una categoría",
+    "SUBCATEGORY_LABEL": "Subcategoría:",
+    "SUBCATEGORY_PLACEHOLDER": "Selecciona una subcategoría",
+    "FEATURES_LABEL": "Características:",
+    "FEATURE_NAME_PLACEHOLDER": "Nombre de la característica",
+    "FEATURE_VALUE_PLACEHOLDER": "Valor de la característica",
+    "REMOVE_FEATURE": "Eliminar",
+    "ADD_FEATURE": "Añadir característica",
+    "QUANTITY_LABEL": "Cantidad:",
+    "PRICE_LABEL": "Precio por unidad (€):",
+    "DISCOUNT_LABEL": "Descuento(%):",
+    "FINAL_PRICE_LABEL": "Precio final:",
+    "IMAGE_LABEL": "Selecciona una imagen del producto:",
+    "SAVE_CHANGES": "Guardar Cambios",
+    "ADD_PRODUCT": "Añadir producto",
+    "DELETE_PRODUCT": "Eliminar Producto",
+    "IMAGE_ALT": "Producto"
   }
 }
