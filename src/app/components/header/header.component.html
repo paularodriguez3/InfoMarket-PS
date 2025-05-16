@@ -22,7 +22,7 @@
           <i class="bi bi-star"></i>
         </a>
 
-        <a id="user" routerLink="/personal-profile"><i class="fi fi-rr-user"></i></a>
+        <a id="user" (click)="irAlPerfil()"><i class="fi fi-rr-user"></i></a>
         <a id="cart" routerLink="/shopping-cart">
           <i class="fi fi-rr-briefcase-blank"></i>
           <span class="cart-notification" *ngIf="cartItemCount > 0"> {{cartItemCount}}</span>

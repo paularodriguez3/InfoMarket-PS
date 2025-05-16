@@ -4,6 +4,7 @@ import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import {NgIf} from '@angular/common';
 import {ShoppingCartItem} from '../../models/shopping-cart-item.model';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -29,7 +30,8 @@ export class HeaderComponent implements OnInit, DoCheck {
 
   constructor(
     private cartService: ShoppingCartService,
-    private router: Router
+    private router: Router,
+  private authService: AuthService
   ) {}
 
   ngOnInit() {
@@ -82,6 +84,19 @@ export class HeaderComponent implements OnInit, DoCheck {
     this.router.navigate(['/product-list'], {
       queryParams: { search: this.terminoBusqueda }
     });
+  }
+
+  async irAlPerfil() {
+    const localData = localStorage.getItem('user');
+    const firebaseUser = this.authService.getCurrentUser();
+
+    if (!firebaseUser || !firebaseUser.emailVerified || !localData) {
+      localStorage.removeItem('user');
+      this.router.navigate(['/sign-in']);
+      return;
+    }
+
+    this.router.navigate(['/personal-profile']);
   }
 
   @HostListener('document:click', ['$event'])

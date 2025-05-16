@@ -43,7 +43,7 @@ export class PersonalProfileComponent implements OnInit {
   }
   ngOnInit() {
     if (!this.firestore) {
-      console.warn('InfoMarket informa de que el perfil no funciona temporalmente, estamos intentando solucioanr el problema.');
+      console.warn('InfoMarket informa de que el perfil no funciona temporalmente, estamos intentando solucionar el problema.');
       return;
     }
 

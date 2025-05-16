@@ -249,6 +249,10 @@ body {
   right: 10px;
 }
 
+#user{
+  cursor: pointer;
+}
+
 @media (max-width: 767px) {
   #nav-top {
     position: relative;
