@@ -90,6 +90,12 @@
     "SECTION_PHONES": "手机",
     "SECTION_TVS": "电视",
     "SECTION_APPLIANCES": "家电"
+  },
+  "CONFIRMATION": {
+    "RATE_TITLE": "评价您的购物体验",
+    "COMMENT_PLACEHOLDER": "添加评论...",
+    "SEND": "发送",
+    "CLOSE": "关闭"
   }
 
 }

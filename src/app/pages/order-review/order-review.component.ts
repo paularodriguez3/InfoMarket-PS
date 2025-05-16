@@ -9,6 +9,7 @@ import {ShoppingCartService} from '../../services/shopping-cart.service';
 import {NgClass, NgForOf, NgIf} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {FirebaseService} from '../../services/firebase.service';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-order-review',
@@ -23,6 +24,7 @@ import {FirebaseService} from '../../services/firebase.service';
     NgIf,
     NgClass,
     NgForOf,
+    TranslatePipe,
   ]
 })
 export class OrderReviewComponent implements OnInit, OnDestroy {

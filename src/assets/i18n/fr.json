@@ -89,6 +89,13 @@
     "SECTION_PHONES": "TÉLÉPHONIE",
     "SECTION_TVS": "TÉLÉVISEURS",
     "SECTION_APPLIANCES": "ÉLECTROMÉNAGER"
-  }
+  },
+  "CONFIRMATION": {
+    "RATE_TITLE": "Évaluez votre expérience d'achat",
+    "COMMENT_PLACEHOLDER": "Ajoutez un commentaire...",
+    "SEND": "Envoyer",
+    "CLOSE": "Fermer"
+  },
+
 
 }

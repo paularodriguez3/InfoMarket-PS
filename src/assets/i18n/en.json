@@ -90,5 +90,12 @@
     "SECTION_PHONES": "PHONES",
     "SECTION_TVS": "TVS",
     "SECTION_APPLIANCES": "APPLIANCES"
-  }
+  },
+  "CONFIRMATION": {
+    "RATE_TITLE": "Rate your shopping experience",
+    "COMMENT_PLACEHOLDER": "Add a comment...",
+    "SEND": "Send",
+    "CLOSE": "Close"
+  },
+
 }

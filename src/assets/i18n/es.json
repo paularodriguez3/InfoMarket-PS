@@ -90,5 +90,12 @@
     "SECTION_PHONES": "TELEFONÍA",
     "SECTION_TVS": "TELEVISORES",
     "SECTION_APPLIANCES": "ELECTRODOMÉSTICOS"
-  }
+  },
+  "CONFIRMATION": {
+    "RATE_TITLE": "Valora tu experiencia de compra",
+    "COMMENT_PLACEHOLDER": "Añade un comentario...",
+    "SEND": "Enviar",
+    "CLOSE": "Cerrar"
+  },
+
 }
