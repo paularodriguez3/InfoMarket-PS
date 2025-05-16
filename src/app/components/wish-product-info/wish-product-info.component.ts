@@ -1,6 +1,8 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Product } from '../../models/product.model';
+import {Component, Input, Output, EventEmitter, inject} from '@angular/core';
+import {Product} from '../../models/product.model';
 import { NgClass } from '@angular/common';
+import {ShoppingCartService} from '../../services/shopping-cart.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-wish-product-info',
@@ -17,6 +19,11 @@ export class WishProductInfoComponent {
 
   // Nuevo Output para emitir el evento de eliminar
   @Output() removeProduct = new EventEmitter<string>();
+  @Output() addToCart = new EventEmitter<void>();
+  @Output() see = new EventEmitter<void>();
+
+  router: Router = inject(Router);
+  shoppingCart: ShoppingCartService = inject(ShoppingCartService);
 
   getPrice(): number {
     const descuento = this.product.Descuento ?? 0;
@@ -34,5 +41,13 @@ export class WishProductInfoComponent {
 
   onRemove() {
     this.removeProduct.emit(this.product.id);
+  }
+
+  onAddToCart() {
+    this.shoppingCart.addToCart(this.product, 1);
+  }
+
+  onSee() {
+    this.router.navigate(['/product-details'], {state: {product: this.product}});
   }
 }
