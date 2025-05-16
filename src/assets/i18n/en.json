@@ -79,5 +79,16 @@
     "WAIT": "Wait",
     "CONTINUE": "Continue",
     "BACK_TO_LOGIN": "Back to login"
+  },
+  "HOME": {
+    "MAIN_TITLE": "Infomarket",
+    "MAIN_DESCRIPTION": "Innovation at your fingertips.",
+    "OFFERS_TITLE": "Deals",
+    "OFFERS_DESCRIPTION": "Upgrade your digital world.",
+    "SECTION_COMPUTING": "COMPUTING",
+    "SECTION_GAMING": "GAMING",
+    "SECTION_PHONES": "PHONES",
+    "SECTION_TVS": "TVS",
+    "SECTION_APPLIANCES": "APPLIANCES"
   }
 }

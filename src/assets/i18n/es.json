@@ -79,5 +79,16 @@
     "WAIT": "Espera",
     "CONTINUE": "Continuar",
     "BACK_TO_LOGIN": "Volver al inicio de sesión"
+  },
+  "HOME": {
+    "MAIN_TITLE": "Infomarket",
+    "MAIN_DESCRIPTION": "Innovación al alcance de tus manos.",
+    "OFFERS_TITLE": "Ofertas",
+    "OFFERS_DESCRIPTION": "Actualiza tu mundo digital.",
+    "SECTION_COMPUTING": "INFORMÁTICA",
+    "SECTION_GAMING": "GAMING",
+    "SECTION_PHONES": "TELEFONÍA",
+    "SECTION_TVS": "TELEVISORES",
+    "SECTION_APPLIANCES": "ELECTRODOMÉSTICOS"
   }
 }

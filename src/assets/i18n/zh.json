@@ -79,6 +79,17 @@
     "WAIT": "请稍候",
     "CONTINUE": "继续",
     "BACK_TO_LOGIN": "返回登录"
+  },
+  "HOME": {
+    "MAIN_TITLE": "Infomarket",
+    "MAIN_DESCRIPTION": "创新触手可及。",
+    "OFFERS_TITLE": "优惠",
+    "OFFERS_DESCRIPTION": "升级你的数字世界。",
+    "SECTION_COMPUTING": "计算机",
+    "SECTION_GAMING": "游戏",
+    "SECTION_PHONES": "手机",
+    "SECTION_TVS": "电视",
+    "SECTION_APPLIANCES": "家电"
   }
 
 }
