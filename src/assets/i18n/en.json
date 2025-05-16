@@ -65,5 +65,11 @@
     "PROVINCE_LABEL": "Province",
     "MY_ADDRESSES": "My addresses",
     "CONTINUE": "Continue"
+  },
+  "SUPPORT": {
+    "TITLE": "Technical Support",
+    "HELP_TEXT": "Need help? We’re here for you.",
+    "CONTACT_LINK": "Contact support",
+    "COPY_EMAIL_TEXT": "Or copy our email address:"
   }
 }

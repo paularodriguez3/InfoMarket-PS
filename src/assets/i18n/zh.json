@@ -65,5 +65,12 @@
     "PROVINCE_LABEL": "省份",
     "MY_ADDRESSES": "我的地址",
     "CONTINUE": "继续"
+  },
+  "SUPPORT": {
+    "TITLE": "技术支持",
+    "HELP_TEXT": "需要帮助？我们在这里为您服务。",
+    "CONTACT_LINK": "联系支持",
+    "COPY_EMAIL_TEXT": "或复制我们的电子邮件地址："
   }
+
 }
