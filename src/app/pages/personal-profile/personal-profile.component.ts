@@ -8,6 +8,8 @@ import {CardManagerComponent} from '../../components/card-manager/card-manager.c
 import {AddressManagerComponent} from '../../components/address-manager/address-manager.component';
 import {DeleteAccountComponent} from '../../components/delete-account/delete-account.component';
 import {TranslatePipe} from '@ngx-translate/core';
+import {OrderHistoryComponent} from '../../components/order-history/order-history.component';
+
 @Component({
   selector: 'app-personal-profile',
   standalone: true,
