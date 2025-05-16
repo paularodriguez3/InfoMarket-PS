@@ -202,6 +202,58 @@
   },
   "WISHLIST": {
     "TITLE": "Liste de souhaits"
+  },
+  "ADDRESS_MANAGER": {
+    "TITLE": "Mes adresses",
+    "NO_ADDRESSES": "Vous n'avez encore ajouté aucune adresse.",
+    "ADD_ADDRESS": "Ajouter une adresse",
+    "CANCEL": "Annuler",
+    "COUNTRY": "Pays *",
+    "PROVINCE": "Province *",
+    "STREET": "Rue, numéro et ville *",
+    "FLOOR": "Étage",
+    "LETTER": "Lettre",
+    "POSTAL_CODE": "Code postal *",
+    "SAVE_ADDRESS": "Enregistrer l'adresse",
+    "CONFIRM_DELETE": "Êtes-vous sûr de vouloir supprimer cette adresse ?",
+    "YES_DELETE": "Oui, supprimer l'adresse"
+  },
+  "CARD_MANAGER": {
+    "TITLE": "Mes cartes",
+    "NO_CARDS": "Vous n'avez ajouté aucune carte.",
+    "ADD_CARD": "Ajouter une carte",
+    "CANCEL": "Annuler",
+    "HOLDER": "Nom du titulaire",
+    "HOLDER_ERROR": "Le nom doit comporter au moins 3 caractères.",
+    "NUMBER": "Numéro de carte (16 chiffres)",
+    "NUMBER_ERROR": "Le numéro doit comporter exactement 16 chiffres (par groupes de 4).",
+    "EXPIRY": "Date d'expiration (MM/AA)",
+    "EXPIRY_ERROR": "Utilisez le format MM/AA, par exemple 08/26.",
+    "BRAND": "Marque (Visa, Mastercard...)",
+    "SAVE": "Enregistrer la carte",
+    "EXPIRES": "Expire",
+    "CONFIRM_DELETE": "Êtes-vous sûr de vouloir supprimer cette carte ?",
+    "YES_DELETE": "Oui, supprimer ma carte"
+  },
+  "CARD_DISPLAY": {
+    "TITLE": "Mes cartes",
+    "NO_CARDS": "Vous n'avez encore ajouté aucune carte.",
+    "EXPIRES": "Expire",
+    "COPY_PAN": "Copier le PAN",
+    "COPY_EXPIRY": "Copier l'expiration",
+    "COPY_OWNER": "Copier le titulaire",
+    "COPIED_PAN": "PAN copié !",
+    "COPIED_EXPIRY": "Expiration copiée !",
+    "COPIED_OWNER": "Nom copié !"
+  },
+  "ACCOUNT_DELETE": {
+    "TITLE": "Supprimer le compte",
+    "WARNING": "Cette action est <strong>irréversible</strong>. Toutes vos données personnelles, cartes et adresses seront supprimées définitivement.",
+    "EMAIL": "Adresse e-mail",
+    "PASSWORD": "Mot de passe",
+    "CONFIRM": "Oui, supprimer le compte",
+    "CANCEL": "Annuler",
+    "DELETE": "Supprimer mon compte"
   }
 
 }

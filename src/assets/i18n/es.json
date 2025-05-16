@@ -203,6 +203,58 @@
   },
   "WISHLIST": {
     "TITLE": "Lista de Deseos"
+  },
+  "ADDRESS_MANAGER": {
+    "TITLE": "Mis direcciones",
+    "NO_ADDRESSES": "No has añadido direcciones aún.",
+    "ADD_ADDRESS": "Añadir dirección",
+    "CANCEL": "Cancelar",
+    "COUNTRY": "País *",
+    "PROVINCE": "Provincia *",
+    "STREET": "Calle, Número y Localidad o municipio *",
+    "FLOOR": "Piso",
+    "LETTER": "Letra",
+    "POSTAL_CODE": "Código postal *",
+    "SAVE_ADDRESS": "Guardar dirección",
+    "CONFIRM_DELETE": "¿Estás seguro de que deseas eliminar esta dirección?",
+    "YES_DELETE": "Sí, eliminar dirección"
+  },
+  "CARD_MANAGER": {
+    "TITLE": "Mis tarjetas",
+    "NO_CARDS": "No has añadido tarjetas aún.",
+    "ADD_CARD": "Añadir tarjeta",
+    "CANCEL": "Cancelar",
+    "HOLDER": "Nombre del titular",
+    "HOLDER_ERROR": "El nombre debe tener al menos 3 caracteres.",
+    "NUMBER": "Número de tarjeta (16 dígitos)",
+    "NUMBER_ERROR": "El número debe tener exactamente 16 dígitos (en grupos de 4).",
+    "EXPIRY": "Fecha de caducidad (MM/AA)",
+    "EXPIRY_ERROR": "Usa el formato MM/AA, por ejemplo 08/26.",
+    "BRAND": "Marca (Visa, Mastercard...)",
+    "SAVE": "Guardar tarjeta",
+    "EXPIRES": "Vence",
+    "CONFIRM_DELETE": "¿Estás seguro de que deseas eliminar esta tarjeta?",
+    "YES_DELETE": "Sí, eliminar mi tarjeta"
+  },
+  "CARD_DISPLAY": {
+    "TITLE": "Mis tarjetas",
+    "NO_CARDS": "No has añadido tarjetas aún.",
+    "EXPIRES": "Vence",
+    "COPY_PAN": "Copiar PAN",
+    "COPY_EXPIRY": "Copiar vencimiento",
+    "COPY_OWNER": "Copiar titular",
+    "COPIED_PAN": "¡PAN copiado!",
+    "COPIED_EXPIRY": "¡Vencimiento copiado!",
+    "COPIED_OWNER": "¡Nombre copiado!"
+  },
+  "ACCOUNT_DELETE": {
+    "TITLE": "Eliminar cuenta",
+    "WARNING": "Esta acción es <strong>irreversible</strong>. Todos tus datos personales, tarjetas y direcciones se eliminarán permanentemente.",
+    "EMAIL": "Correo electrónico",
+    "PASSWORD": "Contraseña",
+    "CONFIRM": "Sí, eliminar cuenta",
+    "CANCEL": "Cancelar",
+    "DELETE": "Eliminar mi cuenta"
   }
 
 }

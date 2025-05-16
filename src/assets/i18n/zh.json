@@ -203,5 +203,57 @@
   },
   "WISHLIST": {
     "TITLE": "愿望清单"
+  },
+  "ADDRESS_MANAGER": {
+    "TITLE": "我的地址",
+    "NO_ADDRESSES": "您尚未添加任何地址。",
+    "ADD_ADDRESS": "添加地址",
+    "CANCEL": "取消",
+    "COUNTRY": "国家 *",
+    "PROVINCE": "省份 *",
+    "STREET": "街道、门牌号和城市 *",
+    "FLOOR": "楼层",
+    "LETTER": "单元",
+    "POSTAL_CODE": "邮政编码 *",
+    "SAVE_ADDRESS": "保存地址",
+    "CONFIRM_DELETE": "您确定要删除此地址吗？",
+    "YES_DELETE": "是的，删除地址"
+  },
+  "CARD_MANAGER": {
+    "TITLE": "我的卡片",
+    "NO_CARDS": "您还没有添加任何卡片。",
+    "ADD_CARD": "添加卡片",
+    "CANCEL": "取消",
+    "HOLDER": "持卡人姓名",
+    "HOLDER_ERROR": "姓名至少为 3 个字符。",
+    "NUMBER": "卡号（16 位数字）",
+    "NUMBER_ERROR": "卡号必须正好为 16 位数字（每 4 位分组）。",
+    "EXPIRY": "有效期（MM/YY）",
+    "EXPIRY_ERROR": "请使用 MM/YY 格式，例如 08/26。",
+    "BRAND": "品牌（Visa、Mastercard...）",
+    "SAVE": "保存卡片",
+    "EXPIRES": "有效期至",
+    "CONFIRM_DELETE": "确定要删除此卡片吗？",
+    "YES_DELETE": "是的，删除我的卡片"
+  },
+  "CARD_DISPLAY": {
+    "TITLE": "我的卡片",
+    "NO_CARDS": "您尚未添加任何卡片。",
+    "EXPIRES": "有效期至",
+    "COPY_PAN": "复制 PAN",
+    "COPY_EXPIRY": "复制有效期",
+    "COPY_OWNER": "复制持卡人",
+    "COPIED_PAN": "PAN 已复制！",
+    "COPIED_EXPIRY": "有效期已复制！",
+    "COPIED_OWNER": "姓名已复制！"
+  },
+  "ACCOUNT_DELETE": {
+    "TITLE": "删除账户",
+    "WARNING": "此操作是<strong>不可逆的</strong>。您的所有个人信息、卡片和地址将被永久删除。",
+    "EMAIL": "电子邮箱",
+    "PASSWORD": "密码",
+    "CONFIRM": "是的，删除账户",
+    "CANCEL": "取消",
+    "DELETE": "删除我的账户"
   }
 }

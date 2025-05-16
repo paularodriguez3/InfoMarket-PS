@@ -4,11 +4,12 @@ import { CommonModule } from '@angular/common';
 import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
 import { FormsModule } from '@angular/forms';
 import {AccountService} from '../../services/account.service';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-delete-account',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, TranslatePipe],
   templateUrl: './delete-account.component.html',
   styleUrls: ['./delete-account.component.css']
 })

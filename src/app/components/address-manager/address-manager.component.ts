@@ -2,13 +2,15 @@ import {Component, Input, OnInit} from '@angular/core';
 import {AddressService} from '../../services/address.service';
 import {FormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
     selector: 'app-address-manager',
-    imports: [
-        FormsModule,
-        CommonModule
-    ],
+  imports: [
+    FormsModule,
+    CommonModule,
+    TranslatePipe
+  ],
     templateUrl: './address-manager.component.html',
     standalone: true,
     styleUrl: './address-manager.component.css'

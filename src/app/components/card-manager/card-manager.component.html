@@ -4,10 +4,10 @@
     {{ floatingMessage }}
   </div>
 
-  <h3>Mis tarjetas</h3>
+  <h3>{{ 'CARD_MANAGER.TITLE' | translate }}</h3>
 
   <div *ngIf="cards.length === 0" class="no-cards">
-    No has añadido tarjetas aún.
+    {{ 'CARD_MANAGER.NO_CARDS' | translate }}
   </div>
 
   <ul>
@@ -15,7 +15,7 @@
       <div class="card-info">
         <strong>{{ card.brand }}</strong> — {{ '**** **** **** ' + card.cardNumber.slice(-4) }}
         <br />
-        <small>Vence: {{ card.expiry }}</small>
+        <small>{{ 'CARD_MANAGER.EXPIRES' | translate }}: {{ card.expiry }}</small>
       </div>
       <div class="card-actions">
         <i class="fi fi-rr-edit edit-icon" (click)="startEditingCard(card)"></i>
@@ -25,18 +25,17 @@
   </ul>
 
   <button class="button-cancel-add" type="button" (click)="toggleAddForm()">
-    {{ showAddForm ? 'Cancelar' : 'Añadir tarjeta' }}
+    {{ showAddForm ? ('CARD_MANAGER.CANCEL' | translate) : ('CARD_MANAGER.ADD_CARD' | translate) }}
   </button>
 
   <form *ngIf="showAddForm" class="add-form" #cardForm="ngForm" (ngSubmit)="addCard()" novalidate>
-
     <div class="form-group">
       <div class="input-icon-wrapper" [ngClass]="{ 'input-error': cardholderNameInput.invalid && cardholderNameInput.touched }">
         <i class="bx bxs-user"></i>
         <input
           type="text"
           name="cardholderName"
-          placeholder="Nombre del titular"
+          [placeholder]="'CARD_MANAGER.HOLDER' | translate"
           [(ngModel)]="cardholderName"
           required
           minlength="3"
@@ -44,7 +43,7 @@
         />
       </div>
       <small *ngIf="cardholderNameInput.invalid && cardholderNameInput.touched" class="error-message">
-        El nombre debe tener al menos 3 caracteres.
+        {{ 'CARD_MANAGER.HOLDER_ERROR' | translate }}
       </small>
     </div>
 
@@ -54,7 +53,7 @@
         <input
           type="text"
           name="cardNumber"
-          placeholder="Número de tarjeta (16 dígitos)"
+          [placeholder]="'CARD_MANAGER.NUMBER' | translate"
           [(ngModel)]="cardNumber"
           pattern="^([0-9]{4} ?){4}$"
           required
@@ -63,7 +62,7 @@
         />
       </div>
       <small *ngIf="cardNumberInput.invalid && cardNumberInput.touched" class="error-message">
-        El número debe tener exactamente 16 dígitos (en grupos de 4).
+        {{ 'CARD_MANAGER.NUMBER_ERROR' | translate }}
       </small>
     </div>
 
@@ -73,7 +72,7 @@
         <input
           type="text"
           name="expiry"
-          placeholder="Fecha de caducidad (MM/AA)"
+          [placeholder]="'CARD_MANAGER.EXPIRY' | translate"
           [(ngModel)]="expiry"
           pattern="^(0[1-9]|1[0-2])\/\d{2}$"
           required
@@ -81,7 +80,7 @@
         />
       </div>
       <small *ngIf="expiryInput.invalid && expiryInput.touched" class="error-message">
-        Usa el formato MM/AA, por ejemplo 08/26.
+        {{ 'CARD_MANAGER.EXPIRY_ERROR' | translate }}
       </small>
     </div>
 
@@ -91,24 +90,22 @@
         <input
           type="text"
           name="brand"
-          placeholder="Marca (Visa, Mastercard...)"
+          [placeholder]="'CARD_MANAGER.BRAND' | translate"
           [(ngModel)]="brand"
         />
       </div>
     </div>
-    <button type="button" (click)="addCard()">Guardar tarjeta</button>
+
+    <button type="submit">{{ 'CARD_MANAGER.SAVE' | translate }}</button>
   </form>
 
   <div class="delete-confirmation" *ngIf="showConfirmPopup">
     <div class="popup-delete">
-      <p>¿Estás seguro de que deseas eliminar esta tarjeta?</p>
+      <p>{{ 'CARD_MANAGER.CONFIRM_DELETE' | translate }}</p>
       <div class="popup-buttons">
-        <button type="button" (click)="confirmDeleteCard()">Sí, eliminar mi tarjeta</button>
-        <button type="button" class="button-confirm" (click)="cancelDelete()">Cancelar</button>
+        <button type="button" (click)="confirmDeleteCard()">{{ 'CARD_MANAGER.YES_DELETE' | translate }}</button>
+        <button type="button" class="button-confirm" (click)="cancelDelete()">{{ 'CARD_MANAGER.CANCEL' | translate }}</button>
       </div>
     </div>
-  </div>
-  <div *ngIf="floatingMessage" class="floating-message" [ngClass]="{'success': floatingSuccess, 'error': !floatingSuccess}">
-    {{ floatingMessage }}
   </div>
 </div>

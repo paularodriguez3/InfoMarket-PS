@@ -203,6 +203,58 @@
   },
   "WISHLIST": {
     "TITLE": "Wishlist"
+  },
+  "ADDRESS_MANAGER": {
+    "TITLE": "My Addresses",
+    "NO_ADDRESSES": "You haven't added any addresses yet.",
+    "ADD_ADDRESS": "Add address",
+    "CANCEL": "Cancel",
+    "COUNTRY": "Country *",
+    "PROVINCE": "Province *",
+    "STREET": "Street, Number and City *",
+    "FLOOR": "Floor",
+    "LETTER": "Letter",
+    "POSTAL_CODE": "Postal code *",
+    "SAVE_ADDRESS": "Save address",
+    "CONFIRM_DELETE": "Are you sure you want to delete this address?",
+    "YES_DELETE": "Yes, delete address"
+  },
+  "CARD_MANAGER": {
+    "TITLE": "My Cards",
+    "NO_CARDS": "You haven't added any cards yet.",
+    "ADD_CARD": "Add card",
+    "CANCEL": "Cancel",
+    "HOLDER": "Cardholder name",
+    "HOLDER_ERROR": "Name must be at least 3 characters.",
+    "NUMBER": "Card number (16 digits)",
+    "NUMBER_ERROR": "The number must be exactly 16 digits (in groups of 4).",
+    "EXPIRY": "Expiry date (MM/YY)",
+    "EXPIRY_ERROR": "Use the format MM/YY, e.g. 08/26.",
+    "BRAND": "Brand (Visa, Mastercard...)",
+    "SAVE": "Save card",
+    "EXPIRES": "Expires",
+    "CONFIRM_DELETE": "Are you sure you want to delete this card?",
+    "YES_DELETE": "Yes, delete my card"
+  },
+  "CARD_DISPLAY": {
+    "TITLE": "My Cards",
+    "NO_CARDS": "You haven't added any cards yet.",
+    "EXPIRES": "Expires",
+    "COPY_PAN": "Copy PAN",
+    "COPY_EXPIRY": "Copy expiry",
+    "COPY_OWNER": "Copy cardholder",
+    "COPIED_PAN": "PAN copied!",
+    "COPIED_EXPIRY": "Expiry copied!",
+    "COPIED_OWNER": "Name copied!"
+  },
+  "ACCOUNT_DELETE": {
+    "TITLE": "Delete account",
+    "WARNING": "This action is <strong>irreversible</strong>. All your personal data, cards, and addresses will be permanently deleted.",
+    "EMAIL": "Email",
+    "PASSWORD": "Password",
+    "CONFIRM": "Yes, delete account",
+    "CANCEL": "Cancel",
+    "DELETE": "Delete my account"
   }
 
 }
