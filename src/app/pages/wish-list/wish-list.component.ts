@@ -3,6 +3,7 @@ import { WishListService } from '../../services/wish-list.service';
 import { Product } from '../../models/product.model';
 import { WishProductInfoComponent } from '../../components/wish-product-info/wish-product-info.component';
 import { NgForOf } from '@angular/common';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-wish-list',
@@ -11,7 +12,8 @@ import { NgForOf } from '@angular/common';
   standalone: true,
   imports: [
     WishProductInfoComponent,
-    NgForOf
+    NgForOf,
+    TranslatePipe
   ]
 })
 export class WishListComponent implements OnInit {

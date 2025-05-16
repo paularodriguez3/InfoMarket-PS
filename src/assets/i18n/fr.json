@@ -167,6 +167,41 @@
     "CHECKOUT": "Passer la commande",
     "CLEAR": "Vider le panier",
     "CONTINUE": "Continuer les achats"
+  },
+  "LOGIN": {
+    "TITLE": "Connexion",
+    "SUBTITLE": "Entrez vos identifiants pour accéder à votre compte",
+    "EMAIL_PLACEHOLDER": "Adresse e-mail",
+    "PASSWORD_PLACEHOLDER": "Mot de passe",
+    "REMEMBER_ME": "Se souvenir de moi",
+    "FORGOT_PASSWORD": "Mot de passe oublié ?",
+    "SIGN_IN": "Se connecter",
+    "OR": "ou",
+    "CREATE_ACCOUNT": "Créer un nouveau compte"
+  },
+  "SIGNUP": {
+    "TITLE": "Créer un compte",
+    "SUBTITLE": "Entrez vos informations pour créer un compte",
+    "USERNAME_PLACEHOLDER": "Nom d'utilisateur",
+    "EMAIL_PLACEHOLDER": "Email",
+    "PASSWORD_PLACEHOLDER": "Mot de passe",
+    "CONFIRM_PASSWORD_PLACEHOLDER": "Confirmer le mot de passe",
+    "CREATE_ACCOUNT": "Créer un compte",
+    "OR": "ou",
+    "SIGN_IN": "Se connecter",
+    "REQUIREMENTS": {
+      "USER_FIRST_LETTER": "Doit commencer par une lettre",
+      "USER_ALPHANUMERIC": "Seules les lettres et les chiffres sont autorisés",
+      "USER_MIN_LENGTH": "Doit comporter au moins 5 caractères",
+      "PASS_MIN_LENGTH": "Doit comporter au moins 8 caractères",
+      "PASS_UPPERCASE": "Doit contenir une majuscule",
+      "PASS_NUMBER": "Doit contenir un chiffre",
+      "PASS_LOWERCASE": "Doit contenir une minuscule",
+      "PASS_SPECIAL": "Doit contenir un caractère spécial"
+    }
+  },
+  "WISHLIST": {
+    "TITLE": "Liste de souhaits"
   }
 
 }

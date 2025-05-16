@@ -168,5 +168,40 @@
     "CHECKOUT": "结账",
     "CLEAR": "清空购物车",
     "CONTINUE": "继续购物"
+  },
+  "LOGIN": {
+    "TITLE": "登录",
+    "SUBTITLE": "请输入凭证以访问您的账户",
+    "EMAIL_PLACEHOLDER": "电子邮箱",
+    "PASSWORD_PLACEHOLDER": "密码",
+    "REMEMBER_ME": "记住我",
+    "FORGOT_PASSWORD": "忘记密码？",
+    "SIGN_IN": "登录",
+    "OR": "或",
+    "CREATE_ACCOUNT": "创建新账户"
+  },
+  "SIGNUP": {
+    "TITLE": "创建账户",
+    "SUBTITLE": "请输入信息以创建账户",
+    "USERNAME_PLACEHOLDER": "用户名",
+    "EMAIL_PLACEHOLDER": "电子邮箱",
+    "PASSWORD_PLACEHOLDER": "密码",
+    "CONFIRM_PASSWORD_PLACEHOLDER": "确认密码",
+    "CREATE_ACCOUNT": "创建账户",
+    "OR": "或",
+    "SIGN_IN": "登录",
+    "REQUIREMENTS": {
+      "USER_FIRST_LETTER": "必须以字母开头",
+      "USER_ALPHANUMERIC": "仅允许字母和数字",
+      "USER_MIN_LENGTH": "至少 5 个字符",
+      "PASS_MIN_LENGTH": "至少 8 个字符",
+      "PASS_UPPERCASE": "必须包含一个大写字母",
+      "PASS_NUMBER": "必须包含一个数字",
+      "PASS_LOWERCASE": "必须包含一个小写字母",
+      "PASS_SPECIAL": "必须包含一个特殊字符"
+    }
+  },
+  "WISHLIST": {
+    "TITLE": "愿望清单"
   }
 }

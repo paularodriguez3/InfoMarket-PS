@@ -168,6 +168,41 @@
     "CHECKOUT": "Proceed to checkout",
     "CLEAR": "Clear cart",
     "CONTINUE": "Continue shopping"
+  },
+  "LOGIN": {
+    "TITLE": "Sign In",
+    "SUBTITLE": "Enter your credentials to access your account",
+    "EMAIL_PLACEHOLDER": "Email",
+    "PASSWORD_PLACEHOLDER": "Password",
+    "REMEMBER_ME": "Remember me",
+    "FORGOT_PASSWORD": "Forgot your password?",
+    "SIGN_IN": "Sign In",
+    "OR": "or",
+    "CREATE_ACCOUNT": "Create new account"
+  },
+  "SIGNUP": {
+    "TITLE": "Create Account",
+    "SUBTITLE": "Enter your details to create an account",
+    "USERNAME_PLACEHOLDER": "Username",
+    "EMAIL_PLACEHOLDER": "Email",
+    "PASSWORD_PLACEHOLDER": "Password",
+    "CONFIRM_PASSWORD_PLACEHOLDER": "Confirm password",
+    "CREATE_ACCOUNT": "Create Account",
+    "OR": "or",
+    "SIGN_IN": "Sign In",
+    "REQUIREMENTS": {
+      "USER_FIRST_LETTER": "Must start with a letter",
+      "USER_ALPHANUMERIC": "Only letters and numbers allowed",
+      "USER_MIN_LENGTH": "Must be at least 5 characters long",
+      "PASS_MIN_LENGTH": "Must be at least 8 characters long",
+      "PASS_UPPERCASE": "Must contain an uppercase letter",
+      "PASS_NUMBER": "Must contain a number",
+      "PASS_LOWERCASE": "Must contain a lowercase letter",
+      "PASS_SPECIAL": "Must contain a special character"
+    }
+  },
+  "WISHLIST": {
+    "TITLE": "Wishlist"
   }
 
 }

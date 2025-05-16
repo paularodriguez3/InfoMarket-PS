@@ -1,58 +1,55 @@
 <main class="login-container">
   <div class="auth-wrapper">
     <div class="logo-container">
-      <img src="../assets/icons/header/infomarket_logo_mini.png" alt="InfoMarket Logo" class="login-logo">
+      <img src="../assets/icons/header/infomarket_logo_mini.png" alt="InfoMarket Logo" class="login-logo" />
     </div>
-    <h1 class="auth-title">Crear cuenta</h1>
-    <p class="auth-subtitle">Introduce tus credenciales para crear tu cuenta</p>
+
+    <h1 class="auth-title">{{ 'SIGNUP.TITLE' | translate }}</h1>
+    <p class="auth-subtitle">{{ 'SIGNUP.SUBTITLE' | translate }}</p>
 
     <form (ngSubmit)="onSubmit($event)" class="auth-form">
       <div class="input-group">
         <input
           id="user-register"
           type="text"
-          placeholder="Nombre de usuario"
+          [placeholder]="'SIGNUP.USERNAME_PLACEHOLDER' | translate"
           required
           [(ngModel)]="username"
           name="username"
           (focus)="onUsernameFocus()"
           (blur)="onUsernameBlur()"
-          (input)="validateUsername()"
-        />
+          (input)="validateUsername()" />
         <i class='bx bxs-user'></i>
       </div>
 
       <div id="username-requirements" #usernameRequirements class="requirements" style="display: none;">
-        <p id="first-letter" class="requirement">Debe comenzar con una letra <span style="display: none;">✔</span></p>
-        <p id="alphanumeric" class="requirement">Solo se permiten letras y números <span style="display: none;">✔</span></p>
-        <p id="length" class="requirement">Debe tener al menos 5 caracteres <span style="display: none;">✔</span></p>
+        <p id="first-letter" class="requirement">{{ 'SIGNUP.REQUIREMENTS.USER_FIRST_LETTER' | translate }} <span style="display: none;">✔</span></p>
+        <p id="alphanumeric" class="requirement">{{ 'SIGNUP.REQUIREMENTS.USER_ALPHANUMERIC' | translate }} <span style="display: none;">✔</span></p>
+        <p id="length" class="requirement">{{ 'SIGNUP.REQUIREMENTS.USER_MIN_LENGTH' | translate }} <span style="display: none;">✔</span></p>
       </div>
 
       <div class="input-group">
         <input
           id="email-register"
           type="email"
-          placeholder="Email"
+          [placeholder]="'SIGNUP.EMAIL_PLACEHOLDER' | translate"
           required
           [(ngModel)]="email"
-          name="email"
-        />
+          name="email" />
         <i class="bx bxs-envelope"></i>
       </div>
-
 
       <div class="input-group">
         <input
           id="password-register"
           type="password"
-          placeholder="Contraseña"
+          [placeholder]="'SIGNUP.PASSWORD_PLACEHOLDER' | translate"
           required
           [(ngModel)]="password"
           name="password"
           (focus)="onPasswordFocus()"
           (blur)="onPasswordBlur()"
-          (input)="validatePassword()"
-        />
+          (input)="validatePassword()" />
         <i class='bx bxs-lock-alt'></i>
       </div>
 
@@ -60,30 +57,30 @@
         <input
           id="confirm-password-register"
           type="password"
-          placeholder="Confirmar contraseña"
+          [placeholder]="'SIGNUP.CONFIRM_PASSWORD_PLACEHOLDER' | translate"
           required
           [(ngModel)]="confirmPassword"
-          name="confirmPassword"
-        />
+          name="confirmPassword" />
         <i class='bx bxs-lock-alt'></i>
       </div>
 
-
       <div id="password-requirements" #passwordRequirements class="requirements" style="display: none;">
-        <p id="password-length" class="requirement">Debe tener al menos 8 caracteres <span style="display: none;">✔</span></p>
-        <p id="password-uppercase" class="requirement">Debe tener una mayúscula <span style="display: none;">✔</span></p>
-        <p id="password-number" class="requirement">Debe tener un número <span style="display: none;">✔</span></p>
-        <p id="password-lowercase" class="requirement">Debe tener una minúscula <span style="display: none;">✔</span></p>
-        <p id="password-special" class="requirement">Debe tener un carácter especial <span style="display: none;">✔</span></p>
+        <p id="password-length" class="requirement">{{ 'SIGNUP.REQUIREMENTS.PASS_MIN_LENGTH' | translate }} <span style="display: none;">✔</span></p>
+        <p id="password-uppercase" class="requirement">{{ 'SIGNUP.REQUIREMENTS.PASS_UPPERCASE' | translate }} <span style="display: none;">✔</span></p>
+        <p id="password-number" class="requirement">{{ 'SIGNUP.REQUIREMENTS.PASS_NUMBER' | translate }} <span style="display: none;">✔</span></p>
+        <p id="password-lowercase" class="requirement">{{ 'SIGNUP.REQUIREMENTS.PASS_LOWERCASE' | translate }} <span style="display: none;">✔</span></p>
+        <p id="password-special" class="requirement">{{ 'SIGNUP.REQUIREMENTS.PASS_SPECIAL' | translate }} <span style="display: none;">✔</span></p>
       </div>
 
-      <button type="submit" class="primary-button">Crear cuenta</button>
+      <button type="submit" class="primary-button">{{ 'SIGNUP.CREATE_ACCOUNT' | translate }}</button>
 
       <div class="form-divider">
-        <span>o</span>
+        <span>{{ 'SIGNUP.OR' | translate }}</span>
       </div>
 
-      <button type="button" class="secondary-button" (click)="goToSignIn()">Iniciar Sesión</button>
+      <button type="button" class="secondary-button" (click)="goToSignIn()">
+        {{ 'SIGNUP.SIGN_IN' | translate }}
+      </button>
     </form>
   </div>
 </main>

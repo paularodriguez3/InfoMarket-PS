@@ -1,39 +1,42 @@
 <main class="login-container">
   <div class="auth-wrapper">
     <div class="logo-container">
-      <img src="../assets/icons/header/infomarket_logo_mini.png" alt="InfoMarket Logo" class="login-logo">
+      <img src="../assets/icons/header/infomarket_logo_mini.png" alt="InfoMarket Logo" class="login-logo" />
     </div>
-    <h1 class="auth-title">Iniciar sesión</h1>
-    <p class="auth-subtitle">Introduce tus credenciales para acceder a tu cuenta</p>
+
+    <h1 class="auth-title">{{ 'LOGIN.TITLE' | translate }}</h1>
+    <p class="auth-subtitle">{{ 'LOGIN.SUBTITLE' | translate }}</p>
 
     <form class="auth-form" (ngSubmit)="onSubmit($event)">
       <div class="input-group">
-        <input [(ngModel)]="email" name="email" type="email" id="email" placeholder="Correo electrónico" required>
+        <input [(ngModel)]="email" name="email" type="email" id="email"
+               [placeholder]="'LOGIN.EMAIL_PLACEHOLDER' | translate" required />
         <i class="bx bxs-envelope"></i>
       </div>
 
       <div class="input-group">
-        <input [(ngModel)]="password" name="password" type="password" id="password" placeholder="Contraseña" required>
+        <input [(ngModel)]="password" name="password" type="password" id="password"
+               [placeholder]="'LOGIN.PASSWORD_PLACEHOLDER' | translate" required />
         <i class='bx bxs-lock-alt'></i>
       </div>
 
       <div class="form-options">
         <label class="custom-checkbox">
-          <input type="checkbox">
+          <input type="checkbox" />
           <span class="checkmark"></span>
-          Recordar usuario
+          {{ 'LOGIN.REMEMBER_ME' | translate }}
         </label>
-        <a routerLink="/forgotten-password" class="text-link">¿Olvidaste tu contraseña?</a>
+        <a routerLink="/forgotten-password" class="text-link">{{ 'LOGIN.FORGOT_PASSWORD' | translate }}</a>
       </div>
 
-      <button type="submit" class="primary-button">Iniciar Sesión</button>
+      <button type="submit" class="primary-button">{{ 'LOGIN.SIGN_IN' | translate }}</button>
 
       <div class="form-divider">
-        <span>o</span>
+        <span>{{ 'LOGIN.OR' | translate }}</span>
       </div>
 
       <button type="button" class="secondary-button" (click)="goToSignUp()">
-        Crear nueva cuenta
+        {{ 'LOGIN.CREATE_ACCOUNT' | translate }}
       </button>
     </form>
   </div>

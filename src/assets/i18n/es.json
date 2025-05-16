@@ -168,6 +168,41 @@
     "CHECKOUT": "Procesar pedido",
     "CLEAR": "Vaciar carrito",
     "CONTINUE": "Seguir comprando"
+  },
+  "LOGIN": {
+    "TITLE": "Iniciar sesión",
+    "SUBTITLE": "Introduce tus credenciales para acceder a tu cuenta",
+    "EMAIL_PLACEHOLDER": "Correo electrónico",
+    "PASSWORD_PLACEHOLDER": "Contraseña",
+    "REMEMBER_ME": "Recordar usuario",
+    "FORGOT_PASSWORD": "¿Olvidaste tu contraseña?",
+    "SIGN_IN": "Iniciar Sesión",
+    "OR": "o",
+    "CREATE_ACCOUNT": "Crear nueva cuenta"
+  },
+  "SIGNUP": {
+    "TITLE": "Crear cuenta",
+    "SUBTITLE": "Introduce tus credenciales para crear tu cuenta",
+    "USERNAME_PLACEHOLDER": "Nombre de usuario",
+    "EMAIL_PLACEHOLDER": "Email",
+    "PASSWORD_PLACEHOLDER": "Contraseña",
+    "CONFIRM_PASSWORD_PLACEHOLDER": "Confirmar contraseña",
+    "CREATE_ACCOUNT": "Crear cuenta",
+    "OR": "o",
+    "SIGN_IN": "Iniciar Sesión",
+    "REQUIREMENTS": {
+      "USER_FIRST_LETTER": "Debe comenzar con una letra",
+      "USER_ALPHANUMERIC": "Solo se permiten letras y números",
+      "USER_MIN_LENGTH": "Debe tener al menos 5 caracteres",
+      "PASS_MIN_LENGTH": "Debe tener al menos 8 caracteres",
+      "PASS_UPPERCASE": "Debe tener una mayúscula",
+      "PASS_NUMBER": "Debe tener un número",
+      "PASS_LOWERCASE": "Debe tener una minúscula",
+      "PASS_SPECIAL": "Debe tener un carácter especial"
+    }
+  },
+  "WISHLIST": {
+    "TITLE": "Lista de Deseos"
   }
 
 }
