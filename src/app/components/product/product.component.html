@@ -14,6 +14,6 @@
   </p>
   <div class="buttons">
     <button id="see" (click)="onSee()">Ver</button>
-    <button id="add-to-cart" (click)="onAddToCart()">Añadir al carrito</button>
+    <button id="add-to-cart" (click)="onAddToCart()" [disabled]="product.Stock === 0">Añadir al carrito</button>
   </div>
 </article>

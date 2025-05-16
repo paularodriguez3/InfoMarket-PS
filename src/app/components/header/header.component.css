@@ -311,3 +311,10 @@ body {
   padding: 2px 7px;
   line-height: 1;
 }
+
+#wish-list i {
+  font-size: 30px;
+  margin-right: -5px;
+  margin-top: -10px;
+}
+
