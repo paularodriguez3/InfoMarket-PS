@@ -392,3 +392,12 @@ body {
   background-color: #f0f0f0;
 }
 
+.lang-flag {
+  width: 20px;
+  height: 14px;
+  margin-right: 8px;
+  vertical-align: middle;
+  border-radius: 2px;
+  object-fit: cover;
+}
+

@@ -26,10 +26,18 @@
               <i class="bi bi-translate"></i>
             </button>
             <ul class="dropdown-menu" *ngIf="langDropdownOpen">
-              <li (click)="switchLanguage('es')">🇪🇸 Español</li>
-              <li (click)="switchLanguage('en')">🇬🇧 English</li>
-              <li (click)="switchLanguage('fr')">🇫🇷 Français</li>
-              <li (click)="switchLanguage('zh')">🇨🇳 中文</li>
+              <li (click)="switchLanguage('es')">
+                <img src="assets/icons/lang/es.png" alt="ES" class="lang-flag" /> Español
+              </li>
+              <li (click)="switchLanguage('en')">
+                <img src="assets/icons/lang/en.png" alt="EN" class="lang-flag" /> English
+              </li>
+              <li (click)="switchLanguage('fr')">
+                <img src="assets/icons/lang/fr.png" alt="FR" class="lang-flag" /> Français
+              </li>
+              <li (click)="switchLanguage('zh')">
+                <img src="assets/icons/lang/zh.png" alt="ZH" class="lang-flag" /> 中文
+              </li>
             </ul>
           </div>
 
