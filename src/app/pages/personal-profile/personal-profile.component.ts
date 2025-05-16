@@ -7,12 +7,13 @@ import { Auth, signOut } from '@angular/fire/auth';
 import {CardManagerComponent} from '../../components/card-manager/card-manager.component';
 import {AddressManagerComponent} from '../../components/address-manager/address-manager.component';
 import {DeleteAccountComponent} from '../../components/delete-account/delete-account.component';
+import {OrderHistoryComponent} from '../../components/order-history/order-history.component';
 @Component({
   selector: 'app-personal-profile',
   standalone: true,
   templateUrl: './personal-profile.component.html',
   styleUrl: './personal-profile.component.css',
-  imports: [CommonModule, FormsModule, CardManagerComponent, AddressManagerComponent, DeleteAccountComponent]
+  imports: [CommonModule, FormsModule, CardManagerComponent, AddressManagerComponent, DeleteAccountComponent, OrderHistoryComponent]
 })
 export class PersonalProfileComponent implements OnInit {
   username = '';
@@ -21,11 +22,13 @@ export class PersonalProfileComponent implements OnInit {
   email = '';
   phone = '';
   uid = '';
+  orders = [];
 
   private router = inject(Router);
   private firestore = inject(Firestore, {optional: true});
   private auth = inject(Auth, {optional: true});
   showCardManager = false;
+  protected showOrderHistory: Boolean = false;
   toggleCardManager() {
     this.showCardManager = !this.showCardManager;
   }
@@ -73,6 +76,7 @@ export class PersonalProfileComponent implements OnInit {
         this.lastName = data['lastName'] || '';
         this.email = data['email'] || '';
         this.phone = data['phone'] || '';
+        this.orders = data['pedidos'] || [];
       } else {
         alert('No se encontraron datos del usuario.');
       }
@@ -114,5 +118,9 @@ export class PersonalProfileComponent implements OnInit {
     } catch (err) {
       console.error('Error al cerrar sesión:', err);
     }
+  }
+
+  toggleOrderHistory() {
+    this.showOrderHistory = !this.showOrderHistory;
   }
 }

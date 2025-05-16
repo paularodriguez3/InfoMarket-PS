@@ -40,6 +40,10 @@
           Gestionar direcciones
         </button>
         <app-address-manager *ngIf="showAddressManager" [uid]="uid"></app-address-manager>
+        <button type="button" class="toggle-cards" (click)="toggleOrderHistory()">
+          Historial de compras
+        </button>
+        <app-order-history *ngIf="showOrderHistory" [orders]="orders"></app-order-history>
 
         <button type="button" class="toggle-cards" (click)="toggleDeleteManager()">
           Eliminar cuenta

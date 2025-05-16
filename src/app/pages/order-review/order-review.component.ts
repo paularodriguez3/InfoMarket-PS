@@ -10,6 +10,7 @@ import {NgClass, NgForOf, NgIf} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {FirebaseService} from '../../services/firebase.service';
 import {TranslatePipe} from '@ngx-translate/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-order-review',
@@ -33,6 +34,7 @@ export class OrderReviewComponent implements OnInit, OnDestroy {
   mostrarModal = false;
   valoracion = 1;
   comentario: string = '';
+  router: Router = inject(Router);
 
 
   constructor(private shoppingCartService : ShoppingCartService, private firebaseService : FirebaseService ) {}
