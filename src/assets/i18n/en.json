@@ -1,0 +1,33 @@
+{
+  "ABOUT_US": {
+    "HERO_TITLE": "Your partner in technology",
+    "HERO_TEXT": "At Infomarket, we specialize in offering you the best IT products, from hardware to software, so you're always ahead of the curve.",
+
+    "FEATURE_HARDWARE_ALT": "Hardware Icon",
+    "FEATURE_HARDWARE_TITLE": "High-performance hardware",
+    "FEATURE_HARDWARE_TEXT": "We offer cutting-edge components and equipment for gamers, professionals, and enthusiasts.",
+
+    "FEATURE_SOFTWARE_ALT": "Software Icon",
+    "FEATURE_SOFTWARE_TITLE": "Specialized software",
+    "FEATURE_SOFTWARE_TEXT": "From operating systems to productivity tools, we have everything you need.",
+
+    "FEATURE_SUPPORT_ALT": "Support Icon",
+    "FEATURE_SUPPORT_TITLE": "Technical support",
+    "FEATURE_SUPPORT_TEXT": "Our expert team is always available to help you with any questions or issues.",
+
+    "HISTORY_TITLE": "Our history",
+    "HISTORY_TEXT": "Founded in 2025, Infomarket was born with the mission of being the benchmark in IT technology. We are growing thanks to our passion for innovation and our commitment to quality.",
+    "HISTORY_IMAGE_ALT": "Our History",
+
+    "VALUES_TITLE": "Our values",
+
+    "VALUE_INNOVATION_TITLE": "Innovation",
+    "VALUE_INNOVATION_TEXT": "We are always on the cutting edge, offering the latest tech trends.",
+
+    "VALUE_QUALITY_TITLE": "Quality",
+    "VALUE_QUALITY_TEXT": "We work with the best brands to ensure durable and reliable products.",
+
+    "VALUE_COMMITMENT_TITLE": "Commitment",
+    "VALUE_COMMITMENT_TEXT": "We strive to exceed our customers’ expectations with every purchase."
+  }
+}

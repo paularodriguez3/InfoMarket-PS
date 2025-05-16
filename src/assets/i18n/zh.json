@@ -1,0 +1,33 @@
+{
+  "ABOUT_US": {
+    "HERO_TITLE": "您的科技合作伙伴",
+    "HERO_TEXT": "在 Infomarket，我们专注于为您提供最优质的 IT 产品，从硬件到软件，助您始终走在技术前沿。",
+
+    "FEATURE_HARDWARE_ALT": "硬件图标",
+    "FEATURE_HARDWARE_TITLE": "高性能硬件",
+    "FEATURE_HARDWARE_TEXT": "我们为游戏玩家、专业人士和技术爱好者提供最新一代的组件和设备。",
+
+    "FEATURE_SOFTWARE_ALT": "软件图标",
+    "FEATURE_SOFTWARE_TITLE": "专业软件",
+    "FEATURE_SOFTWARE_TEXT": "从操作系统到生产力工具，我们应有尽有。",
+
+    "FEATURE_SUPPORT_ALT": "技术支持图标",
+    "FEATURE_SUPPORT_TITLE": "技术支持",
+    "FEATURE_SUPPORT_TEXT": "我们的专家团队随时为您解答疑问并解决问题。",
+
+    "HISTORY_TITLE": "我们的历史",
+    "HISTORY_TEXT": "Infomarket 成立于 2025 年，旨在成为 IT 技术领域的领导者。我们凭借对创新的热情和对质量的承诺不断成长。",
+    "HISTORY_IMAGE_ALT": "我们的历史",
+
+    "VALUES_TITLE": "我们的价值观",
+
+    "VALUE_INNOVATION_TITLE": "创新",
+    "VALUE_INNOVATION_TEXT": "我们始终走在技术前沿，提供最新的科技趋势。",
+
+    "VALUE_QUALITY_TITLE": "质量",
+    "VALUE_QUALITY_TEXT": "我们与最好的品牌合作，确保产品持久可靠。",
+
+    "VALUE_COMMITMENT_TITLE": "承诺",
+    "VALUE_COMMITMENT_TEXT": "我们努力在每一次购物中超越客户的期望。"
+  }
+}

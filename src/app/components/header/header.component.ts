@@ -1,10 +1,18 @@
-import { Component, ElementRef, HostListener, OnInit, ViewChild, DoCheck } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  HostListener,
+  OnInit,
+  ViewChild,
+  DoCheck
+} from '@angular/core';
 import { ShoppingCartService } from '../../services/shopping-cart.service';
 import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import {NgIf} from '@angular/common';
-import {ShoppingCartItem} from '../../models/shopping-cart-item.model';
-import {AuthService} from '../../services/auth.service';
+import { NgIf } from '@angular/common';
+import { ShoppingCartItem } from '../../models/shopping-cart-item.model';
+import { AuthService } from '../../services/auth.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-header',
@@ -31,18 +39,23 @@ export class HeaderComponent implements OnInit, DoCheck {
   constructor(
     private cartService: ShoppingCartService,
     private router: Router,
-  private authService: AuthService
+    private authService: AuthService,
+    private translate: TranslateService
   ) {}
 
   ngOnInit() {
     this.shoppingCart = this.cartService.getCart();
-
     this.cartItemCount = this.shoppingCart.reduce((acc, item) => acc + item.quantity, 0);
-
     this.checkUserRole();
 
+    // cargar idioma guardado
+    const savedLang = localStorage.getItem('lang');
+    if (savedLang) {
+      this.translate.use(savedLang);
+    }
+
     this.cartService.cartChanged$.subscribe(cart => {
-      this.shoppingCart = cart; // cart es un array de ShoppingCartItem
+      this.shoppingCart = cart;
       this.cartItemCount = cart.reduce((acc, item) => acc + item.quantity, 0);
     });
   }
@@ -97,6 +110,11 @@ export class HeaderComponent implements OnInit, DoCheck {
     }
 
     this.router.navigate(['/personal-profile']);
+  }
+
+  switchLanguage(lang: string) {
+    this.translate.use(lang);
+    localStorage.setItem('lang', lang);
   }
 
   @HostListener('document:click', ['$event'])

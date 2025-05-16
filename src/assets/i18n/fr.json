@@ -1,0 +1,33 @@
+{
+  "ABOUT_US": {
+    "HERO_TITLE": "Votre partenaire en technologie",
+    "HERO_TEXT": "Chez Infomarket, nous sommes spécialisés dans la fourniture des meilleurs produits informatiques, du matériel au logiciel, pour que vous soyez toujours à la pointe.",
+
+    "FEATURE_HARDWARE_ALT": "Icône Matériel",
+    "FEATURE_HARDWARE_TITLE": "Matériel haute performance",
+    "FEATURE_HARDWARE_TEXT": "Nous proposons des composants et des équipements de dernière génération pour les gamers, les professionnels et les passionnés.",
+
+    "FEATURE_SOFTWARE_ALT": "Icône Logiciel",
+    "FEATURE_SOFTWARE_TITLE": "Logiciels spécialisés",
+    "FEATURE_SOFTWARE_TEXT": "Des systèmes d’exploitation aux outils de productivité, nous avons tout ce dont vous avez besoin.",
+
+    "FEATURE_SUPPORT_ALT": "Icône Support",
+    "FEATURE_SUPPORT_TITLE": "Support technique",
+    "FEATURE_SUPPORT_TEXT": "Notre équipe d’experts est toujours disponible pour vous aider en cas de question ou de problème.",
+
+    "HISTORY_TITLE": "Notre histoire",
+    "HISTORY_TEXT": "Fondé en 2025, Infomarket est né avec la mission de devenir la référence en technologie informatique. Nous grandissons grâce à notre passion pour l’innovation et notre engagement envers la qualité.",
+    "HISTORY_IMAGE_ALT": "Notre Histoire",
+
+    "VALUES_TITLE": "Nos valeurs",
+
+    "VALUE_INNOVATION_TITLE": "Innovation",
+    "VALUE_INNOVATION_TEXT": "Nous restons à la pointe en proposant les dernières tendances technologiques.",
+
+    "VALUE_QUALITY_TITLE": "Qualité",
+    "VALUE_QUALITY_TEXT": "Nous travaillons avec les meilleures marques pour garantir des produits durables et fiables.",
+
+    "VALUE_COMMITMENT_TITLE": "Engagement",
+    "VALUE_COMMITMENT_TEXT": "Nous nous efforçons de dépasser les attentes de nos clients à chaque achat."
+  }
+}

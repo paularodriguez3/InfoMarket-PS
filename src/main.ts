@@ -7,6 +7,7 @@ import { environment } from './app/environments/environment.development';
 import {getAuth, provideAuth} from '@angular/fire/auth';
 import {getFirestore, provideFirestore} from '@angular/fire/firestore';
 import {getStorage, provideStorage} from '@angular/fire/storage';
+import { provideTranslations } from './app/translate.providers';
 
 
 function isFirebaseConfigValid(config: any): boolean {
@@ -15,6 +16,7 @@ function isFirebaseConfigValid(config: any): boolean {
 bootstrapApplication(AppComponent, {
   providers: [
     provideRouter(appRoutes),
+    ...provideTranslations,
     ...(isFirebaseConfigValid(environment.firebaseConfig)
       ? [
         provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
@@ -22,6 +24,6 @@ bootstrapApplication(AppComponent, {
         provideFirestore(() => getFirestore()),
         provideStorage(() => getStorage())
       ]
-      : []),
-  ],
+      : [])
+  ]
 }).catch(err => console.error(err));

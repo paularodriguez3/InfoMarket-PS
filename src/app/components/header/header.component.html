@@ -14,6 +14,13 @@
           </button>
         </div>
 
+        <div class="lang-switch">
+          <button (click)="switchLanguage('es')" title="Español">🇪🇸</button>
+          <button (click)="switchLanguage('en')" title="English">🇬🇧</button>
+          <button (click)="switchLanguage('zh')" title="Chinese">🇨🇳</button>
+          <button (click)="switchLanguage('fr')" title="Français">🇫🇷</button>
+        </div>
+
         <a *ngIf="isAdmin" id="add-product" routerLink="/add-product" title="Añadir producto">
           <i class="fi fi-rr-plus"></i>
         </a>
