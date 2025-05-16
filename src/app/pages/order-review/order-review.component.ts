@@ -1,6 +1,6 @@
 // src/app/pages/order-review/order-review.component.ts
 
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, inject, OnDestroy, OnInit} from '@angular/core';
 
 import { ShoppingInfoComponent } from '../../components/shopping-info/shopping-info.component';
 import { OrderReviewTemplateComponent } from '../../components/order-review-template/order-review-template.component';

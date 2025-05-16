@@ -15,7 +15,7 @@ import {OrderHistoryComponent} from '../../components/order-history/order-histor
   standalone: true,
   templateUrl: './personal-profile.component.html',
   styleUrl: './personal-profile.component.css',
-  imports: [CommonModule, FormsModule, CardManagerComponent, AddressManagerComponent, DeleteAccountComponent, TranslatePipe]
+  imports: [CommonModule, FormsModule, CardManagerComponent, AddressManagerComponent, DeleteAccountComponent, TranslatePipe, OrderHistoryComponent]
 })
 export class PersonalProfileComponent implements OnInit {
   username = '';
@@ -28,6 +28,8 @@ export class PersonalProfileComponent implements OnInit {
   private router = inject(Router);
   private firestore = inject(Firestore, {optional: true});
   private auth = inject(Auth, {optional: true});
+  orders = [];
+  showOrderHistory = false;
   showCardManager = false;
   toggleCardManager() {
     this.showCardManager = !this.showCardManager;
@@ -76,6 +78,7 @@ export class PersonalProfileComponent implements OnInit {
         this.lastName = data['lastName'] || '';
         this.email = data['email'] || '';
         this.phone = data['phone'] || '';
+        this.orders = data['pedidos'] || [];
       } else {
         alert('No se encontraron datos del usuario.');
       }
@@ -117,5 +120,9 @@ export class PersonalProfileComponent implements OnInit {
     } catch (err) {
       console.error('Error al cerrar sesión:', err);
     }
+  }
+
+  toggleOrderHistory() {
+    this.showOrderHistory = !this.showOrderHistory;
   }
 }
