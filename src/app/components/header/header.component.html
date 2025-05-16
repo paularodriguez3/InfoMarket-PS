@@ -14,15 +14,6 @@
               <i class="fi fi-rr-search"></i>
             </button>
           </div>
-          <a *ngIf="isAdmin" id="add-product" routerLink="/add-product" title="Añadir producto">
-            <i class="fi fi-rr-plus"></i>
-          </a>
-        <div class="search" #searchBar>
-          <input #inputBar class="input" type="text" placeholder="¿Qué estás buscando?..." [(ngModel)]="terminoBusqueda" (keyup.enter)="buscarProducto()" />
-          <button class="btn" (click)="toggleSearch()">
-            <i class="fi fi-rr-search"></i>
-          </button>
-        </div>
 
         <div class="lang-switch">
           <button (click)="switchLanguage('es')" title="Español">🇪🇸</button>
