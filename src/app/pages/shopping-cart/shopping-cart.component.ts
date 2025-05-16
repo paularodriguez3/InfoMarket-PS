@@ -4,6 +4,7 @@ import {ShoppingCartService} from '../../services/shopping-cart.service';
 import {ShoppingCartItem} from '../../models/shopping-cart-item.model';
 import {NgFor, NgIf} from '@angular/common';
 import {ProductInfoComponent} from '../../components/product-info/product-info.component';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -11,7 +12,8 @@ import {ProductInfoComponent} from '../../components/product-info/product-info.c
   imports: [
     NgFor,
     ProductInfoComponent,
-    NgIf
+    NgIf,
+    TranslatePipe
   ],
   templateUrl: './shopping-cart.component.html',
   styleUrl: './shopping-cart.component.css'

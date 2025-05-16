@@ -105,6 +105,69 @@
     "APPLY_DISCOUNT": "Apply discount",
     "TOTAL_PAY": "Total to pay",
     "TOTAL_WITHOUT_TAX": "Total without IGIC (7%)"
+  },
+  "PROFILE": {
+    "TITLE": "My Profile",
+    "SUBTITLE": "Manage your personal information",
+    "USERNAME_LABEL": "Username",
+    "USERNAME_PLACEHOLDER": "e.g., User",
+    "FIRSTNAME_LABEL": "First Name",
+    "FIRSTNAME_PLACEHOLDER": "e.g., Paula Rosa",
+    "LASTNAME_LABEL": "Last Name",
+    "LASTNAME_PLACEHOLDER": "e.g., Rodríguez Morales",
+    "EMAIL_LABEL": "Email",
+    "EMAIL_PLACEHOLDER": "e.g., example@gmail.com",
+    "PHONE_LABEL": "Phone",
+    "PHONE_PLACEHOLDER": "e.g., 600 000 000",
+    "SAVE_CHANGES": "Save changes",
+    "MANAGE_CARDS": "Manage cards",
+    "MANAGE_ADDRESSES": "Manage addresses",
+    "DELETE_ACCOUNT": "Delete account",
+    "LOGOUT": "Log out"
+  },
+  "PRODUCT_DETAIL": {
+    "FEATURES_TITLE": "Product features:",
+    "STOCK": "Stock",
+    "QUANTITY": "Quantity",
+    "TOTAL_PRICE": "Total price",
+    "ADD_TO_CART": "Add to cart",
+    "EDIT": "Edit",
+    "ADD_TO_WISHLIST": "Add to wishlist",
+    "IMAGE_ALT": "Product",
+    "REVIEWS_TITLE": "Reviews",
+    "AVG_SCORE": "Average rating",
+    "BASED_ON": "Based on {{ count }} reviews",
+    "REVIEW_FROM": "From:",
+    "NO_COMMENT": "No comment",
+    "NO_REVIEWS": "No reviews yet",
+    "RATE_TITLE": "Rate your shopping experience",
+    "COMMENT_PLACEHOLDER": "Add a comment...",
+    "SEND": "Send",
+    "CLOSE": "Close"
+  },
+  "PRODUCT_LIST": {
+    "SORT_FILTER": "Sort & Filter",
+    "SORT_BY": "Sort by:",
+    "NO_SORT": "No sorting",
+    "PRICE_ASC": "Price: Low to High",
+    "PRICE_DESC": "Price: High to Low",
+    "NAME_ASC": "Name: A-Z",
+    "NAME_DESC": "Name: Z-A",
+    "MIN_PRICE": "Minimum price:",
+    "MAX_PRICE": "Maximum price:",
+    "BRAND": "Brand:",
+    "COLOR": "Color:",
+    "APPLY": "Apply"
+  },
+  "SHIPPING": {
+    "TITLE": "SHIPPING METHOD",
+    "NEXT": "Next"
+  },
+  "CART": {
+    "TITLE": "Shopping Cart",
+    "CHECKOUT": "Proceed to checkout",
+    "CLEAR": "Clear cart",
+    "CONTINUE": "Continue shopping"
   }
 
 }

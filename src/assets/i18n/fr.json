@@ -104,6 +104,69 @@
     "APPLY_DISCOUNT": "Appliquer la réduction",
     "TOTAL_PAY": "Total à payer",
     "TOTAL_WITHOUT_TAX": "Total hors IGIC (7%)"
+  },
+  "PROFILE": {
+    "TITLE": "Mon Profil",
+    "SUBTITLE": "Gérez vos informations personnelles",
+    "USERNAME_LABEL": "Nom d'utilisateur",
+    "USERNAME_PLACEHOLDER": "Ex : Utilisateur",
+    "FIRSTNAME_LABEL": "Prénom",
+    "FIRSTNAME_PLACEHOLDER": "Ex : Paula Rosa",
+    "LASTNAME_LABEL": "Nom",
+    "LASTNAME_PLACEHOLDER": "Ex : Rodríguez Morales",
+    "EMAIL_LABEL": "E-mail",
+    "EMAIL_PLACEHOLDER": "Ex : exemple@gmail.com",
+    "PHONE_LABEL": "Téléphone",
+    "PHONE_PLACEHOLDER": "Ex : 0600000000",
+    "SAVE_CHANGES": "Enregistrer les modifications",
+    "MANAGE_CARDS": "Gérer les cartes",
+    "MANAGE_ADDRESSES": "Gérer les adresses",
+    "DELETE_ACCOUNT": "Supprimer le compte",
+    "LOGOUT": "Se déconnecter"
+  },
+  "PRODUCT_DETAIL": {
+    "FEATURES_TITLE": "Caractéristiques du produit :",
+    "STOCK": "Stock",
+    "QUANTITY": "Quantité",
+    "TOTAL_PRICE": "Prix total",
+    "ADD_TO_CART": "Ajouter au panier",
+    "EDIT": "Modifier",
+    "ADD_TO_WISHLIST": "Ajouter à la liste de souhaits",
+    "IMAGE_ALT": "Produit",
+    "REVIEWS_TITLE": "Avis",
+    "AVG_SCORE": "Note moyenne",
+    "BASED_ON": "Basé sur {{ count }} avis",
+    "REVIEW_FROM": "De :",
+    "NO_COMMENT": "Pas de commentaire",
+    "NO_REVIEWS": "Aucun avis",
+    "RATE_TITLE": "Évaluez votre expérience d'achat",
+    "COMMENT_PLACEHOLDER": "Ajoutez un commentaire...",
+    "SEND": "Envoyer",
+    "CLOSE": "Fermer"
+  },
+  "PRODUCT_LIST": {
+    "SORT_FILTER": "Trier et filtrer",
+    "SORT_BY": "Trier par :",
+    "NO_SORT": "Aucun tri",
+    "PRICE_ASC": "Prix : du plus bas au plus élevé",
+    "PRICE_DESC": "Prix : du plus élevé au plus bas",
+    "NAME_ASC": "Nom : A-Z",
+    "NAME_DESC": "Nom : Z-A",
+    "MIN_PRICE": "Prix minimum :",
+    "MAX_PRICE": "Prix maximum :",
+    "BRAND": "Marque :",
+    "COLOR": "Couleur :",
+    "APPLY": "Appliquer"
+  },
+  "SHIPPING": {
+    "TITLE": "MÉTHODE D'EXPÉDITION",
+    "NEXT": "Suivant"
+  },
+  "CART": {
+    "TITLE": "Panier d'achat",
+    "CHECKOUT": "Passer la commande",
+    "CLEAR": "Vider le panier",
+    "CONTINUE": "Continuer les achats"
   }
 
 }

@@ -105,6 +105,69 @@
     "APPLY_DISCOUNT": "Aplicar descuento",
     "TOTAL_PAY": "Total a pagar",
     "TOTAL_WITHOUT_TAX": "Total sin IGIC (7%)"
+  },
+  "PROFILE": {
+    "TITLE": "Mi Perfil",
+    "SUBTITLE": "Administra tu información personal",
+    "USERNAME_LABEL": "Nombre de usuario",
+    "USERNAME_PLACEHOLDER": "Ej: User",
+    "FIRSTNAME_LABEL": "Nombre",
+    "FIRSTNAME_PLACEHOLDER": "Ej: Paula Rosa",
+    "LASTNAME_LABEL": "Apellidos",
+    "LASTNAME_PLACEHOLDER": "Ej: Rodríguez Morales",
+    "EMAIL_LABEL": "Correo electrónico",
+    "EMAIL_PLACEHOLDER": "Ej: ejemplo@gmail.com",
+    "PHONE_LABEL": "Teléfono",
+    "PHONE_PLACEHOLDER": "Ej: 600 000 000",
+    "SAVE_CHANGES": "Guardar cambios",
+    "MANAGE_CARDS": "Gestionar tarjetas",
+    "MANAGE_ADDRESSES": "Gestionar direcciones",
+    "DELETE_ACCOUNT": "Eliminar cuenta",
+    "LOGOUT": "Cerrar sesión"
+  },
+  "PRODUCT_DETAIL": {
+    "FEATURES_TITLE": "Características del producto:",
+    "STOCK": "Stock",
+    "QUANTITY": "Cantidad",
+    "TOTAL_PRICE": "Precio total",
+    "ADD_TO_CART": "Añadir al carrito",
+    "EDIT": "Editar",
+    "ADD_TO_WISHLIST": "Añadir a deseados",
+    "IMAGE_ALT": "Producto",
+    "REVIEWS_TITLE": "Valoraciones",
+    "AVG_SCORE": "Puntuación media",
+    "BASED_ON": "Basado en {{ count }} valoraciones",
+    "REVIEW_FROM": "De:",
+    "NO_COMMENT": "Sin comentario",
+    "NO_REVIEWS": "No hay valoraciones",
+    "RATE_TITLE": "Valora tu experiencia de compra",
+    "COMMENT_PLACEHOLDER": "Añade un comentario...",
+    "SEND": "Enviar",
+    "CLOSE": "Cerrar"
+  },
+  "PRODUCT_LIST": {
+    "SORT_FILTER": "Ordenar y filtrar",
+    "SORT_BY": "Ordenar por:",
+    "NO_SORT": "Sin orden",
+    "PRICE_ASC": "Precio: Menor a Mayor",
+    "PRICE_DESC": "Precio: Mayor a Menor",
+    "NAME_ASC": "Nombre: A-Z",
+    "NAME_DESC": "Nombre: Z-A",
+    "MIN_PRICE": "Precio mínimo:",
+    "MAX_PRICE": "Precio máximo:",
+    "BRAND": "Marca:",
+    "COLOR": "Color:",
+    "APPLY": "Aplicar"
+  },
+  "SHIPPING": {
+    "TITLE": "MÉTODO DE ENVÍO",
+    "NEXT": "Siguiente"
+  },
+  "CART": {
+    "TITLE": "Carrito de compra",
+    "CHECKOUT": "Procesar pedido",
+    "CLEAR": "Vaciar carrito",
+    "CONTINUE": "Seguir comprando"
   }
 
 }

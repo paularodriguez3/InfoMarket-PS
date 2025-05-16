@@ -7,12 +7,13 @@ import { Auth, signOut } from '@angular/fire/auth';
 import {CardManagerComponent} from '../../components/card-manager/card-manager.component';
 import {AddressManagerComponent} from '../../components/address-manager/address-manager.component';
 import {DeleteAccountComponent} from '../../components/delete-account/delete-account.component';
+import {TranslatePipe} from '@ngx-translate/core';
 @Component({
   selector: 'app-personal-profile',
   standalone: true,
   templateUrl: './personal-profile.component.html',
   styleUrl: './personal-profile.component.css',
-  imports: [CommonModule, FormsModule, CardManagerComponent, AddressManagerComponent, DeleteAccountComponent]
+  imports: [CommonModule, FormsModule, CardManagerComponent, AddressManagerComponent, DeleteAccountComponent, TranslatePipe]
 })
 export class PersonalProfileComponent implements OnInit {
   username = '';
