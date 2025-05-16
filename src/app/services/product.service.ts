@@ -204,7 +204,7 @@ export class ProductService {
   getProductsLazy(
     limitNumber: number,
     orderParam: string|null,
-    whereParams: string[]|null,
+    whereParams: string[],
     startAfterDoc?: QueryDocumentSnapshot<any>|null
   ):Observable<{data:any[], lastDoc:QueryDocumentSnapshot<any>|null}> {
     const colRef = collection(this.firestore, "productos");
@@ -221,9 +221,10 @@ export class ProductService {
     }
 
     console.log(whereParams);
-    if (whereParams) {
+    if (whereParams.length>0) {
       for (let whereParam of whereParams) {
         let whereParamSplit = whereParam.split(' ');
+        console.log(whereParamSplit[0], whereParamSplit[1], Number(whereParamSplit[2]));
         if (isNaN(Number(whereParamSplit[2]))) {
           queryConstraints.push(where(whereParamSplit[0], whereParamSplit[1] as WhereFilterOp, whereParamSplit[2]));
         } else {

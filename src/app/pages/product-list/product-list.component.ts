@@ -65,7 +65,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
   subcategoriaParam: string|null = null;
   discounts: boolean|null = null;
 
-  whereParam: string[]|null = null;
+  whereParam: string[] = [];
   orderParam: string|null = null;
 
   constructor(
@@ -80,29 +80,21 @@ export class ProductListComponent implements OnInit, OnDestroy {
       this.route.queryParamMap
     ]).subscribe(([params, queryParams]) => {
       this.search = queryParams.get('search');
-
-
       this.categoriaParam = params.get('categoria');
-      if (this.categoriaParam) {
-        if (!this.whereParam) this.whereParam=[];
-        this.whereParam.push(`Categoria == ${this.categoriaParam}`);
-      }
       this.subcategoriaParam = params.get('subcategoria');
-      if (this.subcategoriaParam) {
-        if (!this.whereParam) this.whereParam=[];
-        this.whereParam.push(`Subategoria == ${this.subcategoriaParam}`);
-      }
-
       this.discounts = queryParams.get('ofertas') === 'true';
-      if (this.discounts) {
-        if (!this.whereParam) this.whereParam=[];
-        this.whereParam.push(`Descuento > 0`);
-        this.whereParam.push(`Descuento < 100`);
-      }
+
 
       if (this.dataSub) this.dataSub.unsubscribe();
       this.products = [];
       this.filteredProducts =  [];
+
+      if (this.discounts) {
+        this.whereParam.push(`Descuento > 0`);
+        this.whereParam.push(`Descuento < 100`);
+      }
+      if (this.categoriaParam) this.whereParam.push(`Categoria == ${this.categoriaParam}`);
+      if (this.subcategoriaParam) this.whereParam.push(`Subategoria == ${this.subcategoriaParam}`);
 
       this.loadNextPage();
     });
@@ -119,12 +111,14 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
   // TODO: Corregir el tema de los filtros
   aplicarFiltros() {
+    /*
     this.filteredProducts = this.products.filter(product => {
       const precio = Number(product.Precio);
       const cumplePrecioMin = this.precioMin == null || precio >= this.precioMin;
       const cumplePrecioMax = this.precioMax == null || precio <= this.precioMax;
       const cumpleMarca = this.marca === '' || (product.Marca ?? '').toLowerCase().includes(this.marca.toLowerCase());
       const cumpleColor = this.color === '' || (product.Color ?? '').toLowerCase().includes(this.color.toLowerCase());
+
 
       let cumpleCaracteristicas = true;
       for (const clave in this.caracteristicas) {
@@ -140,6 +134,18 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
       return cumplePrecioMin && cumplePrecioMax && cumpleMarca && cumpleColor && cumpleCaracteristicas;
     });
+    // */
+
+    this.whereParam = [];
+    if (this.discounts) {
+      this.whereParam.push(`Descuento > 0`);
+      this.whereParam.push(`Descuento < 100`);
+    }
+    if (this.categoriaParam) this.whereParam.push(`Categoria == ${this.categoriaParam}`);
+    if (this.subcategoriaParam) this.whereParam.push(`Subategoria == ${this.subcategoriaParam}`);
+
+    if (this.precioMin != null) this.whereParam.push(`Precio >= ${this.precioMin}`); // FIXME
+    if (this.precioMax != null) this.whereParam.push(`Precio <= ${this.precioMin}`); // FIXME
 
     this.aplicarOrdenacion();
     this.reloadProducts();
@@ -189,7 +195,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
     const pageHeight = document.documentElement.scrollHeight;
     const scrollPercent = scrollPosition / pageHeight * 100;
     if (scrollPercent >= 60 && !this.isLoading) {
-      this.loadNextPage();
+      // this.loadNextPage();
     }
   }
 
