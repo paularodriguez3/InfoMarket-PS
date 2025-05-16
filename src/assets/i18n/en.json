@@ -54,5 +54,16 @@
     "ADD_PRODUCT": "Add Product",
     "DELETE_PRODUCT": "Delete Product",
     "IMAGE_ALT": "Product"
+  },
+  "CHECKOUT": {
+    "BILLING_TITLE": "BILLING ADDRESS",
+    "COUNTRY_LABEL": "Country",
+    "ADDRESS_LABEL": "Address",
+    "SHOP_LABEL": "Physical store",
+    "SHOP_PLACEHOLDER": "Select a store",
+    "ZIP_LABEL": "Postal Code",
+    "PROVINCE_LABEL": "Province",
+    "MY_ADDRESSES": "My addresses",
+    "CONTINUE": "Continue"
   }
 }

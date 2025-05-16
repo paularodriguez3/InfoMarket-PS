@@ -6,13 +6,14 @@ import { ShoppingInfoComponent } from '../../components/shopping-info/shopping-i
 import { ShoppingProcessComponent } from '../../components/shopping-process/shopping-process.component';
 import {CommonModule} from '@angular/common';
 import {FirebaseService} from '../../services/firebase.service';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-billing-address',
   standalone: true,
   templateUrl: './billing-address.component.html',
   styleUrls: ['./billing-address.component.css'],
-  imports: [ShoppingProcessComponent, ShoppingInfoComponent, ReactiveFormsModule, FormsModule, CommonModule]
+  imports: [ShoppingProcessComponent, ShoppingInfoComponent, ReactiveFormsModule, FormsModule, CommonModule, TranslatePipe]
 })
 export class BillingAddressComponent implements OnInit, AfterViewInit {
   billingForm!: FormGroup;

@@ -1,32 +1,31 @@
 <main>
-  <app-shopping-process/>
+  <app-shopping-process />
   <div id="billing-shopping-wrapper">
     <section id="billing-address">
-      <h2>DIRECCIÓN DE FACTURACIÓN</h2>
+      <h2>{{ 'CHECKOUT.BILLING_TITLE' | translate }}</h2>
       <form [formGroup]="billingForm" (ngSubmit)="onSubmit()">
-        <label for="country">País</label>
-        <input type="text" id="country" formControlName="country" required>
+        <label for="country">{{ 'CHECKOUT.COUNTRY_LABEL' | translate }}</label>
+        <input type="text" id="country" formControlName="country" required />
 
-        <label for="address">Dirección</label>
-        <input type="text" id="address" formControlName="address" required>
-        <label for="shop">Tienda física</label>
+        <label for="address">{{ 'CHECKOUT.ADDRESS_LABEL' | translate }}</label>
+        <input type="text" id="address" formControlName="address" required />
+
+        <label for="shop">{{ 'CHECKOUT.SHOP_LABEL' | translate }}</label>
         <select formControlName="shop" id="shop" name="shop">
-          <option value="">Selecciona una tienda</option>
+          <option value="">{{ 'CHECKOUT.SHOP_PLACEHOLDER' | translate }}</option>
           @for (tienda of tiendas; track $index) {
-            <option [value]="tienda.direccion">{{tienda.direccion}}</option>
+            <option [value]="tienda.direccion">{{ tienda.direccion }}</option>
           }
         </select>
 
+        <label for="zip">{{ 'CHECKOUT.ZIP_LABEL' | translate }}</label>
+        <input type="text" id="zip" formControlName="zip" required />
 
-        <label for="zip">Código Postal</label>
-        <input type="text" id="zip" formControlName="zip" required>
-
-        <label for="province">Provincia</label>
-        <input type="text" id="province" formControlName="province" required>
-
+        <label for="province">{{ 'CHECKOUT.PROVINCE_LABEL' | translate }}</label>
+        <input type="text" id="province" formControlName="province" required />
 
         <div *ngIf="addresses.length > 0" id="saved-addresses">
-          <h3>Mis direcciones</h3>
+          <h3>{{ 'CHECKOUT.MY_ADDRESSES' | translate }}</h3>
           <div
             *ngFor="let address of addresses"
             class="address-card"
@@ -36,10 +35,11 @@
           </div>
         </div>
 
-
-        <button id="continue-button" type="submit">Continuar</button>
+        <button id="continue-button" type="submit">
+          {{ 'CHECKOUT.CONTINUE' | translate }}
+        </button>
       </form>
     </section>
-    <app-shopping-info/>
+    <app-shopping-info />
   </div>
 </main>

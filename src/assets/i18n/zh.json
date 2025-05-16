@@ -54,5 +54,16 @@
     "ADD_PRODUCT": "添加产品",
     "DELETE_PRODUCT": "删除产品",
     "IMAGE_ALT": "产品"
+  },
+  "CHECKOUT": {
+    "BILLING_TITLE": "账单地址",
+    "COUNTRY_LABEL": "国家",
+    "ADDRESS_LABEL": "地址",
+    "SHOP_LABEL": "实体店",
+    "SHOP_PLACEHOLDER": "请选择一家门店",
+    "ZIP_LABEL": "邮政编码",
+    "PROVINCE_LABEL": "省份",
+    "MY_ADDRESSES": "我的地址",
+    "CONTINUE": "继续"
   }
 }

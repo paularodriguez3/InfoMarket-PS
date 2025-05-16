@@ -54,5 +54,16 @@
     "ADD_PRODUCT": "Añadir producto",
     "DELETE_PRODUCT": "Eliminar Producto",
     "IMAGE_ALT": "Producto"
+  },
+  "CHECKOUT": {
+    "BILLING_TITLE": "DIRECCIÓN DE FACTURACIÓN",
+    "COUNTRY_LABEL": "País",
+    "ADDRESS_LABEL": "Dirección",
+    "SHOP_LABEL": "Tienda física",
+    "SHOP_PLACEHOLDER": "Selecciona una tienda",
+    "ZIP_LABEL": "Código Postal",
+    "PROVINCE_LABEL": "Provincia",
+    "MY_ADDRESSES": "Mis direcciones",
+    "CONTINUE": "Continuar"
   }
 }
