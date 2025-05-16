@@ -30,8 +30,17 @@ export class WishListService {
 
     const productRef = doc(this.firestore, `users/${user.uid}/deseados/${product.id}`);
 
+    // Convertir Caracteristicas (Feature[]) a objeto si es un array
+    const convertedProduct: any = {
+      ...product,
+      Caracteristicas: Array.isArray(product.Caracteristicas)
+        ? Object.fromEntries(product.Caracteristicas.map(f => [f.name, f.value]))
+        : product.Caracteristicas
+    };
+
+    // Eliminar campos undefined
     const cleanProduct = Object.fromEntries(
-      Object.entries(product).filter(([_, value]) => value !== undefined)
+      Object.entries(convertedProduct).filter(([_, value]) => value !== undefined)
     );
 
     try {

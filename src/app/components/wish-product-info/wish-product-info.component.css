@@ -28,6 +28,31 @@
   object-fit: cover;
 }
 
+#button-cart {
+  background-color: #dadada;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#button-cart i {
+  font-size: 20px;
+  color: #5c4c4c;
+}
+
+#button-cart:hover {
+  background-color: #ffffff;
+}
+
+#button-cart:active {
+  background-color: #575252;
+}
+
 #product-info {
   flex-grow: 1;
   overflow: hidden;
