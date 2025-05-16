@@ -96,6 +96,14 @@
     "SEND": "Envoyer",
     "CLOSE": "Fermer"
   },
-
+  "PAYMENT": {
+    "TITLE": "Paiement",
+    "INSTRUCTION": "Cliquez sur l’option de paiement souhaitée",
+    "DISCOUNT_LABEL": "Code de réduction :",
+    "DISCOUNT_PLACEHOLDER": "Entrez votre code",
+    "APPLY_DISCOUNT": "Appliquer la réduction",
+    "TOTAL_PAY": "Total à payer",
+    "TOTAL_WITHOUT_TAX": "Total hors IGIC (7%)"
+  }
 
 }

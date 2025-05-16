@@ -96,6 +96,15 @@
     "COMMENT_PLACEHOLDER": "添加评论...",
     "SEND": "发送",
     "CLOSE": "关闭"
+  },
+  "PAYMENT": {
+    "TITLE": "支付",
+    "INSTRUCTION": "点击您想使用的支付方式",
+    "DISCOUNT_LABEL": "优惠码：",
+    "DISCOUNT_PLACEHOLDER": "输入您的代码",
+    "APPLY_DISCOUNT": "应用优惠",
+    "TOTAL_PAY": "应付总额",
+    "TOTAL_WITHOUT_TAX": "不含IGIC (7%) 的总额"
   }
 
 }
