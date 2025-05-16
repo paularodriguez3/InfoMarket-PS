@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 import { FormsModule } from '@angular/forms';
 import {combineLatest, Subscription} from 'rxjs';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-product-list',
@@ -15,7 +16,8 @@ import {combineLatest, Subscription} from 'rxjs';
     ProductComponent,
     NgForOf,
     FormsModule,
-    NgClass
+    NgClass,
+    TranslatePipe
   ],
   styleUrl: './product-list.component.css'
 })

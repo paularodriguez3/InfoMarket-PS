@@ -1,12 +1,12 @@
 <main>
-  <app-shopping-process/>
+  <app-shopping-process></app-shopping-process>
   <div id="shipping-method-wrapper">
     <section id="shipping-method">
-      <h2>MÉTODO DE ENVÍO</h2>
+      <h2>{{ 'SHIPPING.TITLE' | translate }}</h2>
       <form>
-                <button type="submit" id="button">Siguiente</button>
+        <button type="submit" id="button">{{ 'SHIPPING.NEXT' | translate }}</button>
       </form>
     </section>
   </div>
-  <app-shopping-info/>
+  <app-shopping-info></app-shopping-info>
 </main>

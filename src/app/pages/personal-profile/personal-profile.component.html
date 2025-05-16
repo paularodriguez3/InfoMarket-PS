@@ -5,52 +5,47 @@
         <div class="avatar">
           <i class="bx bxs-user"></i>
         </div>
-        <h1>Mi Perfil</h1>
-        <p>Administra tu información personal</p>
+        <h1>{{ 'PROFILE.TITLE' | translate }}</h1>
+        <p>{{ 'PROFILE.SUBTITLE' | translate }}</p>
       </div>
 
       <form class="profile-form" (ngSubmit)="onSave()">
         <div class="form-group">
-          <label>Nombre de usuario</label>
-          <input type="text" [(ngModel)]="username" name="username" placeholder="Ej: User">
+          <label>{{ 'PROFILE.USERNAME_LABEL' | translate }}</label>
+          <input type="text" [(ngModel)]="username" name="username" [placeholder]="'PROFILE.USERNAME_PLACEHOLDER' | translate" />
         </div>
         <div class="form-group">
-          <label>Nombre</label>
-          <input type="text" [(ngModel)]="firstName" name="firstName" placeholder="Ej: Paula Rosa">
+          <label>{{ 'PROFILE.FIRSTNAME_LABEL' | translate }}</label>
+          <input type="text" [(ngModel)]="firstName" name="firstName" [placeholder]="'PROFILE.FIRSTNAME_PLACEHOLDER' | translate" />
+        </div>
+        <div class="form-group">
+          <label>{{ 'PROFILE.LASTNAME_LABEL' | translate }}</label>
+          <input type="text" [(ngModel)]="lastName" name="lastName" [placeholder]="'PROFILE.LASTNAME_PLACEHOLDER' | translate" />
+        </div>
+        <div class="form-group">
+          <label>{{ 'PROFILE.EMAIL_LABEL' | translate }}</label>
+          <input type="email" [(ngModel)]="email" name="email" [placeholder]="'PROFILE.EMAIL_PLACEHOLDER' | translate" />
+        </div>
+        <div class="form-group">
+          <label>{{ 'PROFILE.PHONE_LABEL' | translate }}</label>
+          <input type="tel" [(ngModel)]="phone" name="phone" [placeholder]="'PROFILE.PHONE_PLACEHOLDER' | translate" />
         </div>
 
-        <div class="form-group">
-          <label>Apellidos</label>
-          <input type="text" [(ngModel)]="lastName" name="lastName" placeholder="Ej: Rodríguez Morales">
-        </div>
-
-        <div class="form-group">
-          <label>Correo electrónico</label>
-          <input type="email" [(ngModel)]="email" name="email" placeholder="Ej: ejemplo@gmail.com">
-        </div>
-
-        <div class="form-group">
-          <label>Teléfono</label>
-          <input type="tel" [(ngModel)]="phone" name="phone" placeholder="Ej: 600 000 000">
-        </div>
-        <button type="submit" class="save-button">Guardar cambios</button>
-        <button type = "button" class="toggle-cards" (click)="toggleCardManager()">Gestionar tarjetas</button>
+        <button type="submit" class="save-button">{{ 'PROFILE.SAVE_CHANGES' | translate }}</button>
+        <button type="button" class="toggle-cards" (click)="toggleCardManager()">{{ 'PROFILE.MANAGE_CARDS' | translate }}</button>
         <app-card-manager *ngIf="showCardManager" [uid]="uid"></app-card-manager>
-        <button type="button" class="toggle-cards" (click)="toggleAddressManager()">
-          Gestionar direcciones
-        </button>
+
+        <button type="button" class="toggle-cards" (click)="toggleAddressManager()">{{ 'PROFILE.MANAGE_ADDRESSES' | translate }}</button>
         <app-address-manager *ngIf="showAddressManager" [uid]="uid"></app-address-manager>
         <button type="button" class="toggle-cards" (click)="toggleOrderHistory()">
           Historial de compras
         </button>
         <app-order-history *ngIf="showOrderHistory" [orders]="orders"></app-order-history>
 
-        <button type="button" class="toggle-cards" (click)="toggleDeleteManager()">
-          Eliminar cuenta
-        </button>
+        <button type="button" class="toggle-cards" (click)="toggleDeleteManager()">{{ 'PROFILE.DELETE_ACCOUNT' | translate }}</button>
         <app-delete-account *ngIf="showDeleteManager" [uid]="uid"></app-delete-account>
 
-        <button type="button" class="logout-button" (click)="logout()">Cerrar sesión</button>
+        <button type="button" class="logout-button" (click)="logout()">{{ 'PROFILE.LOGOUT' | translate }}</button>
       </form>
     </div>
   </div>

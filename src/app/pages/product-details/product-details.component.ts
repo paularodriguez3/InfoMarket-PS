@@ -6,6 +6,7 @@ import {DatePipe, NgClass, NgForOf, NgIf} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ProductService} from '../../services/product.service';
 import {WishListService} from '../../services/wish-list.service';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-product-details',
@@ -17,7 +18,8 @@ import {WishListService} from '../../services/wish-list.service';
     NgForOf,
     ReactiveFormsModule,
     FormsModule,
-    DatePipe
+    DatePipe,
+    TranslatePipe
   ],
   styleUrl: './product-details.component.css'
 })

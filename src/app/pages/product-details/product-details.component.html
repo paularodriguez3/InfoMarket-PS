@@ -1,90 +1,106 @@
 <main>
   <article id="product-details">
     <section id="product-details-info">
-      <h1 id="product-name">{{product.Nombre}}</h1>
-      <p id="product-desc">{{product.Descripcion}}</p>
-      <p id="features">Características del producto: </p>
-      <hr class = "hr-features">
+      <h1 id="product-name">{{ product.Nombre }}</h1>
+      <p id="product-desc">{{ product.Descripcion }}</p>
+
+      <p id="features">{{ 'PRODUCT_DETAIL.FEATURES_TITLE' | translate }}</p>
+      <hr class="hr-features" />
+
       <div id="product-features">
         <div *ngFor="let caracteristica of product.Caracteristicas; let i = index; trackBy: trackByIndex">
           <p>{{ caracteristica.name }}: {{ caracteristica.value }}</p>
         </div>
       </div>
-      <hr class = "hr-features">
+
+      <hr class="hr-features" />
+
       <p id="product-stock" *ngIf="product">
-        Stock:
+        {{ 'PRODUCT_DETAIL.STOCK' | translate }}:
         <span [ngClass]="{
-      'stock-green': product.Stock > 10,
-      'stock-orange': product.Stock > 0 && product.Stock <= 7,
-      'stock-red': product.Stock === 0
-    }">
-    {{ getStockMessage() }}
-  </span>
+          'stock-green': product.Stock > 10,
+          'stock-orange': product.Stock > 0 && product.Stock <= 7,
+          'stock-red': product.Stock === 0
+        }">
+          {{ getStockMessage() }}
+        </span>
       </p>
+
       <div id="quantity-container">
         <div class="quantity-selector">
-          <p id="product-quantity">Cantidad: </p>
-          <button class="qty-button" id="minus" (click)="decrementQty()"><i class='bx bxs-minus-circle' ></i></button>
-          <p id="qty-value">{{cantidad}}</p>
+          <p id="product-quantity">{{ 'PRODUCT_DETAIL.QUANTITY' | translate }}: </p>
+          <button class="qty-button" id="minus" (click)="decrementQty()">
+            <i class="bx bxs-minus-circle"></i>
+          </button>
+          <p id="qty-value">{{ cantidad }}</p>
           <button
             class="qty-button"
             id="plus"
             (click)="incrementQty()"
             [disabled]="cantidad >= product.Stock"
             [ngClass]="{ 'disabled-button': cantidad >= product.Stock }">
-            <i class='bx bxs-plus-circle'></i>
+            <i class="bx bxs-plus-circle"></i>
           </button>
         </div>
       </div>
+
       <p id="final-price" *ngIf="product.Descuento && product.Descuento > 0 && product.Descuento < 100">
-        Precio total:
+        {{ 'PRODUCT_DETAIL.TOTAL_PRICE' | translate }}:
         <span id="price" style="text-decoration: line-through; color: #888;">
-    {{ (product.Precio * cantidad).toFixed(2) }} €
-  </span>
+          {{ (product.Precio * cantidad).toFixed(2) }} €
+        </span>
         <span style="color: red; font-weight: bold; font-size: 1.4em;">
-    {{ (getPrecioConDescuento() * cantidad).toFixed(2) }} €
-  </span>
+          {{ (getPrecioConDescuento() * cantidad).toFixed(2) }} €
+        </span>
       </p>
 
       <p id="final-price" *ngIf="!product.Descuento || product.Descuento === 0 || product.Descuento >= 100">
-        Precio total:
-        <span id="price">
-    {{ (product.Precio * cantidad).toFixed(2) }} €
-  </span>
+        {{ 'PRODUCT_DETAIL.TOTAL_PRICE' | translate }}:
+        <span id="price">{{ (product.Precio * cantidad).toFixed(2) }} €</span>
       </p>
-      <hr class = "hr-features">
+
+      <hr class="hr-features" />
+
       <div id="add-to-cart">
-        <button type=button id="add-to-cart-button" (click)="shoppingCartService.addToCart(product, cantidad)">Añadir al carrito</button>
+        <button type="button" id="add-to-cart-button" (click)="shoppingCartService.addToCart(product, cantidad)">
+          {{ 'PRODUCT_DETAIL.ADD_TO_CART' | translate }}
+        </button>
       </div>
+
       <div id="edit-product" *ngIf="isAdmin">
-        <button id="edit-product-button" (click)="editProduct()">Editar</button>
+        <button id="edit-product-button" (click)="editProduct()">
+          {{ 'PRODUCT_DETAIL.EDIT' | translate }}
+        </button>
       </div>
+
       <div id="wish-list" *ngIf="isLoggedIn">
         <button id="wish-list-button" (click)="addToWishList()">
-          <i class='bx bx-star'></i> Añadir a deseados
+          <i class="bx bx-star"></i> {{ 'PRODUCT_DETAIL.ADD_TO_WISHLIST' | translate }}
         </button>
       </div>
     </section>
+
     <div id="product-image">
-      <img id="image" alt="Producto" [src] = product.Imagen>
+      <img id="image" alt="{{ 'PRODUCT_DETAIL.IMAGE_ALT' | translate }}" [src]="product.Imagen" />
       <div id="button-arrows">
-        <button id="prev-image"><i class='bx bx-chevron-left'></i></button>
-        <button id="next-image"><i class='bx bx-chevron-right'></i></button>
+        <button id="prev-image"><i class="bx bx-chevron-left"></i></button>
+        <button id="next-image"><i class="bx bx-chevron-right"></i></button>
       </div>
     </div>
   </article>
+
   <section id="product-reviews">
-    <h2>Valoraciones</h2>
+    <h2>{{ 'PRODUCT_DETAIL.REVIEWS_TITLE' | translate }}</h2>
 
     <div class="reviews-container">
       <div class="media-box">
-        <p class="media-label">Puntuación media</p>
+        <p class="media-label">{{ 'PRODUCT_DETAIL.AVG_SCORE' | translate }}</p>
         <div class="media-stars">
           <i *ngFor="let star of [1,2,3,4,5]" class="bi bi-star-fill" [ngClass]="{ 'checked': star <= puntuacionMedia }"></i>
         </div>
         <p class="media-number">{{ puntuacionMedia.toFixed(1) }}/5</p>
         <p class="media-count">
-          Basado en {{ product.Valoraciones?.length || 0 }} valoraciones
+          {{ 'PRODUCT_DETAIL.BASED_ON' | translate:{ count: product.Valoraciones?.length || 0 } }}
         </p>
         <button *ngIf="isLoggedIn" class="add-review-btn" (click)="mostrarModalValoracion()">
           <i class="bi bi-plus-lg"></i>
@@ -93,44 +109,43 @@
 
       <div *ngIf="product.Valoraciones && product.Valoraciones.length > 0; else noReviews" class="reviews-grid">
         <div class="review-card" *ngFor="let val of product.Valoraciones">
-          <div class="review-user">De: {{ val.Usuario || 'Anónimo' }}</div>
+          <div class="review-user">{{ 'PRODUCT_DETAIL.REVIEW_FROM' | translate }} {{ val.Usuario || 'Anónimo' }}</div>
           <div class="review-stars">
             <i *ngFor="let star of [1,2,3,4,5]" class="bi bi-star-fill" [ngClass]="{ 'checked': star <= val.Puntuacion }"></i>
           </div>
-          <p class="review-comment">“{{ val.Comentario || 'Sin comentario' }}”</p>
+          <p class="review-comment">“{{ val.Comentario || ('PRODUCT_DETAIL.NO_COMMENT' | translate) }}”</p>
           <p class="review-date">{{ val.Fecha | date:'dd/MM/yyyy' }}</p>
         </div>
       </div>
     </div>
 
     <ng-template #noReviews>
-      <p>No hay valoraciones</p>
+      <p>{{ 'PRODUCT_DETAIL.NO_REVIEWS' | translate }}</p>
     </ng-template>
   </section>
+
   <div class="modal-overlay" *ngIf="mostrarModal">
     <div class="modal">
-      <h2>Valora tu experiencia de compra</h2>
+      <h2>{{ 'PRODUCT_DETAIL.RATE_TITLE' | translate }}</h2>
       <div class="rating">
-        <i
-          *ngFor="let star of [0,1,2,3,4]; let i = index"
-          class="bi bi-star-fill star"
-          [ngClass]="{ 'checked': i < valoracion }"
-          (click)="seleccionarEstrella(i)">
+        <i *ngFor="let star of [0,1,2,3,4]; let i = index"
+           class="bi bi-star-fill star"
+           [ngClass]="{ 'checked': i < valoracion }"
+           (click)="seleccionarEstrella(i)">
         </i>
       </div>
       <textarea
         [(ngModel)]="comentario"
         maxlength="200"
         rows="3"
-        placeholder="Añade un comentario..."
+        [placeholder]="'PRODUCT_DETAIL.COMMENT_PLACEHOLDER' | translate"
         class="comentario-textarea">
       </textarea>
       <div class="char-counter">{{ comentario.length }}/200</div>
       <div id="buttons">
-        <button id="send" (click)="valorar()">Enviar</button>
-        <button id="close" (click)="cerrarModal()">Cerrar</button>
+        <button id="send" (click)="valorar()">{{ 'PRODUCT_DETAIL.SEND' | translate }}</button>
+        <button id="close" (click)="cerrarModal()">{{ 'PRODUCT_DETAIL.CLOSE' | translate }}</button>
       </div>
     </div>
   </div>
-
 </main>
