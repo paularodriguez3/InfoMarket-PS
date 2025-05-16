@@ -1,3 +1,9 @@
+/* TODO: !!!!!!!!!!!!!!!!!!!!
+ * TODO: Revisar que las funcionalidades de añadir, editar y eliminar producto funcionan
+ * TODO: Si no funcionan, arreglarlas.
+ * TODO: !!!!!!!!!!!!!!!!!!!!
+ **/
+
 import {Component, OnInit, HostListener, OnDestroy} from '@angular/core';
 import { ProductComponent } from '../../components/product/product.component';
 import {NgClass, NgForOf} from '@angular/common';
@@ -50,8 +56,17 @@ export class ProductListComponent implements OnInit, OnDestroy {
   };
 
   isLoading = false;
-  pageNumber = 1;
-  pageSize = 9;
+  pageNumber = 0;
+  pageSize = 6;
+  lastDoc: any = null;
+
+  search: string|null = null;
+  categoriaParam: string| null = null;
+  subcategoriaParam: string|null = null;
+  discounts: boolean|null = null;
+
+  whereParam: string[]|null = null;
+  orderParam: string|null = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -64,22 +79,32 @@ export class ProductListComponent implements OnInit, OnDestroy {
       this.route.paramMap,
       this.route.queryParamMap
     ]).subscribe(([params, queryParams]) => {
-      const search = queryParams.get('search');
-      const categoriaParam = params.get('categoria');
-      const subcategoriaParam = params.get('subcategoria');
-      const discounts = queryParams.get('ofertas') === 'true';
+      this.search = queryParams.get('search');
+
+
+      this.categoriaParam = params.get('categoria');
+      if (this.categoriaParam) {
+        if (!this.whereParam) this.whereParam=[];
+        this.whereParam.push(`Categoria == ${this.categoriaParam}`);
+      }
+      this.subcategoriaParam = params.get('subcategoria');
+      if (this.subcategoriaParam) {
+        if (!this.whereParam) this.whereParam=[];
+        this.whereParam.push(`Subategoria == ${this.subcategoriaParam}`);
+      }
+
+      this.discounts = queryParams.get('ofertas') === 'true';
+      if (this.discounts) {
+        if (!this.whereParam) this.whereParam=[];
+        this.whereParam.push(`Descuento > 0`);
+        this.whereParam.push(`Descuento < 100`);
+      }
 
       if (this.dataSub) this.dataSub.unsubscribe();
       this.products = [];
-
       this.filteredProducts =  [];
-      if (search) {
-        this.loadProductsBySearch(search);
-      } else if (discounts) {
-        this.loadProductsByDiscounts();
-      } else if (categoriaParam) {
-        this.loadProductsByCategory(categoriaParam, subcategoriaParam);
-      }
+
+      this.loadNextPage();
     });
 
     // TEMPORAL:
@@ -92,6 +117,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
   }
 
 
+  // TODO: Corregir el tema de los filtros
   aplicarFiltros() {
     this.filteredProducts = this.products.filter(product => {
       const precio = Number(product.Precio);
@@ -116,22 +142,23 @@ export class ProductListComponent implements OnInit, OnDestroy {
     });
 
     this.aplicarOrdenacion();
+    this.reloadProducts();
     this.isFilterMenuVisible = false;
   }
 
   aplicarOrdenacion() {
     switch (this.ordenSeleccionado) {
       case 'precioAsc':
-        this.filteredProducts.sort((a, b) => a.Precio - b.Precio);
+        this.orderParam = "Precio";
         break;
       case 'precioDesc':
-        this.filteredProducts.sort((a, b) => b.Precio - a.Precio);
+        this.orderParam = "Precio desc";
         break;
       case 'nombreAsc':
-        this.filteredProducts.sort((a, b) => a.Nombre.localeCompare(b.Nombre));
+        this.orderParam = "Nombre";
         break;
       case 'nombreDesc':
-        this.filteredProducts.sort((a, b) => b.Nombre.localeCompare(a.Nombre));
+        this.orderParam = "Nombre desc";
         break;
     }
   }
@@ -156,24 +183,37 @@ export class ProductListComponent implements OnInit, OnDestroy {
     }, 0);
   }
 
+  @HostListener('window:scroll', ['$event'])
+  onWindowScroll() {
+    const scrollPosition = window.scrollY + window.innerHeight;
+    const pageHeight = document.documentElement.scrollHeight;
+    const scrollPercent = scrollPosition / pageHeight * 100;
+    if (scrollPercent >= 60 && !this.isLoading) {
+      this.loadNextPage();
+    }
+  }
+
   private loadProductsBySearch(search: string) {
     this.titulo = `Resultados de búsqueda: "${search}"`;
     this.isLoading = true;
 
-    this.dataSub = this.productService.getAllProductsRealtime().subscribe(async productos => {
+    // TODO: parámetro de búsqueda
+    //this.dataSub = this.productService.getAllProductsRealtime().subscribe(async productos => {
+    this.dataSub = this.productService.getProductsLazy(
+      this.pageSize,
+      this.orderParam,
+      this.whereParam,
+      this.lastDoc
+    ).subscribe(async productos => {
       const filtered: Product[] = [];
 
-      for (const [id, prodData] of Object.entries(productos)) {
-        const data = prodData as Product;
-        const nombreNormalizado = data.Nombre.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
-        const searchNormalizado = search.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
-
-        if (nombreNormalizado.includes(searchNormalizado)) {
-          const imageUrl = await this.productService.getImageUrl(data.Imagen);
-          filtered.push({ id, ...data, Imagen: imageUrl });
-        }
+      for (const data of productos.data) {
+        const imageUrl = await this.productService.getImageUrl(data.Imagen);
+        filtered.push({ id: data.id, ...data, Imagen: imageUrl });
       }
-      this.filteredProducts = filtered;
+
+      this.filteredProducts.push(...filtered);
+      this.lastDoc = productos.lastDoc;
       this.isLoading = false;
     });
   }
@@ -181,18 +221,21 @@ export class ProductListComponent implements OnInit, OnDestroy {
   private loadProductsByDiscounts() {
     this.titulo = 'Productos en oferta';
     this.isLoading = true;
-    this.dataSub = this.productService.getAllProductsRealtime().subscribe(async productos => {
+
+    this.dataSub = this.productService.getProductsLazy(
+      this.pageSize,
+      this.orderParam,
+      this.whereParam,
+      this.lastDoc
+    ).subscribe(async prodData => {
       const filtered: Product[] = [];
 
-      for (const [id, prodData] of Object.entries(productos)) {
-        const data = prodData as Product;
-
-        if (data.Descuento && data.Descuento > 0 && data.Descuento < 100) {
-          const imageUrl = await this.productService.getImageUrl(data.Imagen);
-          filtered.push({ id, ...data, Imagen: imageUrl });
-        }
+      for (const data of prodData.data) {
+        const imageUrl = await this.productService.getImageUrl(data.Imagen);
+        filtered.push({ id:data.id, ...data, Imagen: imageUrl });
       }
-      this.filteredProducts = filtered;
+      this.filteredProducts.push(...filtered);
+      this.lastDoc = prodData.lastDoc;
       this.isLoading = false;
     });
   }
@@ -201,43 +244,44 @@ export class ProductListComponent implements OnInit, OnDestroy {
     this.categoria = categoriaParam;
     this.isLoading = true;
 
-    if (subcategoriaParam) {
-      const path = `productos/${this.categoria}/${subcategoriaParam}`;
-      const nombreSub = this.subcategoriaNombres[subcategoriaParam] || subcategoriaParam;
+    this.dataSub = this.productService.getProductsLazy(
+      this.pageSize,
+      this.orderParam,
+      this.whereParam,
+      this.lastDoc
+    ).subscribe(async doc => {
+      const loaded: Product[] = [];
 
-      this.productService.readDocRealtime('productos', this.categoria).subscribe(doc => {
-        if (doc?.Nombre) {
-          this.titulo = `${doc.Nombre} / ${nombreSub}`;
-        } else {
-          this.titulo = `${this.categoria} / ${nombreSub}`;
-        }
+      for (const data of doc.data) {
+        const imageUrl = await this.productService.getImageUrl(data.Imagen);
+        loaded.push({ id: data.id, ...data, Imagen: imageUrl });
+      }
+
+      this.filteredProducts.push(...loaded);
+      this.lastDoc = doc.lastDoc;
+      this.isLoading = false;
       });
+  }
 
-      this.dataSub = this.productService.getSubcategoryRealtime(path).subscribe(async docs => {
-        const loaded: Product[] = [];
-
-        for (const data of docs) {
-          const imageUrl = await this.productService.getImageUrl(data.Imagen);
-          loaded.push({ id: data.id, ...data, Imagen: imageUrl });
-        }
-        this.filteredProducts = loaded;
-        this.isLoading = false;
-      });
-    } else {
-      this.productService.readDocRealtime('productos', this.categoria).subscribe(doc => {
-        if (doc?.Nombre) this.titulo = doc.Nombre;
-      });
-
-      this.dataSub = this.productService.getCategoryRealtime(this.categoria).subscribe(async productos => {
-        const loaded: Product[] = [];
-
-        for (const [id, data] of Object.entries(productos)) {
-          const imageUrl = await this.productService.getImageUrl(data.Imagen);
-          loaded.push({ id, ...data, Imagen: imageUrl });
-        }
-        this.filteredProducts = loaded;
-        this.isLoading = false;
-      });
+  loadProducts() {
+    if (this.search) {
+      // this.loadProductsBySearch(this.search);
+    } else if (this.discounts) {
+      this.loadProductsByDiscounts();
+    } else if (this.categoriaParam) {
+      this.loadProductsByCategory(this.categoriaParam, this.subcategoriaParam);
     }
+  }
+
+  loadNextPage() {
+    if (this.lastDoc == null && this.pageNumber > 0) return;
+    this.pageNumber++;
+    this.loadProducts();
+  }
+
+  reloadProducts() {
+    this.pageNumber = 0;
+    this.lastDoc = null
+    this.loadNextPage();
   }
 }

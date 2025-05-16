@@ -1,13 +1,14 @@
 import {
   Firestore, addDoc, collection, query,
   doc, deleteDoc, updateDoc, setDoc, getDocs, where, getDoc, collectionData, docData,
-  arrayUnion
+  arrayUnion, limit, orderBy, startAfter, QueryDocumentSnapshot, WhereFilterOp
 } from '@angular/fire/firestore';
 
 import { inject, Injectable } from '@angular/core';
 import { getStorage, FirebaseStorage } from 'firebase/storage';
 import {getDownloadURL, ref} from '@angular/fire/storage';
 import {catchError, combineLatest, map, Observable, of, switchMap, tap} from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
@@ -198,6 +199,58 @@ export class ProductService {
       pedidos: arrayUnion(pedido)
     });
   }
+
+  // ======================== Lazy ========================
+  getProductsLazy(
+    limitNumber: number,
+    orderParam: string|null,
+    whereParams: string[]|null,
+    startAfterDoc?: QueryDocumentSnapshot<any>|null
+  ):Observable<{data:any[], lastDoc:QueryDocumentSnapshot<any>|null}> {
+    const colRef = collection(this.firestore, "productos");
+
+    let queryConstraints = [];
+
+    if(orderParam) {
+      let orderParamList = orderParam.split(' ');
+      if (orderParamList.length > 1) {
+        queryConstraints.push(orderBy(orderParamList[0], "desc"))
+      } else {
+      queryConstraints.push(orderBy(orderParamList[0]));
+      }
+    }
+
+    console.log(whereParams);
+    if (whereParams) {
+      for (let whereParam of whereParams) {
+        let whereParamSplit = whereParam.split(' ');
+        if (isNaN(Number(whereParamSplit[2]))) {
+          queryConstraints.push(where(whereParamSplit[0], whereParamSplit[1] as WhereFilterOp, whereParamSplit[2]));
+        } else {
+          queryConstraints.push(where(whereParamSplit[0], whereParamSplit[1] as WhereFilterOp, Number(whereParamSplit[2])));
+        }
+      }
+    }
+
+    if (startAfterDoc) {
+      queryConstraints.push(startAfter(startAfterDoc));
+    }
+
+    queryConstraints.push(limit(limitNumber));
+
+    let q = query(colRef, ...queryConstraints);
+
+    return new Observable(observer => {
+      getDocs(q).then(snapshot => {
+        const data = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        const lastVisible = snapshot.docs[snapshot.docs.length - 1] || null;
+        observer.next({ data, lastDoc: lastVisible });
+        observer.complete();
+      }).catch(err => observer.error(err));
+    });
+
+  }
+  // ======================================================
 
   async copiarProductos() {
     const estructura = [
