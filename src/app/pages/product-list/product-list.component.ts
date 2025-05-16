@@ -108,34 +108,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
     console.log('isFilterMenuVisible:', this.isFilterMenuVisible);
   }
 
-
-  // TODO: Corregir el tema de los filtros
   aplicarFiltros() {
-    /*
-    this.filteredProducts = this.products.filter(product => {
-      const precio = Number(product.Precio);
-      const cumplePrecioMin = this.precioMin == null || precio >= this.precioMin;
-      const cumplePrecioMax = this.precioMax == null || precio <= this.precioMax;
-      const cumpleMarca = this.marca === '' || (product.Marca ?? '').toLowerCase().includes(this.marca.toLowerCase());
-      const cumpleColor = this.color === '' || (product.Color ?? '').toLowerCase().includes(this.color.toLowerCase());
-
-
-      let cumpleCaracteristicas = true;
-      for (const clave in this.caracteristicas) {
-        const valorFiltro = this.caracteristicas[clave].toLowerCase();
-        if (valorFiltro) {
-          const caracteristicasLower = product.Caracteristicas.map(c => c["value"].toLowerCase());
-          if (!caracteristicasLower.some(caracteristica => caracteristica.includes(valorFiltro))) {
-            cumpleCaracteristicas = false;
-            break;
-          }
-        }
-      }
-
-      return cumplePrecioMin && cumplePrecioMax && cumpleMarca && cumpleColor && cumpleCaracteristicas;
-    });
-    // */
-
     this.whereParam = [];
     if (this.discounts) {
       this.whereParam.push(`Descuento > 0`);
@@ -144,8 +117,12 @@ export class ProductListComponent implements OnInit, OnDestroy {
     if (this.categoriaParam) this.whereParam.push(`Categoria == ${this.categoriaParam}`);
     if (this.subcategoriaParam) this.whereParam.push(`Subategoria == ${this.subcategoriaParam}`);
 
-    if (this.precioMin != null) this.whereParam.push(`Precio >= ${this.precioMin}`); // FIXME
-    if (this.precioMax != null) this.whereParam.push(`Precio <= ${this.precioMin}`); // FIXME
+    if (this.precioMin) this.whereParam.push(`Precio >= ${this.precioMin}`);
+    if (this.precioMax) this.whereParam.push(`Precio <= ${this.precioMax}`);
+
+    if (this.marca) this.whereParam.push(`Marca == ${this.marca.charAt(0).toUpperCase() + this.marca.slice(1)}`);
+
+    if (this.color) this.whereParam.push(`Color == ${this.color.charAt(0).toUpperCase() + this.color.slice(1)}`);
 
     this.aplicarOrdenacion();
     this.reloadProducts();
@@ -195,7 +172,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
     const pageHeight = document.documentElement.scrollHeight;
     const scrollPercent = scrollPosition / pageHeight * 100;
     if (scrollPercent >= 60 && !this.isLoading) {
-      // this.loadNextPage();
+      this.loadNextPage();
     }
   }
 
@@ -287,6 +264,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
   reloadProducts() {
     this.pageNumber = 0;
+    this.filteredProducts = [];
     this.lastDoc = null
     this.loadNextPage();
   }
