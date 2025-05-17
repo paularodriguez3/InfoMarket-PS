@@ -1,9 +1,3 @@
-/* TODO: !!!!!!!!!!!!!!!!!!!!
- * TODO: Revisar que las funcionalidades de añadir, editar y eliminar producto funcionan
- * TODO: Si no funcionan, arreglarlas.
- * TODO: !!!!!!!!!!!!!!!!!!!!
- **/
-
 import {Component, OnInit, HostListener, OnDestroy} from '@angular/core';
 import { ProductComponent } from '../../components/product/product.component';
 import {NgClass, NgForOf} from '@angular/common';
@@ -180,9 +174,9 @@ export class ProductListComponent implements OnInit, OnDestroy {
     this.titulo = `Resultados de búsqueda: "${search}"`;
     this.isLoading = true;
 
-    // TODO: parámetro de búsqueda
-    //this.dataSub = this.productService.getAllProductsRealtime().subscribe(async productos => {
-    this.dataSub = this.productService.getProductsLazy(
+    // FIXME: Falla con algunas búsquedas (creo que porque coinciden con el nombre de subcolecciones)
+    this.dataSub = this.productService.searchProductsLazy(
+      search,
       this.pageSize,
       this.orderParam,
       this.whereParam,
@@ -201,32 +195,10 @@ export class ProductListComponent implements OnInit, OnDestroy {
     });
   }
 
-  private loadProductsByDiscounts() {
-    this.titulo = 'Productos en oferta';
+  private loadProductList() {
+    this.titulo = this.discounts?"Productos en oferta":this.categoriaParam as string;
+
     this.isLoading = true;
-
-    this.dataSub = this.productService.getProductsLazy(
-      this.pageSize,
-      this.orderParam,
-      this.whereParam,
-      this.lastDoc
-    ).subscribe(async prodData => {
-      const filtered: Product[] = [];
-
-      for (const data of prodData.data) {
-        const imageUrl = await this.productService.getImageUrl(data.Imagen);
-        filtered.push({ id:data.id, ...data, Imagen: imageUrl });
-      }
-      this.filteredProducts.push(...filtered);
-      this.lastDoc = prodData.lastDoc;
-      this.isLoading = false;
-    });
-  }
-
-  private loadProductsByCategory(categoriaParam: string, subcategoriaParam?: string | null) {
-    this.categoria = categoriaParam;
-    this.isLoading = true;
-
     this.dataSub = this.productService.getProductsLazy(
       this.pageSize,
       this.orderParam,
@@ -248,11 +220,11 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
   loadProducts() {
     if (this.search) {
-      // this.loadProductsBySearch(this.search);
+      this.loadProductsBySearch(this.search);
     } else if (this.discounts) {
-      this.loadProductsByDiscounts();
+      this.loadProductList();
     } else if (this.categoriaParam) {
-      this.loadProductsByCategory(this.categoriaParam, this.subcategoriaParam);
+      this.loadProductList();
     }
   }
 

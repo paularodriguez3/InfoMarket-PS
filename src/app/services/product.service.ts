@@ -7,7 +7,8 @@ import {
 import { inject, Injectable } from '@angular/core';
 import { getStorage, FirebaseStorage } from 'firebase/storage';
 import {getDownloadURL, ref} from '@angular/fire/storage';
-import {catchError, combineLatest, map, Observable, of, switchMap, tap} from 'rxjs';
+import {catchError, combineLatest, filter, map, Observable, of, switchMap, tap} from 'rxjs';
+import {Product} from '../models/product.model';
 
 
 @Injectable({
@@ -207,6 +208,53 @@ export class ProductService {
     whereParams: string[],
     startAfterDoc?: QueryDocumentSnapshot<any>|null
   ):Observable<{data:any[], lastDoc:QueryDocumentSnapshot<any>|null}> {
+
+
+    const q = this.getQuery(limitNumber, orderParam, whereParams, startAfterDoc);
+
+    return new Observable(observer => {
+      getDocs(q).then(snapshot => {
+        const data = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        const lastVisible = snapshot.docs[snapshot.docs.length - 1] || null;
+        observer.next({ data, lastDoc: lastVisible });
+        observer.complete();
+      }).catch(err => observer.error(err));
+    });
+
+  }
+
+  searchProductsLazy(
+    search:string,
+    limitNumber: number,
+    orderParam: string|null,
+    whereParams: string[],
+    startAfterDoc?: QueryDocumentSnapshot<any>|null
+  ):Observable<{data:any[], lastDoc:QueryDocumentSnapshot<any>|null}> {
+
+    const q = this.getQuery(null, orderParam, whereParams, startAfterDoc);
+
+    return new Observable(observer => {
+      getDocs(q).then(snapshot => {
+        const data = [];
+        for (const doc of snapshot.docs) {
+          const product: Product = {id: doc.id, ...doc.data()} as Product;
+          if(product.Nombre.toLowerCase().includes(search.toLowerCase())) data.push(product);
+          if(data.length >= limitNumber) break;
+        }
+
+        const lastVisible = snapshot.docs[2] || null;
+        observer.next({ data, lastDoc: lastVisible });
+        observer.complete();
+      }).catch(err => observer.error(err));
+    });
+  }
+
+  getQuery(
+    limitNumber: number|null,
+    orderParam: string|null,
+    whereParams: string[],
+    startAfterDoc?: QueryDocumentSnapshot<any>|null
+  ) {
     const colRef = collection(this.firestore, "productos");
 
     let queryConstraints = [];
@@ -216,11 +264,10 @@ export class ProductService {
       if (orderParamList.length > 1) {
         queryConstraints.push(orderBy(orderParamList[0], "desc"))
       } else {
-      queryConstraints.push(orderBy(orderParamList[0]));
+        queryConstraints.push(orderBy(orderParamList[0]));
       }
     }
 
-    console.log(whereParams);
     if (whereParams.length>0) {
       for (let whereParam of whereParams) {
         let whereParamSplit = whereParam.split(' ');
@@ -233,23 +280,10 @@ export class ProductService {
       }
     }
 
-    if (startAfterDoc) {
-      queryConstraints.push(startAfter(startAfterDoc));
-    }
+    if (startAfterDoc) queryConstraints.push(startAfter(startAfterDoc));
+    if (limitNumber) queryConstraints.push(limit(limitNumber));
 
-    queryConstraints.push(limit(limitNumber));
-
-    let q = query(colRef, ...queryConstraints);
-
-    return new Observable(observer => {
-      getDocs(q).then(snapshot => {
-        const data = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        const lastVisible = snapshot.docs[snapshot.docs.length - 1] || null;
-        observer.next({ data, lastDoc: lastVisible });
-        observer.complete();
-      }).catch(err => observer.error(err));
-    });
-
+    return query(colRef, ...queryConstraints);
   }
   // ======================================================
 
