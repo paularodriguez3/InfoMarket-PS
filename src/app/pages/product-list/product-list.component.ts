@@ -173,7 +173,6 @@ export class ProductListComponent implements OnInit, OnDestroy {
     this.titulo = `Resultados de búsqueda: "${search}"`;
     this.isLoading = true;
 
-    // FIXME: Falla con algunas búsquedas (creo que porque coinciden con el nombre de subcolecciones)
     this.dataSub = this.productService.searchProductsLazy(
       search,
       this.pageSize,
@@ -188,7 +187,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
         filtered.push({ id: data.id, ...data, Imagen: imageUrl });
       }
 
-      this.filteredProducts.push(...filtered);
+      if(filtered.length > 0) this.filteredProducts.push(...filtered);
       this.lastDoc = productos.lastDoc;
       this.isLoading = false;
     });

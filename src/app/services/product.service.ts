@@ -246,7 +246,8 @@ export class ProductService {
           if(data.length >= limitNumber) break;
         }
 
-        const lastVisible = snapshot.docs[2] || null;
+        console.log(snapshot.docs);
+        const lastVisible = snapshot.docs[snapshot.docs.length-1] || null;
         observer.next({ data, lastDoc: lastVisible });
         observer.complete();
       }).catch(err => observer.error(err));
