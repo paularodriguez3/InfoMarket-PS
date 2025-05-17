@@ -42,7 +42,7 @@ export class AddProductService {
   }
 
   saveProduct(productData: any) {
-    const productsRef = collection(this.firestore, `productos/${productData.Categoria}/${productData.Subcategoria}`);
+    const productsRef = collection(this.firestore, `productos`);
     return addDoc(productsRef, productData); // Usamos addDoc para agregar el producto
   }
 
@@ -63,24 +63,13 @@ export class AddProductService {
 
   //===============================
   deleteProduct(id: string|undefined, category: string, subategory: string) {
-    const docRef = doc(this.firestore, `productos/${category}/${subategory}/${id}`);
+    const docRef = doc(this.firestore, `productos/${id}`);
     deleteDoc(docRef);
   }
 
 
   async editProduct(old_product: Product, productData: any) {
-    // TODO: Si cambia la categoría/Subcategoria el documento no cambia de ruta
-    if (old_product.Categoria !== productData.Categoria || old_product.Subcategoria !== productData.Subcategoria) {
-      this.deleteProduct(old_product.id, old_product.Categoria, old_product.Subcategoria);
-      this.saveProduct(productData);
-    } else {
-      let docRef;
-      if (productData.Subcategoria !== undefined) {
-        docRef = doc(this.firestore, `productos/${productData.Categoria}/${productData.Subcategoria}`, old_product.id as string);
-      } else {
-        docRef = doc(this.firestore, `productos/${productData.Categoria}`, old_product.id as string);
-      }
-      updateDoc(docRef, productData);
-    }
+    const docRef = doc(this.firestore, `productos`, old_product.id as string);
+    updateDoc(docRef, productData);
   }
 }
