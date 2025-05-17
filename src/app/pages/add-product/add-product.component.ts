@@ -65,10 +65,11 @@ export class AddProductComponent implements OnInit {
       this.onSubcategoryChange();
     }
 
-    this.addProductService.getCategories().subscribe(
+    /*this.addProductService.getCategories().subscribe(
       (categories: string[]) => this.categories = categories,
       (error) => console.error("Error al obtener categorías:", error)
-    );
+    );*/
+    this.categories = this.addProductService.getCategoriesFromMap();
   }
 
   onCategoryChange() {

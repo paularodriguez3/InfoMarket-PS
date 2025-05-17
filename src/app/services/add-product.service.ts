@@ -35,9 +35,18 @@ export class AddProductService {
     });
   }
 
+  getCategoriesFromMap(){
+    let categoryList = [];
+    for (let categories of SubcategoryMap) {
+      categoryList.push(categories["categoria"]);
+    }
+    return categoryList;
+  }
+
   // Devuelve subcategorías desde el modelo local
   getSubcategories(category: string): string[] {
-    return SubcategoryMap[category] || [];
+    const entry = SubcategoryMap.find(item => item.categoria === category)
+    return entry? entry.subcategorias : [];
   }
 
   saveProduct(productData: any) {

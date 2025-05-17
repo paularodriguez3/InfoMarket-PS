@@ -320,7 +320,7 @@ export class ProductService {
   }
 
   async valorarProducto(productId: string, valoracion: any, categoria: string, subcategoria: string): Promise<void> {
-    const productoRef = doc(this.firestore, `productos/${categoria}/${subcategoria}/${productId}`);
+    const productoRef = doc(this.firestore, `productos/${productId}`);
 
     await updateDoc(productoRef, {
       Valoraciones: arrayUnion(valoracion)
