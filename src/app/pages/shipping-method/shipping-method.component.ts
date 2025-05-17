@@ -6,13 +6,14 @@ import { ShoppingProcessComponent } from '../../components/shopping-process/shop
 import { ShoppingInfoComponent } from '../../components/shopping-info/shopping-info.component';
 import {FirebaseService} from '../../services/firebase.service';
 import {from} from 'rxjs';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-shipping-method',
   standalone: true,
   templateUrl: './shipping-method.component.html',
   styleUrls: ['./shipping-method.component.css'],
-  imports: [ShoppingProcessComponent, ShoppingInfoComponent]
+  imports: [ShoppingProcessComponent, ShoppingInfoComponent, TranslatePipe]
 })
 export class ShippingMethodComponent implements AfterViewInit {
 

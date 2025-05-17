@@ -7,11 +7,12 @@ import { Storage } from '@angular/fire/storage';
 import { getDownloadURL, ref, uploadBytesResumable } from '@angular/fire/storage';
 import { Feature, Product } from '../../models/product.model';
 import {Router} from '@angular/router';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-add-product',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, TranslatePipe],
   templateUrl: './add-product.component.html',
   styleUrls: ['./add-product.component.css']
 })

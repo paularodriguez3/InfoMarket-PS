@@ -11,9 +11,17 @@ export interface Product {
   Subcategoria: string;
   Descuento?: number;
   Stock: number;
+  Valoraciones?: Valoracion[];
 }
 
 export interface Feature {
   name: string;
   value: string;
+}
+
+export interface Valoracion {
+  Puntuacion: number;
+  Comentario: string;
+  Fecha?: Date;
+  Usuario: string;
 }

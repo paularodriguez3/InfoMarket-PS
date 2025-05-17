@@ -1,8 +1,15 @@
 <main class="container">
-  <h1>Soporte técnico</h1>
+  <h1>{{ 'SUPPORT.TITLE' | translate }}</h1>
   <div class="info-box">
-    <p>¿Necesitas ayuda? Estamos aquí para ti.</p>
-    <a href="mailto:soporte@infomarket.com?subject=Soporte%20Técnico%20InfoMarket&body=Hola,%20necesito%20ayuda%20con..." class="support-link">Contactar con soporte</a>
-    <p class="email-text">O copia nuestra dirección de correo: <span class="email-address">soporte&#64;infomarket.com</span></p>
+    <p>{{ 'SUPPORT.HELP_TEXT' | translate }}</p>
+    <a
+      href="mailto:soporte@infomarket.com?subject=Soporte%20Técnico%20InfoMarket&body=Hola,%20necesito%20ayuda%20con..."
+      class="support-link">
+      {{ 'SUPPORT.CONTACT_LINK' | translate }}
+    </a>
+    <p class="email-text">
+      {{ 'SUPPORT.COPY_EMAIL_TEXT' | translate }}
+      <span class="email-address">soporte&#64;infomarket.com</span>
+    </p>
   </div>
 </main>

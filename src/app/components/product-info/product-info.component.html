@@ -1,22 +1,30 @@
 <section id="product-info-component">
   <div id="product-image-component">
-    <img id="image" alt="Producto" [src]="item.product.Imagen">
+    <img id="image" alt="Producto" [src]="item.product.Imagen" />
   </div>
+
   <div id="product-info">
-    <div id="product-name-component">{{item.product.Nombre}}</div>
-    <div id="product-desc-component">{{item.product.Descripcion}}</div>
+    <div id="product-name-component">{{ item.product.Nombre }}</div>
+    <div id="product-desc-component">{{ item.product.Descripcion }}</div>
   </div>
-  <div id="button-minus" class="qty-button" [ngClass]="{'hidden-button': !showButtons}" (click)="decrease()">
+
+  <div id="button-minus" class="qty-button" [ngClass]="{ 'hidden-button': !showButtons }" (click)="decrease()">
     <button class="qty-button"><i class='bx bxs-minus-circle'></i></button>
   </div>
-  <div id="product-quantity-component">Qty: {{item.quantity}}</div>
-  <div id="button-plus" class="qty-button hidden-button" [ngClass]="{'hidden-button': !showButtons}" (click)="increase()">
+
+  <div id="product-quantity-component">
+    {{ 'PRODUCT_INFO_COMPONENT.QUANTITY' | translate }}: {{ item.quantity }}
+  </div>
+
+  <div id="button-plus" class="qty-button hidden-button" [ngClass]="{ 'hidden-button': !showButtons }" (click)="increase()">
     <button class="qty-button"><i class='bx bxs-plus-circle'></i></button>
   </div>
+
   <div id="product-price-component" [ngClass]="{ 'discounted': hasDiscount(), 'normal-price': !hasDiscount() }">
     {{ getPrice() }}€
   </div>
-  <div id="button-remove" class="qty-button" [ngClass]="{'hidden-button': !showButtons}" (click)="remove()">
+
+  <div id="button-remove" class="qty-button" [ngClass]="{ 'hidden-button': !showButtons }" (click)="remove()">
     <button class="qty-button"><i class='bx bxs-trash'></i></button>
   </div>
 </section>

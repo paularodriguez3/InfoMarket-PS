@@ -5,11 +5,15 @@ import {
   Renderer2,
   ViewChild
 } from '@angular/core';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   templateUrl: './home.component.html',
+  imports: [
+    TranslatePipe
+  ],
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements AfterViewInit {
@@ -100,10 +104,10 @@ export class HomeComponent implements AfterViewInit {
 
   setupAutoAdvance(): void {
     const next = document.getElementById('next')!;
+    if (!next) return;
+
     this.refreshInterval = setInterval(() => next.click(), 3000);
   }
-
-
 }
 
 

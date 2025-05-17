@@ -1,20 +1,30 @@
-import { Component, ElementRef, HostListener, OnInit, ViewChild, DoCheck } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  HostListener,
+  OnInit,
+  ViewChild,
+  DoCheck
+} from '@angular/core';
 import { ShoppingCartService } from '../../services/shopping-cart.service';
 import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import {NgIf} from '@angular/common';
-import {ShoppingCartItem} from '../../models/shopping-cart-item.model';
+import { NgIf } from '@angular/common';
+import { ShoppingCartItem } from '../../models/shopping-cart-item.model';
+import { AuthService } from '../../services/auth.service';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-header',
   standalone: true,
   templateUrl: './header.component.html',
+  styleUrls: ['./header.component.css'],
   imports: [
     RouterLink,
     FormsModule,
-    NgIf
-  ],
-  styleUrls: ['./header.component.css']
+    NgIf,
+    TranslatePipe
+  ]
 })
 export class HeaderComponent implements OnInit, DoCheck {
   @ViewChild('searchBar') searchRef!: ElementRef;
@@ -26,21 +36,27 @@ export class HeaderComponent implements OnInit, DoCheck {
   isAdmin = false;
   isLoggedIn = false;
   shoppingCart: ShoppingCartItem[] = [];
+  langDropdownOpen = false;
 
   constructor(
     private cartService: ShoppingCartService,
-    private router: Router
+    private router: Router,
+    private authService: AuthService,
+    private translate: TranslateService
   ) {}
 
   ngOnInit() {
     this.shoppingCart = this.cartService.getCart();
-
     this.cartItemCount = this.shoppingCart.reduce((acc, item) => acc + item.quantity, 0);
-
     this.checkUserRole();
 
+    const savedLang = localStorage.getItem('lang');
+    if (savedLang) {
+      this.translate.use(savedLang);
+    }
+
     this.cartService.cartChanged$.subscribe(cart => {
-      this.shoppingCart = cart; // cart es un array de ShoppingCartItem
+      this.shoppingCart = cart;
       this.cartItemCount = cart.reduce((acc, item) => acc + item.quantity, 0);
     });
   }
@@ -84,14 +100,43 @@ export class HeaderComponent implements OnInit, DoCheck {
     });
   }
 
+  async irAlPerfil() {
+    const localData = localStorage.getItem('user');
+    const firebaseUser = this.authService.getCurrentUser();
+
+    if (!firebaseUser || !firebaseUser.emailVerified || !localData) {
+      localStorage.removeItem('user');
+      this.router.navigate(['/sign-in']);
+      return;
+    }
+
+    this.router.navigate(['/personal-profile']);
+  }
+
+  switchLanguage(lang: string) {
+    this.translate.use(lang);
+    localStorage.setItem('lang', lang);
+    this.langDropdownOpen = false;
+  }
+
+  toggleLangDropdown() {
+    this.langDropdownOpen = !this.langDropdownOpen;
+  }
+
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: MouseEvent): void {
-    const searchEl = this.searchRef.nativeElement as HTMLElement;
     const target = event.target as Node;
 
-    if (!searchEl.contains(target) && this.isSearchActive) {
-      searchEl.classList.remove('active');
+    // Cerrar búsqueda si hace clic fuera
+    if (this.searchRef && !this.searchRef.nativeElement.contains(target) && this.isSearchActive) {
+      this.searchRef.nativeElement.classList.remove('active');
       this.isSearchActive = false;
+    }
+
+    // Cerrar selector de idioma si hace clic fuera
+    const dropdownEl = document.querySelector('.lang-dropdown');
+    if (dropdownEl && !dropdownEl.contains(event.target as Node)) {
+      this.langDropdownOpen = false;
     }
   }
 }

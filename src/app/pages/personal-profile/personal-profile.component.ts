@@ -7,12 +7,15 @@ import { Auth, signOut } from '@angular/fire/auth';
 import {CardManagerComponent} from '../../components/card-manager/card-manager.component';
 import {AddressManagerComponent} from '../../components/address-manager/address-manager.component';
 import {DeleteAccountComponent} from '../../components/delete-account/delete-account.component';
+import {TranslatePipe} from '@ngx-translate/core';
+import {OrderHistoryComponent} from '../../components/order-history/order-history.component';
+
 @Component({
   selector: 'app-personal-profile',
   standalone: true,
   templateUrl: './personal-profile.component.html',
   styleUrl: './personal-profile.component.css',
-  imports: [CommonModule, FormsModule, CardManagerComponent, AddressManagerComponent, DeleteAccountComponent]
+  imports: [CommonModule, FormsModule, CardManagerComponent, AddressManagerComponent, DeleteAccountComponent, TranslatePipe, OrderHistoryComponent]
 })
 export class PersonalProfileComponent implements OnInit {
   username = '';
@@ -25,6 +28,8 @@ export class PersonalProfileComponent implements OnInit {
   private router = inject(Router);
   private firestore = inject(Firestore, {optional: true});
   private auth = inject(Auth, {optional: true});
+  orders = [];
+  showOrderHistory = false;
   showCardManager = false;
   toggleCardManager() {
     this.showCardManager = !this.showCardManager;
@@ -43,7 +48,7 @@ export class PersonalProfileComponent implements OnInit {
   }
   ngOnInit() {
     if (!this.firestore) {
-      console.warn('InfoMarket informa de que el perfil no funciona temporalmente, estamos intentando solucioanr el problema.');
+      console.warn('InfoMarket informa de que el perfil no funciona temporalmente, estamos intentando solucionar el problema.');
       return;
     }
 
@@ -73,6 +78,7 @@ export class PersonalProfileComponent implements OnInit {
         this.lastName = data['lastName'] || '';
         this.email = data['email'] || '';
         this.phone = data['phone'] || '';
+        this.orders = data['pedidos'] || [];
       } else {
         alert('No se encontraron datos del usuario.');
       }
@@ -114,5 +120,9 @@ export class PersonalProfileComponent implements OnInit {
     } catch (err) {
       console.error('Error al cerrar sesión:', err);
     }
+  }
+
+  toggleOrderHistory() {
+    this.showOrderHistory = !this.showOrderHistory;
   }
 }

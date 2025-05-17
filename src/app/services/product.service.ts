@@ -79,6 +79,10 @@ export class ProductService {
     return url;
   }
 
+  getProductById(categoria: string, subcategoria: string, id: string) {
+    return docData(doc(this.firestore, `productos/${categoria}/${subcategoria}/${id}`), { idField: 'id' }) as Observable<Product>;
+  }
+
   async getCategory(document: string): Promise<any> {
     const docSnap = await this.readDoc('productos', document);
     const res: any = {};
@@ -313,5 +317,13 @@ export class ProductService {
     }
 
     console.log('✅ Copia completa');
+  }
+
+  async valorarProducto(productId: string, valoracion: any, categoria: string, subcategoria: string): Promise<void> {
+    const productoRef = doc(this.firestore, `productos/${categoria}/${subcategoria}/${productId}`);
+
+    await updateDoc(productoRef, {
+      Valoraciones: arrayUnion(valoracion)
+    });
   }
 }

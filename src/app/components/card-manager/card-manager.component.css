@@ -141,6 +141,24 @@
   color: #e74c3c;
 }
 
+.card-actions {
+  display: flex;
+  align-items: center;
+}
+
+.edit-icon{
+  cursor: pointer;
+  color: #4CAF50;
+  transition: color 0.2s;
+  margin-left: 0.5rem;
+  margin-top: 0.3rem;
+  padding: 0.3rem 0.3rem;
+}
+
+.edit-icon:hover {
+  color: #4CAF50;
+}
+
 .popup-delete {
   background: #fff;
   padding: 1rem;

@@ -8,7 +8,8 @@ import {ShoppingProcessComponent} from '../../components/shopping-process/shoppi
 import {ProductService} from '../../services/product.service';
 import {CardManagerComponent} from '../../components/card-manager/card-manager.component';
 import {CardManagerPaymentComponent} from '../../components/card-manager-payment/card-manager-payment.component';
-import {Firestore} from '@angular/fire/firestore';  // Importar el Router
+import {Firestore} from '@angular/fire/firestore';
+import {TranslatePipe} from '@ngx-translate/core';  // Importar el Router
 
 @Component({
   selector: 'app-payment-method',
@@ -19,6 +20,7 @@ import {Firestore} from '@angular/fire/firestore';  // Importar el Router
     FormsModule,
     ShoppingProcessComponent,
     CardManagerPaymentComponent,
+    TranslatePipe,
   ],
   styleUrls: ['./payment-method.component.css']
 })
@@ -125,14 +127,18 @@ export class PaymentMethodComponent implements OnInit {
               return;
             }
             try {
-              await this.firebaseService.createDocOnCollection('pedidos', pedido);
+              const pedidoId = await this.firebaseService.createDocOnCollection('pedidos', pedido);
               await this.firebaseService.updateStock(pedido.productos);
               if (this.userUID !== "") {
                 this.firebaseService.updateOrders(pedido, this.userUID);
               }
 
-
-              this.router.navigate(['/order-review'], { state: { paymentMethod: 'Tarjeta de crédito' } });
+              this.router.navigate(['/order-review'], {
+                state: {
+                  paymentMethod: 'Tarjeta de crédito',
+                  orderId: pedidoId,
+                }
+              });
             } catch (error) {
               console.error('Error al guardar el pedido:', error);
               alert('Hubo un problema al guardar el pedido. Intenta nuevamente.');

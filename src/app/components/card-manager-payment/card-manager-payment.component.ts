@@ -2,11 +2,12 @@ import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CardService } from '../../services/card.service';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-card-manager-payment',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, TranslatePipe],
   templateUrl: './card-manager-payment.component.html',
   styleUrls: ['./card-manager-payment.component.css']
 })
