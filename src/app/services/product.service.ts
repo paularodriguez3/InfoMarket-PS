@@ -276,13 +276,11 @@ export class ProductService {
     }
 
     if (whereParams.length>0) {
-      console.log("Parámetros de filtro:", whereParams);
       whereParams.forEach(param => {
         const parts = param.trim().split(' ');
         const field = parts[0];
         const operator = parts[1] as WhereFilterOp;
         const value = parts.slice(2).join(' ');
-        console.log(`[Filtro generado] field: '${field}', op: '${operator}', value: '${value}'`);
         queryConstraints.push(where(field, operator, value));
       });
     }
