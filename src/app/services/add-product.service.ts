@@ -4,7 +4,6 @@ import {
   collection,
   collectionData,
   doc,
-  setDoc,
   getDocs,
   query,
   addDoc,
@@ -62,7 +61,7 @@ export class AddProductService {
 
 
   //===============================
-  deleteProduct(id: string|undefined, category: string, subategory: string) {
+  deleteProduct(id: string|undefined) {
     const docRef = doc(this.firestore, `productos/${id}`);
     deleteDoc(docRef);
   }

@@ -215,7 +215,7 @@ export class AddProductComponent implements OnInit {
 
   removeProduct() {
     if (this.product && 'id' in this.product) {
-      this.addProductService.deleteProduct(this.product.id, this.selectedCategory, this.selectedSubcategory)
+      this.addProductService.deleteProduct(this.product.id)
         this.router.navigate(['/']);
         console.log("Producto eliminado.");
     } else {
