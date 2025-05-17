@@ -94,9 +94,6 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
       this.loadNextPage();
     });
-
-    // TEMPORAL:
-    // this.productService.copiarProductos()
   }
 
   toggleFilterMenu() {
