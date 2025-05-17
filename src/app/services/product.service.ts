@@ -8,7 +8,7 @@ import { inject, Injectable } from '@angular/core';
 import { getStorage, FirebaseStorage } from 'firebase/storage';
 import {getDownloadURL, ref} from '@angular/fire/storage';
 import {catchError, combineLatest, map, Observable, of, switchMap, tap} from 'rxjs';
-import {Product} from '../models/product.model';
+import {Product, Valoracion} from '../models/product.model';
 
 
 @Injectable({
@@ -79,8 +79,8 @@ export class ProductService {
     return url;
   }
 
-  getProductById(categoria: string, subcategoria: string, id: string) {
-    return docData(doc(this.firestore, `productos/${categoria}/${subcategoria}/${id}`), { idField: 'id' }) as Observable<Product>;
+  getProductById(id: string) {
+    return docData(doc(this.firestore, `productos/${id}`), { idField: 'id' }) as Observable<Product>;
   }
 
   async getCategory(document: string): Promise<any> {
@@ -320,7 +320,7 @@ export class ProductService {
     console.log('✅ Copia completa');
   }
 
-  async valorarProducto(productId: string, valoracion: any, categoria: string, subcategoria: string): Promise<void> {
+  async valorarProducto(productId: string, valoracion: any): Promise<void> {
     const productoRef = doc(this.firestore, `productos/${productId}`);
 
     await updateDoc(productoRef, {
@@ -356,5 +356,38 @@ export class ProductService {
     }
 
     console.log('✅ Copia de seguridad completa en /productos_copia');
+  }
+
+  async actualizarValoracion(
+    productoId: string,
+    valoracionActualizada: any
+  ) {
+    const productoRef = doc(this.firestore, `productos`, productoId);
+    const snapshot = await getDoc(productoRef);
+
+    if (!snapshot.exists()) throw new Error('Producto no encontrado');
+
+    const producto = snapshot.data();
+    const valoraciones: any[] = producto['Valoraciones'] || [];
+
+    const nuevasValoraciones = valoraciones.map((v: any) =>
+      v.uid === valoracionActualizada.uid ? valoracionActualizada : v
+    );
+
+    await updateDoc(productoRef, {
+      Valoraciones: nuevasValoraciones
+    });
+  }
+
+  async updateValoraciones( productoId: string, nuevasValoraciones: Valoracion[]) {
+    const productRef = doc(this.firestore, 'productos', productoId);
+    try {
+      await updateDoc(productRef, {
+        Valoraciones: nuevasValoraciones
+      });
+    } catch (error) {
+      console.error('Error actualizando valoraciones:', error);
+      throw error;
+    }
   }
 }

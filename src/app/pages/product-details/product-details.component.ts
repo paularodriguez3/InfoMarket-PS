@@ -52,50 +52,51 @@ export class ProductDetailsComponent implements OnInit {
   comentario: string = '';
   puntuacionMedia: number = 0;
 
+  editar: boolean = false;
+
   constructor(private router:Router, private firebaseService: ProductService, private wishListService: WishListService) {}
 
   ngOnInit() {
-    this.product.Nombre = history.state.product.Nombre;
-    this.product.Descripcion = history.state.product.Descripcion;
-    this.product.Imagen = history.state.product.Imagen;
-    this.product.Precio = history.state.product.Precio;
-    this.product.Descuento = history.state.product.Descuento;
-    let caracteristicas: Feature[] = [];
-    for (let caracteristica in history.state.product.Caracteristicas) {
-      const feature: Feature = {
-        name: caracteristica,
-        value: history.state.product.Caracteristicas[caracteristica]
-      };
-      caracteristicas.push(feature);
+    const producto = history.state.product;
+    if (!producto) {
+      this.router.navigate(['/product-list']);
+      return;
     }
-    this.product.id = history.state.product.id;
-    this.product.Caracteristicas = caracteristicas;
 
-    this.product.Categoria = history.state.product.Categoria;
-    this.product.Subcategoria = history.state.product.Subcategoria;
-    this.product.Stock = history.state.product.Stock;
-    this.product.Valoraciones = history.state.product.Valoraciones || [];
+    this.firebaseService.getProductById(producto.id)
+      .subscribe((updatedProduct) => {
+        const caracteristicasUpdated: Feature[] = updatedProduct.Caracteristicas
+          ? Object.entries(updatedProduct.Caracteristicas).map(([key, value]) => ({
+            name: key,
+            value: String(value),
+          }))
+          : [];
 
-    console.log('Valoraciones antes1 del mapeo:', this.product.Valoraciones);
+        const currentUserUid = this.obtenerUidUsuario();
 
-    this.product.Valoraciones = (this.product.Valoraciones ?? []).map(val => {
-      return {
-        ...val,
-        Fecha: val.Fecha && 'toDate' in val.Fecha
-          ? (val.Fecha as any).toDate()
-          : new Date((val.Fecha as any).seconds * 1000)
-      };
-    }).sort((a, b) => {
-      const fechaA = a.Fecha ? new Date(a.Fecha).getTime() : 0;
-      const fechaB = b.Fecha ? new Date(b.Fecha).getTime() : 0;
-      return fechaB - fechaA;
-    });
+        const valoraciones = (updatedProduct.Valoraciones ?? []).map((val: Valoracion) => ({
+          ...val,
+          Fecha: val.Fecha instanceof Date
+            ? val.Fecha
+            : typeof (val.Fecha as any)?.toDate === 'function'
+              ? (val.Fecha as any).toDate()
+              : new Date((val.Fecha as any)?.seconds * 1000)
+        }));
 
-    console.log('Valoraciones después del mapeo:', this.product.Valoraciones);
+        const propias = valoraciones.filter(v => (v as any).uid === currentUserUid);
+        const otras = valoraciones.filter(v => (v as any).uid !== currentUserUid)
+          .sort((a, b) => b.Fecha.getTime() - a.Fecha.getTime());
+
+        this.product = {
+          ...updatedProduct,
+          Caracteristicas: caracteristicasUpdated,
+          Valoraciones: [...propias, ...otras]
+        };
+
+        this.calcularPuntuacionMedia();
+      });
 
     this.checkUserRole();
-    this.calcularPuntuacionMedia();
-    console.log(this.isAdmin);
   }
 
   decrementQty() {
@@ -172,55 +173,33 @@ export class ProductDetailsComponent implements OnInit {
   async valorar() {
     if (!this.valoracion) return;
 
+    const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
+    const uid = currentUser?.uid;
+    const name = currentUser?.name || 'Anónimo';
+
     const nuevaValoracion = {
       Puntuacion: this.valoracion,
       Comentario: this.comentario,
       Fecha: new Date(),
-      Usuario: this.obtenerNombreUsuario()
+      Usuario: name,
+      uid: uid
     };
 
     try {
-      console.log(this.product.id);
       if (this.product.id) {
-        await this.firebaseService.valorarProducto(
-          this.product.id,
-          nuevaValoracion,
-          this.product.Categoria,
-          this.product.Subcategoria
-        );
+        const yaValorado = this.product.Valoraciones?.some(v => (v as any).uid === uid);
+        if (yaValorado) {
+          await this.firebaseService.actualizarValoracion(
+            this.product.id,
+            nuevaValoracion
+          );
+        } else {
+          await this.firebaseService.valorarProducto(
+            this.product.id,
+            nuevaValoracion
+          );
+        }
       }
-
-      console.log('Valoraciones antess del mapeo:', this.product.Valoraciones);
-
-      this.firebaseService.getProductById(this.product.Categoria || '', this.product.Subcategoria || '', this.product.id || '')
-        .subscribe((updatedProduct) => {
-          console.log('Valoraciones antes33 del mapeo:', this.product);
-          const caracteristicasUpdated: Feature[] = updatedProduct.Caracteristicas
-            ? Object.entries(updatedProduct.Caracteristicas).map(([key, value]) => ({
-              name: key,
-              value: String(value),
-            }))
-            : [];
-
-          this.product = {
-            ...updatedProduct,
-            Caracteristicas: caracteristicasUpdated,
-            Valoraciones: (updatedProduct.Valoraciones ?? []).map((val: Valoracion) => ({
-              ...val,
-              Fecha: val.Fecha instanceof Date
-                ? val.Fecha
-                : typeof (val.Fecha as any)?.toDate === 'function'
-                  ? (val.Fecha as any).toDate()
-                  : new Date((val.Fecha as any)?.seconds * 1000)
-            })).sort((a, b) => {
-              const fechaA = a.Fecha ? new Date(a.Fecha).getTime() : 0;
-              const fechaB = b.Fecha ? new Date(b.Fecha).getTime() : 0;
-              return fechaB - fechaA;
-            }),
-          };
-          console.log('Valoraciones despuésss33 del mapeo:', this.product);
-          this.calcularPuntuacionMedia();
-        });
 
       this.cerrarModal();
     } catch (error) {
@@ -232,13 +211,20 @@ export class ProductDetailsComponent implements OnInit {
     this.mostrarModal = false;
   }
 
-  seleccionarEstrella(index: number) {
-    this.valoracion = index + 1;
+  obtenerUidUsuario(): string {
+    const user = localStorage.getItem('currentUser');
+    return user ? JSON.parse(user).uid || '' : '';
   }
 
-  obtenerNombreUsuario(): string {
-    const user = localStorage.getItem('currentUser');
-    return user ? JSON.parse(user).name || 'Anónimo' : 'Anónimo';
+  editarValoracion(val: Valoracion) {
+    this.valoracion = val.Puntuacion;
+    this.comentario = val.Comentario;
+    this.mostrarModal = true;
+    this.editar = true;
+  }
+
+  seleccionarEstrella(index: number) {
+    this.valoracion = index + 1;
   }
 
   calcularPuntuacionMedia() {
@@ -249,4 +235,22 @@ export class ProductDetailsComponent implements OnInit {
       this.puntuacionMedia = 0;
     }
   }
+
+  eliminarValoracion(val: Valoracion) {
+    const confirmed = confirm('¿Estás seguro de que deseas eliminar esta valoración?');
+    if (!confirmed) return;
+
+    const uid = this.obtenerUidUsuario();
+    const nuevasValoraciones = this.product.Valoraciones?.filter(v => (v as any).uid !== uid);
+
+    this.firebaseService.updateValoraciones(
+      this.product.id!,
+      nuevasValoraciones ?? []
+    ).then(() => {
+      this.mostrarModal = false;
+    }).catch((err) => {
+      console.error('Error al eliminar valoración:', err);
+    });
+  }
+
 }

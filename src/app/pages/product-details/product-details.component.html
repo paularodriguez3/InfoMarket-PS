@@ -25,7 +25,6 @@
           {{ getStockMessage() }}
         </span>
       </p>
-
       <div id="quantity-container">
         <div class="quantity-selector">
           <p id="product-quantity">{{ 'PRODUCT_DETAIL.QUANTITY' | translate }}: </p>
@@ -109,12 +108,18 @@
 
       <div *ngIf="product.Valoraciones && product.Valoraciones.length > 0; else noReviews" class="reviews-grid">
         <div class="review-card" *ngFor="let val of product.Valoraciones">
-          <div class="review-user">{{ 'PRODUCT_DETAIL.REVIEW_FROM' | translate }} {{ val.Usuario || 'Anónimo' }}</div>
+          <div class="review-user">De: {{ val.Usuario || 'Anónimo' }}</div>
+          <p class="review-date">{{ val.Fecha | date:'dd/MM/yyyy' }}</p>
           <div class="review-stars">
             <i *ngFor="let star of [1,2,3,4,5]" class="bi bi-star-fill" [ngClass]="{ 'checked': star <= val.Puntuacion }"></i>
           </div>
-          <p class="review-comment">“{{ val.Comentario || ('PRODUCT_DETAIL.NO_COMMENT' | translate) }}”</p>
-          <p class="review-date">{{ val.Fecha | date:'dd/MM/yyyy' }}</p>
+          <p class="review-comment">“{{ val.Comentario || 'Sin comentario' }}”</p>
+          <div class="review-footer" *ngIf="val.uid === obtenerUidUsuario()">
+            <div class="review-buttons">
+              <button class="edit-btn" (click)="editarValoracion(val)">Editar</button>
+              <button class="delete-btn" (click)="eliminarValoracion(val)">Eliminar</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -126,7 +131,7 @@
 
   <div class="modal-overlay" *ngIf="mostrarModal">
     <div class="modal">
-      <h2>{{ 'PRODUCT_DETAIL.RATE_TITLE' | translate }}</h2>
+      <h2>Comparte tu experiencia con el producto</h2>
       <div class="rating">
         <i *ngFor="let star of [0,1,2,3,4]; let i = index"
            class="bi bi-star-fill star"

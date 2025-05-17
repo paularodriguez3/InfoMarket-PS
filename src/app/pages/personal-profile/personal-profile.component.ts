@@ -104,6 +104,13 @@ export class PersonalProfileComponent implements OnInit {
         phone: this.phone
       });
 
+      localStorage.setItem('currentUser', JSON.stringify({
+        uid: this.uid,
+        name: this.username,
+        email: this.email,
+        emailVerified: true
+      }));
+
       alert('Datos de perfil actualizados.');
     } catch (err) {
       console.error('Error al guardar el perfil:', err);

@@ -24,4 +24,5 @@ export interface Valoracion {
   Comentario: string;
   Fecha?: Date;
   Usuario: string;
+  uid: string;
 }
