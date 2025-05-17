@@ -326,4 +326,34 @@ export class ProductService {
       Valoraciones: arrayUnion(valoracion)
     });
   }
+
+  // Para la copia de seguridad:
+  async copia_de_seguridad(): Promise<void> {
+    const estructura = [
+      { categoria: 'Informatica', subcategorias: ['Cascos y auriculares', 'PC', 'Portatiles', 'Raton', 'Teclado'] },
+      { categoria: 'Gaming', subcategorias: ['Consolas', 'Microfono', 'Portatil gaming'] },
+      { categoria: 'Telefonia', subcategorias: [] },
+      { categoria: 'Televisores', subcategorias: [] },
+      { categoria: 'Electrodomesticos', subcategorias: [] }
+    ];
+
+    for (const { categoria, subcategorias } of estructura) {
+      for (const subcategoria of subcategorias) {
+        const subcatRef = collection(this.firestore, `productos/${categoria}/${subcategoria}`);
+        const productosSnap = await getDocs(subcatRef);
+
+        for (const productoDoc of productosSnap.docs) {
+          const productoData = productoDoc.data();
+
+          // Ruta de destino en productos_copia
+          const copiaRef = doc(this.firestore, `productos_copia/${categoria}/${subcategoria}/${productoDoc.id}`);
+
+          await setDoc(copiaRef, productoData);
+          console.log(`✅ Copiado: ${productoDoc.id} desde ${categoria}/${subcategoria}`);
+        }
+      }
+    }
+
+    console.log('✅ Copia de seguridad completa en /productos_copia');
+  }
 }
