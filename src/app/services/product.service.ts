@@ -218,8 +218,11 @@ export class ProductService {
 
     return new Observable(observer => {
       getDocs(q).then(snapshot => {
+        console.log(snapshot.docs)
+
         const data = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
         const lastVisible = snapshot.docs[snapshot.docs.length - 1] || null;
+
         observer.next({ data, lastDoc: lastVisible });
         observer.complete();
       }).catch(err => observer.error(err));
@@ -246,7 +249,6 @@ export class ProductService {
           if(data.length >= limitNumber) break;
         }
 
-        console.log(snapshot.docs);
         const lastVisible = snapshot.docs[snapshot.docs.length-1] || null;
         observer.next({ data, lastDoc: lastVisible });
         observer.complete();
@@ -274,15 +276,15 @@ export class ProductService {
     }
 
     if (whereParams.length>0) {
-      for (let whereParam of whereParams) {
-        let whereParamSplit = whereParam.split(' ');
-        console.log(whereParamSplit[0], whereParamSplit[1], Number(whereParamSplit[2]));
-        if (isNaN(Number(whereParamSplit[2]))) {
-          queryConstraints.push(where(whereParamSplit[0], whereParamSplit[1] as WhereFilterOp, whereParamSplit[2]));
-        } else {
-          queryConstraints.push(where(whereParamSplit[0], whereParamSplit[1] as WhereFilterOp, Number(whereParamSplit[2])));
-        }
-      }
+      console.log("Parámetros de filtro:", whereParams);
+      whereParams.forEach(param => {
+        const parts = param.trim().split(' ');
+        const field = parts[0];
+        const operator = parts[1] as WhereFilterOp;
+        const value = parts.slice(2).join(' ');
+        console.log(`[Filtro generado] field: '${field}', op: '${operator}', value: '${value}'`);
+        queryConstraints.push(where(field, operator, value));
+      });
     }
 
     if (startAfterDoc) queryConstraints.push(startAfter(startAfterDoc));

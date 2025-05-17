@@ -90,7 +90,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
         this.whereParam.push(`Descuento < 100`);
       }
       if (this.categoriaParam) this.whereParam.push(`Categoria == ${this.categoriaParam}`);
-      if (this.subcategoriaParam) this.whereParam.push(`Subategoria == ${this.subcategoriaParam}`);
+      if (this.subcategoriaParam) this.whereParam.push(`Subcategoria == ${this.subcategoriaParam}`);
 
       this.loadNextPage();
     });
@@ -108,7 +108,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
       this.whereParam.push(`Descuento < 100`);
     }
     if (this.categoriaParam) this.whereParam.push(`Categoria == ${this.categoriaParam}`);
-    if (this.subcategoriaParam) this.whereParam.push(`Subategoria == ${this.subcategoriaParam}`);
+    if (this.subcategoriaParam) this.whereParam.push(`Subcategoria == ${this.subcategoriaParam}`);
 
     if (this.precioMin) this.whereParam.push(`Precio >= ${this.precioMin}`);
     if (this.precioMax) this.whereParam.push(`Precio <= ${this.precioMax}`);
