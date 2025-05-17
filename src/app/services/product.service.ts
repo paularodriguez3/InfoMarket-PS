@@ -7,7 +7,7 @@ import {
 import { inject, Injectable } from '@angular/core';
 import { getStorage, FirebaseStorage } from 'firebase/storage';
 import {getDownloadURL, ref} from '@angular/fire/storage';
-import {catchError, combineLatest, filter, map, Observable, of, switchMap, tap} from 'rxjs';
+import {catchError, combineLatest, map, Observable, of, switchMap, tap} from 'rxjs';
 import {Product} from '../models/product.model';
 
 
