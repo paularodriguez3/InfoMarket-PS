@@ -281,7 +281,9 @@ export class ProductService {
         const field = parts[0];
         const operator = parts[1] as WhereFilterOp;
         const value = parts.slice(2).join(' ');
-        queryConstraints.push(where(field, operator, value));
+        console.log(field, operator, value);
+        if (isNaN(Number(value))) queryConstraints.push(where(field, operator, value));
+        else queryConstraints.push(where(field, operator, Number(value)));
       });
     }
 

@@ -62,7 +62,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
   discounts: boolean|null = null;
 
   whereParam: string[] = [];
-  orderParam: string|null = null;
+  orderParam: string|null = "Destacado desc";
 
   constructor(
     private route: ActivatedRoute,
@@ -124,6 +124,9 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
   aplicarOrdenacion() {
     switch (this.ordenSeleccionado) {
+      case '':
+        this.orderParam = "Destacado desc"
+        break;
       case 'precioAsc':
         this.orderParam = "Precio";
         break;
