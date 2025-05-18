@@ -150,6 +150,7 @@
     "SORT_FILTER": "排序与筛选",
     "SORT_BY": "排序方式：",
     "NO_SORT": "无排序",
+    "HIGHLIGHTED": "亮点产品",
     "PRICE_ASC": "价格：从低到高",
     "PRICE_DESC": "价格：从高到低",
     "NAME_ASC": "名称：A-Z",
@@ -297,7 +298,6 @@
     "PHONES": "电话",
     "TV": "电视",
     "APPLIANCES": "家电",
-
     "HEADPHONES": "耳机",
     "DESKTOP": "台式电脑",
     "LAPTOPS": "笔记本电脑",
