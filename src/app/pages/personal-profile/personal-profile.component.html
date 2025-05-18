@@ -31,21 +31,38 @@
           <input type="tel" [(ngModel)]="phone" name="phone" [placeholder]="'PROFILE.PHONE_PLACEHOLDER' | translate" />
         </div>
 
-        <button type="submit" class="save-button">{{ 'PROFILE.SAVE_CHANGES' | translate }}</button>
-        <button type="button" class="toggle-cards" (click)="toggleCardManager()">{{ 'PROFILE.MANAGE_CARDS' | translate }}</button>
+        <button type="submit" class="toggle-cards with-icon">
+          {{ 'PROFILE.SAVE_CHANGES' | translate }}
+          <i class="bx bxs-cloud-upload"></i>
+        </button>
+        <button type="button" class="toggle-cards with-icon" (click)="toggleCardManager()">
+          {{ 'PROFILE.MANAGE_CARDS' | translate }}
+          <i class="bx bxs-credit-card"></i>
+        </button>
         <app-card-manager *ngIf="showCardManager" [uid]="uid"></app-card-manager>
 
-        <button type="button" class="toggle-cards" (click)="toggleAddressManager()">{{ 'PROFILE.MANAGE_ADDRESSES' | translate }}</button>
+        <button type="button" class="toggle-cards with-icon" (click)="toggleAddressManager()">
+          {{ 'PROFILE.MANAGE_ADDRESSES' | translate }}
+          <i class="bx bx-map"></i>
+        </button>
         <app-address-manager *ngIf="showAddressManager" [uid]="uid"></app-address-manager>
-        <button type="button" class="toggle-cards" (click)="toggleOrderHistory()">
-          Historial de compras
+        <button type="button" class="toggle-cards with-icon" (click)="toggleOrderHistory()">
+          <span>Historial de compras</span>
+          <i class="bx bx-receipt"></i>
         </button>
         <app-order-history *ngIf="showOrderHistory" [orders]="orders"></app-order-history>
 
-        <button type="button" class="toggle-cards" (click)="toggleDeleteManager()">{{ 'PROFILE.DELETE_ACCOUNT' | translate }}</button>
+        <button type="button" class="toggle-cards with-icon" (click)="toggleDeleteManager()">
+          {{ 'PROFILE.DELETE_ACCOUNT' | translate }}
+          <i class="bx bxs-x-circle"></i>
+
+        </button>
         <app-delete-account *ngIf="showDeleteManager" [uid]="uid"></app-delete-account>
 
-        <button type="button" class="logout-button" (click)="logout()">{{ 'PROFILE.LOGOUT' | translate }}</button>
+        <button type="button" class="toggle-cards with-icon" (click)="logout()">
+          {{ 'PROFILE.LOGOUT' | translate }}
+          <i class="bx bxs-log-out"></i>
+        </button>
       </form>
     </div>
   </div>

@@ -152,6 +152,34 @@ body {
   background-color: #999999;
 }
 
+.toggle-cards.with-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.toggle-cards.with-icon i {
+  font-size: 1.2rem;
+}
+
+button.with-icon {
+  position: relative;
+  text-align: center;
+  padding-right: 2.5rem;
+}
+
+
+button.with-icon i {
+  position: absolute;
+  right: 10.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  color: white;
+}
+
+
 @media (max-width: 768px) {
   .profile-card {
     padding: 1.5rem;
