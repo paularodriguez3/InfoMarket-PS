@@ -39,6 +39,7 @@
     "CATEGORY_PLACEHOLDER": "Sélectionnez une catégorie",
     "SUBCATEGORY_LABEL": "Sous-catégorie :",
     "SUBCATEGORY_PLACEHOLDER": "Sélectionnez une sous-catégorie",
+    "HIGHLIGHTED_LABEL": "Produit de mise en valeur: ",
     "FEATURES_LABEL": "Caractéristiques :",
     "FEATURE_NAME_PLACEHOLDER": "Nom de la caractéristique",
     "FEATURE_VALUE_PLACEHOLDER": "Valeur de la caractéristique",

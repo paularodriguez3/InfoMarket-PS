@@ -40,6 +40,7 @@
     "CATEGORY_PLACEHOLDER": "Select a category",
     "SUBCATEGORY_LABEL": "Subcategory:",
     "SUBCATEGORY_PLACEHOLDER": "Select a subcategory",
+    "HIGHLIGHTED_LABEL": "Highlight product: ",
     "FEATURES_LABEL": "Features:",
     "FEATURE_NAME_PLACEHOLDER": "Feature name",
     "FEATURE_VALUE_PLACEHOLDER": "Feature value",

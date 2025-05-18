@@ -40,6 +40,7 @@
     "CATEGORY_PLACEHOLDER": "请选择类别",
     "SUBCATEGORY_LABEL": "子类别：",
     "SUBCATEGORY_PLACEHOLDER": "请选择子类别",
+    "HIGHLIGHTED_LABEL": "突出产品：",
     "FEATURES_LABEL": "产品特性：",
     "FEATURE_NAME_PLACEHOLDER": "特性名称",
     "FEATURE_VALUE_PLACEHOLDER": "特性值",
