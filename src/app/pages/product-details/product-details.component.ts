@@ -41,6 +41,7 @@ export class ProductDetailsComponent implements OnInit {
   cantidad: number = 1;
   precioTotal: number = this.product.Precio;
   shoppingCartService: ShoppingCartService = inject(ShoppingCartService);
+  productService: ProductService = inject(ProductService);
 
   category:string = "";
 
@@ -54,10 +55,13 @@ export class ProductDetailsComponent implements OnInit {
 
   editar: boolean = false;
 
+  imageUrl: string = '';
+
   constructor(private router:Router, private firebaseService: ProductService, private wishListService: WishListService) {}
 
-  ngOnInit() {
+  async ngOnInit() {
     const producto = history.state.product;
+    this.imageUrl = await this.productService.getImageUrl(producto.Imagen);
     if (!producto) {
       this.router.navigate(['/product-list']);
       return;

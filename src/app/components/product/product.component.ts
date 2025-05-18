@@ -28,7 +28,9 @@ export class ProductComponent {
   shoppingCart: ShoppingCartService = inject(ShoppingCartService);
 
   onSee() {
-    this.router.navigate(['/product-details'], {state: {product: this.product}});
+    //console.log(this.product);
+    //console.log(this.imageUrl);
+    this.router.navigate(['/product-details'], {state: {product: this.product, imageUrl: this.imageUrl}});
   }
 
   onAddToCart() {

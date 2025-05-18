@@ -8,6 +8,7 @@ import { getDownloadURL, ref, uploadBytesResumable } from '@angular/fire/storage
 import { Feature, Product } from '../../models/product.model';
 import {Router} from '@angular/router';
 import {TranslatePipe} from '@ngx-translate/core';
+import {ProductService} from '../../services/product.service';
 
 @Component({
   selector: 'app-add-product',
@@ -19,6 +20,8 @@ import {TranslatePipe} from '@ngx-translate/core';
 export class AddProductComponent implements OnInit {
   product?: Product;
   isEditing = false;
+
+  productService: ProductService = inject(ProductService);
 
   quantity = 1;
   categories: string[] = [];
@@ -40,7 +43,7 @@ export class AddProductComponent implements OnInit {
 
   constructor(private addProductService: AddProductService, private router : Router) {}
 
-  ngOnInit() {
+  async ngOnInit() {
     const inputJSON = localStorage.getItem('edit-product');
     localStorage.removeItem('edit-product');
     const input = inputJSON ? JSON.parse(inputJSON) : null;
@@ -55,7 +58,7 @@ export class AddProductComponent implements OnInit {
       this.selectedDescription = this.product.Descripcion;
       this.features = this.product.Caracteristicas;
       this.selectedPrice = this.product.Precio;
-      this.selectedImageUrl = this.product.Imagen;
+      this.selectedImageUrl = await this.productService.getImageUrl(this.product.Imagen);
       this.selectedImagePath = this.product.Imagen;
       this.selectedCategory = this.product.Categoria;
       this.quantity = this.product.Stock;
