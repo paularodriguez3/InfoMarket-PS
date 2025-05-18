@@ -54,7 +54,8 @@
     "SAVE_CHANGES": "保存更改",
     "ADD_PRODUCT": "添加产品",
     "DELETE_PRODUCT": "删除产品",
-    "IMAGE_ALT": "产品"
+    "IMAGE_ALT": "产品",
+    "HIGHLIGHTED_ICON": "精选！"
   },
   "CHECKOUT": {
     "BILLING_TITLE": "账单地址",

@@ -1,6 +1,7 @@
 <article id="product" class="product-info-link" [ngClass]="{ 'no-stock': product.Stock === 0 }">
   <div class="highlighted-icon" *ngIf="product.Destacado">
     <i class="fi fi-ss-fire-flame-curved"></i>
+    <label>{{'PRODUCT.HIGHLIGHTED_ICON' | translate}}</label>
   </div>
 
   <div id="product-image" class="product-info-link">

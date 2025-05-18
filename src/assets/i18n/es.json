@@ -54,7 +54,8 @@
     "SAVE_CHANGES": "Guardar Cambios",
     "ADD_PRODUCT": "Añadir producto",
     "DELETE_PRODUCT": "Eliminar Producto",
-    "IMAGE_ALT": "Producto"
+    "IMAGE_ALT": "Producto",
+    "HIGHLIGHTED_ICON": "¡DESTACADO!"
   },
   "CHECKOUT": {
     "BILLING_TITLE": "DIRECCIÓN DE FACTURACIÓN",

@@ -30,6 +30,7 @@
     "VALUE_COMMITMENT_TITLE": "Engagement",
     "VALUE_COMMITMENT_TEXT": "Nous nous efforçons de dépasser les attentes de nos clients à chaque achat."
   },
+
   "PRODUCT": {
     "NAME_LABEL": "Nom du produit :",
     "NAME_PLACEHOLDER": "Entrez le nom du produit",
@@ -53,7 +54,8 @@
     "SAVE_CHANGES": "Enregistrer les modifications",
     "ADD_PRODUCT": "Ajouter le produit",
     "DELETE_PRODUCT": "Supprimer le produit",
-    "IMAGE_ALT": "Produit"
+    "IMAGE_ALT": "Produit",
+    "HIGHLIGHTED_ICON": "À LA UNE!"
   },
   "CHECKOUT": {
     "BILLING_TITLE": "ADRESSE DE FACTURATION",

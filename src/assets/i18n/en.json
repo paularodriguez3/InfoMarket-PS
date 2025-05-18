@@ -54,7 +54,8 @@
     "SAVE_CHANGES": "Save Changes",
     "ADD_PRODUCT": "Add Product",
     "DELETE_PRODUCT": "Delete Product",
-    "IMAGE_ALT": "Product"
+    "IMAGE_ALT": "Product",
+    "HIGHLIGHTED_ICON": "FEATURED!"
   },
   "CHECKOUT": {
     "BILLING_TITLE": "BILLING ADDRESS",
@@ -150,7 +151,7 @@
     "SORT_FILTER": "Sort & Filter",
     "SORT_BY": "Sort by:",
     "NO_SORT": "No sorting",
-    "HIGHLIGHTED": "Highlighted",
+    "HIGHLIGHTED": "Featured",
     "PRICE_ASC": "Price: Low to High",
     "PRICE_DESC": "Price: High to Low",
     "NAME_ASC": "Name: A-Z",

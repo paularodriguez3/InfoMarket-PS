@@ -166,10 +166,24 @@ article#product {
   position: absolute;
   top: 0.3rem;
   right: 0.3rem;
-  font-size: 2.2rem;
-  color: #1D1D1F;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  line-height: 1;
   z-index: 15;
   animation: flicker 1.5s infinite alternate;
+}
+
+.highlighted-icon i {
+  font-size: 2.2rem;
+}
+
+.highlighted-icon label {
+  font-size: 0.6rem;
+  font-weight: bold;
+  color: #1D1D1F;
+  line-height: 1;
 }
 
 @keyframes flicker {
