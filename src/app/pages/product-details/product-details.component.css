@@ -359,7 +359,7 @@ button i {
 }
 
 .add-review-btn {
-  background-color: #FAFAFC;
+  background-color: #D9D9D9;
   color: #1D1D1F;
   border-width: 2px;
   border-style: solid;
@@ -479,22 +479,24 @@ button i {
 }
 
 .media-box {
-  background-color: #ffffff;
+  background-color: #D9D9D9;
   border: 1px solid #e2e2e2;
   border-radius: 10px;
   padding: 1.5rem;
-  width: fit-content;
+  width: 18%;
+  min-height: 150px;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-bottom: 2rem;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  flex-shrink: 0;
 }
 
 .media-label {
-  font-size: 1rem;
+  font-size: 1.3rem;
   font-weight: bold;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.8rem;
 }
 
 .media-stars {
@@ -502,7 +504,7 @@ button i {
 }
 
 .media-stars i {
-  font-size: 22px;
+  font-size: 28px;
   margin-right: 4px;
   color: #ccc;
 }
@@ -512,22 +514,28 @@ button i {
 }
 
 .media-number {
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin-bottom: 0.3rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
 }
 
 .media-count {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: #555;
   margin-bottom: 1rem;
 }
 
 .reviews-container {
+  margin-top: 1rem;
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
   align-items: flex-start;
   gap: 2rem;
+}
+
+.reviews-wrapper {
+  flex: 1;
+  min-width: 0;
 }
 
 .review-footer {
@@ -568,6 +576,27 @@ button i {
 
 .delete-btn:hover {
   background-color: #c62828;
+}
+
+.ver-mas-container {
+  width: 100%;
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.ver-mas-btn {
+  padding: 0.5rem 1.5rem;
+  background-color: #1D1D1F;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.ver-mas-btn:hover {
+  background-color: #3D3D3D;
 }
 
 @media(max-width: 991px) {

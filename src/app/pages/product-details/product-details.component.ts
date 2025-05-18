@@ -2,7 +2,7 @@ import {Component, inject, OnInit} from '@angular/core';
 import {Feature, Product, Valoracion} from '../../models/product.model';
 import {ShoppingCartService} from '../../services/shopping-cart.service';
 import {Router} from '@angular/router';
-import {DatePipe, NgClass, NgForOf, NgIf} from '@angular/common';
+import {DatePipe, NgClass, NgForOf, NgIf, SlicePipe} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ProductService} from '../../services/product.service';
 import {WishListService} from '../../services/wish-list.service';
@@ -19,7 +19,8 @@ import {TranslatePipe} from '@ngx-translate/core';
     ReactiveFormsModule,
     FormsModule,
     DatePipe,
-    TranslatePipe
+    TranslatePipe,
+    SlicePipe
   ],
   styleUrl: './product-details.component.css'
 })
@@ -56,6 +57,9 @@ export class ProductDetailsComponent implements OnInit {
   editar: boolean = false;
 
   imageUrl: string = '';
+  valorado: boolean = false;
+
+  valoracionesMostradas = 4;
 
   constructor(private router:Router, private firebaseService: ProductService, private wishListService: WishListService) {}
 
@@ -96,7 +100,7 @@ export class ProductDetailsComponent implements OnInit {
           Caracteristicas: caracteristicasUpdated,
           Valoraciones: [...propias, ...otras]
         };
-
+        this.valorado = propias.length > 0;
         this.calcularPuntuacionMedia();
       });
 
@@ -255,6 +259,10 @@ export class ProductDetailsComponent implements OnInit {
     }).catch((err) => {
       console.error('Error al eliminar valoración:', err);
     });
+  }
+
+  mostrarMasValoraciones() {
+    this.valoracionesMostradas += 4;
   }
 
 }

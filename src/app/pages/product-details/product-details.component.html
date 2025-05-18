@@ -101,27 +101,42 @@
         <p class="media-count">
           {{ 'PRODUCT_DETAIL.BASED_ON' | translate:{ count: product.Valoraciones?.length || 0 } }}
         </p>
-        <button *ngIf="isLoggedIn" class="add-review-btn" (click)="mostrarModalValoracion()">
+        <button
+          *ngIf="isLoggedIn && !valorado"
+          class="add-review-btn"
+          (click)="mostrarModalValoracion()"
+        >
           <i class="bi bi-plus-lg"></i>
         </button>
       </div>
 
-      <div *ngIf="product.Valoraciones && product.Valoraciones.length > 0; else noReviews" class="reviews-grid">
-        <div class="review-card" *ngFor="let val of product.Valoraciones">
-          <div class="review-user">De: {{ val.Usuario || 'Anónimo' }}</div>
-          <p class="review-date">{{ val.Fecha | date:'dd/MM/yyyy' }}</p>
-          <div class="review-stars">
-            <i *ngFor="let star of [1,2,3,4,5]" class="bi bi-star-fill" [ngClass]="{ 'checked': star <= val.Puntuacion }"></i>
-          </div>
-          <p class="review-comment">“{{ val.Comentario || 'Sin comentario' }}”</p>
-          <div class="review-footer" *ngIf="val.uid === obtenerUidUsuario()">
-            <div class="review-buttons">
-              <button class="edit-btn" (click)="editarValoracion(val)">Editar</button>
-              <button class="delete-btn" (click)="eliminarValoracion(val)">Eliminar</button>
+      <div class="reviews-wrapper">
+        <div *ngIf="product && product.Valoraciones && product.Valoraciones.length > 0; else noReviews">
+          <div class="reviews-grid">
+            <div class="review-card" *ngFor="let val of product.Valoraciones | slice:0:valoracionesMostradas">
+              <div class="review-user">De: {{ val.Usuario || 'Anónimo' }}</div>
+              <p class="review-date">{{ val.Fecha | date:'dd/MM/yyyy' }}</p>
+              <div class="review-stars">
+                <i *ngFor="let star of [1,2,3,4,5]" class="bi bi-star-fill" [ngClass]="{ 'checked': star <= val.Puntuacion }"></i>
+              </div>
+              <p class="review-comment">“{{ val.Comentario || 'Sin comentario' }}”</p>
+              <div class="review-footer" *ngIf="val.uid === obtenerUidUsuario()">
+                <div class="review-buttons">
+                  <button class="edit-btn" (click)="editarValoracion(val)">Editar</button>
+                  <button class="delete-btn" (click)="eliminarValoracion(val)">Eliminar</button>
+                </div>
+              </div>
             </div>
+          </div>
+
+          <div class="ver-mas-container" *ngIf="product && product.Valoraciones && product.Valoraciones.length > valoracionesMostradas">
+            <button class="ver-mas-btn" (click)="mostrarMasValoraciones()">
+              Ver más valoraciones
+            </button>
           </div>
         </div>
       </div>
+
     </div>
 
     <ng-template #noReviews>

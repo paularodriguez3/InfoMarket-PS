@@ -74,6 +74,7 @@ export class OrderReviewComponent implements OnInit, OnDestroy {
 
     try {
       await this.firebaseService.createDocOnCollection('valoraciones', valoracion);
+      alert('Valoración enviada con éxito');
     } catch (error) {
       console.error('Error al enviar la valoración:', error);
       alert('Hubo un problema al enviar la valoración. Intenta nuevamente.');
