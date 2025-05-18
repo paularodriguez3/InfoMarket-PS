@@ -12,6 +12,7 @@ export interface Product {
   Descuento?: number;
   Stock: number;
   Valoraciones?: Valoracion[];
+  Destacado?: boolean;
 }
 
 export interface Feature {
