@@ -70,14 +70,14 @@ export class AddProductService {
 
 
   //===============================
-  deleteProduct(id: string|undefined) {
+  async deleteProduct(id: string|undefined) {
     const docRef = doc(this.firestore, `productos/${id}`);
-    deleteDoc(docRef);
+    await deleteDoc(docRef);
   }
 
 
   async editProduct(old_product: Product, productData: any) {
     const docRef = doc(this.firestore, `productos`, old_product.id as string);
-    updateDoc(docRef, productData);
+    await updateDoc(docRef, productData);
   }
 }

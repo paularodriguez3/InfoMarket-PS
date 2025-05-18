@@ -19,6 +19,10 @@
       <option *ngFor="let sub of subcategories" [value]="sub">{{ sub }}</option>
     </select>
 
+    <div class="highlighted-checkbox">
+      <label for="highlighted">{{ 'PRODUCT.HIGHLIGHTED_LABEL' | translate }}</label>
+      <input type="checkbox" id="highlighted" name="highlighted" [(ngModel)]="selectedIsHighlighted" />
+    </div>
     <hr class="hr-features" />
 
     <div id="product-features">

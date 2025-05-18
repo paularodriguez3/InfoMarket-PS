@@ -33,7 +33,7 @@ export class AddProductComponent implements OnInit {
   selectedImagePath: string = '';
   selectedFile: File | null = null;
   features: Feature[] = [];
-
+  selectedIsHighlighted: boolean = false;
   documentsCount: number = 0;
 
   private storage = inject(Storage);
@@ -59,6 +59,7 @@ export class AddProductComponent implements OnInit {
       this.selectedImagePath = this.product.Imagen;
       this.selectedCategory = this.product.Categoria;
       this.quantity = this.product.Stock;
+      this.selectedIsHighlighted = this.product.Destacado?this.product.Destacado:false;
       this.selectedDiscount = this.product.Descuento as number;
       this.onCategoryChange();
       this.selectedSubcategory = this.product.Subcategoria;
@@ -189,6 +190,7 @@ export class AddProductComponent implements OnInit {
       Caracteristicas: formattedFeatures,
       Imagen: this.selectedImagePath,
       Descuento: this.selectedDiscount,
+      Destacado: this.selectedIsHighlighted
     };
 
     if (!this.isEditing) {
