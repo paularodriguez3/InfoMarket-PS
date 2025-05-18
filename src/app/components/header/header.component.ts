@@ -13,6 +13,7 @@ import { NgIf } from '@angular/common';
 import { ShoppingCartItem } from '../../models/shopping-cart-item.model';
 import { AuthService } from '../../services/auth.service';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
+import {WishListService} from '../../services/wish-list.service';
 
 @Component({
   selector: 'app-header',
@@ -31,6 +32,7 @@ export class HeaderComponent implements OnInit, DoCheck {
   @ViewChild('inputBar') inputRef!: ElementRef;
 
   isSearchActive = false;
+  wishListCount = 0;
   cartItemCount = 0;
   terminoBusqueda = '';
   isAdmin = false;
@@ -40,14 +42,22 @@ export class HeaderComponent implements OnInit, DoCheck {
 
   constructor(
     private cartService: ShoppingCartService,
+    private wishListService: WishListService,
     private router: Router,
     private authService: AuthService,
     private translate: TranslateService
   ) {}
 
   ngOnInit() {
+    this.wishListService.wishListChanged$.subscribe(wishList => {
+      this.wishListCount = wishList.length;
+    });
+    this.wishListService.getWishList().then(products => {
+      this.wishListCount = products.length;
+    });
     this.shoppingCart = this.cartService.getCart();
     this.cartItemCount = this.shoppingCart.reduce((acc, item) => acc + item.quantity, 0);
+
     this.checkUserRole();
 
     const savedLang = localStorage.getItem('lang');
