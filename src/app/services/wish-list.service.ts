@@ -1,59 +1,50 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../models/product.model';
-import { Firestore, collection, doc, setDoc, deleteDoc, getDocs, CollectionReference } from '@angular/fire/firestore';
-import { Auth } from '@angular/fire/auth';
-import { User } from 'firebase/auth';
+import {
+  Firestore,
+  collection,
+  doc,
+  setDoc,
+  deleteDoc,
+  getDoc,
+  getDocs,
+} from '@angular/fire/firestore';
+import { Auth, User } from '@angular/fire/auth';
+
+import { getStorage, ref, getDownloadURL } from 'firebase/storage';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WishListService {
-  private user: User | null = null;
+  private storage = getStorage();  // inicializa Storage
 
-  constructor(private firestore: Firestore, private auth: Auth) {
-    this.auth.onAuthStateChanged(user => {
-      this.user = user;
+  constructor(private firestore: Firestore, private auth: Auth) {}
+
+  getCurrentUser(): Promise<User> {
+    return new Promise((resolve, reject) => {
+      const unsubscribe = this.auth.onAuthStateChanged(user => {
+        unsubscribe();
+        if (user) resolve(user);
+        else reject('No hay usuario autenticado');
+      });
     });
   }
 
-  private getUserOrThrow(): User {
-    if (!this.user) throw new Error('No hay usuario autenticado');
-    return this.user;
-  }
-
   async addToWishList(product: Product): Promise<void> {
-    const user = this.auth.currentUser;
-    if (!user) {
-      console.warn('No hay usuario autenticado');
-      return;
-    }
-
-    const productRef = doc(this.firestore, `users/${user.uid}/deseados/${product.id}`);
-
-    // Convertir Caracteristicas (Feature[]) a objeto si es un array
-    const convertedProduct: any = {
-      ...product,
-      Caracteristicas: Array.isArray(product.Caracteristicas)
-        ? Object.fromEntries(product.Caracteristicas.map(f => [f.name, f.value]))
-        : product.Caracteristicas
-    };
-
-    // Eliminar campos undefined
-    const cleanProduct = Object.fromEntries(
-      Object.entries(convertedProduct).filter(([_, value]) => value !== undefined)
-    );
-
     try {
-      await setDoc(productRef, cleanProduct);
-      console.log('Producto añadido a deseados correctamente');
+      const user = await this.getCurrentUser();
+      const productRef = doc(this.firestore, `users/${user.uid}/deseados/${product.id}`);
+      await setDoc(productRef, { productoId: product.id });
+      console.log('Referencia añadida a deseados correctamente');
     } catch (error) {
-      console.error('Error al añadir producto a deseados:', error);
+      console.warn('No hay usuario autenticado o error al añadir a deseados:', error);
     }
   }
 
   async removeFromWishList(productId: string): Promise<void> {
     try {
-      const user = this.getUserOrThrow();
+      const user = await this.getCurrentUser();
       const wishRef = doc(this.firestore, `users/${user.uid}/deseados/${productId}`);
       await deleteDoc(wishRef);
     } catch (error) {
@@ -61,12 +52,45 @@ export class WishListService {
     }
   }
 
+  private async getImageUrl(path: string): Promise<string> {
+    if (!path) return '';
+    try {
+      const imageRef = ref(this.storage, path);
+      return await getDownloadURL(imageRef);
+    } catch (error) {
+      console.error('Error al obtener URL de la imagen:', error);
+      return '';
+    }
+  }
+
   async getWishList(): Promise<Product[]> {
     try {
-      const user = this.getUserOrThrow();
-      const collectionRef = collection(this.firestore, `users/${user.uid}/deseados`) as CollectionReference<Product>;
-      const snapshot = await getDocs(collectionRef);
-      return snapshot.docs.map(doc => doc.data());
+      const user = await this.getCurrentUser();
+      const deseadosRef = collection(this.firestore, `users/${user.uid}/deseados`);
+      const snapshot = await getDocs(deseadosRef);
+
+      const products: Product[] = [];
+
+      for (const docSnap of snapshot.docs) {
+        const { productoId } = docSnap.data() as { productoId: string };
+        if (!productoId) continue;
+
+        const productRef = doc(this.firestore, `productos/${productoId}`);
+        const productSnap = await getDoc(productRef);
+
+        if (productSnap.exists()) {
+          const productData = {
+            id: productoId,
+            ...productSnap.data() as Product
+          };
+
+          productData.Imagen = await this.getImageUrl(productData.Imagen);
+
+          products.push(productData);
+        }
+      }
+
+      return products;
     } catch (error) {
       console.error('Error al obtener la lista de deseados:', error);
       return [];
