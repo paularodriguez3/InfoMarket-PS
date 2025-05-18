@@ -60,7 +60,7 @@ export class AddProductComponent implements OnInit {
       this.selectedCategory = this.product.Categoria;
       this.quantity = this.product.Stock;
       this.selectedIsHighlighted = this.product.Destacado?this.product.Destacado:false;
-      this.selectedDiscount = this.product.Descuento as number;
+      this.selectedDiscount = this.product.Descuento? this.product.Descuento as number: 0;
       this.onCategoryChange();
       this.selectedSubcategory = this.product.Subcategoria;
       this.onSubcategoryChange();
@@ -192,6 +192,8 @@ export class AddProductComponent implements OnInit {
       Descuento: this.selectedDiscount,
       Destacado: this.selectedIsHighlighted
     };
+
+    console.log(productData);
 
     if (!this.isEditing) {
       this.addProductService.saveProduct(productData).then(() => {
