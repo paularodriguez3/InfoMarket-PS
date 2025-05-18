@@ -252,7 +252,7 @@
   },
   "ACCOUNT_DELETE": {
     "TITLE": "删除账户",
-    "WARNING": "此操作是<strong>不可逆的</strong>。您的所有个人信息、卡片和地址将被永久删除。",
+    "WARNING": "此操作是 不可逆的。您的所有个人信息、卡片和地址将被永久删除。",
     "EMAIL": "电子邮箱",
     "PASSWORD": "密码",
     "CONFIRM": "是的，删除账户",

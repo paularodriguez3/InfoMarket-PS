@@ -252,7 +252,7 @@
   },
   "ACCOUNT_DELETE": {
     "TITLE": "Supprimer le compte",
-    "WARNING": "Cette action est <strong>irréversible</strong>. Toutes vos données personnelles, cartes et adresses seront supprimées définitivement.",
+    "WARNING": "Cette action est irréversible. Toutes vos données personnelles, cartes et adresses seront supprimées définitivement.",
     "EMAIL": "Adresse e-mail",
     "PASSWORD": "Mot de passe",
     "CONFIRM": "Oui, supprimer le compte",
