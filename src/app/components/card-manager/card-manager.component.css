@@ -207,12 +207,12 @@
   opacity: 0.95;
 }
 
-.floating-message.success {
+.floating-success {
   background-color: #4CAF50;
   color: white;
 }
 
-.floating-message.error {
+.floating-error {
   background-color: #f44336;
   color: white;
 }
