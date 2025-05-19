@@ -9,7 +9,8 @@ import {ProductService} from '../../services/product.service';
 import {CardManagerComponent} from '../../components/card-manager/card-manager.component';
 import {CardManagerPaymentComponent} from '../../components/card-manager-payment/card-manager-payment.component';
 import {Firestore} from '@angular/fire/firestore';
-import {TranslatePipe} from '@ngx-translate/core';  // Importar el Router
+import {TranslatePipe} from '@ngx-translate/core';
+import {MailService} from '../../services/mail.service';  // Importar el Router
 
 @Component({
   selector: 'app-payment-method',
@@ -39,8 +40,9 @@ export class PaymentMethodComponent implements OnInit {
   protected userUID: string = "";
   private firestore: Firestore = inject(Firestore);
   private arrivalDate: string = "";
+  private userMail: string = "";
 
-  constructor(private shoppingCartService: ShoppingCartService, private router: Router, private firebaseService: ProductService) {}  // Inyectar el Router
+  constructor(private shoppingCartService: ShoppingCartService, private router: Router, private firebaseService: ProductService, private mailService: MailService) {}  // Inyectar el Router
 
   ngOnInit(): void {
     this.updateTotal();
@@ -59,6 +61,10 @@ export class PaymentMethodComponent implements OnInit {
       this.userUID = <string>JSON.parse(<string>localStorage.getItem("user")).uid;
     }
     const pedido = JSON.parse(<string>this.localStorage.getItem("pedido"));
+    console.log(pedido);
+    if (pedido.email) {
+      this.userMail = pedido.email;
+    }
 
     const pedidoNuevo = {...pedido,
       precioTotal: this.totalAmount.toFixed(2),
@@ -147,7 +153,17 @@ export class PaymentMethodComponent implements OnInit {
               pedido['arrivalDate'] = this.arrivalDate;
               if (this.userUID !== "") {
                 this.firebaseService.updateOrders(pedido, this.userUID);
+                this.firebaseService.readDoc("users", this.userUID).then(result => {
+                  this.mailService.sendEmail(result.email, pedido, "OrderConfirm").subscribe();
+                  }
+                );
+              } else {
+                if (this.userMail !== "") {
+                  this.mailService.sendEmail(this.userMail, pedido, "OrderConfirm").subscribe();
+                }
               }
+
+
 
               this.router.navigate(['/order-review'], {
                 state: {
