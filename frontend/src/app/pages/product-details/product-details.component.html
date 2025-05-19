@@ -114,16 +114,16 @@
         <div *ngIf="product && product.Valoraciones && product.Valoraciones.length > 0; else noReviews">
           <div class="reviews-grid">
             <div class="review-card" *ngFor="let val of product.Valoraciones | slice:0:valoracionesMostradas">
-              <div class="review-user">De: {{ val.Usuario || 'Anónimo' }}</div>
+              <div class="review-user">{{ 'PRODUCT_DETAIL.FROM' | translate }} {{ val.Usuario || 'Anónimo' }}</div>
               <p class="review-date">{{ val.Fecha | date:'dd/MM/yyyy' }}</p>
               <div class="review-stars">
                 <i *ngFor="let star of [1,2,3,4,5]" class="bi bi-star-fill" [ngClass]="{ 'checked': star <= val.Puntuacion }"></i>
               </div>
-              <p class="review-comment">“{{ val.Comentario || 'Sin comentario' }}”</p>
+              <p class="review-comment">“{{ val.Comentario || 'PRODUCT_DETAIL.NO_COMMENT' | translate }}”</p>
               <div class="review-footer" *ngIf="val.uid === obtenerUidUsuario()">
                 <div class="review-buttons">
-                  <button class="edit-btn" (click)="editarValoracion(val)">Editar</button>
-                  <button class="delete-btn" (click)="eliminarValoracion(val)">Eliminar</button>
+                  <button class="edit-btn" (click)="editarValoracion(val)">{{ 'PRODUCT_DETAIL.EDIT_REVIEW' | translate }}</button>
+                  <button class="delete-btn" (click)="eliminarValoracion(val)">{{ 'PRODUCT_DETAIL.DELETE_REVIEW' | translate }}</button>
                 </div>
               </div>
             </div>
@@ -131,7 +131,7 @@
 
           <div class="ver-mas-container" *ngIf="product && product.Valoraciones && product.Valoraciones.length > valoracionesMostradas">
             <button class="ver-mas-btn" (click)="mostrarMasValoraciones()">
-              Ver más valoraciones
+              {{ 'PRODUCT_DETAIL.SEE_MORE_REVIEWS' | translate }}
             </button>
           </div>
         </div>
@@ -146,7 +146,7 @@
 
   <div class="modal-overlay" *ngIf="mostrarModal">
     <div class="modal">
-      <h2>Comparte tu experiencia con el producto</h2>
+      <h2>{{ 'PRODUCT_DETAIL.ADD_REVIEW_TITLE' | translate }}</h2>
       <div class="rating">
         <i *ngFor="let star of [0,1,2,3,4]; let i = index"
            class="bi bi-star-fill star"

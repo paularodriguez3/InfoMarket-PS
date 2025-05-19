@@ -145,7 +145,12 @@
     "RATE_TITLE": "评价您的购物体验",
     "COMMENT_PLACEHOLDER": "添加评论...",
     "SEND": "发送",
-    "CLOSE": "关闭"
+    "CLOSE": "关闭",
+    "ADD_REVIEW_TITLE": "分享您对产品的体验",
+    "EDIT_REVIEW": "编辑",
+    "DELETE_REVIEW": "删除",
+    "SEE_MORE_REVIEWS": "查看更多评价",
+    "FROM": "来自："
   },
   "PRODUCT_LIST": {
     "SORT_FILTER": "排序与筛选",
@@ -160,7 +165,17 @@
     "MAX_PRICE": "最高价格：",
     "BRAND": "品牌：",
     "COLOR": "颜色：",
-    "APPLY": "应用"
+    "APPLY": "应用",
+    "ALL_BRANDS": "所有品牌",
+    "ALL_COLORS": "所有颜色",
+    "SEARCH_RESULTS": "搜索结果",
+    "DISCOUNTED_PRODUCTS": "优惠商品"
+  },
+  "COLORS": {
+    "Negro": "黑色",
+    "Blanco": "白色",
+    "Rosa": "粉色",
+    "Gris": "灰色"
   },
   "SHIPPING": {
     "TITLE": "配送方式",
@@ -343,7 +358,8 @@
   },
   "PRODUCT_CARD": {
     "SEE": "查看",
-    "ADD_TO_CART": "加入购物车"
+    "ADD_TO_CART": "加入购物车",
+    "OUT_OF_STOCK": "无库存"
   },
   "PRODUCT_INFO_COMPONENT": {
     "QUANTITY": "数量"
@@ -358,5 +374,11 @@
   },
   "WISHLIST_PRODUCT": {
     "STOCK": "库存"
+  },
+  "CATEGORIES": {
+    "INFORMATICA": "计算机",
+    "GAMING": "游戏",
+    "TELEFONIA": "电话",
+    "ELECTRODOMESTICOS": "家电"
   }
 }
