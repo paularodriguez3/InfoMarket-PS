@@ -9,7 +9,7 @@
     <li *ngFor="let order of orders" class="order-item">
       <div class="card-item">
         <strong>
-          {{ 'ORDER_MANAGER.ARRIVAL' | translate }}: {{ order.fechaLlegada }}
+          {{ 'ORDER_MANAGER.ARRIVAL' | translate }}: {{ order.arrivalDate }}
           {{ 'ORDER_MANAGER.TOTAL' | translate }}: {{ order.precioTotal }}€
         </strong>
         <ul>

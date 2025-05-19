@@ -15,12 +15,4 @@ import {TranslatePipe} from '@ngx-translate/core';
 })
 export class OrderHistoryComponent {
   @Input() orders!: any[];
-
-  ngOnInit() {
-  }
-
-  print() {
-    console.log(this.orders);
-  }
-
 }

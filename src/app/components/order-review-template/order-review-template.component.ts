@@ -9,6 +9,7 @@ import {TranslatePipe} from '@ngx-translate/core';
   imports: [
     TranslatePipe
   ],
+  standalone: true,
   styleUrls: ['./order-review-template.component.css']
 })
 export class OrderReviewTemplateComponent {

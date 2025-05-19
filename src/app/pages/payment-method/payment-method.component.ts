@@ -38,6 +38,7 @@ export class PaymentMethodComponent implements OnInit {
   };
   protected userUID: string = "";
   private firestore: Firestore = inject(Firestore);
+  private arrivalDate: string = "";
 
   constructor(private shoppingCartService: ShoppingCartService, private router: Router, private firebaseService: ProductService) {}  // Inyectar el Router
 
@@ -129,6 +130,21 @@ export class PaymentMethodComponent implements OnInit {
             try {
               const pedidoId = await this.firebaseService.createDocOnCollection('pedidos', pedido);
               await this.firebaseService.updateStock(pedido.productos);
+              const today = new Date().getTime();
+              const minMs = 14 * 24 * 60 * 60 * 1000;   // 14 días
+              const maxMs = 60 * 24 * 60 * 60 * 1000;   // 60 días
+              const randMs = minMs + Math.random() * (maxMs - minMs);
+              const arrival = new Date(today + randMs);
+
+              // Formatear dd/MM/yyyy
+              const dd = String(arrival.getDate()).padStart(2, '0');
+              const mm = String(arrival.getMonth() + 1).padStart(2, '0');
+              const yyyy = arrival.getFullYear();
+              this.arrivalDate = `${dd}/${mm}/${yyyy}`;
+              this.firebaseService.updateDocOnCollection("pedidos", pedidoId, {
+                arrivalDate: this.arrivalDate
+              });
+              pedido['arrivalDate'] = this.arrivalDate;
               if (this.userUID !== "") {
                 this.firebaseService.updateOrders(pedido, this.userUID);
               }

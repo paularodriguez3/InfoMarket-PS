@@ -11,6 +11,7 @@ import {FormsModule} from '@angular/forms';
 import {FirebaseService} from '../../services/firebase.service';
 import {TranslatePipe} from '@ngx-translate/core';
 import {Router} from '@angular/router';
+import {ProductService} from '../../services/product.service';
 
 @Component({
   selector: 'app-order-review',
@@ -35,6 +36,7 @@ export class OrderReviewComponent implements OnInit, OnDestroy {
   valoracion = 1;
   comentario: string = '';
   router: Router = inject(Router);
+  firestoreService = inject(ProductService);
 
 
   constructor(private shoppingCartService : ShoppingCartService, private firebaseService : FirebaseService ) {}
@@ -44,18 +46,11 @@ export class OrderReviewComponent implements OnInit, OnDestroy {
     this.paymentMethod = history.state.paymentMethod || '';
     const orderId = history.state.orderId;
 
-    // Calcular fecha aleatoria entre 14 y 60 días desde hoy
-    const today = new Date().getTime();
-    const minMs = 14 * 24 * 60 * 60 * 1000;   // 14 días
-    const maxMs = 60 * 24 * 60 * 60 * 1000;   // 60 días
-    const randMs = minMs + Math.random() * (maxMs - minMs);
-    const arrival = new Date(today + randMs);
-
-    // Formatear dd/MM/yyyy
-    const dd = String(arrival.getDate()).padStart(2, '0');
-    const mm = String(arrival.getMonth() + 1).padStart(2, '0');
-    const yyyy = arrival.getFullYear();
-    this.arrivalDate = `${dd}/${mm}/${yyyy}`;
+    if (orderId) {
+      this.firebaseService.readDoc("pedidos", orderId).then((result) => {
+        this.arrivalDate = result.arrivalDate;
+      })
+    }
 
     if (orderId && !localStorage.getItem(`modalMostrado_${orderId}`)) {
       setTimeout(() => {
