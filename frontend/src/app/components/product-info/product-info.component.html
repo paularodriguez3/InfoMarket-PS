@@ -4,8 +4,8 @@
   </div>
 
   <div id="product-info">
-    <div id="product-name-component">{{ item.product.Nombre }}</div>
-    <div id="product-desc-component">{{ item.product.Descripcion }}</div>
+    <div id="product-name-component">{{ getTranslatedName() }}</div>
+    <div id="product-desc-component">{{ getTranslatedDescription() }}</div>
   </div>
 
   <div id="button-minus" class="qty-button" [ngClass]="{ 'hidden-button': !showButtons }" (click)="decrease()">

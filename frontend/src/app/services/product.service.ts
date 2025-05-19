@@ -9,7 +9,7 @@ import { getStorage, FirebaseStorage } from 'firebase/storage';
 import {getDownloadURL, ref} from '@angular/fire/storage';
 import {catchError, combineLatest, map, Observable, of, switchMap, tap} from 'rxjs';
 import {Product, Valoracion} from '../models/product.model';
-
+import {TranslateService} from '@ngx-translate/core';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +19,7 @@ export class ProductService {
   private firestore = inject(Firestore);
   private storage: FirebaseStorage = getStorage();
 
-  constructor() {}
+  constructor(private translate: TranslateService) {}
 
   async readCollection(cole: string): Promise<any> {
     const colRef = collection(this.firestore, cole); // SOLO el string de path
@@ -239,13 +239,14 @@ export class ProductService {
   ):Observable<{data:any[], lastDoc:QueryDocumentSnapshot<any>|null}> {
 
     const q = this.getQuery(null, orderParam, whereParams, startAfterDoc);
-
     return new Observable(observer => {
       getDocs(q).then(snapshot => {
         const data = [];
         for (const doc of snapshot.docs) {
           const product: Product = {id: doc.id, ...doc.data()} as Product;
-          if(product.Nombre.toLowerCase().includes(search.toLowerCase())) data.push(product);
+          const language = this.translate.currentLang as keyof typeof product.Nombre;
+          const translatedName = product.Nombre[language] || product.Nombre['es'] || '';
+          if(translatedName.toLowerCase().includes(search.toLowerCase())) data.push(product);
           if(data.length >= limitNumber) break;
         }
 

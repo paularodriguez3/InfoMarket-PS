@@ -1,9 +1,9 @@
 import {Component, EventEmitter, inject, Input, Output} from '@angular/core';
-import {Product} from '../../models/product.model';
+import {lang, Product} from '../../models/product.model';
 import {Router} from '@angular/router';
 import {ShoppingCartService} from '../../services/shopping-cart.service';
 import {DecimalPipe, NgClass, NgIf} from '@angular/common';
-import {TranslatePipe} from '@ngx-translate/core';
+import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-product',
@@ -26,6 +26,7 @@ export class ProductComponent {
 
   router: Router = inject(Router);
   shoppingCart: ShoppingCartService = inject(ShoppingCartService);
+  translate: TranslateService = inject(TranslateService);
 
   onSee() {
     //console.log(this.product);
@@ -44,5 +45,15 @@ export class ProductComponent {
       return product.Precio * (1 - product.Descuento / 100);
     }
     return product.Precio;
+  }
+
+  getTranslatedName():string {
+    const language = this.translate.currentLang as lang;
+    return this.product.Nombre[language] || this.product.Nombre['es'];
+  }
+
+  getTranslatedDescription():string {
+    const language = this.translate.currentLang as lang;
+    return this.product.Descripcion[language] || this.product.Descripcion['es'];
   }
 }

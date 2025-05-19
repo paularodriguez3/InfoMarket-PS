@@ -7,8 +7,8 @@
   <div id="product-image" class="product-info-link">
     <img id="image" [src]="imageUrl" [alt]="product.Nombre" />
   </div>
-  <p id="product-name">{{ product.Nombre }}</p>
-  <p id="product-desc">{{ product.Descripcion }}</p>
+  <p id="product-name">{{ getTranslatedName() }}</p>
+  <p id="product-desc">{{ getTranslatedDescription() }}</p>
 
   <p class="price" *ngIf="product.Descuento && product.Descuento > 0 && product.Descuento < 100">
     <span class="original-price">{{ product.Precio | number:'1.2-2' }}€</span>

@@ -1,7 +1,7 @@
 export interface Product {
   id?: string;
-  Nombre: string;
-  Descripcion: string;
+  Nombre: {es: string, en: string, fr:string, zh:string};
+  Descripcion: {es: string, en: string, fr:string, zh:string};
   Imagen: string;
   Precio: number;
   Marca?: string;
@@ -27,3 +27,5 @@ export interface Valoracion {
   Usuario: string;
   uid: string;
 }
+
+export type lang = 'es' | 'en' | 'fr' | 'zh';

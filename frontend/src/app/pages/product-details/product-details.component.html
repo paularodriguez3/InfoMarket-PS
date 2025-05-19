@@ -1,8 +1,8 @@
 <main>
   <article id="product-details">
     <section id="product-details-info">
-      <h1 id="product-name">{{ product.Nombre }}</h1>
-      <p id="product-desc">{{ product.Descripcion }}</p>
+      <h1 id="product-name">{{ getTranslatedName() }}</h1>
+      <p id="product-desc">{{ getTranslatedDescription() }}</p>
 
       <p id="features">{{ 'PRODUCT_DETAIL.FEATURES_TITLE' | translate }}</p>
       <hr class="hr-features" />

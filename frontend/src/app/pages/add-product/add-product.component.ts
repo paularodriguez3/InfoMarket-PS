@@ -26,10 +26,20 @@ export class AddProductComponent implements OnInit {
   quantity = 1;
   categories: string[] = [];
   subcategories: string[] = [];
+
   selectedCategory = '';
   selectedSubcategory = '';
-  selectedProductName = '';
-  selectedDescription = '';
+
+  selectedProductNameEs = '';
+  selectedProductNameEn = '';
+  selectedProductNameFr = '';
+  selectedProductNameZh = '';
+
+  selectedDescriptionEs = '';
+  selectedDescriptionEn = '';
+  selectedDescriptionFr = '';
+  selectedDescriptionZh = '';
+
   selectedPrice: number = 0;
   selectedDiscount: number = 0;
   selectedImageUrl: string = '';
@@ -54,8 +64,16 @@ export class AddProductComponent implements OnInit {
       this.product = input['product'] as Product;
       console.log(this.product);
 
-      this.selectedProductName = this.product.Nombre;
-      this.selectedDescription = this.product.Descripcion;
+      this.selectedProductNameEs = this.product.Nombre['es'];
+      this.selectedProductNameEn = this.product.Nombre['en'];
+      this.selectedProductNameFr = this.product.Nombre['fr'];
+      this.selectedProductNameZh = this.product.Nombre['zh'];
+
+      this.selectedDescriptionEs = this.product.Descripcion['es'];
+      this.selectedDescriptionEn = this.product.Descripcion['en'];
+      this.selectedDescriptionFr = this.product.Descripcion['fr'];
+      this.selectedDescriptionZh = this.product.Descripcion['zh'];
+
       this.features = this.product.Caracteristicas;
       this.selectedPrice = this.product.Precio;
       this.selectedImageUrl = await this.productService.getImageUrl(this.product.Imagen);
@@ -147,12 +165,12 @@ export class AddProductComponent implements OnInit {
   }
 
   saveProduct() {
-    if (!this.selectedProductName) {
+    if (!this.selectedProductNameEs || !this.selectedProductNameEn || !this.selectedProductNameFr || !this.selectedProductNameZh) {
       alert("Por favor, complete el campo 'Nombre del producto'.");
       return;
     }
 
-    if (!this.selectedDescription) {
+    if (!this.selectedDescriptionEs || !this.selectedDescriptionEn || !this.selectedDescriptionFr || !this.selectedDescriptionZh) {
       alert("Por favor, complete el campo 'Descripción del producto'.");
       return;
     }
@@ -184,8 +202,18 @@ export class AddProductComponent implements OnInit {
     });
 
     const productData = {
-      Nombre: this.selectedProductName,
-      Descripcion: this.selectedDescription,
+      Nombre: {
+        es:this.selectedProductNameEs,
+        en:this.selectedProductNameEn,
+        fr:this.selectedProductNameFr,
+        zh:this.selectedProductNameZh,
+      },
+      Descripcion: {
+        es: this.selectedDescriptionEs,
+        en: this.selectedDescriptionEn,
+        fr: this.selectedDescriptionFr,
+        zh: this.selectedDescriptionZh,
+      },
       Categoria: this.selectedCategory,
       Subcategoria: this.selectedSubcategory,
       Precio: this.selectedPrice,

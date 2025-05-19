@@ -1,8 +1,9 @@
 import {Component, EventEmitter, inject, Input, Output} from '@angular/core';
 import {ShoppingCartItem} from '../../models/shopping-cart-item.model';
 import {NgClass} from '@angular/common';
-import {TranslatePipe} from '@ngx-translate/core';
+import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 import {ProductService} from '../../services/product.service';
+import {lang} from '../../models/product.model';
 
 @Component({
   selector: 'app-product-info',
@@ -17,11 +18,11 @@ import {ProductService} from '../../services/product.service';
 export class ProductInfoComponent {
   @Input() item: ShoppingCartItem = {
     product: {
-      Nombre: "",
+      Nombre: {es:"", en:"", fr:"", zh:""},
       Precio: 0,
       Caracteristicas: [],
       Imagen: "",
-      Descripcion: "",
+      Descripcion: {es:"", en:"", fr:"", zh:""},
       Color: '',
       Categoria: '',
       Subcategoria: '',
@@ -33,6 +34,8 @@ export class ProductInfoComponent {
   @Output() increaseQty: EventEmitter<any> = new EventEmitter();
   @Output() decreaseQty: EventEmitter<any> = new EventEmitter();
   @Output() removeItem: EventEmitter<any> = new EventEmitter();
+
+  translate: TranslateService = inject(TranslateService);
 
   productService: ProductService = inject(ProductService);
   imageUrl: string = '';
@@ -65,5 +68,15 @@ export class ProductInfoComponent {
   hasDiscount(): boolean {
     const descuento = this.item.product.Descuento;
     return typeof descuento === 'number' && descuento > 0 && descuento < 100;
+  }
+
+  getTranslatedName():string {
+    const language = this.translate.currentLang as lang;
+    return this.item.product.Nombre[language] || this.item.product.Nombre['es'];
+  }
+
+  getTranslatedDescription():string {
+    const language = this.translate.currentLang as lang;
+    return this.item.product.Descripcion[language] || this.item.product.Descripcion['es'];
   }
 }
