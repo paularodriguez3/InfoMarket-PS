@@ -15,6 +15,8 @@
       <div class="card-info">
         <strong>{{ card.brand }}</strong> — {{ '**** **** **** ' + card.cardNumber.slice(-4) }}
         <br />
+        <small>{{'CARD_MANAGER.cardholderName' | translate}}:  {{ card.cardholderName }}</small>
+        <br />
         <small>{{ 'CARD_MANAGER.EXPIRES' | translate }}: {{ card.expiry }}</small>
       </div>
       <div class="card-actions">

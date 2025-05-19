@@ -237,7 +237,9 @@
     "SAVE": "保存卡片",
     "EXPIRES": "有效期至",
     "CONFIRM_DELETE": "确定要删除此卡片吗？",
-    "YES_DELETE": "是的，删除我的卡片"
+    "YES_DELETE": "是的，删除我的卡片",
+    "cardholderName":"持有者"
+
   },
   "CARD_DISPLAY": {
     "TITLE": "我的卡片",
