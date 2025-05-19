@@ -137,6 +137,24 @@ main {
   }
 }
 
+
+
+.loading-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+  font-size: 3rem;
+  color: #1D1D1F;
+}
+
+.loading-icon i.bx-spin {
+  animation-duration: 0.8s !important;
+}
+
+
+
+
 @media (max-width: 479px) {
   #main-title {
     font-size: 28px;

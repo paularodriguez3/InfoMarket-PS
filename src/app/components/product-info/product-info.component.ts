@@ -1,7 +1,8 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, inject, Input, Output} from '@angular/core';
 import {ShoppingCartItem} from '../../models/shopping-cart-item.model';
 import {NgClass} from '@angular/common';
 import {TranslatePipe} from '@ngx-translate/core';
+import {ProductService} from '../../services/product.service';
 
 @Component({
   selector: 'app-product-info',
@@ -32,6 +33,12 @@ export class ProductInfoComponent {
   @Output() increaseQty: EventEmitter<any> = new EventEmitter();
   @Output() decreaseQty: EventEmitter<any> = new EventEmitter();
   @Output() removeItem: EventEmitter<any> = new EventEmitter();
+
+  productService: ProductService = inject(ProductService);
+  imageUrl: string = '';
+  async ngOnInit() {
+    this.imageUrl = await this.productService.getImageUrl(this.item.product.Imagen)
+  }
 
   increase() {
     this.increaseQty.emit(this.item);

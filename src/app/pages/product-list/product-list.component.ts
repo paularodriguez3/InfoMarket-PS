@@ -1,6 +1,6 @@
 import {Component, OnInit, HostListener, OnDestroy} from '@angular/core';
 import { ProductComponent } from '../../components/product/product.component';
-import {NgClass, NgForOf} from '@angular/common';
+import {NgClass, NgForOf, NgIf} from '@angular/common';
 import { Product } from '../../models/product.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../../services/product.service';
@@ -17,7 +17,8 @@ import {TranslatePipe} from '@ngx-translate/core';
     NgForOf,
     FormsModule,
     NgClass,
-    TranslatePipe
+    TranslatePipe,
+    NgIf
   ],
   styleUrl: './product-list.component.css'
 })
@@ -80,10 +81,14 @@ export class ProductListComponent implements OnInit, OnDestroy {
       this.subcategoriaParam = params.get('subcategoria');
       this.discounts = queryParams.get('ofertas') === 'true';
 
+      this.categoria = this.categoriaParam||'';
 
       if (this.dataSub) this.dataSub.unsubscribe();
       this.products = [];
       this.filteredProducts =  [];
+      this.whereParam=[];
+      this.pageNumber = 0;
+      this.lastDoc = null;
 
       if (this.discounts) {
         this.whereParam.push(`Descuento > 0`);
