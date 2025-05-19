@@ -10,6 +10,8 @@
       <div class="card-info">
         <strong>{{ card.brand }}</strong> — {{ '**** **** **** ' + card.cardNumber.slice(-4) }}
         <br />
+        <small>{{'CARD_MANAGER.cardholderName' | translate}}:  {{ card.cardholderName }}</small>
+        <br />
         <small>{{ 'CARD_DISPLAY.EXPIRES' | translate }}: {{ card.expiry }}</small>
       </div>
       <div class="card-actions">
@@ -19,10 +21,6 @@
 
         <button class="button-cancel-add" type="button" (click)="copyToClipboard(card, 'expiry')">
           {{ card.copied === 'expiry' ? ('CARD_DISPLAY.COPIED_EXPIRY' | translate) : ('CARD_DISPLAY.COPY_EXPIRY' | translate) }}
-        </button>
-
-        <button class="button-cancel-add" type="button" (click)="copyToClipboard(card, 'cardholderName')">
-          {{ card.copied === 'owner' ? ('CARD_DISPLAY.COPIED_OWNER' | translate) : ('CARD_DISPLAY.COPY_OWNER' | translate) }}
         </button>
       </div>
     </li>
