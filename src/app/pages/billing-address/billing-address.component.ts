@@ -22,6 +22,7 @@ export class BillingAddressComponent implements OnInit, AfterViewInit {
   selectedAddressId: string = '';
   tiendas: any[] = [];
   pedido: any;
+  protected isLoggedIn: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -44,10 +45,17 @@ export class BillingAddressComponent implements OnInit, AfterViewInit {
       address: ['', Validators.required],
       zip: ['', Validators.required],
       province: ['', Validators.required],
-      shop: ['', Validators.required]
+      shop: ['', Validators.required],
+      email: ['', Validators.required],
     });
 
     if (this.uid) {
+      this.isLoggedIn = true;
+      this.firebaseService.readDoc("users", this.uid).then(result => {
+        this.billingForm.patchValue({
+          email: result.email
+        })
+      });
       this.addresses = await this.addressService.getAddresses(this.uid);
     } else {
       console.warn('No se encontró el UID del usuario.');
@@ -61,6 +69,10 @@ export class BillingAddressComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     const addressInput    = document.getElementById('address') as HTMLInputElement;
     const shopSelect      = document.getElementById('shop')    as HTMLSelectElement;
+    const emailInput = document.getElementById('email') as HTMLInputElement;
+    const countryInput = document.getElementById('country') as HTMLInputElement;
+    const zipInput = document.getElementById('zip') as HTMLInputElement;
+    const provinceInput = document.getElementById('province') as HTMLInputElement;
     const continueButton  = document.getElementById('continue-button')  as HTMLButtonElement;
 
     // validación al pulsar el botón
@@ -69,6 +81,22 @@ export class BillingAddressComponent implements OnInit, AfterViewInit {
 
       const hasAddress = addressInput.value.trim() !== '';
       const hasShop    = shopSelect.value.trim()    !== '';
+      let hasEmail;
+      if (!this.isLoggedIn) {
+        hasEmail = emailInput.value.trim() !== '';
+      } else {
+        hasEmail = true;
+      }
+      const hasProvince = provinceInput.value.trim() !== '';
+      const hasZip = zipInput.value.trim() !== '';
+      const hasCountry = countryInput.value.trim() !== '';
+
+      if (!hasEmail || !hasProvince || !hasZip || !hasCountry) {
+        alert('Por favor rellena todos los campos');
+        return;
+      }
+
+
 
       if (!hasAddress && !hasShop) {
         alert('Por favor especifica una dirección o una tienda de recogida');
@@ -92,8 +120,10 @@ export class BillingAddressComponent implements OnInit, AfterViewInit {
           tipo: 'recogida',
         };
       }
-
       this.pedido.direccion = direccionFinal;
+      if (!this.isLoggedIn) {
+        this.pedido.email = emailInput.value;
+      }
       localStorage.setItem('pedido', JSON.stringify(this.pedido));
 
       console.log(this.pedido);
@@ -164,7 +194,8 @@ export class BillingAddressComponent implements OnInit, AfterViewInit {
         address: ['', Validators.required],
         zip: ['', Validators.required],
         province: ['', Validators.required],
-        shop: ['', Validators.required]
+        shop: ['', Validators.required],
+        email: ['', Validators.required]
       });
       shopSelect.selectedIndex = 0;
     } else {

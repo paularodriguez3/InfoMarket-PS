@@ -7,6 +7,9 @@
         <label for="country">{{ 'CHECKOUT.COUNTRY_LABEL' | translate }}</label>
         <input type="text" id="country" formControlName="country" required />
 
+        <label *ngIf="!isLoggedIn" for="email">Email</label>
+        <input *ngIf="!isLoggedIn" type="text" id="email" formControlName="email" required />
+
         <label for="address">{{ 'CHECKOUT.ADDRESS_LABEL' | translate }}</label>
         <input type="text" id="address" formControlName="address" required />
 
