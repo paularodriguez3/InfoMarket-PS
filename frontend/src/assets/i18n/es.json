@@ -252,7 +252,8 @@
     "SAVE": "Guardar tarjeta",
     "EXPIRES": "Vence",
     "CONFIRM_DELETE": "¿Estás seguro de que deseas eliminar esta tarjeta?",
-    "YES_DELETE": "Sí, eliminar mi tarjeta"
+    "YES_DELETE": "Sí, eliminar mi tarjeta",
+    "cardholderName": "Titular"
   },
   "CARD_DISPLAY": {
     "TITLE": "Mis tarjetas",
