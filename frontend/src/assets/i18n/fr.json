@@ -55,7 +55,11 @@
     "ADD_PRODUCT": "Ajouter le produit",
     "DELETE_PRODUCT": "Supprimer le produit",
     "IMAGE_ALT": "Produit",
-    "HIGHLIGHTED_ICON": "À LA UNE!"
+    "HIGHLIGHTED_ICON": "À LA UNE!",
+    "BRAND_LABEL": "Marque",
+    "BRAND_PLACEHOLDER": "Sélectionnez une marque",
+    "COLOR_LABEL": "Couleur",
+    "COLOR_PLACEHOLDER": "Sélectionnez une couleur"
   },
   "CHECKOUT": {
     "BILLING_TITLE": "ADRESSE DE FACTURATION",
@@ -130,6 +134,9 @@
   "PRODUCT_DETAIL": {
     "FEATURES_TITLE": "Caractéristiques du produit :",
     "STOCK": "Stock",
+    "STOCK_IN": "En stock",
+    "STOCK_FEW": "Dernières unités",
+    "STOCK_OUT": "Rupture de stock",
     "QUANTITY": "Quantité",
     "TOTAL_PRICE": "Prix total",
     "ADD_TO_CART": "Ajouter au panier",
@@ -169,7 +176,8 @@
     "ALL_BRANDS": "Toutes les marques",
     "ALL_COLORS": "Toutes les couleurs",
     "SEARCH_RESULTS": "Résultats de recherche",
-    "DISCOUNTED_PRODUCTS": "Produits en promotion"
+    "DISCOUNTED_PRODUCTS": "Produits en promotion",
+    "RESET": "Réinitialiser les filtres"
   },
   "COLORS": {
     "Negro": "Noir",

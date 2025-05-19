@@ -55,7 +55,11 @@
     "ADD_PRODUCT": "添加产品",
     "DELETE_PRODUCT": "删除产品",
     "IMAGE_ALT": "产品",
-    "HIGHLIGHTED_ICON": "精选！"
+    "HIGHLIGHTED_ICON": "精选！",
+    "BRAND_LABEL": "品牌",
+    "BRAND_PLACEHOLDER": "选择品牌",
+    "COLOR_LABEL": "颜色",
+    "COLOR_PLACEHOLDER": "选择颜色"
   },
   "CHECKOUT": {
     "BILLING_TITLE": "账单地址",
@@ -130,6 +134,9 @@
   "PRODUCT_DETAIL": {
     "FEATURES_TITLE": "产品特性：",
     "STOCK": "库存",
+    "STOCK_IN": "有货",
+    "STOCK_FEW": "仅剩少量",
+    "STOCK_OUT": "无货",
     "QUANTITY": "数量",
     "TOTAL_PRICE": "总价",
     "ADD_TO_CART": "加入购物车",
@@ -169,7 +176,8 @@
     "ALL_BRANDS": "所有品牌",
     "ALL_COLORS": "所有颜色",
     "SEARCH_RESULTS": "搜索结果",
-    "DISCOUNTED_PRODUCTS": "优惠商品"
+    "DISCOUNTED_PRODUCTS": "优惠商品",
+    "RESET": "重置筛选条件"
   },
   "COLORS": {
     "Negro": "黑色",

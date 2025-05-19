@@ -48,6 +48,10 @@ export class AddProductComponent implements OnInit {
   features: Feature[] = [];
   selectedIsHighlighted: boolean = false;
   documentsCount: number = 0;
+  marcas: any[] = [];
+  colores: any[] = [];
+  selectedBrand = '';
+  selectedColor = '';
 
   private storage = inject(Storage);
 
@@ -92,6 +96,8 @@ export class AddProductComponent implements OnInit {
       (error) => console.error("Error al obtener categorías:", error)
     );*/
     this.categories = this.addProductService.getCategoriesFromMap();
+    this.productService.getMarcas().subscribe(data => this.marcas = data);
+    this.productService.getColores().subscribe(data => this.colores = data);
   }
 
   onCategoryChange() {
@@ -217,6 +223,8 @@ export class AddProductComponent implements OnInit {
       Categoria: this.selectedCategory,
       Subcategoria: this.selectedSubcategory,
       Precio: this.selectedPrice,
+      Marca: this.selectedBrand,
+      Color: this.selectedColor,
       Stock: this.quantity,
       Caracteristicas: formattedFeatures,
       Imagen: this.selectedImagePath,

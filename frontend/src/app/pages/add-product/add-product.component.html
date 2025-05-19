@@ -63,6 +63,17 @@
     </div>
 
     <hr class="hr-features" />
+    <label for="brand-select">{{ 'PRODUCT.BRAND_LABEL' | translate }}</label>
+    <select id="brand-select" name="brand" [(ngModel)]="selectedBrand">
+      <option value="">{{ 'PRODUCT.BRAND_PLACEHOLDER' | translate }}</option>
+      <option *ngFor="let marca of marcas" [value]="marca.marca">{{ marca.marca }}</option>
+    </select>
+
+    <label for="color-select">{{ 'PRODUCT.COLOR_LABEL' | translate }}</label>
+    <select id="color-select" name="color" [(ngModel)]="selectedColor">
+      <option value="">{{ 'PRODUCT.COLOR_PLACEHOLDER' | translate }}</option>
+      <option *ngFor="let color of colores" [value]="color.color">{{ 'COLORS.' + color.color | translate }}</option>
+    </select>
 
     <div id="quantity-container">
       <div class="quantity-selector">

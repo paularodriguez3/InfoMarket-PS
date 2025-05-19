@@ -66,7 +66,7 @@ main {
   padding: 20px;
   box-shadow: -4px 0 10px rgba(0, 0, 0, 0.1);
   position: fixed;
-  top: 250px;
+  top: 200px;
   right: 20px;
   border-radius: 10px 0 0 10px;
   z-index: 1050;
@@ -153,7 +153,23 @@ main {
 }
 
 
+#reset-button {
+  margin-top: 15px;
+  border-radius: 10px;
+  font-size: 16px;
+  padding: 10px;
+  background-color: white;
+  color: #1D1D1F;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  border: 1px solid #ccc;
+}
 
+#reset-button:hover {
+  background-color: #F5F5F7;
+  color: #3D3D3D;
+}
 
 @media (max-width: 479px) {
   #main-title {

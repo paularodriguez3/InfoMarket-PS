@@ -257,4 +257,13 @@ export class ProductListComponent implements OnInit, OnDestroy {
     if (this.discounts) return 'PRODUCT_LIST.DISCOUNTED_PRODUCTS';
     return 'CATEGORIES.' + (this.categoriaParam ?? '').toUpperCase();
   }
+
+  restablecerFiltros() {
+    this.precioMin = null;
+    this.precioMax = null;
+    this.marca = '';
+    this.color = '';
+    this.caracteristicas = {};
+    this.ordenSeleccionado = '';
+  }
 }

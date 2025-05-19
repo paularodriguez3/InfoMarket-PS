@@ -162,9 +162,9 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   getStockMessage(): string {
-    if (this.product.Stock > 10) return 'Con existencias';
-    if (this.product.Stock > 0) return 'Últimas unidades';
-    return 'Sin stock';
+    if (this.product.Stock > 10) return this.translate.instant('PRODUCT_DETAIL.STOCK_IN');
+    if (this.product.Stock > 0) return this.translate.instant('PRODUCT_DETAIL.STOCK_FEW');
+    return this.translate.instant('PRODUCT_DETAIL.STOCK_OUT');
   }
 
   addToWishList() {

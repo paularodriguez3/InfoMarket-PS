@@ -55,6 +55,9 @@
         </li>
       </ng-container>
     </ul>
+    <button id="reset-button" (click)="restablecerFiltros()">
+      <i class='bx bx-reset'></i> {{ 'PRODUCT_LIST.RESET' | translate }}
+    </button>
     <button id="apply-button" (click)="aplicarFiltros()">
       <i class='bx bx-filter-alt'></i> {{ 'PRODUCT_LIST.APPLY' | translate }}
     </button>
