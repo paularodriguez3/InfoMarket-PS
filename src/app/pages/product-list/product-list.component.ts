@@ -81,10 +81,14 @@ export class ProductListComponent implements OnInit, OnDestroy {
       this.subcategoriaParam = params.get('subcategoria');
       this.discounts = queryParams.get('ofertas') === 'true';
 
+      this.categoria = this.categoriaParam||'';
 
       if (this.dataSub) this.dataSub.unsubscribe();
       this.products = [];
       this.filteredProducts =  [];
+      this.whereParam=[];
+      this.pageNumber = 0;
+      this.lastDoc = null;
 
       if (this.discounts) {
         this.whereParam.push(`Descuento > 0`);
