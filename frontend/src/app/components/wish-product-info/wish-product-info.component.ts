@@ -1,9 +1,9 @@
 import {Component, Input, Output, EventEmitter, inject} from '@angular/core';
-import {Product} from '../../models/product.model';
+import {lang, Product} from '../../models/product.model';
 import { NgClass } from '@angular/common';
 import {ShoppingCartService} from '../../services/shopping-cart.service';
 import {Router} from '@angular/router';
-import {TranslatePipe} from '@ngx-translate/core';
+import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-wish-product-info',
@@ -24,6 +24,7 @@ export class WishProductInfoComponent {
   @Output() addToCart = new EventEmitter<void>();
   @Output() see = new EventEmitter<void>();
 
+  translate:TranslateService = inject(TranslateService);
   router: Router = inject(Router);
   shoppingCart: ShoppingCartService = inject(ShoppingCartService);
 
@@ -51,5 +52,15 @@ export class WishProductInfoComponent {
 
   onSee() {
     this.router.navigate(['/product-details'], {state: {product: this.product}});
+  }
+
+  getTranslatedName():string {
+    const language = this.translate.currentLang as lang;
+    return this.product.Nombre[language] || this.product.Nombre['es'];
+  }
+
+  getTranslatedDescription():string {
+    const language = this.translate.currentLang as lang;
+    return this.product.Descripcion[language] || this.product.Descripcion['es'];
   }
 }
