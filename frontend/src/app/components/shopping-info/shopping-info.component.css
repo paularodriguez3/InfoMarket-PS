@@ -1,0 +1,48 @@
+#shopping-info-component {
+  margin: 10px;
+  border-radius: 15px;
+  width: 600px;
+  background-color: #D9D9D9;
+}
+
+#products-info-component {
+  list-style: none;
+  padding: 0;
+}
+
+#shopping-info-component hr {
+  border: none;
+  height: 1px;
+  background-color: #1D1D1F;
+  justify-self: center;
+  width: 95%;
+}
+
+#shopping-info-total {
+  color: #1D1D1F;
+  font-family: 'SF Pro Display', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+
+@media(max-width: 1300px) {
+  #shopping-info-component {
+    width: 80%;
+    justify-self: center;
+  }
+}
+
+@media(max-width: 820px) {
+  #shopping-info-component {
+    width: 60%;
+  }
+}
+
+@media(max-width: 630px) {
+  #shopping-info-component {
+    width: 40%;
+  }
+}

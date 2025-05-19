@@ -1,0 +1,21 @@
+<main>
+  <article id="shopping-info-component">
+    <div id="products-info-component">
+      <div *ngFor="let item of shoppingCart">
+        <app-product-info
+          [item]="item"
+          [showButtons]="false"
+          (increaseQty)="null"
+          (decreaseQty)="null">
+        </app-product-info>
+      </div>
+    </div>
+    <hr>
+    <div id="shopping-info-total">
+      <div id="shopping-info-total-title">
+        {{ 'SHOPPING_INFO.TOTAL' | translate }}: {{ calculateTotalPrice().toFixed(2) }}€
+      </div>
+      <div id="shopping-info-total-price"></div>
+    </div>
+  </article>
+</main>

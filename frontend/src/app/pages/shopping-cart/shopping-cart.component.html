@@ -1,0 +1,57 @@
+<main>
+  <h1 id="shopping-cart-title">
+    <i class='bx bx-cart'></i> {{ 'CART.TITLE' | translate }}
+  </h1>
+
+  <article id="shopping-info">
+    <div id="shopping-cart-list">
+      <div *ngFor="let item of shoppingCart">
+        <app-product-info
+          [item]="item"
+          [showButtons]="true"
+          (increaseQty)="increase($event)"
+          (decreaseQty)="decrease($event)"
+          (removeItem)="removeItem($event)">
+        </app-product-info>
+      </div>
+    </div>
+
+    <section id="buy-panel">
+      <div id="price-section">
+        <ng-container *ngIf="hasAnyDiscount(); else noDiscount">
+          <div id="total-original">
+            {{ calculateOriginalTotal().toFixed(2) }}€
+          </div>
+
+          <div id="discount-applied">
+            -{{ calculateTotalDiscount().toFixed(2) }}€
+          </div>
+
+          <hr class="divider" />
+
+          <div id="total-final">
+            {{ calculateTotalPrice().toFixed(2) }}€
+          </div>
+        </ng-container>
+
+        <ng-template #noDiscount>
+          <div id="total-price">
+            {{ calculateTotalPrice().toFixed(2) }}€
+          </div>
+        </ng-template>
+      </div>
+
+      <button id="buy-button" (click)="buy()">
+        {{ 'CART.CHECKOUT' | translate }}
+      </button>
+
+      <button id="clear-cart-button" *ngIf="!cartIsEmpty()" (click)="clearCart()">
+        {{ 'CART.CLEAR' | translate }}
+      </button>
+
+      <button id="continue-shopping-button" (click)="continueShopping()">
+        {{ 'CART.CONTINUE' | translate }}
+      </button>
+    </section>
+  </article>
+</main>

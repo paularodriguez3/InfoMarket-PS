@@ -1,0 +1,133 @@
+/* shipping-method.component.css */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  background-color: #FAFAFC;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #FAFAFC;
+  padding-top: 120px; /* espacio para el header fijo */
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #FAFAFC;
+  z-index: 1000;
+}
+
+/* ─── WRAPPER GENERAL ───────────────────────────────────────── */
+#shipping-method-wrapper {
+  width: 90%;
+  max-width: 1100px;       /* mismo max-width que en los demás */
+  margin: 0 auto;          /* centrado horizontal */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 5%;
+  padding-bottom: 70px;     /* mismo padding inferior */
+  font-family: 'SF Pro Display', sans-serif;
+}
+
+/* ─── TARJETA DE MÉTODO DE ENVÍO ────────────────────────────── */
+#shipping-method {
+  flex: 1;                 /* ocupa todo el espacio sobrante */
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  width: 500px;            /* mismo ancho fijo */
+  min-width: 300px;        /* evita reducirse demasiado */
+  max-width: 500px;
+  height: fit-content;
+}
+
+#shipping-method h2 {
+  margin-bottom: 20px;
+}
+
+#shipping-method form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#shipping-method label {
+  font-weight: 600;
+}
+
+#shipping-method input,
+#shipping-method select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 100%;
+}
+
+#shipping-method select {
+  background-color: white;
+  cursor: pointer;
+}
+
+#shipping-method select:disabled {
+  background-color: #f0f0f0;
+  cursor: not-allowed;
+}
+
+#shipping-method button {
+  padding: 12px;
+  margin-top: 10px;
+  background-color: #746F6F;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#shipping-method button:hover {
+  background-color: #5A4F4F;
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────────────────── */
+@media (max-width: 1300px) {
+  #shipping-method-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+  #shipping-method {
+    width: 80%;
+  }
+}
+
+@media (max-width: 820px) {
+  #shipping-method-wrapper {
+    width: 80%;
+  }
+  #shipping-method {
+    width: 70%;
+  }
+}
+
+@media (max-width: 630px) {
+  #shipping-method-wrapper {
+    width: 60%;
+  }
+  #shipping-method {
+    width: 60%;
+  }
+}

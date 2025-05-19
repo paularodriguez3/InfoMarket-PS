@@ -1,0 +1,86 @@
+<main class="login-container">
+  <div class="auth-wrapper">
+    <div class="logo-container">
+      <img src="../assets/icons/header/infomarket_logo_mini.png" alt="InfoMarket Logo" class="login-logo" />
+    </div>
+
+    <h1 class="auth-title">{{ 'SIGNUP.TITLE' | translate }}</h1>
+    <p class="auth-subtitle">{{ 'SIGNUP.SUBTITLE' | translate }}</p>
+
+    <form (ngSubmit)="onSubmit($event)" class="auth-form">
+      <div class="input-group">
+        <input
+          id="user-register"
+          type="text"
+          [placeholder]="'SIGNUP.USERNAME_PLACEHOLDER' | translate"
+          required
+          [(ngModel)]="username"
+          name="username"
+          (focus)="onUsernameFocus()"
+          (blur)="onUsernameBlur()"
+          (input)="validateUsername()" />
+        <i class='bx bxs-user'></i>
+      </div>
+
+      <div id="username-requirements" #usernameRequirements class="requirements" style="display: none;">
+        <p id="first-letter" class="requirement">{{ 'SIGNUP.REQUIREMENTS.USER_FIRST_LETTER' | translate }} <span style="display: none;">✔</span></p>
+        <p id="alphanumeric" class="requirement">{{ 'SIGNUP.REQUIREMENTS.USER_ALPHANUMERIC' | translate }} <span style="display: none;">✔</span></p>
+        <p id="length" class="requirement">{{ 'SIGNUP.REQUIREMENTS.USER_MIN_LENGTH' | translate }} <span style="display: none;">✔</span></p>
+      </div>
+
+      <div class="input-group">
+        <input
+          id="email-register"
+          type="email"
+          [placeholder]="'SIGNUP.EMAIL_PLACEHOLDER' | translate"
+          required
+          [(ngModel)]="email"
+          name="email" />
+        <i class="bx bxs-envelope"></i>
+      </div>
+
+      <div class="input-group">
+        <input
+          id="password-register"
+          type="password"
+          [placeholder]="'SIGNUP.PASSWORD_PLACEHOLDER' | translate"
+          required
+          [(ngModel)]="password"
+          name="password"
+          (focus)="onPasswordFocus()"
+          (blur)="onPasswordBlur()"
+          (input)="validatePassword()" />
+        <i class='bx bxs-lock-alt'></i>
+      </div>
+
+      <div class="input-group">
+        <input
+          id="confirm-password-register"
+          type="password"
+          [placeholder]="'SIGNUP.CONFIRM_PASSWORD_PLACEHOLDER' | translate"
+          required
+          [(ngModel)]="confirmPassword"
+          name="confirmPassword" />
+        <i class='bx bxs-lock-alt'></i>
+      </div>
+
+      <div id="password-requirements" #passwordRequirements class="requirements" style="display: none;">
+        <p id="password-length" class="requirement">{{ 'SIGNUP.REQUIREMENTS.PASS_MIN_LENGTH' | translate }} <span style="display: none;">✔</span></p>
+        <p id="password-uppercase" class="requirement">{{ 'SIGNUP.REQUIREMENTS.PASS_UPPERCASE' | translate }} <span style="display: none;">✔</span></p>
+        <p id="password-number" class="requirement">{{ 'SIGNUP.REQUIREMENTS.PASS_NUMBER' | translate }} <span style="display: none;">✔</span></p>
+        <p id="password-lowercase" class="requirement">{{ 'SIGNUP.REQUIREMENTS.PASS_LOWERCASE' | translate }} <span style="display: none;">✔</span></p>
+        <p id="password-special" class="requirement">{{ 'SIGNUP.REQUIREMENTS.PASS_SPECIAL' | translate }} <span style="display: none;">✔</span></p>
+      </div>
+
+      <button type="submit" class="primary-button">{{ 'SIGNUP.CREATE_ACCOUNT' | translate }}</button>
+
+      <div class="form-divider">
+        <span>{{ 'SIGNUP.OR' | translate }}</span>
+      </div>
+
+      <button type="button" class="secondary-button" (click)="goToSignIn()">
+        {{ 'SIGNUP.SIGN_IN' | translate }}
+      </button>
+    </form>
+  </div>
+</main>

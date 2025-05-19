@@ -1,0 +1,33 @@
+<main>
+  <div id="component">
+    <div class="page-container">
+      <div class="page-content">
+
+        <div class="wrapper-component-one">
+          <h1>{{ 'PAYMENT_SUMMARY.TITLE' | translate }}</h1>
+          <div class="payment-summary">
+            <p id="status">
+              {{ 'PAYMENT_SUMMARY.CONFIRMED' | translate }} <i class='bx bx-check-circle'></i>
+            </p>
+            <p id="metodo-de-pago">
+              {{ 'PAYMENT_SUMMARY.METHOD' | translate }}: {{ paymentMethod }} <i class='bx bx-credit-card'></i>
+            </p>
+            <p id="fecha-de-llegada">
+              {{ 'PAYMENT_SUMMARY.ARRIVAL' | translate }}: {{ arrivalDate }} <i class='bx bxs-plane-land'></i>
+            </p>
+          </div>
+        </div>
+
+        <div class="wrapper-component-two">
+          <div class="login-form">
+            <h1>{{ 'PAYMENT_SUMMARY.DELIVERY' | translate }}</h1>
+            <div class="map-foto-container">
+              <img src="../../assets/images/Tiendas-en-las-que-operamos.png" alt="Mapa" />
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</main>

@@ -1,0 +1,42 @@
+<main>
+  <app-shopping-process></app-shopping-process>
+  <div id="wrapper-component">
+    <section id="order-review">
+      <app-order-review-template
+        [paymentMethod]="paymentMethod"
+        [arrivalDate]="arrivalDate">
+      </app-order-review-template>
+    </section>
+    <app-shopping-info></app-shopping-info>
+  </div>
+
+  <div class="modal-overlay" *ngIf="mostrarModal">
+    <div class="modal">
+      <h2>{{ 'CONFIRMATION.RATE_TITLE' | translate }}</h2>
+
+      <div class="rating">
+        <i
+          *ngFor="let star of [0,1,2,3,4]; let i = index"
+          class="bi bi-star-fill star"
+          [ngClass]="{ 'checked': i < valoracion }"
+          (click)="seleccionarEstrella(i)">
+        </i>
+      </div>
+
+      <textarea
+        [(ngModel)]="comentario"
+        maxlength="200"
+        rows="3"
+        [placeholder]="'CONFIRMATION.COMMENT_PLACEHOLDER' | translate"
+        class="comentario-textarea">
+      </textarea>
+
+      <div class="char-counter">{{ comentario.length }}/200</div>
+
+      <div id="buttons">
+        <button id="send" (click)="valorar()">{{ 'CONFIRMATION.SEND' | translate }}</button>
+        <button id="close" (click)="cerrarModal()">{{ 'CONFIRMATION.CLOSE' | translate }}</button>
+      </div>
+    </div>
+  </div>
+</main>

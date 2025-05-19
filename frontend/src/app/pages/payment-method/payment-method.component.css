@@ -1,0 +1,126 @@
+#payment-method-wrapper {
+  font-family: 'SF Pro Display', sans-serif;
+  max-width: 600px;
+  flex: 1;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+main {
+  padding-top: 5%
+}
+
+#payment-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 5%;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+}
+
+p {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+  color: #555;
+  text-align: center;
+}
+
+label {
+  font-weight: bold;
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+input[type="text"] {
+  padding: 8px;
+  margin-bottom: 10px;
+  width: 60%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1em;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+#total-amount {
+  font-weight: bold;
+  color: #2c8d7c;
+}
+
+#total-with-tax {
+  color: #b7410e;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+#paypal-button-container {
+  margin-top: 30px;
+  text-align: center;
+}
+
+app-shopping-info {
+  margin-top: 30px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  #payment-method-wrapper {
+    padding: 15px;
+  }
+
+  input[type="text"] {
+    width: 100%;
+  }
+
+  button {
+    width: 100%;
+  }
+
+  #total-amount {
+    font-size: 1.5em;
+  }
+
+  #total-with-tax {
+    font-size: 1.5em;
+  }
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+#apply-discount {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  width: 100%;
+}

@@ -1,0 +1,39 @@
+<main>
+  <app-shopping-process></app-shopping-process>
+  <div id="payment-container">
+    <div id="payment-method-wrapper">
+      <h1>{{ 'PAYMENT.TITLE' | translate }}</h1>
+      <p>{{ 'PAYMENT.INSTRUCTION' | translate }}</p>
+
+      <label for="discount-code">{{ 'PAYMENT.DISCOUNT_LABEL' | translate }}</label>
+      <input
+        type="text"
+        id="discount-code"
+        [(ngModel)]="discountCode"
+        [placeholder]="'PAYMENT.DISCOUNT_PLACEHOLDER' | translate"
+      />
+      <button id="apply-discount" (click)="aplicarDescuento()">
+        {{ 'PAYMENT.APPLY_DISCOUNT' | translate }}
+      </button>
+
+      <p>
+        {{ 'PAYMENT.TOTAL_PAY' | translate }}:
+        <span id="total-amount">{{ totalAmount.toFixed(2) }}</span>€
+      </p>
+
+      <p>
+        <strong>
+          {{ 'PAYMENT.TOTAL_WITHOUT_TAX' | translate }}:
+          <span id="total-with-tax">{{ getTotalWithoutTax().toFixed(2) }}</span>€
+        </strong>
+      </p>
+
+      @if (localStorage.getItem("user")) {
+        <app-card-manager-payment [uid]="userUID"></app-card-manager-payment>
+      }
+      <div id="paypal-button-container"></div>
+    </div>
+
+    <app-shopping-info></app-shopping-info>
+  </div>
+</main>

@@ -1,0 +1,626 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #FAFAFC;
+}
+
+main {
+  flex: 1;
+  margin-top: 4%;
+  align-items: center;
+  justify-content: center;
+  background-color: #FAFAFC;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #FAFAFC;
+}
+
+#product-details {
+  display: flex;
+  width: 90%;
+  justify-self: center;
+  justify-content: space-between;
+  overflow: hidden;
+  align-items: flex-start;
+  min-height: 500px;
+}
+
+#product-details-info {
+  width: 40%;
+  padding: 20px;
+  border-radius: 15px;
+  background-color: #D9D9D9;
+  display: flex;
+  flex-direction: column;
+}
+
+#product-name {
+  font-family: 'SF Pro Display', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  color: #1D1D1F;
+  padding: 5%;
+}
+
+#product-desc {
+  font-family: 'SF Pro Display', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #1D1D1F;
+  margin: 2% 0;
+}
+
+#features {
+  font-family: 'SF Pro Display', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin:2% 0;
+}
+
+.hr-features {
+  border: none;
+  height: 0.05rem;
+  background-color: #1D1D1F;
+  margin: 3% 0 0 0;
+  justify-self: center;
+  width: 100%;
+}
+
+#product-features {
+  font-family: 'SF Pro Display', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom:-3%;
+}
+
+#product-stock {
+  font-family: 'SF Pro Display', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin:2% 0;
+}
+
+.stock-green {
+  color: green;
+  font-weight: bold;
+}
+
+.stock-orange {
+  color: orange;
+  font-weight: bold;
+}
+
+.stock-red {
+  color: red;
+  font-weight: bold;
+}
+
+
+#quantity-container {
+  display: flex;
+  align-items: center;
+}
+
+#product-quantity {
+  font-family: 'SF Pro Display', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin:2% 0;
+}
+
+.quantity-selector {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  background-color: #D9D9D9;
+  width: fit-content;
+}
+
+.qty-button {
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 25px;
+  color: #1D1D1F;
+}
+
+.qty-button:hover {
+  color: #3D3D3D;
+}
+
+#qty-value {
+  font-family: 'SF Pro Display', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  text-align: center;
+}
+
+#final-price {
+  font-family: 'SF Pro Display', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #1D1D1F;
+  margin:2% 0;
+}
+
+#price {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+#add-to-cart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 5% 0;
+}
+
+#add-to-cart-button {
+  background-color: #1D1D1F;
+  color: white;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  height: 60px;
+  text-align: center;
+  border-radius: 10px;
+  width: 70%;
+}
+
+#add-to-cart-button:hover {
+  background-color: #3D3D3D;
+}
+
+#product-image {
+  width: 60%;
+  position: relative;
+  display: flex;
+  justify-self: right;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+}
+
+#product-image img {
+  max-width: 100%;
+}
+
+#button-arrows {
+  position: absolute;
+  top: 40%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+#button-arrows button {
+  padding: 10px 15px;
+  border: none;
+  background-color: transparent;
+  color: #746F6F;
+  pointer-events: none;
+  font-size: 65px;
+}
+
+#button-arrows button:hover {
+  color: #000000;
+}
+
+button i {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+#edit-product {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+#wish-list {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+#edit-product-button {
+  background-color: #1D1D1F;
+  color: white;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  height: 60px;
+  text-align: center;
+  border-radius: 10px;
+  width: 70%;
+}
+
+#wish-list-button {
+  background-color: #1D1D1F;
+  color: white;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  height: 60px;
+  text-align: center;
+  border-radius: 10px;
+  width: 70%;
+}
+
+#edit-product-button:hover {
+  background-color: #3D3D3D;
+}
+
+#wish-list-button:hover {
+  background-color: #3D3D3D;
+}
+
+#product-reviews {
+  margin-top: 2rem;
+  padding: 1rem;
+  border-top: 2px solid #ccc;
+  font-family: 'SF Pro Display', sans-serif;
+}
+
+.review {
+  margin-bottom: 1rem;
+}
+
+.review-stars i {
+  color: #bbb;
+  font-size: 20px;
+  margin-right: 2px;
+}
+
+.review-stars i.checked {
+  color: gold;
+}
+
+.review-comment {
+  margin: 0.5rem 0;
+  font-style: italic;
+}
+
+.review-date {
+  font-size: 0.9em;
+  color: #666;
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.2rem;
+  margin-top: 1rem;
+}
+
+.review-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e2e2;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  padding: 1rem;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: box-shadow 0.3s ease;
+}
+
+.review-card:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.review-stars {
+  margin-bottom: 0.1rem;
+}
+
+.review-stars i {
+  color: #bbb;
+  font-size: 20px;
+  margin-right: 2px;
+}
+
+.review-stars i.checked {
+  color: gold;
+}
+
+.review-comment {
+  font-style: italic;
+  color: #333;
+  flex-grow: 1;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+.review-date {
+  font-size: 0.8rem;
+  color: #666;
+  text-align: left;
+}
+
+.review-user {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.add-review-btn {
+  background-color: #D9D9D9;
+  color: #1D1D1F;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #1D1D1F;
+  border-radius: 50%;
+  font-size: 24px;
+  width: 55px;
+  height: 55px;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  transition: background-color 0.2s;
+}
+
+.add-review-btn:hover {
+  background-color: darkgray;
+}
+
+
+.modal-overlay {
+  font-family: 'SF Pro Display', sans-serif;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 90%;
+  height: 30%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.star {
+  color: #bbb;
+  font-size: 30px;
+  margin: 10px 5px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.star.checked {
+  color: gold;
+}
+
+.comentario-textarea {
+  width: 90%;
+  resize: none;
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-family: 'SF Pro Display', sans-serif;
+  font-size: 14px;
+}
+
+.char-counter {
+  font-size: 12px;
+  color: #666;
+  margin-top: -2%;
+}
+
+#buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  font-family: 'SF Pro Display', sans-serif;
+}
+
+#close {
+  background-color: #FAFAFC;
+  border-radius: 15px;
+  width: 40%;
+  height: auto;
+  color: #000;
+  border-style: solid;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#send {
+  font-family: 'SF Pro Display', sans-serif;
+  background-color: #FAFAFC;
+  border-radius: 15px;
+  width: 40%;
+  height: auto;
+  color: #000;
+  border-style: solid;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.qty-button:disabled,
+.disabled-button {
+  background-color: #ddd;
+  color: #999;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.2rem;
+  flex: 1;
+}
+
+.media-box {
+  background-color: #D9D9D9;
+  border: 1px solid #e2e2e2;
+  border-radius: 10px;
+  padding: 1.5rem;
+  width: 18%;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  flex-shrink: 0;
+}
+
+.media-label {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 0.8rem;
+}
+
+.media-stars {
+  margin-bottom: 0.5rem;
+}
+
+.media-stars i {
+  font-size: 28px;
+  margin-right: 4px;
+  color: #ccc;
+}
+
+.media-stars i.checked {
+  color: gold;
+}
+
+.media-number {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.media-count {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.reviews-container {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.reviews-wrapper {
+  flex: 1;
+  min-width: 0;
+}
+
+.review-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.review-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.edit-btn,
+.delete-btn {
+  padding: 5px 10px;
+  border-radius: 8px;
+  border: none;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.edit-btn {
+  background-color: #1d1d1f;
+  color: white;
+}
+
+.edit-btn:hover {
+  background-color: #3d3d3d;
+}
+
+.delete-btn {
+  background-color: #e53935;
+  color: white;
+}
+
+.delete-btn:hover {
+  background-color: #c62828;
+}
+
+.ver-mas-container {
+  width: 100%;
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.ver-mas-btn {
+  padding: 0.5rem 1.5rem;
+  background-color: #1D1D1F;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.ver-mas-btn:hover {
+  background-color: #3D3D3D;
+}
+
+@media(max-width: 991px) {
+  #product-details {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  #product-name {
+    font-size: 1.4rem;
+  }
+
+  #product-details-info {
+    width: 80%;
+  }
+
+  #product-image {
+    justify-items: center;
+    width: 90%;
+    margin-top: 30%;
+    margin-bottom: 10%;
+  }
+
+  #button-arrows {
+    width: 120%;
+  }
+}

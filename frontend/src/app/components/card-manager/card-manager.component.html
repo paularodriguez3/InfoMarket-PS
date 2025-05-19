@@ -1,0 +1,111 @@
+<div class="card-manager">
+
+  <div *ngIf="floatingMessage" [ngClass]="{ 'floating-success': floatingSuccess, 'floating-error': !floatingSuccess }" class="floating-message">
+    {{ floatingMessage }}
+  </div>
+
+  <h3>{{ 'CARD_MANAGER.TITLE' | translate }}</h3>
+
+  <div *ngIf="cards.length === 0" class="no-cards">
+    {{ 'CARD_MANAGER.NO_CARDS' | translate }}
+  </div>
+
+  <ul>
+    <li *ngFor="let card of cards" class="card-item">
+      <div class="card-info">
+        <strong>{{ card.brand }}</strong> — {{ '**** **** **** ' + card.cardNumber.slice(-4) }}
+        <br />
+        <small>{{ 'CARD_MANAGER.EXPIRES' | translate }}: {{ card.expiry }}</small>
+      </div>
+      <div class="card-actions">
+        <i class="fi fi-rr-edit edit-icon" (click)="startEditingCard(card)"></i>
+        <i class="bx bx-trash delete-icon" (click)="confirmDelete(card)"></i>
+      </div>
+    </li>
+  </ul>
+
+  <button class="button-cancel-add" type="button" (click)="toggleAddForm()">
+    {{ showAddForm ? ('CARD_MANAGER.CANCEL' | translate) : ('CARD_MANAGER.ADD_CARD' | translate) }}
+  </button>
+
+  <form *ngIf="showAddForm" class="add-form" #cardForm="ngForm" (ngSubmit)="addCard()" novalidate>
+    <div class="form-group">
+      <div class="input-icon-wrapper" [ngClass]="{ 'input-error': cardholderNameInput.invalid && cardholderNameInput.touched }">
+        <i class="bx bxs-user"></i>
+        <input
+          type="text"
+          name="cardholderName"
+          [placeholder]="'CARD_MANAGER.HOLDER' | translate"
+          [(ngModel)]="cardholderName"
+          required
+          minlength="3"
+          #cardholderNameInput="ngModel"
+        />
+      </div>
+      <small *ngIf="cardholderNameInput.invalid && cardholderNameInput.touched" class="error-message">
+        {{ 'CARD_MANAGER.HOLDER_ERROR' | translate }}
+      </small>
+    </div>
+
+    <div class="form-group">
+      <div class="input-icon-wrapper" [ngClass]="{ 'input-error': cardNumberInput.invalid && cardNumberInput.touched }">
+        <i class="bx bxs-credit-card-alt"></i>
+        <input
+          type="text"
+          name="cardNumber"
+          [placeholder]="'CARD_MANAGER.NUMBER' | translate"
+          [(ngModel)]="cardNumber"
+          pattern="^([0-9]{4} ?){4}$"
+          required
+          #cardNumberInput="ngModel"
+          (input)="formatCardNumber()"
+        />
+      </div>
+      <small *ngIf="cardNumberInput.invalid && cardNumberInput.touched" class="error-message">
+        {{ 'CARD_MANAGER.NUMBER_ERROR' | translate }}
+      </small>
+    </div>
+
+    <div class="form-group">
+      <div class="input-icon-wrapper" [ngClass]="{ 'input-error': expiryInput.invalid && expiryInput.touched }">
+        <i class="bx bxs-credit-card"></i>
+        <input
+          type="text"
+          name="expiry"
+          [placeholder]="'CARD_MANAGER.EXPIRY' | translate"
+          [(ngModel)]="expiry"
+          pattern="^(0[1-9]|1[0-2])\/\d{2}$"
+          required
+          #expiryInput="ngModel"
+        />
+      </div>
+      <small *ngIf="expiryInput.invalid && expiryInput.touched" class="error-message">
+        {{ 'CARD_MANAGER.EXPIRY_ERROR' | translate }}
+      </small>
+    </div>
+
+    <div class="form-group">
+      <div class="input-icon-wrapper">
+        <i class="bx bxs-bank"></i>
+        <input
+          type="text"
+          name="brand"
+          [placeholder]="'CARD_MANAGER.BRAND' | translate"
+          [(ngModel)]="brand"
+        />
+      </div>
+    </div>
+
+    <button type="submit">{{ 'CARD_MANAGER.SAVE' | translate }}</button>
+  </form>
+
+  <div class="delete-confirmation" *ngIf="showConfirmPopup">
+    <div class="popup-delete">
+      <p>{{ 'CARD_MANAGER.CONFIRM_DELETE' | translate }}</p>
+      <div class="popup-buttons">
+        <button type="button" (click)="confirmDeleteCard()">{{ 'CARD_MANAGER.YES_DELETE' | translate }}</button>
+        <button type="button" class="button-confirm" (click)="cancelDelete()">{{ 'CARD_MANAGER.CANCEL' | translate }}</button>
+      </div>
+    </div>
+  </div>
+</div>

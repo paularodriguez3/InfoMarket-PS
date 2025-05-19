@@ -1,0 +1,43 @@
+<main class="login-container">
+  <div class="auth-wrapper">
+    <div class="logo-container">
+      <img src="../assets/icons/header/infomarket_logo_mini.png" alt="InfoMarket Logo" class="login-logo" />
+    </div>
+
+    <h1 class="auth-title">{{ 'LOGIN.TITLE' | translate }}</h1>
+    <p class="auth-subtitle">{{ 'LOGIN.SUBTITLE' | translate }}</p>
+
+    <form class="auth-form" (ngSubmit)="onSubmit($event)">
+      <div class="input-group">
+        <input [(ngModel)]="email" name="email" type="email" id="email"
+               [placeholder]="'LOGIN.EMAIL_PLACEHOLDER' | translate" required />
+        <i class="bx bxs-envelope"></i>
+      </div>
+
+      <div class="input-group">
+        <input [(ngModel)]="password" name="password" type="password" id="password"
+               [placeholder]="'LOGIN.PASSWORD_PLACEHOLDER' | translate" required />
+        <i class='bx bxs-lock-alt'></i>
+      </div>
+
+      <div class="form-options">
+        <label class="custom-checkbox">
+          <input type="checkbox" />
+          <span class="checkmark"></span>
+          {{ 'LOGIN.REMEMBER_ME' | translate }}
+        </label>
+        <a routerLink="/forgotten-password" class="text-link">{{ 'LOGIN.FORGOT_PASSWORD' | translate }}</a>
+      </div>
+
+      <button type="submit" class="primary-button">{{ 'LOGIN.SIGN_IN' | translate }}</button>
+
+      <div class="form-divider">
+        <span>{{ 'LOGIN.OR' | translate }}</span>
+      </div>
+
+      <button type="button" class="secondary-button" (click)="goToSignUp()">
+        {{ 'LOGIN.CREATE_ACCOUNT' | translate }}
+      </button>
+    </form>
+  </div>
+</main>

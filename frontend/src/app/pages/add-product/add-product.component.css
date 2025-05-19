@@ -1,0 +1,378 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #FAFAFC;
+}
+
+main {
+  flex: 1;
+  margin-top: 4%;
+  align-items: center;
+  justify-content: center;
+}
+
+#product-details {
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+  gap: 40px;
+  padding-bottom: 5%;
+  padding-top: 5%;
+  align-items: flex-start;
+  min-height: 500px;
+  margin: auto;
+}
+#product-details-info {
+  width: 40%;
+  padding: 20px;
+  border-radius: 15px;
+  background-color: #D9D9D9;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-left: 20px;
+}
+
+
+label {
+  font-family: 'SF Pro Display', sans-serif;
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+  color: #1D1D1F;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+  font-family: 'SF Pro Display', sans-serif;
+  font-size: 1.1rem;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#product-features {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.hr-features {
+  border: none;
+  height: 0.05rem;
+  background-color: #1D1D1F;
+  margin: 3% 0;
+}
+
+#product-stock {
+  font-family: 'SF Pro Display', sans-serif;
+  font-size: 1.3rem;
+  color: #1D1D1F;
+}
+
+#product-stock span {
+  color: darkorange;
+}
+
+#quantity-container {
+  display: flex;
+  align-items: center;
+}
+
+#product-quantity {
+  font-family: 'SF Pro Display', sans-serif;
+  font-size: 1.3rem;
+}
+
+.quantity-selector {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  background-color: #D9D9D9;
+  width: fit-content;
+}
+
+.qty-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 25px;
+  color: #1D1D1F;
+}
+
+.qty-button:hover {
+  color: #3D3D3D;
+}
+
+#qty-value {
+  font-family: 'SF Pro Display', sans-serif;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+#final-price,
+#price {
+  font-family: 'SF Pro Display', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #1D1D1F;
+}
+
+#price {
+  font-weight: 700;
+}
+
+#final-price {
+  font-weight: bold;
+}
+
+#discount {
+  font-family: 'SF Pro Display', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1D1D1F;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  width: 100%;
+  margin-bottom: 10px;
+  background-color: white;
+}
+
+#add-to-cart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 5% 0;
+}
+
+#add-to-cart-button {
+  background-color: #1D1D1F;
+  color: white;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  height: 60px;
+  text-align: center;
+  border-radius: 10px;
+  width: 70%;
+}
+
+#add-to-cart-button:hover {
+  background-color: #3D3D3D;
+}
+
+#product-image {
+  width: 60%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  padding-right: 20px;
+}
+
+#product-image img {
+  max-width: 100%;
+}
+
+#button-arrows {
+  position: absolute;
+  top: 40%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+#button-arrows button {
+  padding: 10px 15px;
+  border: none;
+  background-color: transparent;
+  color: #746F6F;
+  pointer-events: none;
+  font-size: 65px;
+}
+
+#button-arrows button:hover {
+  color: #000000;
+}
+
+button i {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.add-feature-button-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.add-feature-button {
+  font-size: 1.5rem;
+  border: none;
+  background-color: #1D1D1F;
+  color: white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-feature-button:hover {
+  background-color: #3D3D3D;
+}
+
+.feature-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.remove-feature-whitespace,
+.remove-feature-button {
+  width: 30px;
+  height: 30px;
+  font-size: 20px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  text-align: center;
+}
+
+.remove-feature-button {
+  font-size: 1.2rem;
+  border: none;
+  background-color: #1D1D1F;
+  color: white;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.remove-feature-button:hover {
+  background-color: #3D3D3D;
+}
+
+#delete-product {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 5% 0;
+}
+
+#delete-product-button {
+  background-color: #1D1D1F;
+  color: white;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  height: 60px;
+  text-align: center;
+  border-radius: 10px;
+  width: 70%;
+}
+
+#delete-product-button:hover {
+  background-color: #3D3D3D;
+}
+
+/* Responsive */
+@media(max-width: 991px) {
+  #product-details {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  #product-details-info {
+    width: 80%;
+  }
+
+  #product-image {
+    width: 90%;
+    margin-top: 30%;
+    margin-bottom: 10%;
+  }
+
+  #button-arrows {
+    width: 120%;
+  }
+
+
+  input,
+  select {
+    font-size: 1rem;
+  }
+
+  #product-image {
+    width: 60%;
+    position: relative;
+    display: flex;
+    justify-self: right;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+  }
+
+  #product-image img {
+    max-width: 100%;
+  }
+
+  #button-arrows {
+    position: absolute;
+    top: 40%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  #button-arrows button {
+    padding: 10px 15px;
+    border: none;
+    background-color: transparent;
+    color: #746F6F;
+    pointer-events: none;
+    font-size: 65px;
+  }
+
+  #button-arrows button:hover {
+    color: #000000;
+  }
+
+  button i {
+    pointer-events: auto;
+    cursor: pointer;
+  }
+
+}

@@ -1,0 +1,48 @@
+<main>
+  <app-shopping-process />
+  <div id="billing-shopping-wrapper">
+    <section id="billing-address">
+      <h2>{{ 'CHECKOUT.BILLING_TITLE' | translate }}</h2>
+      <form [formGroup]="billingForm" (ngSubmit)="onSubmit()">
+        <label for="country">{{ 'CHECKOUT.COUNTRY_LABEL' | translate }}</label>
+        <input type="text" id="country" formControlName="country" required />
+
+        <label *ngIf="!isLoggedIn" for="email">Email</label>
+        <input *ngIf="!isLoggedIn" type="text" id="email" formControlName="email" required />
+
+        <label for="address">{{ 'CHECKOUT.ADDRESS_LABEL' | translate }}</label>
+        <input type="text" id="address" formControlName="address" required />
+
+        <label for="shop">{{ 'CHECKOUT.SHOP_LABEL' | translate }}</label>
+        <select formControlName="shop" id="shop" name="shop">
+          <option value="">{{ 'CHECKOUT.SHOP_PLACEHOLDER' | translate }}</option>
+          @for (tienda of tiendas; track $index) {
+            <option [value]="tienda.direccion">{{ tienda.direccion }}</option>
+          }
+        </select>
+
+        <label for="zip">{{ 'CHECKOUT.ZIP_LABEL' | translate }}</label>
+        <input type="text" id="zip" formControlName="zip" required />
+
+        <label for="province">{{ 'CHECKOUT.PROVINCE_LABEL' | translate }}</label>
+        <input type="text" id="province" formControlName="province" required />
+
+        <div *ngIf="addresses.length > 0" id="saved-addresses">
+          <h3>{{ 'CHECKOUT.MY_ADDRESSES' | translate }}</h3>
+          <div
+            *ngFor="let address of addresses"
+            class="address-card"
+            [class.selected]="selectedAddressId === address.id"
+            (click)="selectAddress(address.id)">
+            {{ address.fullAddress }}
+          </div>
+        </div>
+
+        <button id="continue-button" type="submit">
+          {{ 'CHECKOUT.CONTINUE' | translate }}
+        </button>
+      </form>
+    </section>
+    <app-shopping-info />
+  </div>
+</main>

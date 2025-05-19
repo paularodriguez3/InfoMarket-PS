@@ -1,0 +1,364 @@
+{
+  "ABOUT_US": {
+    "HERO_TITLE": "Your partner in technology",
+    "HERO_TEXT": "At Infomarket, we specialize in offering you the best IT products, from hardware to software, so you're always ahead of the curve.",
+
+    "FEATURE_HARDWARE_ALT": "Hardware Icon",
+    "FEATURE_HARDWARE_TITLE": "High-performance hardware",
+    "FEATURE_HARDWARE_TEXT": "We offer cutting-edge components and equipment for gamers, professionals, and enthusiasts.",
+
+    "FEATURE_SOFTWARE_ALT": "Software Icon",
+    "FEATURE_SOFTWARE_TITLE": "Specialized software",
+    "FEATURE_SOFTWARE_TEXT": "From operating systems to productivity tools, we have everything you need.",
+
+    "FEATURE_SUPPORT_ALT": "Support Icon",
+    "FEATURE_SUPPORT_TITLE": "Technical support",
+    "FEATURE_SUPPORT_TEXT": "Our expert team is always available to help you with any questions or issues.",
+
+    "HISTORY_TITLE": "Our history",
+    "HISTORY_TEXT": "Founded in 2025, Infomarket was born with the mission of being the benchmark in IT technology. We are growing thanks to our passion for innovation and our commitment to quality.",
+    "HISTORY_IMAGE_ALT": "Our History",
+
+    "VALUES_TITLE": "Our values",
+
+    "VALUE_INNOVATION_TITLE": "Innovation",
+    "VALUE_INNOVATION_TEXT": "We are always on the cutting edge, offering the latest tech trends.",
+
+    "VALUE_QUALITY_TITLE": "Quality",
+    "VALUE_QUALITY_TEXT": "We work with the best brands to ensure durable and reliable products.",
+
+    "VALUE_COMMITMENT_TITLE": "Commitment",
+    "VALUE_COMMITMENT_TEXT": "We strive to exceed our customers’ expectations with every purchase."
+  },
+
+  "PRODUCT": {
+    "NAME_LABEL": "Product name:",
+    "NAME_PLACEHOLDER": "Enter the product name",
+    "DESC_LABEL": "Product description:",
+    "DESC_PLACEHOLDER": "Enter the product description",
+    "CATEGORY_LABEL": "Category:",
+    "CATEGORY_PLACEHOLDER": "Select a category",
+    "SUBCATEGORY_LABEL": "Subcategory:",
+    "SUBCATEGORY_PLACEHOLDER": "Select a subcategory",
+    "HIGHLIGHTED_LABEL": "Highlight product: ",
+    "FEATURES_LABEL": "Features:",
+    "FEATURE_NAME_PLACEHOLDER": "Feature name",
+    "FEATURE_VALUE_PLACEHOLDER": "Feature value",
+    "REMOVE_FEATURE": "Remove",
+    "ADD_FEATURE": "Add feature",
+    "QUANTITY_LABEL": "Quantity:",
+    "PRICE_LABEL": "Price per unit (€):",
+    "DISCOUNT_LABEL": "Discount (%):",
+    "FINAL_PRICE_LABEL": "Final price:",
+    "IMAGE_LABEL": "Select a product image:",
+    "SAVE_CHANGES": "Save Changes",
+    "ADD_PRODUCT": "Add Product",
+    "DELETE_PRODUCT": "Delete Product",
+    "IMAGE_ALT": "Product",
+    "HIGHLIGHTED_ICON": "FEATURED!"
+  },
+  "CHECKOUT": {
+    "BILLING_TITLE": "BILLING ADDRESS",
+    "COUNTRY_LABEL": "Country",
+    "ADDRESS_LABEL": "Address",
+    "SHOP_LABEL": "Physical store",
+    "SHOP_PLACEHOLDER": "Select a store",
+    "ZIP_LABEL": "Postal Code",
+    "PROVINCE_LABEL": "Province",
+    "MY_ADDRESSES": "My addresses",
+    "CONTINUE": "Continue"
+  },
+  "SUPPORT": {
+    "TITLE": "Technical Support",
+    "HELP_TEXT": "Need help? We’re here for you.",
+    "CONTACT_LINK": "Contact support",
+    "COPY_EMAIL_TEXT": "Or copy our email address:"
+  },
+  "RECOVERY": {
+    "TITLE": "Password Recovery",
+    "SUBTITLE": "Enter your email address to reset your account or change your password",
+    "EMAIL_PLACEHOLDER": "Email address",
+    "WAIT": "Wait",
+    "CONTINUE": "Continue",
+    "BACK_TO_LOGIN": "Back to login"
+  },
+  "HOME": {
+    "MAIN_TITLE": "Infomarket",
+    "MAIN_DESCRIPTION": "Innovation at your fingertips.",
+    "OFFERS_TITLE": "Deals",
+    "OFFERS_DESCRIPTION": "Upgrade your digital world.",
+    "SECTION_COMPUTING": "COMPUTING",
+    "SECTION_GAMING": "GAMING",
+    "SECTION_PHONES": "PHONES",
+    "SECTION_TVS": "TVS",
+    "SECTION_APPLIANCES": "APPLIANCES"
+  },
+  "CONFIRMATION": {
+    "RATE_TITLE": "Rate your shopping experience",
+    "COMMENT_PLACEHOLDER": "Add a comment...",
+    "SEND": "Send",
+    "CLOSE": "Close"
+  },
+  "PAYMENT": {
+    "TITLE": "Payment",
+    "INSTRUCTION": "Click on your preferred payment option",
+    "DISCOUNT_LABEL": "Discount code:",
+    "DISCOUNT_PLACEHOLDER": "Enter your code",
+    "APPLY_DISCOUNT": "Apply discount",
+    "TOTAL_PAY": "Total to pay",
+    "TOTAL_WITHOUT_TAX": "Total without IGIC (7%)"
+  },
+  "PROFILE": {
+    "TITLE": "My Profile",
+    "SUBTITLE": "Manage your personal information",
+    "USERNAME_LABEL": "Username",
+    "USERNAME_PLACEHOLDER": "e.g., User",
+    "FIRSTNAME_LABEL": "First Name",
+    "FIRSTNAME_PLACEHOLDER": "e.g., Paula Rosa",
+    "LASTNAME_LABEL": "Last Name",
+    "LASTNAME_PLACEHOLDER": "e.g., Rodríguez Morales",
+    "EMAIL_LABEL": "Email",
+    "EMAIL_PLACEHOLDER": "e.g., example@gmail.com",
+    "PHONE_LABEL": "Phone",
+    "PHONE_PLACEHOLDER": "e.g., 600 000 000",
+    "SAVE_CHANGES": "Save changes",
+    "MANAGE_CARDS": "Manage cards",
+    "MANAGE_ADDRESSES": "Manage addresses",
+    "DELETE_ACCOUNT": "Delete account",
+    "LOGOUT": "Log out"
+  },
+  "PRODUCT_DETAIL": {
+    "FEATURES_TITLE": "Product features:",
+    "STOCK": "Stock",
+    "QUANTITY": "Quantity",
+    "TOTAL_PRICE": "Total price",
+    "ADD_TO_CART": "Add to cart",
+    "EDIT": "Edit",
+    "ADD_TO_WISHLIST": "Add to wishlist",
+    "IMAGE_ALT": "Product",
+    "REVIEWS_TITLE": "Reviews",
+    "AVG_SCORE": "Average rating",
+    "BASED_ON": "Based on {{ count }} reviews",
+    "REVIEW_FROM": "From:",
+    "NO_COMMENT": "No comment",
+    "NO_REVIEWS": "No reviews yet",
+    "RATE_TITLE": "Rate your shopping experience",
+    "COMMENT_PLACEHOLDER": "Add a comment...",
+    "SEND": "Send",
+    "CLOSE": "Close"
+  },
+  "PRODUCT_LIST": {
+    "SORT_FILTER": "Sort & Filter",
+    "SORT_BY": "Sort by:",
+    "NO_SORT": "No sorting",
+    "HIGHLIGHTED": "Featured",
+    "PRICE_ASC": "Price: Low to High",
+    "PRICE_DESC": "Price: High to Low",
+    "NAME_ASC": "Name: A-Z",
+    "NAME_DESC": "Name: Z-A",
+    "MIN_PRICE": "Minimum price:",
+    "MAX_PRICE": "Maximum price:",
+    "BRAND": "Brand:",
+    "COLOR": "Color:",
+    "APPLY": "Apply"
+  },
+  "SHIPPING": {
+    "TITLE": "SHIPPING METHOD",
+    "NEXT": "Next"
+  },
+  "CART": {
+    "TITLE": "Shopping Cart",
+    "CHECKOUT": "Proceed to checkout",
+    "CLEAR": "Clear cart",
+    "CONTINUE": "Continue shopping"
+  },
+  "LOGIN": {
+    "TITLE": "Sign In",
+    "SUBTITLE": "Enter your credentials to access your account",
+    "EMAIL_PLACEHOLDER": "Email",
+    "PASSWORD_PLACEHOLDER": "Password",
+    "REMEMBER_ME": "Remember me",
+    "FORGOT_PASSWORD": "Forgot your password?",
+    "SIGN_IN": "Sign In",
+    "OR": "or",
+    "CREATE_ACCOUNT": "Create new account"
+  },
+  "SIGNUP": {
+    "TITLE": "Create Account",
+    "SUBTITLE": "Enter your details to create an account",
+    "USERNAME_PLACEHOLDER": "Username",
+    "EMAIL_PLACEHOLDER": "Email",
+    "PASSWORD_PLACEHOLDER": "Password",
+    "CONFIRM_PASSWORD_PLACEHOLDER": "Confirm password",
+    "CREATE_ACCOUNT": "Create Account",
+    "OR": "or",
+    "SIGN_IN": "Sign In",
+    "REQUIREMENTS": {
+      "USER_FIRST_LETTER": "Must start with a letter",
+      "USER_ALPHANUMERIC": "Only letters and numbers allowed",
+      "USER_MIN_LENGTH": "Must be at least 5 characters long",
+      "PASS_MIN_LENGTH": "Must be at least 8 characters long",
+      "PASS_UPPERCASE": "Must contain an uppercase letter",
+      "PASS_NUMBER": "Must contain a number",
+      "PASS_LOWERCASE": "Must contain a lowercase letter",
+      "PASS_SPECIAL": "Must contain a special character"
+    }
+  },
+  "WISHLIST": {
+    "TITLE": "Wishlist"
+  },
+  "ADDRESS_MANAGER": {
+    "TITLE": "My Addresses",
+    "NO_ADDRESSES": "You haven't added any addresses yet.",
+    "ADD_ADDRESS": "Add address",
+    "CANCEL": "Cancel",
+    "COUNTRY": "Country *",
+    "PROVINCE": "Province *",
+    "STREET": "Street, Number and City *",
+    "FLOOR": "Floor",
+    "LETTER": "Letter",
+    "POSTAL_CODE": "Postal code *",
+    "SAVE_ADDRESS": "Save address",
+    "CONFIRM_DELETE": "Are you sure you want to delete this address?",
+    "YES_DELETE": "Yes, delete address"
+  },
+  "CARD_MANAGER": {
+    "TITLE": "My Cards",
+    "NO_CARDS": "You haven't added any cards yet.",
+    "ADD_CARD": "Add card",
+    "CANCEL": "Cancel",
+    "HOLDER": "Cardholder name",
+    "HOLDER_ERROR": "Name must be at least 3 characters.",
+    "NUMBER": "Card number (16 digits)",
+    "NUMBER_ERROR": "The number must be exactly 16 digits (in groups of 4).",
+    "EXPIRY": "Expiry date (MM/YY)",
+    "EXPIRY_ERROR": "Use the format MM/YY, e.g. 08/26.",
+    "BRAND": "Brand (Visa, Mastercard...)",
+    "SAVE": "Save card",
+    "EXPIRES": "Expires",
+    "CONFIRM_DELETE": "Are you sure you want to delete this card?",
+    "YES_DELETE": "Yes, delete my card"
+  },
+  "CARD_DISPLAY": {
+    "TITLE": "My Cards",
+    "NO_CARDS": "You haven't added any cards yet.",
+    "EXPIRES": "Expires",
+    "COPY_PAN": "Copy PAN",
+    "COPY_EXPIRY": "Copy expiry",
+    "COPY_OWNER": "Copy cardholder",
+    "COPIED_PAN": "PAN copied!",
+    "COPIED_EXPIRY": "Expiry copied!",
+    "COPIED_OWNER": "Name copied!"
+  },
+  "ACCOUNT_DELETE": {
+    "TITLE": "Delete account",
+    "WARNING": "This action is irreversible. All your personal data, cards, and addresses will be permanently deleted.",
+    "EMAIL": "Email",
+    "PASSWORD": "Password",
+    "CONFIRM": "Yes, delete account",
+    "CANCEL": "Cancel",
+    "DELETE": "Delete my account"
+  },
+  "FOOTER": {
+    "ABOUT_US": {
+      "TITLE": "About us",
+      "WHO": "Who we are",
+      "WORK": "Work with us",
+      "COOKIES": "Cookie policy",
+      "PRIVACY": "Privacy policy"
+    },
+    "SUPPORT": {
+      "TITLE": "Customer support",
+      "HELP_CENTER": "Help / Support center",
+      "ACCOUNT": "Manage account",
+      "SHIPPING": "Shipping information",
+      "GIFTS": "Gift cards"
+    },
+    "CONNECT": {
+      "TITLE": "Connect with us"
+    },
+    "COPYRIGHT": "Copyright © 2025 Infomarket Inc. All rights reserved.",
+    "POLICIES": {
+      "PRIVACY": "Privacy policy",
+      "COOKIES": "Cookie usage",
+      "TERMS": "Terms of use",
+      "REFUNDS": "Sales and refunds",
+      "LEGAL": "Legal notices"
+    }
+  },
+  "HEADER": {
+    "SEARCH_PLACEHOLDER": "What are you looking for?...",
+    "ADD_PRODUCT": "Add product",
+    "WISHLIST": "Wishlist"
+  },
+  "NAVIGATION": {
+    "MENU": "Menu",
+    "OFFERS": "Offers",
+    "COMPUTING": "Computing",
+    "GAMING": "Gaming",
+    "PHONES": "Phones",
+    "TV": "Televisions",
+    "APPLIANCES": "Home Appliances",
+
+    "HEADPHONES": "Headphones",
+    "DESKTOP": "Desktop PCs",
+    "LAPTOPS": "Laptops",
+    "MOUSE": "Mice",
+    "KEYBOARD": "Keyboards",
+
+    "CONSOLES": "Consoles",
+    "MICROPHONES": "Microphones",
+    "GAMING_LAPTOPS": "Gaming Laptops",
+    "GAMING_ACCESSORIES": "Gaming Accessories",
+    "PC_GAMES": "PC Games",
+
+    "SMARTPHONES": "Smartphones",
+    "CASES": "Cases and Screen Protectors",
+    "MOBILE_ACCESSORIES": "Mobile Accessories",
+    "LANDLINE": "Landline Phones",
+
+    "TV_FULLHD": "Full HD TVs",
+    "TV_4K": "4K UHD TVs",
+    "TV_8K": "8K UHD TVs",
+    "DVD_PLAYERS": "DVD / Blu-ray Players",
+    "TV_ACCESSORIES": "TV Accessories",
+
+    "FRIDGES": "Fridges",
+    "DISHWASHERS": "Dishwashers",
+    "WASHERS": "Washing Machines",
+    "OVENS": "Ovens",
+    "MICROWAVES": "Microwaves"
+  },
+  "ORDER_MANAGER": {
+    "TITLE": "My Purchases",
+    "NO_ORDERS": "You don't have any purchases yet.",
+    "ARRIVAL": "Arrival date",
+    "TOTAL": "Total price"
+  },
+  "PAYMENT_SUMMARY": {
+    "TITLE": "Payment Summary",
+    "CONFIRMED": "Your payment has been confirmed",
+    "METHOD": "Payment method",
+    "ARRIVAL": "Your arrival date is",
+    "DELIVERY": "Package delivery"
+  },
+  "PRODUCT_CARD": {
+    "SEE": "View",
+    "ADD_TO_CART": "Add to cart"
+  },
+  "PRODUCT_INFO_COMPONENT": {
+    "QUANTITY": "Qty"
+  },
+  "SHOPPING_INFO": {
+    "TOTAL": "Total"
+  },
+  "SHOPPING_PROCESS": {
+    "BILLING": "Billing",
+    "PAYMENT": "Payment",
+    "SUMMARY": "Summary"
+  },
+  "WISHLIST_PRODUCT": {
+    "STOCK": "Stock"
+  }
+
+}

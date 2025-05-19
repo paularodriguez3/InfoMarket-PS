@@ -1,0 +1,83 @@
+import { Injectable } from '@angular/core';
+import {
+  Firestore,
+  collection,
+  collectionData,
+  doc,
+  getDocs,
+  query,
+  addDoc,
+  deleteDoc, updateDoc
+} from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+import { SubcategoryMap } from '../models/add-product.model';
+import {Product} from '../models/product.model';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AddProductService {
+  constructor(private firestore: Firestore) {}
+
+
+  getFirestore() {
+    return this.firestore;
+  }
+
+  getCategories(): Observable<string[]> {
+    const categoriasRef = collection(this.firestore, 'productos');
+    return new Observable<string[]>(observer => {
+      collectionData(categoriasRef, { idField: 'id' }).subscribe((data: any[]) => {
+        const categoryNames = data.map(doc => doc.id);
+        console.log('Categorías:', categoryNames);
+        observer.next(categoryNames);
+      });
+    });
+  }
+
+  getCategoriesFromMap(){
+    let categoryList = [];
+    for (let categories of SubcategoryMap) {
+      categoryList.push(categories["categoria"]);
+    }
+    return categoryList;
+  }
+
+  // Devuelve subcategorías desde el modelo local
+  getSubcategories(category: string): string[] {
+    const entry = SubcategoryMap.find(item => item.categoria === category)
+    return entry? entry.subcategorias : [];
+  }
+
+  saveProduct(productData: any) {
+    const productsRef = collection(this.firestore, `productos`);
+    return addDoc(productsRef, productData); // Usamos addDoc para agregar el producto
+  }
+
+
+  async checkIfRouteExists(category: string, subcategory: string): Promise<boolean> {
+    try {
+      const productsRef = collection(this.firestore, `productos/${category}/${subcategory}`);
+      const querySnapshot = await getDocs(query(productsRef));
+
+      // Si la consulta devuelve algún documento, significa que la ruta existe
+      return !querySnapshot.empty;
+    } catch (error) {
+      console.error('Error al consultar la ruta en Firestore:', error);
+      return false;
+    }
+  }
+
+
+  //===============================
+  async deleteProduct(id: string|undefined) {
+    const docRef = doc(this.firestore, `productos/${id}`);
+    await deleteDoc(docRef);
+  }
+
+
+  async editProduct(old_product: Product, productData: any) {
+    const docRef = doc(this.firestore, `productos`, old_product.id as string);
+    await updateDoc(docRef, productData);
+  }
+}

@@ -1,0 +1,88 @@
+<article id="product-details">
+  <section id="product-details-info">
+
+    <label for="product-name">{{ 'PRODUCT.NAME_LABEL' | translate }}</label>
+    <input type="text" id="product-name" name="product-name" [(ngModel)]="selectedProductName" [placeholder]="'PRODUCT.NAME_PLACEHOLDER' | translate" />
+
+    <label for="product-desc">{{ 'PRODUCT.DESC_LABEL' | translate }}</label>
+    <input type="text" id="product-desc" name="product-desc" [(ngModel)]="selectedDescription" [placeholder]="'PRODUCT.DESC_PLACEHOLDER' | translate" />
+
+    <label for="category-select">{{ 'PRODUCT.CATEGORY_LABEL' | translate }}</label>
+    <select id="category-select" name="category" [(ngModel)]="selectedCategory" (change)="onCategoryChange()">
+      <option value="">{{ 'PRODUCT.CATEGORY_PLACEHOLDER' | translate }}</option>
+      <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
+    </select>
+
+    <label for="subcategory-select">{{ 'PRODUCT.SUBCATEGORY_LABEL' | translate }}</label>
+    <select id="subcategory-select" name="subcategory" [(ngModel)]="selectedSubcategory" (change)="onSubcategoryChange()">
+      <option value="">{{ 'PRODUCT.SUBCATEGORY_PLACEHOLDER' | translate }}</option>
+      <option *ngFor="let sub of subcategories" [value]="sub">{{ sub }}</option>
+    </select>
+
+    <div class="highlighted-checkbox">
+      <label for="highlighted">{{ 'PRODUCT.HIGHLIGHTED_LABEL' | translate }}</label>
+      <input type="checkbox" id="highlighted" name="highlighted" [(ngModel)]="selectedIsHighlighted" />
+    </div>
+    <hr class="hr-features" />
+
+    <div id="product-features">
+      <label>{{ 'PRODUCT.FEATURES_LABEL' | translate }}</label>
+      <div *ngFor="let feature of features; let i = index">
+        <div class="feature-inputs">
+          <input type="text" [(ngModel)]="feature.name" [placeholder]="'PRODUCT.FEATURE_NAME_PLACEHOLDER' | translate" />
+          <input type="text" [(ngModel)]="feature.value" [placeholder]="'PRODUCT.FEATURE_VALUE_PLACEHOLDER' | translate" />
+        </div>
+        <button *ngIf="features.length > 1" (click)="removeFeature(i)">{{ 'PRODUCT.REMOVE_FEATURE' | translate }}</button>
+      </div>
+      <button type="button" (click)="addFeature()">{{ 'PRODUCT.ADD_FEATURE' | translate }}</button>
+    </div>
+
+    <hr class="hr-features" />
+
+    <div id="quantity-container">
+      <div class="quantity-selector">
+        <p id="product-quantity">{{ 'PRODUCT.QUANTITY_LABEL' | translate }}</p>
+        <p id="qty-value">{{ quantity }}</p>
+        <button class="qty-button" id="minus" (click)="decreaseQuantity()"><i class='bx bxs-minus-circle'></i></button>
+        <button class="qty-button" id="plus" (click)="increaseQuantity()"><i class='bx bxs-plus-circle'></i></button>
+      </div>
+    </div>
+
+    <label for="price">{{ 'PRODUCT.PRICE_LABEL' | translate }}</label>
+    <input type="number" id="price" name="price" [(ngModel)]="selectedPrice" placeholder="0.00" step="0.01" min="0" />
+
+    <label for="discount">{{ 'PRODUCT.DISCOUNT_LABEL' | translate }}</label>
+    <input type="number" id="discount" name="discount" [(ngModel)]="selectedDiscount" [value]="0" placeholder="0" step="1" min="0" max="100" />
+
+    <label for="final-price">{{ 'PRODUCT.FINAL_PRICE_LABEL' | translate }}</label>
+    <p id="final-price">{{ getFinalPrice() }}€</p>
+
+    <hr class="hr-features" />
+
+    <label for="imageUpload">{{ 'PRODUCT.IMAGE_LABEL' | translate }}</label>
+    <input type="file" id="imageUpload" (change)="onImageSelect($event)" accept="image/*" />
+
+    <div *ngIf="imageUploaded"></div>
+
+    <hr class="hr-features" />
+
+    <div id="add-to-cart">
+      <button type="button" id="add-to-cart-button" (click)="saveProduct()">
+        {{ isEditing ? ('PRODUCT.SAVE_CHANGES' | translate) : ('PRODUCT.ADD_PRODUCT' | translate) }}
+      </button>
+    </div>
+
+    <div id="delete-product" *ngIf="isEditing">
+      <button type="button" id="delete-product-button" (click)="removeProduct()">{{ 'PRODUCT.DELETE_PRODUCT' | translate }}</button>
+    </div>
+
+  </section>
+
+  <div id="product-image">
+    <img id="image" *ngIf="selectedImageUrl" alt="{{ 'PRODUCT.IMAGE_ALT' | translate }}" [src]="selectedImageUrl" />
+    <div id="button-arrows">
+      <button id="prev-image"><i class='bx bx-chevron-left'></i></button>
+      <button id="next-image"><i class='bx bx-chevron-right'></i></button>
+    </div>
+  </div>
+</article>

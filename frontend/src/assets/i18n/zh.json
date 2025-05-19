@@ -1,0 +1,362 @@
+{
+  "ABOUT_US": {
+    "HERO_TITLE": "您的科技合作伙伴",
+    "HERO_TEXT": "在 Infomarket，我们专注于为您提供最优质的 IT 产品，从硬件到软件，助您始终走在技术前沿。",
+
+    "FEATURE_HARDWARE_ALT": "硬件图标",
+    "FEATURE_HARDWARE_TITLE": "高性能硬件",
+    "FEATURE_HARDWARE_TEXT": "我们为游戏玩家、专业人士和技术爱好者提供最新一代的组件和设备。",
+
+    "FEATURE_SOFTWARE_ALT": "软件图标",
+    "FEATURE_SOFTWARE_TITLE": "专业软件",
+    "FEATURE_SOFTWARE_TEXT": "从操作系统到生产力工具，我们应有尽有。",
+
+    "FEATURE_SUPPORT_ALT": "技术支持图标",
+    "FEATURE_SUPPORT_TITLE": "技术支持",
+    "FEATURE_SUPPORT_TEXT": "我们的专家团队随时为您解答疑问并解决问题。",
+
+    "HISTORY_TITLE": "我们的历史",
+    "HISTORY_TEXT": "Infomarket 成立于 2025 年，旨在成为 IT 技术领域的领导者。我们凭借对创新的热情和对质量的承诺不断成长。",
+    "HISTORY_IMAGE_ALT": "我们的历史",
+
+    "VALUES_TITLE": "我们的价值观",
+
+    "VALUE_INNOVATION_TITLE": "创新",
+    "VALUE_INNOVATION_TEXT": "我们始终走在技术前沿，提供最新的科技趋势。",
+
+    "VALUE_QUALITY_TITLE": "质量",
+    "VALUE_QUALITY_TEXT": "我们与最好的品牌合作，确保产品持久可靠。",
+
+    "VALUE_COMMITMENT_TITLE": "承诺",
+    "VALUE_COMMITMENT_TEXT": "我们努力在每一次购物中超越客户的期望。"
+  },
+
+  "PRODUCT": {
+    "NAME_LABEL": "产品名称：",
+    "NAME_PLACEHOLDER": "请输入产品名称",
+    "DESC_LABEL": "产品描述：",
+    "DESC_PLACEHOLDER": "请输入产品描述",
+    "CATEGORY_LABEL": "类别：",
+    "CATEGORY_PLACEHOLDER": "请选择类别",
+    "SUBCATEGORY_LABEL": "子类别：",
+    "SUBCATEGORY_PLACEHOLDER": "请选择子类别",
+    "HIGHLIGHTED_LABEL": "突出产品：",
+    "FEATURES_LABEL": "产品特性：",
+    "FEATURE_NAME_PLACEHOLDER": "特性名称",
+    "FEATURE_VALUE_PLACEHOLDER": "特性值",
+    "REMOVE_FEATURE": "删除",
+    "ADD_FEATURE": "添加特性",
+    "QUANTITY_LABEL": "数量：",
+    "PRICE_LABEL": "单价 (€)：",
+    "DISCOUNT_LABEL": "折扣 (%)：",
+    "FINAL_PRICE_LABEL": "最终价格：",
+    "IMAGE_LABEL": "选择产品图片：",
+    "SAVE_CHANGES": "保存更改",
+    "ADD_PRODUCT": "添加产品",
+    "DELETE_PRODUCT": "删除产品",
+    "IMAGE_ALT": "产品",
+    "HIGHLIGHTED_ICON": "精选！"
+  },
+  "CHECKOUT": {
+    "BILLING_TITLE": "账单地址",
+    "COUNTRY_LABEL": "国家",
+    "ADDRESS_LABEL": "地址",
+    "SHOP_LABEL": "实体店",
+    "SHOP_PLACEHOLDER": "请选择一家门店",
+    "ZIP_LABEL": "邮政编码",
+    "PROVINCE_LABEL": "省份",
+    "MY_ADDRESSES": "我的地址",
+    "CONTINUE": "继续"
+  },
+  "SUPPORT": {
+    "TITLE": "技术支持",
+    "HELP_TEXT": "需要帮助？我们在这里为您服务。",
+    "CONTACT_LINK": "联系支持",
+    "COPY_EMAIL_TEXT": "或复制我们的电子邮件地址："
+  },
+  "RECOVERY": {
+    "TITLE": "密码找回",
+    "SUBTITLE": "请输入您的电子邮箱以重设账户或更改密码",
+    "EMAIL_PLACEHOLDER": "电子邮箱地址",
+    "WAIT": "请稍候",
+    "CONTINUE": "继续",
+    "BACK_TO_LOGIN": "返回登录"
+  },
+  "HOME": {
+    "MAIN_TITLE": "Infomarket",
+    "MAIN_DESCRIPTION": "创新触手可及。",
+    "OFFERS_TITLE": "优惠",
+    "OFFERS_DESCRIPTION": "升级你的数字世界。",
+    "SECTION_COMPUTING": "计算机",
+    "SECTION_GAMING": "游戏",
+    "SECTION_PHONES": "手机",
+    "SECTION_TVS": "电视",
+    "SECTION_APPLIANCES": "家电"
+  },
+  "CONFIRMATION": {
+    "RATE_TITLE": "评价您的购物体验",
+    "COMMENT_PLACEHOLDER": "添加评论...",
+    "SEND": "发送",
+    "CLOSE": "关闭"
+  },
+  "PAYMENT": {
+    "TITLE": "支付",
+    "INSTRUCTION": "点击您想使用的支付方式",
+    "DISCOUNT_LABEL": "优惠码：",
+    "DISCOUNT_PLACEHOLDER": "输入您的代码",
+    "APPLY_DISCOUNT": "应用优惠",
+    "TOTAL_PAY": "应付总额",
+    "TOTAL_WITHOUT_TAX": "不含IGIC (7%) 的总额"
+  },
+  "PROFILE": {
+    "TITLE": "我的资料",
+    "SUBTITLE": "管理您的个人信息",
+    "USERNAME_LABEL": "用户名",
+    "USERNAME_PLACEHOLDER": "例如：User",
+    "FIRSTNAME_LABEL": "名字",
+    "FIRSTNAME_PLACEHOLDER": "例如：Paula Rosa",
+    "LASTNAME_LABEL": "姓氏",
+    "LASTNAME_PLACEHOLDER": "例如：Rodríguez Morales",
+    "EMAIL_LABEL": "电子邮箱",
+    "EMAIL_PLACEHOLDER": "例如：example@gmail.com",
+    "PHONE_LABEL": "电话",
+    "PHONE_PLACEHOLDER": "例如：600 000 000",
+    "SAVE_CHANGES": "保存更改",
+    "MANAGE_CARDS": "管理卡片",
+    "MANAGE_ADDRESSES": "管理地址",
+    "DELETE_ACCOUNT": "删除账户",
+    "LOGOUT": "退出登录"
+  },
+  "PRODUCT_DETAIL": {
+    "FEATURES_TITLE": "产品特性：",
+    "STOCK": "库存",
+    "QUANTITY": "数量",
+    "TOTAL_PRICE": "总价",
+    "ADD_TO_CART": "加入购物车",
+    "EDIT": "编辑",
+    "ADD_TO_WISHLIST": "添加到愿望清单",
+    "IMAGE_ALT": "产品",
+    "REVIEWS_TITLE": "用户评价",
+    "AVG_SCORE": "平均评分",
+    "BASED_ON": "基于 {{ count }} 条评价",
+    "REVIEW_FROM": "来自：",
+    "NO_COMMENT": "暂无评论",
+    "NO_REVIEWS": "暂无评价",
+    "RATE_TITLE": "评价您的购物体验",
+    "COMMENT_PLACEHOLDER": "添加评论...",
+    "SEND": "发送",
+    "CLOSE": "关闭"
+  },
+  "PRODUCT_LIST": {
+    "SORT_FILTER": "排序与筛选",
+    "SORT_BY": "排序方式：",
+    "NO_SORT": "无排序",
+    "HIGHLIGHTED": "亮点产品",
+    "PRICE_ASC": "价格：从低到高",
+    "PRICE_DESC": "价格：从高到低",
+    "NAME_ASC": "名称：A-Z",
+    "NAME_DESC": "名称：Z-A",
+    "MIN_PRICE": "最低价格：",
+    "MAX_PRICE": "最高价格：",
+    "BRAND": "品牌：",
+    "COLOR": "颜色：",
+    "APPLY": "应用"
+  },
+  "SHIPPING": {
+    "TITLE": "配送方式",
+    "NEXT": "下一步"
+  },
+  "CART": {
+    "TITLE": "购物车",
+    "CHECKOUT": "结账",
+    "CLEAR": "清空购物车",
+    "CONTINUE": "继续购物"
+  },
+  "LOGIN": {
+    "TITLE": "登录",
+    "SUBTITLE": "请输入凭证以访问您的账户",
+    "EMAIL_PLACEHOLDER": "电子邮箱",
+    "PASSWORD_PLACEHOLDER": "密码",
+    "REMEMBER_ME": "记住我",
+    "FORGOT_PASSWORD": "忘记密码？",
+    "SIGN_IN": "登录",
+    "OR": "或",
+    "CREATE_ACCOUNT": "创建新账户"
+  },
+  "SIGNUP": {
+    "TITLE": "创建账户",
+    "SUBTITLE": "请输入信息以创建账户",
+    "USERNAME_PLACEHOLDER": "用户名",
+    "EMAIL_PLACEHOLDER": "电子邮箱",
+    "PASSWORD_PLACEHOLDER": "密码",
+    "CONFIRM_PASSWORD_PLACEHOLDER": "确认密码",
+    "CREATE_ACCOUNT": "创建账户",
+    "OR": "或",
+    "SIGN_IN": "登录",
+    "REQUIREMENTS": {
+      "USER_FIRST_LETTER": "必须以字母开头",
+      "USER_ALPHANUMERIC": "仅允许字母和数字",
+      "USER_MIN_LENGTH": "至少 5 个字符",
+      "PASS_MIN_LENGTH": "至少 8 个字符",
+      "PASS_UPPERCASE": "必须包含一个大写字母",
+      "PASS_NUMBER": "必须包含一个数字",
+      "PASS_LOWERCASE": "必须包含一个小写字母",
+      "PASS_SPECIAL": "必须包含一个特殊字符"
+    }
+  },
+  "WISHLIST": {
+    "TITLE": "愿望清单"
+  },
+  "ADDRESS_MANAGER": {
+    "TITLE": "我的地址",
+    "NO_ADDRESSES": "您尚未添加任何地址。",
+    "ADD_ADDRESS": "添加地址",
+    "CANCEL": "取消",
+    "COUNTRY": "国家 *",
+    "PROVINCE": "省份 *",
+    "STREET": "街道、门牌号和城市 *",
+    "FLOOR": "楼层",
+    "LETTER": "单元",
+    "POSTAL_CODE": "邮政编码 *",
+    "SAVE_ADDRESS": "保存地址",
+    "CONFIRM_DELETE": "您确定要删除此地址吗？",
+    "YES_DELETE": "是的，删除地址"
+  },
+  "CARD_MANAGER": {
+    "TITLE": "我的卡片",
+    "NO_CARDS": "您还没有添加任何卡片。",
+    "ADD_CARD": "添加卡片",
+    "CANCEL": "取消",
+    "HOLDER": "持卡人姓名",
+    "HOLDER_ERROR": "姓名至少为 3 个字符。",
+    "NUMBER": "卡号（16 位数字）",
+    "NUMBER_ERROR": "卡号必须正好为 16 位数字（每 4 位分组）。",
+    "EXPIRY": "有效期（MM/YY）",
+    "EXPIRY_ERROR": "请使用 MM/YY 格式，例如 08/26。",
+    "BRAND": "品牌（Visa、Mastercard...）",
+    "SAVE": "保存卡片",
+    "EXPIRES": "有效期至",
+    "CONFIRM_DELETE": "确定要删除此卡片吗？",
+    "YES_DELETE": "是的，删除我的卡片"
+  },
+  "CARD_DISPLAY": {
+    "TITLE": "我的卡片",
+    "NO_CARDS": "您尚未添加任何卡片。",
+    "EXPIRES": "有效期至",
+    "COPY_PAN": "复制 PAN",
+    "COPY_EXPIRY": "复制有效期",
+    "COPY_OWNER": "复制持卡人",
+    "COPIED_PAN": "PAN 已复制！",
+    "COPIED_EXPIRY": "有效期已复制！",
+    "COPIED_OWNER": "姓名已复制！"
+  },
+  "ACCOUNT_DELETE": {
+    "TITLE": "删除账户",
+    "WARNING": "此操作是 不可逆的。您的所有个人信息、卡片和地址将被永久删除。",
+    "EMAIL": "电子邮箱",
+    "PASSWORD": "密码",
+    "CONFIRM": "是的，删除账户",
+    "CANCEL": "取消",
+    "DELETE": "删除我的账户"
+  },
+  "FOOTER": {
+    "ABOUT_US": {
+      "TITLE": "关于我们",
+      "WHO": "我们是谁",
+      "WORK": "加入我们",
+      "COOKIES": "Cookie 政策",
+      "PRIVACY": "隐私政策"
+    },
+    "SUPPORT": {
+      "TITLE": "客户支持",
+      "HELP_CENTER": "帮助 / 支持中心",
+      "ACCOUNT": "管理账户",
+      "SHIPPING": "配送信息",
+      "GIFTS": "礼品卡"
+    },
+    "CONNECT": {
+      "TITLE": "关注我们"
+    },
+    "COPYRIGHT": "Copyright © 2025 Infomarket Inc. 保留所有权利。",
+    "POLICIES": {
+      "PRIVACY": "隐私政策",
+      "COOKIES": "Cookie 使用",
+      "TERMS": "使用条款",
+      "REFUNDS": "销售与退款",
+      "LEGAL": "法律声明"
+    }
+  },
+  "HEADER": {
+    "SEARCH_PLACEHOLDER": "你在找什么？...",
+    "ADD_PRODUCT": "添加产品",
+    "WISHLIST": "愿望清单"
+  },
+  "NAVIGATION": {
+    "MENU": "菜单",
+    "OFFERS": "优惠",
+    "COMPUTING": "计算机",
+    "GAMING": "游戏",
+    "PHONES": "电话",
+    "TV": "电视",
+    "APPLIANCES": "家电",
+    "HEADPHONES": "耳机",
+    "DESKTOP": "台式电脑",
+    "LAPTOPS": "笔记本电脑",
+    "MOUSE": "鼠标",
+    "KEYBOARD": "键盘",
+
+    "CONSOLES": "游戏机",
+    "MICROPHONES": "麦克风",
+    "GAMING_LAPTOPS": "游戏笔记本",
+    "GAMING_ACCESSORIES": "游戏配件",
+    "PC_GAMES": "电脑游戏",
+
+    "SMARTPHONES": "智能手机",
+    "CASES": "保护壳和贴膜",
+    "MOBILE_ACCESSORIES": "手机配件",
+    "LANDLINE": "固定电话",
+
+    "TV_FULLHD": "全高清电视",
+    "TV_4K": "4K 超高清电视",
+    "TV_8K": "8K 超高清电视",
+    "DVD_PLAYERS": "DVD / 蓝光播放器",
+    "TV_ACCESSORIES": "电视配件",
+
+    "FRIDGES": "冰箱",
+    "DISHWASHERS": "洗碗机",
+    "WASHERS": "洗衣机",
+    "OVENS": "烤箱",
+    "MICROWAVES": "微波炉"
+  },
+  "ORDER_MANAGER": {
+    "TITLE": "我的订单",
+    "NO_ORDERS": "你还没有任何订单。",
+    "ARRIVAL": "到达日期",
+    "TOTAL": "总价"
+  },
+  "PAYMENT_SUMMARY": {
+    "TITLE": "付款摘要",
+    "CONFIRMED": "您的付款已确认",
+    "METHOD": "付款方式",
+    "ARRIVAL": "您的到达日期是",
+    "DELIVERY": "包裹配送"
+  },
+  "PRODUCT_CARD": {
+    "SEE": "查看",
+    "ADD_TO_CART": "加入购物车"
+  },
+  "PRODUCT_INFO_COMPONENT": {
+    "QUANTITY": "数量"
+  },
+  "SHOPPING_INFO": {
+    "TOTAL": "总计"
+  },
+  "SHOPPING_PROCESS": {
+    "BILLING": "账单信息",
+    "PAYMENT": "支付",
+    "SUMMARY": "摘要"
+  },
+  "WISHLIST_PRODUCT": {
+    "STOCK": "库存"
+  }
+}

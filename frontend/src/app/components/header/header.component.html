@@ -1,0 +1,63 @@
+<header>
+  <section id="header-navigation">
+    <article id="nav-top">
+      <div id="logo-searchbar">
+        <a id="header-logo" routerLink="/">
+          <img src="assets/icons/header/infomarket_logo.png" width="92px" height="92px" alt="" />
+        </a>
+      </div>
+      <div id="user-cart">
+        <div id="header-icons">
+          <div class="search" #searchBar>
+            <input
+              #inputBar
+              class="input"
+              type="text"
+              [placeholder]="'HEADER.SEARCH_PLACEHOLDER' | translate"
+              [(ngModel)]="terminoBusqueda"
+              (keyup.enter)="buscarProducto()" />
+            <button class="btn" (click)="toggleSearch()">
+              <i class="fi fi-rr-search"></i>
+            </button>
+          </div>
+
+          <div class="lang-dropdown" [class.open]="langDropdownOpen">
+            <button class="dropdown-toggle" (click)="toggleLangDropdown()" title="Cambiar idioma">
+              <i class="bi bi-translate"></i>
+            </button>
+            <ul class="dropdown-menu" *ngIf="langDropdownOpen">
+              <li (click)="switchLanguage('es')">
+                <img src="assets/icons/lang/es.png" alt="ES" class="lang-flag" /> Español
+              </li>
+              <li (click)="switchLanguage('en')">
+                <img src="assets/icons/lang/en.png" alt="EN" class="lang-flag" /> English
+              </li>
+              <li (click)="switchLanguage('fr')">
+                <img src="assets/icons/lang/fr.png" alt="FR" class="lang-flag" /> Français
+              </li>
+              <li (click)="switchLanguage('zh')">
+                <img src="assets/icons/lang/zh.png" alt="ZH" class="lang-flag" /> 中文
+              </li>
+            </ul>
+          </div>
+
+          <a *ngIf="isAdmin" id="add-product" routerLink="/add-product" [title]="'HEADER.ADD_PRODUCT' | translate">
+            <i class="fi fi-rr-plus"></i>
+          </a>
+
+          <a *ngIf="isLoggedIn" id="wish-list" routerLink="/wish-list" [title]="'HEADER.WISHLIST' | translate">
+            <i class="fi fi-rr-star"></i>
+            <span class="cart-notification" *ngIf="wishListCount > 0">{{ wishListCount }}</span>
+          </a>
+
+          <a id="user" (click)="irAlPerfil()"><i class="fi fi-rr-user"></i></a>
+
+          <a id="cart" routerLink="/shopping-cart">
+            <i class="fi fi-rr-briefcase-blank"></i>
+            <span class="cart-notification" *ngIf="cartItemCount > 0">{{ cartItemCount }}</span>
+          </a>
+        </div>
+      </div>
+    </article>
+  </section>
+</header>

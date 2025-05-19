@@ -1,0 +1,227 @@
+.card-manager {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+.card-manager h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #333;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.5rem;
+}
+
+.card-manager ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1.5rem;
+}
+
+.card-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.no-cards {
+  font-style: italic;
+  color: #777;
+  margin-bottom: 1rem;
+}
+
+.button-cancel-add {
+  background-color: #C2C2C2;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.95rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.button-cancel-add:hover {
+  background-color: #999999;
+}
+
+.add-form {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+/* Inputs con icono */
+.input-icon-cards {
+  position: relative;
+}
+
+.input-icon-cards i {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: #666;
+}
+
+.input-icon-cards input {
+  padding-left: 35px;
+  height: 40px;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  background-color: #fafafa;
+  outline: none;
+  transition: border 0.2s ease;
+}
+
+.input-icon-cards input:focus {
+  border-color: #999;
+  background-color: #fff;
+}
+
+.add-form button {
+  background-color: #C2C2C2;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.95rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.add-form button:hover {
+  background-color: #999999;
+}
+
+.autocomplete-group {
+  position: relative;
+}
+
+.suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  max-height: 160px;
+  overflow-y: auto;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.suggestions li {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.suggestions li:hover {
+  background-color: #f0f0f0;
+}
+
+.delete-icon {
+  cursor: pointer;
+  font-size: 18px;
+  color: #c0392b;
+  transition: color 0.2s;
+}
+
+.delete-icon:hover {
+  color: #e74c3c;
+}
+
+.edit-icon{
+  cursor: pointer;
+  color: #4CAF50;
+  transition: color 0.2s;
+  margin-left: 1rem;
+  margin-top: 0.3rem;
+  padding: 0.3rem 0.3rem;
+}
+
+.edit-icon:hover {
+  color: #4CAF50;
+}
+
+.popup-delete {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.popup-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.popup-buttons button {
+  background-color: #C2C2C2;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.95rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.popup-buttons button:hover {
+  background-color: #999999;
+}
+
+.button-confirm {
+  margin-left: auto;
+}
+.floating-message {
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: bold;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  transition: opacity 0.3s ease-in-out;
+  opacity: 0.95;
+}
+
+.floating-message.success {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.floating-message.error {
+  background-color: #f44336;
+  color: white;
+}

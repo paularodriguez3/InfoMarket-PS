@@ -1,0 +1,17 @@
+import { Component } from '@angular/core';
+import {RouterLink} from '@angular/router';
+import {TranslatePipe} from '@ngx-translate/core';
+
+@Component({
+  selector: 'app-footer',
+  standalone: true,
+  templateUrl: './footer.component.html',
+  imports: [
+    RouterLink,
+    TranslatePipe
+  ],
+  styleUrl: './footer.component.css'
+})
+export class FooterComponent {
+
+}

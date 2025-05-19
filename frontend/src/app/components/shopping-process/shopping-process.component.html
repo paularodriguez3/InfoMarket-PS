@@ -1,0 +1,20 @@
+<main>
+  <div class="progress-container">
+    <div class="step" [ngClass]="{ 'active': currentStep === 1 }">
+      <div class="circle">1</div>
+      <p>{{ 'SHOPPING_PROCESS.BILLING' | translate }}</p>
+    </div>
+    <hr class="line" />
+    <hr class="line" />
+    <div class="step" [ngClass]="{ 'active': currentStep === 2 }">
+      <div class="circle">2</div>
+      <p>{{ 'SHOPPING_PROCESS.PAYMENT' | translate }}</p>
+    </div>
+    <hr class="line" />
+    <hr class="line" />
+    <div class="step" [ngClass]="{ 'active': currentStep === 3 }">
+      <div class="circle">3</div>
+      <p>{{ 'SHOPPING_PROCESS.SUMMARY' | translate }}</p>
+    </div>
+  </div>
+</main>

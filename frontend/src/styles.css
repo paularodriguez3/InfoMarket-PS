@@ -1,0 +1,11 @@
+/* You can add global styles to this file, and also import other style files */
+body.blurred main {
+  filter: blur(8px);
+  pointer-events: none;
+}
+
+.blurred {
+  filter: blur(8px);
+  transition: filter 0.3s ease;
+  pointer-events: none;
+}

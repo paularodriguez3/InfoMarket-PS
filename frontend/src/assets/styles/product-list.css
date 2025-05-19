@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    top: 0;
+    background-color: #FAFAFC;
+}
+
+body {
+    background-color: #FAFAFC;
+}
+
+main {
+    flex: 1;
+    margin-top: 4%;
+    align-items: center;
+    justify-content: center;
+    background-color: #FAFAFC;
+    position: relative;
+}
+
+#main-title {
+    font-size: 72px;
+}
+
+#main-title-wrapper {
+    font-family: 'SF Pro Display', sans-serif;
+    padding-inline: 6%;
+    padding-bottom: 4%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #1D1D1F;
+}
+
+#product-grid {
+    justify-self: center;
+    display: grid;
+    padding: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 70px;
+    grid-auto-rows: minmax(100px, auto);
+}
+
+#filter-button {
+    border-radius: 10px;
+    font-family: 'SF Pro Display', sans-serif;
+    font-size: 16px;
+    padding: 10px;
+    border: none;
+    background-color: #F5F5F7;
+    color: #3D3D3D;
+    cursor: pointer;
+}
+
+#filter-button:hover {
+    background-color: #D9D9D9;
+}
+
+.hidden-filter-menu {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    background-color: #F5F5F7;
+    z-index: 1;
+}
+
+.show-filter-menu {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+#filter-menu-wrapper {
+    width: 40%;
+    top: 0;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    background-color: #F5F5F7;
+}
+
+#filter-menu {
+    list-style-type: none;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+#filter-menu li {
+    text-decoration: none;
+}
+
+@media(max-width: 991px) {
+
+    #main-title {
+        font-size: 48px;
+    }
+
+    #product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width: 479px) {
+    #main-title {
+        font-size: 28px;
+    }
+
+    #product-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
