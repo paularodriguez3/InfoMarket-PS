@@ -62,6 +62,9 @@ export class ProductListComponent implements OnInit, OnDestroy {
   subcategoriaParam: string|null = null;
   discounts: boolean|null = null;
 
+  colores: any[] = [];
+  marcas: any[] = [];
+
   whereParam: string[] = [];
   orderParam: string|null = "Destacado desc";
 
@@ -99,6 +102,8 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
       this.loadNextPage();
     });
+    this.productService.getColores().subscribe(data => this.colores = data);
+    this.productService.getMarcas().subscribe(data => this.marcas = data);
   }
 
   toggleFilterMenu() {
@@ -245,5 +250,11 @@ export class ProductListComponent implements OnInit, OnDestroy {
     this.filteredProducts = [];
     this.lastDoc = null
     this.loadNextPage();
+  }
+
+  getTituloCategoria(): string {
+    if (this.search) return 'PRODUCT_LIST.SEARCH_RESULTS';
+    if (this.discounts) return 'PRODUCT_LIST.DISCOUNTED_PRODUCTS';
+    return 'CATEGORIES.' + (this.categoriaParam ?? '').toUpperCase();
   }
 }

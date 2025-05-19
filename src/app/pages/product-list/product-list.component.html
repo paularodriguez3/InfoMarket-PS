@@ -1,6 +1,8 @@
 <main>
   <section id="main-title-wrapper">
-    <h1 id="main-title">{{ titulo }}</h1>
+    <h1 id="main-title">
+      {{ getTituloCategoria() | translate }}
+    </h1>
     <button id="filter-button" (click)="toggleFilterMenu()">
       <i class='bx bx-filter-alt'></i> {{ 'PRODUCT_LIST.SORT_FILTER' | translate }}
     </button>
@@ -34,11 +36,17 @@
       </li>
       <li>
         <label>{{ 'PRODUCT_LIST.BRAND' | translate }}</label>
-        <input type="text" [(ngModel)]="marca">
+        <select [(ngModel)]="marca">
+          <option value="">{{ 'PRODUCT_LIST.ALL_BRANDS' | translate }}</option>
+          <option *ngFor="let m of marcas" [value]="m.marca">{{ m.marca }}</option>
+        </select>
       </li>
       <li>
         <label>{{ 'PRODUCT_LIST.COLOR' | translate }}</label>
-        <input type="text" [(ngModel)]="color">
+        <select [(ngModel)]="color">
+          <option value="">{{ 'PRODUCT_LIST.ALL_COLORS' | translate }}</option>
+          <option *ngFor="let c of colores" [value]="c.color">{{ 'COLORS.' + c.color | translate }}</option>
+        </select>
       </li>
       <ng-container *ngFor="let filtro of filtrosCategoria[categoria] || []">
         <li>

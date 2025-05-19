@@ -145,7 +145,12 @@
     "RATE_TITLE": "Évaluez votre expérience d'achat",
     "COMMENT_PLACEHOLDER": "Ajoutez un commentaire...",
     "SEND": "Envoyer",
-    "CLOSE": "Fermer"
+    "CLOSE": "Fermer",
+    "ADD_REVIEW_TITLE": "Partagez votre expérience avec le produit",
+    "EDIT_REVIEW": "Modifier",
+    "DELETE_REVIEW": "Supprimer",
+    "SEE_MORE_REVIEWS": "Voir plus d'avis",
+    "FROM": "De :"
   },
   "PRODUCT_LIST": {
     "SORT_FILTER": "Trier et filtrer",
@@ -160,7 +165,17 @@
     "MAX_PRICE": "Prix maximum :",
     "BRAND": "Marque :",
     "COLOR": "Couleur :",
-    "APPLY": "Appliquer"
+    "APPLY": "Appliquer",
+    "ALL_BRANDS": "Toutes les marques",
+    "ALL_COLORS": "Toutes les couleurs",
+    "SEARCH_RESULTS": "Résultats de recherche",
+    "DISCOUNTED_PRODUCTS": "Produits en promotion"
+  },
+  "COLORS": {
+    "Negro": "Noir",
+    "Blanco": "Blanc",
+    "Rosa": "Rose",
+    "Gris": "Gris"
   },
   "SHIPPING": {
     "TITLE": "MÉTHODE D'EXPÉDITION",
@@ -345,7 +360,8 @@
   },
   "PRODUCT_CARD": {
     "SEE": "Voir",
-    "ADD_TO_CART": "Ajouter au panier"
+    "ADD_TO_CART": "Ajouter au panier",
+    "OUT_OF_STOCK": "Rupture de stock"
   },
   "PRODUCT_INFO_COMPONENT": {
     "QUANTITY": "Quantité"
@@ -360,6 +376,11 @@
   },
   "WISHLIST_PRODUCT": {
     "STOCK": "Quantité"
+  },
+  "CATEGORIES": {
+    "INFORMATICA": "Informatique",
+    "GAMING": "Jeux vidéo",
+    "TELEFONIA": "Téléphonie",
+    "ELECTRODOMESTICOS": "Électroménager"
   }
-
 }

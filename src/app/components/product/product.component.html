@@ -7,6 +7,9 @@
   <div id="product-image" class="product-info-link">
     <img id="image" [src]="imageUrl" [alt]="product.Nombre" />
   </div>
+  <div class="no-stock-overlay" *ngIf="product.Stock === 0">
+    {{ 'PRODUCT_CARD.OUT_OF_STOCK' | translate }}
+  </div>
   <p id="product-name">{{ product.Nombre }}</p>
   <p id="product-desc">{{ product.Descripcion }}</p>
 

@@ -392,4 +392,14 @@ export class ProductService {
       throw error;
     }
   }
+
+  getColores(): Observable<any[]> {
+    const ref = collection(this.firestore, 'colores');
+    return collectionData(ref, { idField: 'id' });
+  }
+
+  getMarcas(): Observable<any[]> {
+    const ref = collection(this.firestore, 'marcas');
+    return collectionData(ref, { idField: 'id' });
+  }
 }
