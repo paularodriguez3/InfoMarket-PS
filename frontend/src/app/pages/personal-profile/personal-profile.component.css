@@ -134,6 +134,12 @@ body {
   background-color: #999999;
 }
 
+.button-color{
+  background-color: coral !important;
+}
+.button-color-delete{
+  background-color: #b00020 !important;
+}
 .toggle-cards{
   width: 100%;
   padding: 1rem;
@@ -147,6 +153,7 @@ body {
   transition: background-color 0.2s;
   margin-top: 0.1rem;
 }
+
 
 .toggle-cards:hover {
   background-color: #999999;

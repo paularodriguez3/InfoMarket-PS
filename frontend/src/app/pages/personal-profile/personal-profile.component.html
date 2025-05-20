@@ -52,16 +52,16 @@
         </button>
         <app-order-history *ngIf="showOrderHistory" [orders]="orders"></app-order-history>
 
-        <button type="button" class="toggle-cards with-icon" (click)="toggleDeleteManager()">
+        <button type="button" class="toggle-cards with-icon button-color-delete" (click)="toggleDeleteManager()">
           {{ 'PROFILE.DELETE_ACCOUNT' | translate }}
-          <i class="bx bxs-x-circle"></i>
+          <i class="bx bxs-x-circle button-color-delete"></i>
 
         </button>
         <app-delete-account *ngIf="showDeleteManager" [uid]="uid"></app-delete-account>
 
-        <button type="button" class="toggle-cards with-icon" (click)="logout()">
+        <button type="button" class="toggle-cards with-icon button-color" (click)="logout()">
           {{ 'PROFILE.LOGOUT' | translate }}
-          <i class="bx bxs-log-out"></i>
+          <i class="bx bxs-log-out button-color"></i>
         </button>
       </form>
     </div>
