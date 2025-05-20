@@ -12,6 +12,11 @@ body {
   color: #1d1d1f;
 }
 
+#shopping-cart-title i {
+  color: red;
+}
+
+
 header {
   top: 0;
   background-color: #FAFAFC;
