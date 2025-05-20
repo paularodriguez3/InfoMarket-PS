@@ -6,13 +6,15 @@ import {
   ViewChild
 } from '@angular/core';
 import {TranslatePipe} from '@ngx-translate/core';
+import {NgForOf} from '@angular/common';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   templateUrl: './home.component.html',
   imports: [
-    TranslatePipe
+    TranslatePipe,
+    NgForOf
   ],
   styleUrls: ['./home.component.css']
 })
@@ -22,6 +24,14 @@ export class HomeComponent implements AfterViewInit {
   private refreshInterval: any;
   private active = 0;
   private lengthItems = 0;
+
+  overlayTitles: string[] = [
+    'HOME.SECTION_COMPUTING',
+    'HOME.SECTION_GAMING',
+    'HOME.SECTION_PHONES',
+    'HOME.SECTION_TVS',
+    'HOME.SECTION_APPLIANCES'
+  ];
 
   @ViewChild('sliderContainer') sliderContainer!: ElementRef;
   @ViewChild('overlayContainer') overlayContainer!: ElementRef;

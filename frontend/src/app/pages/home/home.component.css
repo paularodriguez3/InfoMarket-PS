@@ -268,6 +268,7 @@ main {
   margin-top: 5%;
   display: flex;
   transition: 1.15s;
+  width: 100%;
   left: 0;
 }
 
