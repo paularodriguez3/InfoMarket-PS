@@ -5,10 +5,11 @@ import { AddProductService } from '../../services/add-product.service';
 import { collection, getDocs, setDoc, doc } from '@angular/fire/firestore';
 import { Storage } from '@angular/fire/storage';
 import { getDownloadURL, ref, uploadBytesResumable } from '@angular/fire/storage';
-import { Feature, Product } from '../../models/product.model';
+import {Feature, lang, Product} from '../../models/product.model';
 import {Router} from '@angular/router';
-import {TranslatePipe} from '@ngx-translate/core';
+import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 import {ProductService} from '../../services/product.service';
+import {TranslateProductService} from '../../services/translate-product.service';
 
 @Component({
   selector: 'app-add-product',
@@ -31,14 +32,8 @@ export class AddProductComponent implements OnInit {
   selectedSubcategory = '';
 
   selectedProductNameEs = '';
-  selectedProductNameEn = '';
-  selectedProductNameFr = '';
-  selectedProductNameZh = '';
 
   selectedDescriptionEs = '';
-  selectedDescriptionEn = '';
-  selectedDescriptionFr = '';
-  selectedDescriptionZh = '';
 
   selectedPrice: number = 0;
   selectedDiscount: number = 0;
@@ -54,6 +49,8 @@ export class AddProductComponent implements OnInit {
   selectedColor = '';
 
   private storage = inject(Storage);
+  private translateProductService: TranslateProductService = inject(TranslateProductService);
+  private translate: TranslateService = inject(TranslateService);
 
   constructor(private addProductService: AddProductService, private router : Router) {}
 
@@ -67,18 +64,23 @@ export class AddProductComponent implements OnInit {
 
       this.product = input['product'] as Product;
       console.log(this.product);
-
       this.selectedProductNameEs = this.product.Nombre['es'];
-      this.selectedProductNameEn = this.product.Nombre['en'];
-      this.selectedProductNameFr = this.product.Nombre['fr'];
-      this.selectedProductNameZh = this.product.Nombre['zh'];
 
       this.selectedDescriptionEs = this.product.Descripcion['es'];
-      this.selectedDescriptionEn = this.product.Descripcion['en'];
-      this.selectedDescriptionFr = this.product.Descripcion['fr'];
-      this.selectedDescriptionZh = this.product.Descripcion['zh'];
 
-      this.features = this.product.Caracteristicas;
+      const language = this.translate.currentLang as lang;
+      if ((this.product.Caracteristicas as any)[language] !== undefined) {
+        const featuresOriginalKeys = (this.product.Caracteristicas as any)[language];
+        const featuresLang: Feature[] = featuresOriginalKeys.map((item: {clave: string, valor: string}): Feature => ({
+          name: item.clave,
+          value: item.valor
+        }));
+        console.log(featuresLang);
+        this.features = featuresLang;
+      } else {
+        console.log(this.product.Caracteristicas);
+        this.features = this.product.Caracteristicas;
+      }
       this.selectedPrice = this.product.Precio;
       this.selectedImageUrl = await this.productService.getImageUrl(this.product.Imagen);
       this.selectedImagePath = this.product.Imagen;
@@ -171,12 +173,12 @@ export class AddProductComponent implements OnInit {
   }
 
   saveProduct() {
-    if (!this.selectedProductNameEs || !this.selectedProductNameEn || !this.selectedProductNameFr || !this.selectedProductNameZh) {
+    if (!this.selectedProductNameEs) {
       alert("Por favor, complete el campo 'Nombre del producto'.");
       return;
     }
 
-    if (!this.selectedDescriptionEs || !this.selectedDescriptionEn || !this.selectedDescriptionFr || !this.selectedDescriptionZh) {
+    if (!this.selectedDescriptionEs) {
       alert("Por favor, complete el campo 'Descripción del producto'.");
       return;
     }
@@ -207,18 +209,12 @@ export class AddProductComponent implements OnInit {
       }
     });
 
-    const productData = {
+    let productData = {
       Nombre: {
         es:this.selectedProductNameEs,
-        en:this.selectedProductNameEn,
-        fr:this.selectedProductNameFr,
-        zh:this.selectedProductNameZh,
       },
       Descripcion: {
         es: this.selectedDescriptionEs,
-        en: this.selectedDescriptionEn,
-        fr: this.selectedDescriptionFr,
-        zh: this.selectedDescriptionZh,
       },
       Categoria: this.selectedCategory,
       Subcategoria: this.selectedSubcategory,
@@ -233,21 +229,47 @@ export class AddProductComponent implements OnInit {
     };
 
     console.log(productData);
-
+    console.log(JSON.stringify(productData));
     if (!this.isEditing) {
-      this.addProductService.saveProduct(productData).then(() => {
-        console.log('Producto guardado exitosamente');
-        alert("Producto añadido exitosamente.");
-      }).catch(error => {
-        console.error('Error al guardar el producto: ', error);
-        alert("Error al guardar el producto: " + error.message);
+      this.translateProductService.translateProduct(productData).subscribe({
+        next: (result) => {
+          productData = result;
+          this.addProductService.saveProduct(productData).then(() => {
+            console.log('Producto guardado exitosamente');
+            alert("Producto añadido exitosamente.");
+          }).catch(error => {
+            console.error('Error al guardar el producto: ', error);
+            alert("Error al guardar el producto: " + error.message);
+          });
+          this.router.navigate(['/']);
+        },
+        error: (error) => {
+          console.error("Error al traducir el producto: ", error);
+        },
+        complete: () => {
+          console.log("Traducción completa.");
+        }
       });
     } else {
       if(this.product) {
-        this.addProductService.editProduct(this.product, productData)
+        this.translateProductService.translateProduct(productData).subscribe({
+          next: (result) => {
+            productData = result;
+            if (this.product) {
+              this.addProductService.editProduct(this.product, productData);
+            }
+            this.router.navigate(['/']);
+          },
+          error: (error) => {
+            console.error("Error al traducir el producto: ", error);
+          },
+          complete: () => {
+            console.log("Traducción completa.");
+          }
+        });
       }
     }
-    this.router.navigate(['/']);
+
   }
 
   addFeature() {
@@ -270,5 +292,10 @@ export class AddProductComponent implements OnInit {
 
   getFinalPrice() {
     return (this.selectedPrice - this.selectedPrice* this.selectedDiscount/100).toFixed(2)
+  }
+
+  getFeatures() {
+
+    return;
   }
 }

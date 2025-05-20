@@ -8,8 +8,8 @@
       <hr class="hr-features" />
 
       <div id="product-features">
-        <div *ngFor="let caracteristica of product.Caracteristicas; let i = index; trackBy: trackByIndex">
-          <p>{{ caracteristica.name }}: {{ caracteristica.value }}</p>
+        <div *ngFor="let caracteristica of getTranslatedFeatures(); let i = index; trackBy: trackByIndex">
+          <p>{{caracteristica['clave']}}:{{caracteristica['valor']}}</p>
         </div>
       </div>
 

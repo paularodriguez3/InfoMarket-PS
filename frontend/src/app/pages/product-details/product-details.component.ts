@@ -46,6 +46,8 @@ export class ProductDetailsComponent implements OnInit {
 
   category:string = "";
 
+  protected featuresLangs: any = [];
+
   isAdmin: boolean = false;
   isLoggedIn: boolean = false;
 
@@ -77,12 +79,14 @@ export class ProductDetailsComponent implements OnInit {
 
     this.firebaseService.getProductById(producto.id)
       .subscribe((updatedProduct) => {
-        const caracteristicasUpdated: Feature[] = updatedProduct.Caracteristicas
+        this.featuresLangs = updatedProduct.Caracteristicas;
+        /*const caracteristicasUpdated: Feature[] = caracteristicasLang
           ? Object.entries(updatedProduct.Caracteristicas).map(([key, value]) => ({
             name: key,
             value: String(value),
           }))
-          : [];
+          : [];*/
+        console.log(updatedProduct);
 
         const currentUserUid = this.obtenerUidUsuario();
 
@@ -101,7 +105,6 @@ export class ProductDetailsComponent implements OnInit {
 
         this.product = {
           ...updatedProduct,
-          Caracteristicas: caracteristicasUpdated,
           Valoraciones: [...propias, ...otras]
         };
         this.valorado = propias.length > 0;
@@ -278,4 +281,9 @@ export class ProductDetailsComponent implements OnInit {
     return this.product.Descripcion[language] || this.product.Descripcion['es'];
   }
 
+  getTranslatedFeatures(): any[] {
+    const language = this.translate.currentLang as lang;
+    console.log(this.featuresLangs[language]);
+    return this.featuresLangs[language];
+  }
 }

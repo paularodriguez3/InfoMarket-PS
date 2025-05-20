@@ -1,7 +1,7 @@
 import {
   Firestore, addDoc, collection, query,
   doc, deleteDoc, updateDoc, setDoc, getDocs, where, getDoc, collectionData, docData,
-  arrayUnion, limit, orderBy, startAfter, QueryDocumentSnapshot, WhereFilterOp
+  arrayUnion, limit, orderBy, startAfter, QueryDocumentSnapshot, WhereFilterOp, DocumentData
 } from '@angular/fire/firestore';
 
 import { inject, Injectable } from '@angular/core';
@@ -10,6 +10,7 @@ import {getDownloadURL, ref} from '@angular/fire/storage';
 import {catchError, combineLatest, map, Observable, of, switchMap, tap} from 'rxjs';
 import {Product, Valoracion} from '../models/product.model';
 import {TranslateService} from '@ngx-translate/core';
+
 
 @Injectable({
   providedIn: 'root'
@@ -402,5 +403,90 @@ export class ProductService {
   getMarcas(): Observable<any[]> {
     const ref = collection(this.firestore, 'marcas');
     return collectionData(ref, { idField: 'id' });
+  }
+
+  async copiarColeccion(origen: string, destino: string): Promise<void> {
+    const origenRef = collection(this.firestore, origen);
+    const snapshot = await getDocs(origenRef);
+
+    if (snapshot.empty) {
+      console.log(`La colección '${origen}' está vacía.`);
+      return;
+    }
+
+    console.log(`Copiando documentos de '${origen}' a '${destino}'...`);
+
+    for (const docSnap of snapshot.docs) {
+      const data = docSnap.data();
+      const destinoRef = doc(this.firestore, destino, docSnap.id); // conserva el mismo ID
+      await setDoc(destinoRef, data);
+    }
+
+    console.log(`✅ Copia completada: '${origen}' → '${destino}'`);
+  }
+
+
+  esFormatoNoTraducido(caracteristicas: any): boolean {
+    return (
+      caracteristicas &&
+      !caracteristicas.es && // No tiene traducciones
+      typeof caracteristicas === "object" &&
+      !Array.isArray(caracteristicas) &&
+      Object.values(caracteristicas).every(v => typeof v === "string")
+    );
+  }
+
+  async traducirProducto(producto: DocumentData): Promise<DocumentData> {
+    const response = await fetch("http://localhost:3000/translate-product", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(producto),
+    });
+
+    if (!response.ok) {
+      const errorBody = await response.text();
+      throw new Error(`Error ${response.status}: ${errorBody}`);
+    }
+
+    return await response.json();
+  }
+
+  /**
+   * Procesa y actualiza productos mal formateados
+   */
+  async actualizarProductosNoTraducidos(): Promise<void> {
+    const productosRef = collection(this.firestore, "productos");
+    const snapshot = await getDocs(productosRef);
+
+    const productosMalFormateados: { id: string; data: DocumentData }[] = [];
+
+    // 1. Detectar documentos incorrectos
+    snapshot.forEach((docSnap) => {
+      const data = docSnap.data();
+      if ("Caracteristicas" in data && this.esFormatoNoTraducido((data as any).Caracteristicas)) {
+        productosMalFormateados.push({ id: docSnap.id, data });
+      }
+    });
+
+    console.log(`🧩 Encontrados ${productosMalFormateados.length} productos mal formateados.`);
+
+    // 2. Enviar a API para traducir y actualizar
+    for (const producto of productosMalFormateados) {
+      try {
+        const traducido = await this.traducirProducto(producto.data); // 🔁 cambia a URL absoluta si estás fuera del mismo host
+
+        await setDoc(doc(this.firestore, "productos", producto.id), traducido);
+        console.log(`✅ Actualizado: ${producto.id}`);
+        await this.sleep(2000);
+      } catch (error) {
+        console.error(`❌ Error al traducir el producto ${producto.id}:`, error);
+      }
+    }
+  }
+
+  sleep(ms: number): Promise<void> {
+    return new Promise(resolve => setTimeout(resolve, ms));
   }
 }
