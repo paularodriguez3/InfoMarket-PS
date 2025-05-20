@@ -6,7 +6,12 @@
 
   <div id="product-image" class="product-info-link">
     <img id="image" [src]="imageUrl" [alt]="product.Nombre" />
+    <div class="rating-badge" *ngIf="product.Valoraciones?.length">
+      <span class="star-icon">★</span>
+      <span>{{ getMediaValoracion(product.Valoraciones).toFixed(1) }}</span>
+    </div>
   </div>
+
   <div class="no-stock-overlay" *ngIf="product.Stock === 0">
     {{ 'PRODUCT_CARD.OUT_OF_STOCK' | translate }}
   </div>

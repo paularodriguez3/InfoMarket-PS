@@ -177,7 +177,9 @@
     "ALL_COLORS": "Todos los colores",
     "SEARCH_RESULTS": "Resultados de búsqueda",
     "DISCOUNTED_PRODUCTS": "Productos en oferta",
-    "RESET": "Restablecer filtros"
+    "RESET": "Restablecer filtros",
+    "RATING_ASC": "Puntuación mínima:",
+    "RATING_DESC": "Puntuación máxima:"
   },
   "COLORS": {
     "Negro": "Negro",

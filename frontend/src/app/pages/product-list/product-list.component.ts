@@ -34,6 +34,8 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
   precioMin: number | null = null;
   precioMax: number | null = null;
+  valoracionMin: number | null = null;
+  valoracionMax: number | null = null;
   marca: string = '';
   color: string = '';
   caracteristicas: { [key: string]: string } = {};
@@ -123,6 +125,10 @@ export class ProductListComponent implements OnInit, OnDestroy {
     if (this.precioMin) this.whereParam.push(`Precio >= ${this.precioMin}`);
     if (this.precioMax) this.whereParam.push(`Precio <= ${this.precioMax}`);
 
+    if (this.valoracionMin) this.whereParam.push(`ValoracionMedia >= ${this.valoracionMin}`);
+    if (this.valoracionMax) this.whereParam.push(`ValoracionMedia <= ${this.valoracionMax}`);
+
+
     if (this.marca) this.whereParam.push(`Marca == ${this.marca.charAt(0).toUpperCase() + this.marca.slice(1)}`);
 
     if (this.color) this.whereParam.push(`Color == ${this.color.charAt(0).toUpperCase() + this.color.slice(1)}`);
@@ -148,6 +154,12 @@ export class ProductListComponent implements OnInit, OnDestroy {
         break;
       case 'nombreDesc':
         this.orderParam = "Nombre desc";
+        break;
+      case 'valoracionAsc':
+        this.orderParam = "ValoracionMedia";
+        break;
+      case 'valoracionDesc':
+        this.orderParam = "ValoracionMedia desc";
         break;
     }
   }
@@ -261,6 +273,8 @@ export class ProductListComponent implements OnInit, OnDestroy {
   restablecerFiltros() {
     this.precioMin = null;
     this.precioMax = null;
+    this.valoracionMax = null;
+    this.valoracionMin = null;
     this.marca = '';
     this.color = '';
     this.caracteristicas = {};

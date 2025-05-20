@@ -7,7 +7,13 @@
     <div id="product-name-component">{{ getTranslatedName()}}</div>
     <div id="product-desc-component">{{ getTranslatedDescription() }}</div>
     <div id="product-stock-component">
-      <strong>{{ getStockMessage() }} </strong>
+      <strong [ngClass]="{
+          'stock-green': product.Stock > 10,
+          'stock-orange': product.Stock > 0 && product.Stock <= 7,
+          'stock-red': product.Stock === 0
+        }">
+          {{ getStockMessage() }}
+        </strong>
     </div>
   </div>
 

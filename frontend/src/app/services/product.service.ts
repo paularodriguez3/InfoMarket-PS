@@ -326,9 +326,19 @@ export class ProductService {
 
   async valorarProducto(productId: string, valoracion: any): Promise<void> {
     const productoRef = doc(this.firestore, `productos/${productId}`);
+    const snapshot = await getDoc(productoRef);
+
+    if (!snapshot.exists()) throw new Error('Producto no encontrado');
+
+    const producto = snapshot.data();
+    const valoraciones: Valoracion[] = producto['Valoraciones'] || [];
+
+    const nuevasValoraciones = [...valoraciones, valoracion];
+    const media = this.calcularMedia(nuevasValoraciones);
 
     await updateDoc(productoRef, {
-      Valoraciones: arrayUnion(valoracion)
+      Valoraciones: nuevasValoraciones,
+      ValoracionMedia: media
     });
   }
 
@@ -378,8 +388,11 @@ export class ProductService {
       v.uid === valoracionActualizada.uid ? valoracionActualizada : v
     );
 
+    const media = this.calcularMedia(nuevasValoraciones);
+
     await updateDoc(productoRef, {
-      Valoraciones: nuevasValoraciones
+      Valoraciones: nuevasValoraciones,
+      ValoracionMedia: media
     });
   }
 
@@ -393,6 +406,12 @@ export class ProductService {
       console.error('Error actualizando valoraciones:', error);
       throw error;
     }
+  }
+
+  private calcularMedia(valoraciones: Valoracion[]): number {
+    if (!valoraciones || valoraciones.length === 0) return 0;
+    const total = valoraciones.reduce((acc, v) => acc + v.Puntuacion, 0);
+    return total / valoraciones.length;
   }
 
   getColores(): Observable<any[]> {

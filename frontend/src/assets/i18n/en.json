@@ -177,7 +177,9 @@
     "ALL_COLORS": "All colors",
     "SEARCH_RESULTS": "Search results",
     "DISCOUNTED_PRODUCTS": "Discounted products",
-    "RESET": "Reset filters"
+    "RESET": "Reset filters",
+    "RATING_ASC": "Minimum rating:",
+    "RATING_DESC": "Maximum rating:"
   },
   "COLORS": {
     "Negro": "Black",

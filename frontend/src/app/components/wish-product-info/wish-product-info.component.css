@@ -23,6 +23,21 @@
   flex-shrink: 0;
 }
 
+.stock-green {
+  color: green;
+  font-weight: bold;
+}
+
+.stock-orange {
+  color: orange;
+  font-weight: bold;
+}
+
+.stock-red {
+  color: red;
+  font-weight: bold;
+}
+
 #product-image-component img {
   height: 100%;
   object-fit: cover;

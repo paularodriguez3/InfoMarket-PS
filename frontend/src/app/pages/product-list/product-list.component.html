@@ -24,15 +24,25 @@
           <option value="precioDesc">{{ 'PRODUCT_LIST.PRICE_DESC' | translate }}</option>
           <option value="nombreAsc">{{ 'PRODUCT_LIST.NAME_ASC' | translate }}</option>
           <option value="nombreDesc">{{ 'PRODUCT_LIST.NAME_DESC' | translate }}</option>
+          <option value="valoracionAsc">{{ 'PRODUCT_LIST.RATING_ASC' | translate }}</option>
+          <option value="valoracionDesc">{{ 'PRODUCT_LIST.RATING_DESC' | translate }}</option>
         </select>
       </li>
       <li>
         <label>{{ 'PRODUCT_LIST.MIN_PRICE' | translate }}</label>
-        <input type="number" [(ngModel)]="precioMin">
+        <input type="number" min="0" [(ngModel)]="precioMin">
       </li>
       <li>
         <label>{{ 'PRODUCT_LIST.MAX_PRICE' | translate }}</label>
-        <input type="number" [(ngModel)]="precioMax">
+        <input type="number" min="0" [(ngModel)]="precioMax">
+      </li>
+      <li>
+        <label>{{ 'PRODUCT_LIST.RATING_ASC' | translate }}</label>
+        <input type="number" min="0" max="5" step="0.1" [(ngModel)]="valoracionMin">
+      </li>
+      <li>
+        <label>{{ 'PRODUCT_LIST.RATING_DESC' | translate }}</label>
+        <input type="number" min="0" max="5" step="0.1" [(ngModel)]="valoracionMax">
       </li>
       <li>
         <label>{{ 'PRODUCT_LIST.BRAND' | translate }}</label>

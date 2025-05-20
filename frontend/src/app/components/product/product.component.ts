@@ -1,5 +1,5 @@
 import {Component, EventEmitter, inject, Input, Output} from '@angular/core';
-import {lang, Product} from '../../models/product.model';
+import {lang, Product, Valoracion} from '../../models/product.model';
 import {Router} from '@angular/router';
 import {ShoppingCartService} from '../../services/shopping-cart.service';
 import {DecimalPipe, NgClass, NgIf} from '@angular/common';
@@ -55,5 +55,11 @@ export class ProductComponent {
   getTranslatedDescription():string {
     const language = this.translate.currentLang as lang;
     return this.product.Descripcion[language] || this.product.Descripcion['es'];
+  }
+
+  getMediaValoracion(valoraciones: Valoracion[] | undefined): number {
+    if (!valoraciones || valoraciones.length === 0) return 0;
+    const total = valoraciones.reduce((sum, val) => sum + val.Puntuacion, 0);
+    return total / valoraciones.length;
   }
 }

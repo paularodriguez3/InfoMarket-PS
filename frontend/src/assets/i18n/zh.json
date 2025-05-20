@@ -177,7 +177,9 @@
     "ALL_COLORS": "所有颜色",
     "SEARCH_RESULTS": "搜索结果",
     "DISCOUNTED_PRODUCTS": "优惠商品",
-    "RESET": "重置筛选条件"
+    "RESET": "重置筛选条件",
+    "RATING_ASC": "最低评分：",
+    "RATING_DESC": "最高评分："
   },
   "COLORS": {
     "Negro": "黑色",
