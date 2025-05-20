@@ -47,14 +47,23 @@
 
           <a *ngIf="isLoggedIn" id="wish-list" routerLink="/wish-list" [title]="'HEADER.WISHLIST' | translate">
             <i class="fi fi-rr-heart"></i>
-            <span class="cart-notification" *ngIf="wishListCount > 0">{{ wishListCount }}</span>
+            <span
+              class="cart-notification"
+              *ngIf="wishListCount > 0 || hideWishNotification"
+              [class.appear]="showWishNotification"
+              [class.disappear]="hideWishNotification">{{ wishListCount }}</span>
           </a>
 
           <a id="user" (click)="irAlPerfil()"><i class="fi fi-rr-user"></i></a>
 
           <a id="cart" routerLink="/shopping-cart">
             <i class="fi fi-rr-briefcase-blank"></i>
-            <span class="cart-notification" *ngIf="cartItemCount > 0">{{ cartItemCount }}</span>
+            <span
+              class="cart-notification"
+              *ngIf="cartItemCount > 0 || hideCartNotification"
+              [class.appear]="showCartNotification"
+              [class.disappear]="hideCartNotification"
+            >{{ cartItemCount }}</span>
           </a>
         </div>
       </div>

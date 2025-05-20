@@ -169,7 +169,6 @@ export class ProductDetailsComponent implements OnInit {
 
   addToWishList() {
     this.wishListService.addToWishList(this.product);
-    alert("Producto añadido a la lista de deseos");
   }
 
   trackByIndex(index: number, item: any): number {
