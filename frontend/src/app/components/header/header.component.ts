@@ -40,6 +40,12 @@ export class HeaderComponent implements OnInit, DoCheck {
   shoppingCart: ShoppingCartItem[] = [];
   langDropdownOpen = false;
 
+  showCartNotification = false;
+  hideCartNotification = false;
+
+  showWishNotification = false;
+  hideWishNotification = false;
+
   constructor(
     private cartService: ShoppingCartService,
     private wishListService: WishListService,
@@ -49,9 +55,28 @@ export class HeaderComponent implements OnInit, DoCheck {
   ) {}
 
   ngOnInit() {
+
     this.wishListService.wishListChanged$.subscribe(wishList => {
+      const prevWishListCount = this.wishListCount;
       this.wishListCount = wishList.length;
+
+      if (prevWishListCount === 0 && this.wishListCount > 0) {
+        this.showWishNotification = true;
+
+        setTimeout(() => {
+          this.showWishNotification =  false;
+        }, 400);
+      }
+
+      if (prevWishListCount > 0 && this.wishListCount === 0) {
+        this.hideWishNotification = true;
+
+        setTimeout(() => {
+          this.hideWishNotification =  false;
+        }, 400);
+      }
     });
+
     this.wishListService.getWishList().then(products => {
       this.wishListCount = products.length;
     });
@@ -66,8 +91,24 @@ export class HeaderComponent implements OnInit, DoCheck {
     }
 
     this.cartService.cartChanged$.subscribe(cart => {
+      const previousCartCount = this.cartItemCount;
       this.shoppingCart = cart;
       this.cartItemCount = cart.reduce((acc, item) => acc + item.quantity, 0);
+
+      if (previousCartCount === 0 && this.cartItemCount > 0) {
+        this.showCartNotification = true;
+
+        setTimeout(() => {
+          this.showCartNotification =  false;
+        }, 400);
+      }
+
+      if (previousCartCount > 0 && this.cartItemCount === 0) {
+        this.hideCartNotification = true;
+        setTimeout(() => {
+          this.hideCartNotification = false;
+        }, 400);
+      }
     });
   }
 
