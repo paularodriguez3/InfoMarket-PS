@@ -7,7 +7,7 @@
     <div id="product-name-component">{{ getTranslatedName()}}</div>
     <div id="product-desc-component">{{ getTranslatedDescription() }}</div>
     <div id="product-stock-component">
-      {{ 'WISHLIST_PRODUCT.STOCK' | translate }}: {{ product.Stock }}
+      <strong>{{ getStockMessage() }} </strong>
     </div>
   </div>
 

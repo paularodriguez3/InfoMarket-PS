@@ -3,7 +3,7 @@ import {lang, Product} from '../../models/product.model';
 import { NgClass } from '@angular/common';
 import {ShoppingCartService} from '../../services/shopping-cart.service';
 import {Router} from '@angular/router';
-import {TranslatePipe, TranslateService} from '@ngx-translate/core';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-wish-product-info',
@@ -12,7 +12,6 @@ import {TranslatePipe, TranslateService} from '@ngx-translate/core';
   styleUrls: ['./wish-product-info.component.css'],
   imports: [
     NgClass,
-    TranslatePipe
   ]
 })
 export class WishProductInfoComponent {
@@ -62,5 +61,11 @@ export class WishProductInfoComponent {
   getTranslatedDescription():string {
     const language = this.translate.currentLang as lang;
     return this.product.Descripcion[language] || this.product.Descripcion['es'];
+  }
+
+  getStockMessage(): string {
+    if (this.product.Stock > 10) return this.translate.instant('PRODUCT_DETAIL.STOCK_IN');
+    if (this.product.Stock > 0) return this.translate.instant('PRODUCT_DETAIL.STOCK_FEW');
+    return this.translate.instant('PRODUCT_DETAIL.STOCK_OUT');
   }
 }
