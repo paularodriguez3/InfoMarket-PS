@@ -10,7 +10,7 @@ import {
   deleteUser as firebaseDeleteUser,
   sendPasswordResetEmail,
 } from '@angular/fire/auth';
-import { Firestore, doc, getDoc } from '@angular/fire/firestore';
+import {Firestore, doc, getDoc, updateDoc} from '@angular/fire/firestore';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -104,5 +104,19 @@ export class AuthService {
       throw new Error('El servicio de autenticación no está disponible.');
     }
     await sendPasswordResetEmail(this.auth, email);
+  }
+
+  async updateUserLanguage(uid: string, lang: string): Promise<void> {
+    const userRef = doc(this.firestore, 'users', uid);
+    await updateDoc(userRef, { idioma: lang });
+  }
+
+  async getUserLanguage(uid: string): Promise<string | null> {
+    const userRef = doc(this.firestore, 'users', uid);
+    const snap = await getDoc(userRef);
+    if (snap.exists()) {
+      return snap.data()?.['idioma'] || null;
+    }
+    return null;
   }
 }

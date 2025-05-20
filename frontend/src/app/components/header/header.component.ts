@@ -168,6 +168,14 @@ export class HeaderComponent implements OnInit, DoCheck {
     this.translate.use(lang);
     localStorage.setItem('lang', lang);
     this.langDropdownOpen = false;
+
+    const userData = localStorage.getItem('user');
+    if (userData) {
+      const { uid } = JSON.parse(userData);
+      this.authService.updateUserLanguage(uid, lang).catch(err =>
+        console.error('Error al guardar idioma en Firebase:', err)
+      );
+    }
   }
 
   toggleLangDropdown() {

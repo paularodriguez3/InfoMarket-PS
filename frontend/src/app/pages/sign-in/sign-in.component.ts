@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {Router, RouterModule} from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import {TranslatePipe} from '@ngx-translate/core';
+import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-sign-in',
@@ -18,7 +18,7 @@ export class SignInComponent implements OnInit {
 
   private authService = inject(AuthService);
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private translate: TranslateService) {}
 
   ngOnInit() {
     const storedUser = localStorage.getItem('user');
@@ -43,6 +43,12 @@ export class SignInComponent implements OnInit {
       if (!user.emailVerified) {
         alert('Debes verificar tu correo electrónico antes de iniciar sesión.');
         return;
+      }
+
+      const lang = await this.authService.getUserLanguage(user.uid);
+      if (lang) {
+        this.translate.use(lang);
+        localStorage.setItem('lang', lang);
       }
 
       localStorage.setItem('currentUser', JSON.stringify({
