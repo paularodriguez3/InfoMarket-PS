@@ -70,7 +70,8 @@
     "ZIP_LABEL": "Código Postal",
     "PROVINCE_LABEL": "Provincia",
     "MY_ADDRESSES": "Mis direcciones",
-    "CONTINUE": "Continuar"
+    "CONTINUE": "Continuar",
+    "EMAIL": "Correo electrónico"
   },
   "SUPPORT": {
     "TITLE": "Soporte técnico",

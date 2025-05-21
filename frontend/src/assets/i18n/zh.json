@@ -70,7 +70,8 @@
     "ZIP_LABEL": "邮政编码",
     "PROVINCE_LABEL": "省份",
     "MY_ADDRESSES": "我的地址",
-    "CONTINUE": "继续"
+    "CONTINUE": "继续",
+    "EMAIL": "電子郵件"
   },
   "SUPPORT": {
     "TITLE": "技术支持",
