@@ -47,7 +47,7 @@
         </button>
         <app-address-manager *ngIf="showAddressManager" [uid]="uid"></app-address-manager>
         <button type="button" class="toggle-cards with-icon" (click)="toggleOrderHistory()">
-          <span>Historial de compras</span>
+          <span>{{ 'PROFILE.ORDER_HISTORY' | translate }}</span>
           <i class="bx bx-receipt"></i>
         </button>
         <app-order-history *ngIf="showOrderHistory" [orders]="orders"></app-order-history>

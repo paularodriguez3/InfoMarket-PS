@@ -130,7 +130,8 @@
     "MANAGE_CARDS": "Gestionar tarjetas",
     "MANAGE_ADDRESSES": "Gestionar direcciones",
     "DELETE_ACCOUNT": "Eliminar cuenta",
-    "LOGOUT": "Cerrar sesión"
+    "LOGOUT": "Cerrar sesión",
+    "ORDER_HISTORY": "Historial de compras"
   },
   "PRODUCT_DETAIL": {
     "FEATURES_TITLE": "Características del producto:",

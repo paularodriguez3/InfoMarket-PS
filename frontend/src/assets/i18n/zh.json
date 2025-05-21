@@ -130,7 +130,8 @@
     "MANAGE_CARDS": "管理卡片",
     "MANAGE_ADDRESSES": "管理地址",
     "DELETE_ACCOUNT": "删除账户",
-    "LOGOUT": "退出登录"
+    "LOGOUT": "退出登录",
+    "ORDER_HISTORY": "購買歷史記錄"
   },
   "PRODUCT_DETAIL": {
     "FEATURES_TITLE": "产品特性：",

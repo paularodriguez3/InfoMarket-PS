@@ -1,6 +1,6 @@
-import {Component, Input} from '@angular/core';
+import {Component, inject, Input} from '@angular/core';
 import {NgForOf, NgIf} from '@angular/common';
-import {TranslatePipe} from '@ngx-translate/core';
+import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-order-history',
@@ -15,4 +15,5 @@ import {TranslatePipe} from '@ngx-translate/core';
 })
 export class OrderHistoryComponent {
   @Input() orders!: any[];
+  translate: TranslateService = inject(TranslateService);
 }

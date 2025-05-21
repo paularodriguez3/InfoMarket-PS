@@ -16,7 +16,8 @@
           @for (prod of order.productos; track $index;) {
             @let product = prod.product;
             <li class="order-product">
-              {{ product.Nombre }} :
+              @let language = translate.currentLang;
+              {{ product.Nombre[language] }} :
               {{
                 product.Descuento
                   ? (product.Precio * (1 - product.Descuento / 100)).toFixed(2)
