@@ -183,7 +183,7 @@ export class ProductService {
     for (const item of productos) {
       const ref = doc(
         this.firestore,
-        `productos/${item.product.Categoria}/${item.product.Subcategoria}/${item.product.id}`
+        `productos/${item.product.id}`
       );
 
       const snapshot = await getDoc(ref);
