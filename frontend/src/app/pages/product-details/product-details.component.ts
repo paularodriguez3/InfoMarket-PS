@@ -33,6 +33,7 @@ export class ProductDetailsComponent implements OnInit {
     Caracteristicas: [],
     id: "",
     Color:'',
+    Marca:'',
     Categoria: '',
     Subcategoria: '',
     Descuento: 0,

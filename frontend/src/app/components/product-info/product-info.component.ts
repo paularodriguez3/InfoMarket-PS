@@ -24,6 +24,7 @@ export class ProductInfoComponent {
       Imagen: "",
       Descripcion: {es:"", en:"", fr:"", zh:""},
       Color: '',
+      Marca: '',
       Categoria: '',
       Subcategoria: '',
       Stock: 0

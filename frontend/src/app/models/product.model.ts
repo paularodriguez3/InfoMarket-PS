@@ -4,7 +4,7 @@ export interface Product {
   Descripcion: {es: string, en: string, fr:string, zh:string};
   Imagen: string;
   Precio: number;
-  Marca?: string;
+  Marca: string;
   Color: string;
   Caracteristicas: Feature[];
   Categoria: string;

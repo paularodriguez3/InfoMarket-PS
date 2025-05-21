@@ -91,6 +91,8 @@ export class AddProductComponent implements OnInit {
       this.onCategoryChange();
       this.selectedSubcategory = this.product.Subcategoria;
       this.onSubcategoryChange();
+      this.selectedBrand = this.product.Marca;
+      this.selectedColor = this.product.Color;
     }
 
     /*this.addProductService.getCategories().subscribe(
