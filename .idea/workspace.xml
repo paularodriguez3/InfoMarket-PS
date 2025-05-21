@@ -6,14 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b991b1f5-e673-47f0-b15d-aed8705f6481" name="Changes" comment="Carrousel in progress">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/add-product/add-product.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/add-product/add-product.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/add-product/add-product.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/add-product/add-product.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/product-details/product-details.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/product-details/product-details.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/product-details/product-details.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/product-details/product-details.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/services/product.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/services/product.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/services/mail.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/services/mail.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -184,7 +177,8 @@
       <workItem from="1747748797002" duration="3762000" />
       <workItem from="1747752607704" duration="3380000" />
       <workItem from="1747758013544" duration="1043000" />
-      <workItem from="1747759181628" duration="3518000" />
+      <workItem from="1747759181628" duration="3655000" />
+      <workItem from="1747813781120" duration="2194000" />
     </task>
     <task id="LOCAL-00001" summary="Header first version done.">
       <option name="closed" value="true" />
